@@ -1,12 +1,6 @@
 import React from 'react';
 
-type NavLinkProps = {
-  href: string;
-  label: string;
-  active?: boolean;
-};
-
-const NavLink: React.FC<NavLinkProps> = ({ href, label, active = false }) => {
+const NavLink = ({ href, label, active = false }) => {
   return (
     <a 
       href={href}
@@ -25,7 +19,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, label, active = false }) => {
   );
 };
 
-const NavLinks: React.FC = () => {
+const NavLinks = () => {
   return (
     <div className="flex items-center space-x-1 md:space-x-2">
       <NavLink href="#about" label="About" />
