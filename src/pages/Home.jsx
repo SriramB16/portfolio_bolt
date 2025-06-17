@@ -9,7 +9,7 @@ const Home = () => {
         <div className="text-center mb-16">
           <div className="mb-8">
             <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white mb-6 leading-tight">
-              Hi, I'm <span className="bg-gradient-to-r from-gray-700 to-black dark:from-golden dark:to-golden-light bg-clip-text text-transparent">Sarah</span>
+              Hi, I'm <span className="bg-gradient-to-r from-gray-700 to-black dark:from-golden dark:to-golden-light bg-clip-text text-transparent">Sriram</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
               A passionate full-stack developer crafting beautiful, functional, and user-centered digital experiences.
