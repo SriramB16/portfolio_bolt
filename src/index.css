@@ -73,19 +73,33 @@
   }
 }
 
-/* Smooth page transitions */
-.page-transition {
-  animation: fadeIn 0.3s ease-in-out;
+/* Page transition animation */
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Marquee animation */
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
@@ -117,4 +131,9 @@
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #888;
+}
+
+/* Preload optimization */
+.preload * {
+  transition: none !important;
 }

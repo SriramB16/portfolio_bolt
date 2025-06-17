@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Moon, User, FolderGit2, Mail, Home } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 import Logo from './Logo';
 
 const Navbar = () => {
   const [scrollWidth, setScrollWidth] = useState(95);
-  const [darkMode, setDarkMode] = useState(false);
+  const { darkMode, toggleDarkMode } = useTheme();
   const location = useLocation();
 
   useEffect(() => {
@@ -28,18 +29,6 @@ const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
 
   // Custom Sun Component
   const SunIcon = () => (
@@ -121,10 +110,10 @@ const Navbar = () => {
           
           <div className="flex-1 flex justify-center">
             <div className="flex items-center space-x-8">
-              <NavLink href="/" label="Home" icon={<Home size={18} />} active={location.pathname === '/'} />
-              <NavLink href="/about" label="About" icon={<User size={18} />} active={location.pathname === '/about'} />
-              <NavLink href="/projects" label="Projects" icon={<FolderGit2 size={18} />} active={location.pathname === '/projects'} />
-              <NavLink href="/contact" label="Contact" icon={<Mail size={18} />} active={location.pathname === '/contact'} />
+              <NavLink to="/" label="Home" icon={<Home size={18} />} active={location.pathname === '/'} />
+              <NavLink to="/about" label="About" icon={<User size={18} />} active={location.pathname === '/about'} />
+              <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={18} />} active={location.pathname === '/projects'} />
+              <NavLink to="/contact" label="Contact" icon={<Mail size={18} />} active={location.pathname === '/contact'} />
             </div>
           </div>
           
@@ -167,10 +156,10 @@ const Navbar = () => {
           transition-colors duration-300
         ">
           <div className="flex items-center justify-around py-2">
-            <NavLink href="/" label="Home" icon={<Home size={20} />} active={location.pathname === '/'} />
-            <NavLink href="/about" label="About" icon={<User size={20} />} active={location.pathname === '/about'} />
-            <NavLink href="/projects" label="Projects" icon={<FolderGit2 size={20} />} active={location.pathname === '/projects'} />
-            <NavLink href="/contact" label="Contact" icon={<Mail size={20} />} active={location.pathname === '/contact'} />
+            <NavLink to="/" label="Home" icon={<Home size={20} />} active={location.pathname === '/'} />
+            <NavLink to="/about" label="About" icon={<User size={20} />} active={location.pathname === '/about'} />
+            <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={20} />} active={location.pathname === '/projects'} />
+            <NavLink to="/contact" label="Contact" icon={<Mail size={20} />} active={location.pathname === '/contact'} />
           </div>
         </nav>
       </div>
@@ -178,10 +167,10 @@ const Navbar = () => {
   );
 };
 
-const NavLink = ({ href, label, icon, active = false }) => {
+const NavLink = ({ to, label, icon, active = false }) => {
   return (
-    <a 
-      href={href}
+    <Link 
+      to={to}
       className={`
         flex flex-col items-center gap-1
         md:flex-row md:gap-2
@@ -193,7 +182,7 @@ const NavLink = ({ href, label, icon, active = false }) => {
     >
       {icon}
       <span className="text-xs md:text-sm font-medium">{label}</span>
-    </a>
+    </Link>
   );
 };
 

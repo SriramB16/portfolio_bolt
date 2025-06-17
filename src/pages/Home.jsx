@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
+import TechMarquee from '../components/TechMarquee';
 
 const Home = () => {
   return (
@@ -17,10 +19,13 @@ const Home = () => {
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <button className="group flex items-center gap-2 bg-black dark:bg-golden text-white dark:text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105">
+            <Link 
+              to="/projects"
+              className="group flex items-center gap-2 bg-black dark:bg-golden text-white dark:text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105"
+            >
               View My Work
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            </Link>
             <button className="flex items-center gap-2 border-2 border-black dark:border-golden text-black dark:text-golden px-8 py-4 rounded-full font-semibold hover:bg-black hover:text-white dark:hover:bg-golden dark:hover:text-black transition-all duration-300">
               <Download size={20} />
               Download CV
@@ -39,6 +44,14 @@ const Home = () => {
               <Mail size={24} />
             </a>
           </div>
+        </div>
+
+        {/* Tech Stack Marquee */}
+        <div className="mb-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-black dark:text-white text-center mb-8">
+            Technologies I Work With
+          </h2>
+          <TechMarquee />
         </div>
 
         {/* Skills Preview */}
@@ -78,9 +91,12 @@ const Home = () => {
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-black dark:text-white mb-2">Project {item}</h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4">A brief description of this amazing project and its key features.</p>
-                  <button className="text-black dark:text-golden font-semibold hover:underline">
+                  <Link 
+                    to="/projects"
+                    className="text-black dark:text-golden font-semibold hover:underline"
+                  >
                     View Project →
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}

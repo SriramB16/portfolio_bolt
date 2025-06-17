@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ExternalLink, Github, Filter } from 'lucide-react';
 
 const Projects = () => {
@@ -163,9 +164,12 @@ const Projects = () => {
             I'm always excited to work on new projects and collaborate with amazing people. 
             Let's create something incredible together.
           </p>
-          <button className="bg-black dark:bg-golden text-white dark:text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105">
+          <Link 
+            to="/contact"
+            className="inline-block bg-black dark:bg-golden text-white dark:text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105"
+          >
             Start a Project
-          </button>
+          </Link>
         </div>
       </div>
     </div>

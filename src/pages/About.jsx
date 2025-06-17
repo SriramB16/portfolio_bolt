@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Code, Coffee, Heart, Award } from 'lucide-react';
 
 const About = () => {
@@ -20,7 +21,7 @@ const About = () => {
           {/* Left Column - Photo and Stats */}
           <div className="space-y-8">
             <div className="bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-2xl h-96 flex items-center justify-center">
-              <span className="text-6xl">👩‍💻</span>
+              <span className="text-6xl">👨‍💻</span>
             </div>
             
             <div className="grid grid-cols-2 gap-4">
@@ -123,9 +124,12 @@ const About = () => {
             I'm always interested in new opportunities and exciting projects. 
             Let's discuss how we can bring your ideas to life.
           </p>
-          <button className="bg-black dark:bg-golden text-white dark:text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105">
+          <Link 
+            to="/contact"
+            className="inline-block bg-black dark:bg-golden text-white dark:text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105"
+          >
             Get In Touch
-          </button>
+          </Link>
         </div>
       </div>
     </div>
