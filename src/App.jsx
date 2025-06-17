@@ -3,12 +3,12 @@ import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-500">
+    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
       <Navbar />
       
       <div className="pt-32 pb-24 md:pb-8 px-6 md:px-10 lg:px-16">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">
+          <h1 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-6 transition-colors duration-300">
             Welcome to My Portfolio
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-300">
@@ -17,8 +17,8 @@ function App() {
           
           <div className="space-y-8">
             {Array.from({ length: 10 }).map((_, index) => (
-              <div key={index} className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm transition-colors duration-300">
-                <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 transition-colors duration-300">
+              <div key={index} className="p-6 bg-gray-50 dark:bg-gray-900 rounded-lg shadow-sm transition-colors duration-300">
+                <h2 className="text-xl font-semibold text-black dark:text-white mb-4 transition-colors duration-300">
                   Section {index + 1}
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
