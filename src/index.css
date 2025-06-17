@@ -1,3 +1,74 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom color classes */
+.text-golden {
+  color: #FFD700;
+}
+
+.text-golden-light {
+  color: #FFA500;
+}
+
+.text-dark-golden {
+  color: #B8860B;
+}
+
+/* Sun animation styles */
+.sun-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sun-icon {
+  animation: spin 8s linear infinite;
+  color: #FFA500;
+  transition: color 0.3s ease;
+}
+
+/* Dark mode sun colors */
+.dark .sun-icon {
+  color: #FFD700;
+}
+
+.sun-icon:hover {
+  color: #FF8C00;
+}
+
+.dark .sun-icon:hover {
+  color: #FFA500;
+}
+
+/* Sun rays animation */
+.sun-rays {
+  transform-origin: center;
+  animation: spin 8s linear infinite;
+}
+
+/* Smooth transitions for mode switching */
+* {
+  transition-property: color, background-color, border-color;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+
+/* Custom gradient colors for logo */
+.dark .from-golden {
+  --tw-gradient-from: #FFD700;
+}
+
+.dark .to-golden-light {
+  --tw-gradient-to: #FFA500;
+}
+
+/* Keyframes for sun rotation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Cloud, User, FolderGit2, Mail, Home } from 'lucide-react';
+import { Moon, User, FolderGit2, Mail, Home } from 'lucide-react';
 import Logo from './Logo';
 
 const Navbar = () => {
@@ -13,10 +13,9 @@ const Navbar = () => {
       
       let width;
       if (currentScroll <= scrollThreshold) {
-        // Reduce the shrinking effect - only go from 95% to 75% instead of 45%
         width = 95 - ((currentScroll / scrollThreshold) * (95 - 55));
       } else {
-        width = 55; // Stop at 75% instead of 45%
+        width = 55;
       }
       
       setScrollWidth(width);
@@ -40,12 +39,41 @@ const Navbar = () => {
     setDarkMode(!darkMode);
   };
 
+  // Custom Sun Component
+  const SunIcon = () => (
+    <div className="relative w-5 h-5 flex items-center justify-center">
+      <div className="sun-container">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          className="sun-icon"
+        >
+          {/* Sun rays */}
+          <g className="sun-rays">
+            <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          </g>
+          {/* Sun center */}
+          <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2" fill="currentColor" fillOpacity="0.3"/>
+        </svg>
+      </div>
+    </div>
+  );
+
   return (
     <>
       {/* Mobile top logo */}
       <div className="fixed top-0 left-0 w-full md:hidden z-50">
         <div className="flex items-center justify-between p-4">
-          <span className="text-xl font-bold text-gray-900 dark:text-white">SR</span>
+          <span className="text-xl font-bold text-black dark:text-white">SR</span>
           <button 
             onClick={toggleDarkMode}
             aria-label="Toggle dark mode"
@@ -56,16 +84,15 @@ const Navbar = () => {
               <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
                 darkMode ? 'opacity-0 rotate-180 scale-0' : 'opacity-100 rotate-0 scale-100'
               }`}>
-                <Moon size={18} className="text-gray-700" />
+                <Moon size={18} className="text-black" />
               </div>
               
-              {/* Sun with Clouds Icon for Dark Mode */}
+              {/* Sun Icon for Dark Mode */}
               <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
                 darkMode ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-180 scale-0'
               }`}>
-                <div className="relative">
-                  <Sun size={18} className="text-yellow-400 animate-spin" style={{ animationDuration: '8s' }} />
-                  <Cloud size={8} className="absolute -top-1 -right-1 text-gray-300 animate-pulse" />
+                <div className="text-golden">
+                  <SunIcon />
                 </div>
               </div>
             </div>
@@ -81,7 +108,7 @@ const Navbar = () => {
           }}
           className="
             flex items-center justify-between 
-            rounded-full bg-white/90 dark:bg-gray-900/90
+            rounded-full bg-white/90 dark:bg-black/90
             backdrop-blur-sm transition-all duration-300 ease-out
             shadow-sm dark:shadow-gray-800/20 py-3
           "
@@ -109,16 +136,15 @@ const Navbar = () => {
                 <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
                   darkMode ? 'opacity-0 rotate-180 scale-0' : 'opacity-100 rotate-0 scale-100'
                 }`}>
-                  <Moon size={18} className="text-gray-700 group-hover:text-gray-900 transition-colors duration-200" />
+                  <Moon size={18} className="text-black group-hover:text-gray-800 transition-colors duration-200" />
                 </div>
                 
-                {/* Sun with Clouds Icon for Dark Mode */}
+                {/* Sun Icon for Dark Mode */}
                 <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
                   darkMode ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-180 scale-0'
                 }`}>
-                  <div className="relative">
-                    <Sun size={18} className="text-yellow-400 group-hover:text-yellow-300 animate-spin transition-colors duration-200" style={{ animationDuration: '8s' }} />
-                    <Cloud size={8} className="absolute -top-1 -right-1 text-gray-300 group-hover:text-gray-200 animate-pulse transition-colors duration-200" />
+                  <div className="text-golden group-hover:text-golden-light transition-colors duration-200">
+                    <SunIcon />
                   </div>
                 </div>
               </div>
@@ -133,7 +159,7 @@ const Navbar = () => {
       {/* Bottom navbar for mobile */}
       <div className="fixed bottom-0 left-0 w-full md:hidden z-50 px-2 py-2">
         <nav className="
-          bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm
+          bg-white/90 dark:bg-black/90 backdrop-blur-sm
           shadow-[0_-1px_2px_0_rgba(0,0,0,0.05)] dark:shadow-gray-800/20
           transition-colors duration-300
         ">
@@ -158,8 +184,8 @@ const NavLink = ({ href, label, icon, active = false }) => {
         md:flex-row md:gap-2
         transition-all duration-200
         ${active 
-          ? 'text-emerald-600 dark:text-emerald-400' 
-          : 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:scale-105'}
+          ? 'text-dark-golden dark:text-golden' 
+          : 'text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200 hover:scale-105'}
       `}
     >
       {icon}

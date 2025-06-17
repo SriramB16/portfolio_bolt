@@ -7,6 +7,12 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
+      colors: {
+        'golden': '#FFD700',
+        'golden-light': '#FFA500',
+        'dark-golden': '#B8860B',
+        'warm-orange': '#FF8C00',
+      },
       animation: {
         'shrink': 'shrink 0.5s ease-in-out forwards',
         'spin-slow': 'spin 8s linear infinite',
