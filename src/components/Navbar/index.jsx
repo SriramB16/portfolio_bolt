@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, User, FolderGit2, Mail, Home } from 'lucide-react';
+import { Moon, Sun, Cloud, User, FolderGit2, Mail, Home } from 'lucide-react';
 import Logo from './Logo';
 
 const Navbar = () => {
@@ -13,9 +13,10 @@ const Navbar = () => {
       
       let width;
       if (currentScroll <= scrollThreshold) {
+        // Reduce the shrinking effect - only go from 95% to 75% instead of 45%
         width = 95 - ((currentScroll / scrollThreshold) * (95 - 55));
       } else {
-        width = 55;
+        width = 55; // Stop at 75% instead of 45%
       }
       
       setScrollWidth(width);
@@ -33,7 +34,7 @@ const Navbar = () => {
     } else {
       document.documentElement.classList.remove('dark');
     }
-  }, []);
+  }, [darkMode]);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -43,29 +44,29 @@ const Navbar = () => {
     <>
       {/* Mobile top logo */}
       <div className="fixed top-0 left-0 w-full md:hidden z-50">
-        <div className="flex items-center justify-between p-4 bg-white dark:bg-black transition-colors duration-300">
-          <span className="text-xl font-bold text-black dark:text-white">SR</span>
+        <div className="flex items-center justify-between p-4">
+          <span className="text-xl font-bold text-gray-900 dark:text-white">SR</span>
           <button 
             onClick={toggleDarkMode}
             aria-label="Toggle dark mode"
-            className="relative p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 overflow-hidden"
+            className="relative p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 overflow-hidden"
           >
             <div className="relative w-5 h-5">
               {/* Moon Icon for Light Mode */}
               <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
                 darkMode ? 'opacity-0 rotate-180 scale-0' : 'opacity-100 rotate-0 scale-100'
               }`}>
-                <Moon size={18} className="text-black" />
+                <Moon size={18} className="text-gray-700" />
               </div>
               
-              {/* Sun Icon for Dark Mode - rises and spins */}
+              {/* Sun with Clouds Icon for Dark Mode */}
               <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
                 darkMode ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-180 scale-0'
               }`}>
-                <Sun 
-                  size={18} 
-                  className={`text-yellow-400 ${darkMode ? 'animate-spin-slow animate-rise' : ''}`}
-                />
+                <div className="relative">
+                  <Sun size={18} className="text-yellow-400 animate-spin" style={{ animationDuration: '8s' }} />
+                  <Cloud size={8} className="absolute -top-1 -right-1 text-gray-300 animate-pulse" />
+                </div>
               </div>
             </div>
           </button>
@@ -80,7 +81,7 @@ const Navbar = () => {
           }}
           className="
             flex items-center justify-between 
-            rounded-full bg-white/90 dark:bg-black/90
+            rounded-full bg-white/90 dark:bg-gray-900/90
             backdrop-blur-sm transition-all duration-300 ease-out
             shadow-sm dark:shadow-gray-800/20 py-3
           "
@@ -101,26 +102,24 @@ const Navbar = () => {
             <button 
               onClick={toggleDarkMode}
               aria-label="Toggle dark mode"
-              className="relative p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 overflow-hidden group"
+              className="relative p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 overflow-hidden group"
             >
               <div className="relative w-5 h-5">
                 {/* Moon Icon for Light Mode */}
                 <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
                   darkMode ? 'opacity-0 rotate-180 scale-0' : 'opacity-100 rotate-0 scale-100'
                 }`}>
-                  <Moon size={18} className="text-black group-hover:text-gray-700 transition-colors duration-200" />
+                  <Moon size={18} className="text-gray-700 group-hover:text-gray-900 transition-colors duration-200" />
                 </div>
                 
-                {/* Sun Icon for Dark Mode - rises and spins */}
+                {/* Sun with Clouds Icon for Dark Mode */}
                 <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
                   darkMode ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-180 scale-0'
                 }`}>
-                  <Sun 
-                    size={18} 
-                    className={`text-yellow-400 group-hover:text-yellow-300 transition-colors duration-200 ${
-                      darkMode ? 'animate-spin-slow animate-rise' : ''
-                    }`}
-                  />
+                  <div className="relative">
+                    <Sun size={18} className="text-yellow-400 group-hover:text-yellow-300 animate-spin transition-colors duration-200" style={{ animationDuration: '8s' }} />
+                    <Cloud size={8} className="absolute -top-1 -right-1 text-gray-300 group-hover:text-gray-200 animate-pulse transition-colors duration-200" />
+                  </div>
                 </div>
               </div>
               
@@ -134,7 +133,7 @@ const Navbar = () => {
       {/* Bottom navbar for mobile */}
       <div className="fixed bottom-0 left-0 w-full md:hidden z-50 px-2 py-2">
         <nav className="
-          bg-white/90 dark:bg-black/90 backdrop-blur-sm
+          bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm
           shadow-[0_-1px_2px_0_rgba(0,0,0,0.05)] dark:shadow-gray-800/20
           transition-colors duration-300
         ">
@@ -157,13 +156,13 @@ const NavLink = ({ href, label, icon, active = false }) => {
       className={`
         flex flex-col items-center gap-1
         md:flex-row md:gap-2
-        transition-all duration-300
+        transition-all duration-200
         ${active 
-          ? 'bg-gradient-to-r from-black via-yellow-500 to-white dark:from-black dark:via-yellow-500 dark:to-white bg-clip-text text-transparent font-semibold' 
-          : 'text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 hover:scale-105'}
+          ? 'text-emerald-600 dark:text-emerald-400' 
+          : 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:scale-105'}
       `}
     >
-      <span className={active ? 'text-yellow-500' : ''}>{icon}</span>
+      {icon}
       <span className="text-xs md:text-sm font-medium">{label}</span>
     </a>
   );
