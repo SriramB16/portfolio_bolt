@@ -1,36 +1,24 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import About from './pages/About';
+import Projects from './pages/Projects';
+import Contact from './pages/Contact';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-500">
-      <Navbar />
-      
-      <div className="pt-32 pb-24 md:pb-8 px-6 md:px-10 lg:px-16">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-6 transition-colors duration-300">
-            Welcome to My Portfolio
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-300">
-            Scroll down to see the navbar animation in action. This page demonstrates the navbar component with smooth width reduction on scroll.
-          </p>
-          
-          <div className="space-y-8">
-            {Array.from({ length: 10 }).map((_, index) => (
-              <div key={index} className="p-6 bg-gray-50 dark:bg-gray-900 rounded-lg shadow-sm transition-colors duration-300">
-                <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 transition-colors duration-300">
-                  Section {index + 1}
-                </h2>
-                <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. 
-                  Cras porttitor, ex in tempor facilisis, felis massa fermentum nibh, ut commodo nulla arcu vitae enim.
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+    <Router>
+      <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 

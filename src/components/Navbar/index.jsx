@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Moon, User, FolderGit2, Mail, Home } from 'lucide-react';
 import Logo from './Logo';
 
 const Navbar = () => {
   const [scrollWidth, setScrollWidth] = useState(95);
   const [darkMode, setDarkMode] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -119,9 +121,10 @@ const Navbar = () => {
           
           <div className="flex-1 flex justify-center">
             <div className="flex items-center space-x-8">
-              <NavLink href="#about" label="About" icon={<User size={18} />} />
-              <NavLink href="#projects" label="Projects" icon={<FolderGit2 size={18} />} active />
-              <NavLink href="#contact" label="Contact" icon={<Mail size={18} />} />
+              <NavLink href="/" label="Home" icon={<Home size={18} />} active={location.pathname === '/'} />
+              <NavLink href="/about" label="About" icon={<User size={18} />} active={location.pathname === '/about'} />
+              <NavLink href="/projects" label="Projects" icon={<FolderGit2 size={18} />} active={location.pathname === '/projects'} />
+              <NavLink href="/contact" label="Contact" icon={<Mail size={18} />} active={location.pathname === '/contact'} />
             </div>
           </div>
           
@@ -164,10 +167,10 @@ const Navbar = () => {
           transition-colors duration-300
         ">
           <div className="flex items-center justify-around py-2">
-            <NavLink href="/" label="Home" icon={<Home size={20} />} />
-            <NavLink href="#about" label="About" icon={<User size={20} />} />
-            <NavLink href="#projects" label="Projects" icon={<FolderGit2 size={20} />} active />
-            <NavLink href="#contact" label="Contact" icon={<Mail size={20} />} />
+            <NavLink href="/" label="Home" icon={<Home size={20} />} active={location.pathname === '/'} />
+            <NavLink href="/about" label="About" icon={<User size={20} />} active={location.pathname === '/about'} />
+            <NavLink href="/projects" label="Projects" icon={<FolderGit2 size={20} />} active={location.pathname === '/projects'} />
+            <NavLink href="/contact" label="Contact" icon={<Mail size={20} />} active={location.pathname === '/contact'} />
           </div>
         </nav>
       </div>
@@ -184,7 +187,7 @@ const NavLink = ({ href, label, icon, active = false }) => {
         md:flex-row md:gap-2
         transition-all duration-200
         ${active 
-          ? 'text-dark-golden dark:text-golden' 
+          ? 'text-gray-700 dark:text-golden' 
           : 'text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200 hover:scale-105'}
       `}
     >
