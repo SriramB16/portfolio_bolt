@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Cloud } from 'lucide-react';
+import { Moon, Sun, Cloud, User, FolderGit2, Mail, Home } from 'lucide-react';
 import Logo from './Logo';
 
 const Navbar = () => {
