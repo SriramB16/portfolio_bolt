@@ -9,12 +9,18 @@ export default {
       },
       animation: {
         'shrink': 'shrink 0.5s ease-in-out forwards',
+        'spin-slow': 'spin 8s linear infinite',
+        'pulse-slow': 'pulse 3s ease-in-out infinite',
       },
       keyframes: {
         shrink: {
           '0%': { width: '95%' },
           '100%': { width: '75%' },
         },
+      },
+      transitionDuration: {
+        '400': '400ms',
+        '600': '600ms',
       },
     },
   },
