@@ -13,10 +13,9 @@ const Navbar = () => {
       
       let width;
       if (currentScroll <= scrollThreshold) {
-        // Reduce the shrinking effect - only go from 95% to 75% instead of 45%
         width = 95 - ((currentScroll / scrollThreshold) * (95 - 55));
       } else {
-        width = 55; // Stop at 75% instead of 45%
+        width = 55;
       }
       
       setScrollWidth(width);
@@ -53,20 +52,21 @@ const Navbar = () => {
           >
             <div className="relative w-5 h-5">
               {/* Moon Icon for Light Mode */}
-              <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
+              <div className={`absolute inset-0 transition-all duration-700 ease-in-out ${
                 darkMode ? 'opacity-0 rotate-180 scale-0' : 'opacity-100 rotate-0 scale-100'
               }`}>
-                <Moon size={18} className="text-gray-700" />
+                <div className="relative">
+                  <Moon size={18} className="text-gray-700 moon-peek" />
+                  <Cloud size={10} className="absolute -top-1 -left-1 text-gray-400 cloud-drift" />
+                  <Cloud size={8} className="absolute -bottom-1 -right-1 text-gray-300 cloud-drift-reverse" />
+                </div>
               </div>
               
-              {/* Sun with Clouds Icon for Dark Mode */}
-              <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
+              {/* Sun Icon for Dark Mode */}
+              <div className={`absolute inset-0 transition-all duration-700 ease-in-out ${
                 darkMode ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-180 scale-0'
               }`}>
-                <div className="relative">
-                  <Sun size={18} className="text-yellow-400 animate-spin" style={{ animationDuration: '8s' }} />
-                  <Cloud size={8} className="absolute -top-1 -right-1 text-gray-300 animate-pulse" />
-                </div>
+                <Sun size={18} className="text-yellow-400 sun-rise-spin" />
               </div>
             </div>
           </button>
@@ -106,20 +106,21 @@ const Navbar = () => {
             >
               <div className="relative w-5 h-5">
                 {/* Moon Icon for Light Mode */}
-                <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
+                <div className={`absolute inset-0 transition-all duration-700 ease-in-out ${
                   darkMode ? 'opacity-0 rotate-180 scale-0' : 'opacity-100 rotate-0 scale-100'
                 }`}>
-                  <Moon size={18} className="text-gray-700 group-hover:text-gray-900 transition-colors duration-200" />
+                  <div className="relative">
+                    <Moon size={18} className="text-gray-700 group-hover:text-gray-900 transition-colors duration-200 moon-peek" />
+                    <Cloud size={10} className="absolute -top-1 -left-1 text-gray-400 group-hover:text-gray-500 cloud-drift transition-colors duration-200" />
+                    <Cloud size={8} className="absolute -bottom-1 -right-1 text-gray-300 group-hover:text-gray-400 cloud-drift-reverse transition-colors duration-200" />
+                  </div>
                 </div>
                 
-                {/* Sun with Clouds Icon for Dark Mode */}
-                <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
+                {/* Sun Icon for Dark Mode */}
+                <div className={`absolute inset-0 transition-all duration-700 ease-in-out ${
                   darkMode ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-180 scale-0'
                 }`}>
-                  <div className="relative">
-                    <Sun size={18} className="text-yellow-400 group-hover:text-yellow-300 animate-spin transition-colors duration-200" style={{ animationDuration: '8s' }} />
-                    <Cloud size={8} className="absolute -top-1 -right-1 text-gray-300 group-hover:text-gray-200 animate-pulse transition-colors duration-200" />
-                  </div>
+                  <Sun size={18} className="text-yellow-400 group-hover:text-yellow-300 sun-rise-spin transition-colors duration-200" />
                 </div>
               </div>
               
