@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ExternalLink, Github, Filter } from 'lucide-react';
 
-const Projects = () => {
+export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('All');
   
   const filters = ['All', 'Web Apps', 'Mobile', 'UI/UX', 'Open Source'];
@@ -174,6 +174,4 @@ const Projects = () => {
       </div>
     </div>
   );
-};
-
-export default Projects;
+}
