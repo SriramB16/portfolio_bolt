@@ -89,20 +89,6 @@
   }
 }
 
-/* Marquee animation */
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -136,4 +122,14 @@
 /* Preload optimization */
 .preload * {
   transition: none !important;
+}
+
+/* React Fast Marquee dark mode gradient override */
+.dark .rfm-marquee {
+  --gradient-color: 0, 0, 0;
+}
+
+/* Marquee hover effects */
+.rfm-marquee:hover .rfm-child {
+  animation-play-state: paused;
 }

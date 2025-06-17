@@ -1,45 +1,85 @@
 import React from 'react';
+import Marquee from 'react-fast-marquee';
 
 const TechMarquee = () => {
   const technologies = [
-    { name: 'React', icon: '⚛️' },
-    { name: 'JavaScript', icon: '🟨' },
-    { name: 'TypeScript', icon: '🔷' },
-    { name: 'Node.js', icon: '🟢' },
-    { name: 'Python', icon: '🐍' },
-    { name: 'HTML5', icon: '🧡' },
-    { name: 'CSS3', icon: '🔵' },
-    { name: 'Tailwind', icon: '💨' },
-    { name: 'MongoDB', icon: '🍃' },
-    { name: 'PostgreSQL', icon: '🐘' },
-    { name: 'Git', icon: '📝' },
-    { name: 'Docker', icon: '🐳' },
-    { name: 'AWS', icon: '☁️' },
-    { name: 'Next.js', icon: '▲' },
-    { name: 'Vue.js', icon: '💚' },
-    { name: 'Express', icon: '🚀' },
-    { name: 'GraphQL', icon: '🔗' },
-    { name: 'Redis', icon: '🔴' },
-    { name: 'Figma', icon: '🎨' },
-    { name: 'VS Code', icon: '💙' }
+    { name: 'React', icon: '⚛️', color: 'from-blue-400 to-blue-600' },
+    { name: 'JavaScript', icon: '🟨', color: 'from-yellow-400 to-yellow-600' },
+    { name: 'TypeScript', icon: '🔷', color: 'from-blue-500 to-blue-700' },
+    { name: 'Node.js', icon: '🟢', color: 'from-green-400 to-green-600' },
+    { name: 'Python', icon: '🐍', color: 'from-green-500 to-blue-500' },
+    { name: 'HTML5', icon: '🧡', color: 'from-orange-400 to-red-500' },
+    { name: 'CSS3', icon: '🔵', color: 'from-blue-400 to-blue-600' },
+    { name: 'Tailwind', icon: '💨', color: 'from-cyan-400 to-blue-500' },
+    { name: 'MongoDB', icon: '🍃', color: 'from-green-400 to-green-600' },
+    { name: 'PostgreSQL', icon: '🐘', color: 'from-blue-500 to-indigo-600' },
+    { name: 'Git', icon: '📝', color: 'from-orange-500 to-red-500' },
+    { name: 'Docker', icon: '🐳', color: 'from-blue-400 to-blue-600' },
+    { name: 'AWS', icon: '☁️', color: 'from-orange-400 to-yellow-500' },
+    { name: 'Next.js', icon: '▲', color: 'from-gray-700 to-black' },
+    { name: 'Vue.js', icon: '💚', color: 'from-green-400 to-green-600' },
+    { name: 'Express', icon: '🚀', color: 'from-gray-600 to-gray-800' },
+    { name: 'GraphQL', icon: '🔗', color: 'from-pink-400 to-purple-500' },
+    { name: 'Redis', icon: '🔴', color: 'from-red-400 to-red-600' },
+    { name: 'Figma', icon: '🎨', color: 'from-purple-400 to-pink-500' },
+    { name: 'VS Code', icon: '💙', color: 'from-blue-500 to-blue-700' }
   ];
 
-  // Duplicate the array to create seamless loop
-  const duplicatedTechs = [...technologies, ...technologies];
-
   return (
-    <div className="w-full overflow-hidden bg-gray-50 dark:bg-gray-900 py-8">
-      <div className="flex animate-marquee space-x-8">
-        {duplicatedTechs.map((tech, index) => (
+    <div className="w-full py-8">
+      <Marquee
+        gradient={true}
+        gradientColor={[255, 255, 255]}
+        gradientWidth={100}
+        speed={50}
+        pauseOnHover={true}
+        className="bg-gray-50 dark:bg-gray-900 py-6"
+      >
+        {technologies.map((tech, index) => (
           <div
             key={`${tech.name}-${index}`}
-            className="flex items-center gap-3 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-sm border border-gray-200 dark:border-gray-700 whitespace-nowrap flex-shrink-0"
+            className="flex items-center gap-3 bg-white dark:bg-gray-800 px-6 py-4 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 mx-4 hover:scale-105 transition-transform duration-300 group"
           >
-            <span className="text-2xl">{tech.icon}</span>
-            <span className="font-medium text-gray-700 dark:text-gray-300">{tech.name}</span>
+            <div className="relative">
+              <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
+                {tech.icon}
+              </span>
+            </div>
+            <span className="font-semibold text-gray-700 dark:text-gray-300 whitespace-nowrap">
+              {tech.name}
+            </span>
+            <div className={`absolute inset-0 bg-gradient-to-r ${tech.color} opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300`}></div>
           </div>
         ))}
-      </div>
+      </Marquee>
+      
+      {/* Second row with reverse direction */}
+      <Marquee
+        gradient={true}
+        gradientColor={[255, 255, 255]}
+        gradientWidth={100}
+        speed={40}
+        direction="right"
+        pauseOnHover={true}
+        className="bg-gray-50 dark:bg-gray-900 py-6 mt-4"
+      >
+        {technologies.slice().reverse().map((tech, index) => (
+          <div
+            key={`${tech.name}-reverse-${index}`}
+            className="flex items-center gap-3 bg-white dark:bg-gray-800 px-6 py-4 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 mx-4 hover:scale-105 transition-transform duration-300 group"
+          >
+            <div className="relative">
+              <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
+                {tech.icon}
+              </span>
+            </div>
+            <span className="font-semibold text-gray-700 dark:text-gray-300 whitespace-nowrap">
+              {tech.name}
+            </span>
+            <div className={`absolute inset-0 bg-gradient-to-r ${tech.color} opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300`}></div>
+          </div>
+        ))}
+      </Marquee>
     </div>
   );
 };
