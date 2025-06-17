@@ -14,7 +14,7 @@ const Navbar = () => {
       let width;
       if (currentScroll <= scrollThreshold) {
         // Reduce the shrinking effect - only go from 95% to 75% instead of 45%
-        width = 95 - ((currentScroll / scrollThreshold) * (95 - 55));
+        width = 95 - ((currentScroll / scrollThreshold) * (95 - 75));
       } else {
         width = 65; // Stop at 75% instead of 45%
       }
