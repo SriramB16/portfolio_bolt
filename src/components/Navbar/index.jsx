@@ -119,7 +119,7 @@ const Navbar = () => {
           </div>
           
           <div className="flex-1 flex justify-center">
-            <div className="flex items-center space-x-4 sm:space-x-6 lg:space-x-8">
+            <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4 lg:space-x-6 xl:space-x-8">
               <NavLink to="/" label="Home" icon={<Home size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/'} onClick={handleNavClick} />
               <NavLink to="/about" label="About" icon={<User size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/about'} onClick={handleNavClick} />
               <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/projects'} onClick={handleNavClick} />
@@ -184,15 +184,15 @@ const NavLink = ({ to, label, icon, active = false, onClick }) => {
       onClick={onClick}
       className={`
         flex flex-col items-center gap-1
-        md:flex-row md:gap-2
-        transition-all duration-200
+        md:flex-row md:gap-1 lg:gap-2
+        transition-all duration-200 px-1 sm:px-2
         ${active 
           ? 'text-gray-700 dark:text-golden' 
           : 'text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200 hover:scale-105'}
       `}
     >
       {icon}
-      <span className="text-xs md:text-sm font-medium">{label}</span>
+      <span className="text-xs md:text-xs lg:text-sm font-medium whitespace-nowrap">{label}</span>
     </Link>
   );
 };

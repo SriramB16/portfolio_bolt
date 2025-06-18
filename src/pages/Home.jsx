@@ -138,56 +138,61 @@ const Home = () => {
             {/* Hero Section */}
             <section className="min-h-screen flex flex-col justify-center px-4 sm:px-6 md:px-10 lg:px-16 pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24">
               <div className="max-w-7xl mx-auto w-full">
-                <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                  {/* Left Column */}
-                  <div className="order-2 lg:order-1">
+                <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+                  {/* Left Column - Main Content */}
+                  <div className="lg:col-span-7 order-2 lg:order-1">
+                    {/* Hey! It's me Sriram */}
                     <ScrollReveal direction="up" delay={0.1}>
-                      <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
-                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse"></div>
-                        <span className="text-green-500 text-sm sm:text-base md:text-lg font-medium flex items-center gap-2 sm:gap-3">
-                          <WavingHandSVG className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
+                      <div className="flex items-center gap-3 sm:gap-4 mb-8 sm:mb-12">
+                        <div className="w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full animate-pulse"></div>
+                        <WavingHandSVG className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" />
+                        <span className="text-green-500 text-lg sm:text-xl md:text-2xl font-medium">
                           Hey! It's me Sriram
                         </span>
                       </div>
                     </ScrollReveal>
 
+                    {/* Main Heading */}
                     <ScrollReveal direction="up" delay={0.2}>
-                      <h1 className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-tight mb-6 sm:mb-8">
+                      <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-tight mb-8 sm:mb-12 md:mb-16">
                         Crafting <span className="text-green-500">purpose driven</span><br />
                         <span className="text-green-500">experiences</span> that inspire<br />
                         & engage.
                       </h1>
                     </ScrollReveal>
 
+                    {/* Divider Line */}
                     <ScrollReveal direction="up" delay={0.3}>
-                      <div className="w-12 sm:w-16 h-px bg-gray-400 dark:bg-gray-600 mb-6 sm:mb-8"></div>
+                      <div className="w-16 sm:w-20 md:w-24 h-px bg-gray-400 dark:bg-gray-600 mb-8 sm:mb-12"></div>
                     </ScrollReveal>
 
+                    {/* Social Links */}
                     <ScrollReveal direction="up" delay={0.4}>
-                      <div className="flex flex-wrap gap-3 sm:gap-4 lg:gap-6 text-xs sm:text-sm mb-6 sm:mb-8">
-                        <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-1 sm:gap-2 group">
+                      <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-8 text-sm sm:text-base mb-8 sm:mb-12">
+                        <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
                           LINKEDIN 
-                          <ArrowRight size={14} className="sm:w-4 sm:h-4 rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                          <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px] rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </a>
-                        <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-1 sm:gap-2 group">
+                        <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
                           GITHUB 
-                          <ArrowRight size={14} className="sm:w-4 sm:h-4 rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                          <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px] rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </a>
-                        <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-1 sm:gap-2 group">
+                        <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
                           INSTAGRAM 
-                          <ArrowRight size={14} className="sm:w-4 sm:h-4 rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                          <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px] rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </a>
-                        <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-1 sm:gap-2 group">
+                        <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
                           GMAIL 
-                          <ArrowRight size={14} className="sm:w-4 sm:h-4 rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                          <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px] rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </a>
                       </div>
                     </ScrollReveal>
 
+                    {/* CTA Button */}
                     <ScrollReveal direction="up" delay={0.5}>
                       <Link 
                         to="/about"
-                        className="inline-block border border-black dark:border-white text-black dark:text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 text-sm sm:text-base"
+                        className="inline-block border border-black dark:border-white text-black dark:text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 text-base sm:text-lg"
                         onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
                       >
                         Know me better
@@ -195,10 +200,10 @@ const Home = () => {
                     </ScrollReveal>
                   </div>
 
-                  {/* Right Column */}
-                  <div className="order-1 lg:order-2">
+                  {/* Right Column - Description */}
+                  <div className="lg:col-span-5 order-1 lg:order-2 flex items-center">
                     <ScrollReveal direction="up" delay={0.3}>
-                      <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg leading-relaxed">
+                      <p className="text-gray-600 dark:text-gray-400 text-lg sm:text-xl lg:text-2xl leading-relaxed lg:mt-32">
                         I work with brands globally to build pixel-perfect, engaging, and accessible digital 
                         experiences that drive results and achieve business goals.
                       </p>
