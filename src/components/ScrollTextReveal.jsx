@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import ShinyText from './ShinyText';
 
 const ScrollTextReveal = () => {
   const containerRef = useRef(null);
@@ -60,12 +61,13 @@ const ScrollTextReveal = () => {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="flex items-center gap-2 sm:gap-3 mb-8 sm:mb-12 md:mb-16 justify-center">
-          <span className="text-green-500 text-xs sm:text-sm font-medium">✦ ABOUT ME</span>
+          <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
+          <ShinyText size="lg">ABOUT ME</ShinyText>
         </div>
 
         {/* Animated Text */}
         <div className="text-center">
-          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-relaxed font-light font-satoshi tracking-wide">
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-relaxed font-normal font-satoshi tracking-wide">
             {letters.map((letter, index) => (
               <span
                 key={index}

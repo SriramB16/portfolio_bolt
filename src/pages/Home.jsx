@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import IntroAnimation from '../components/IntroAnimation';
 import ScrollReveal from '../components/ScrollReveal';
 import ScrollTextReveal from '../components/ScrollTextReveal';
+import ShinyText from '../components/ShinyText';
 import WavingHandSVG from '../components/WavingHandSVG';
 
 const Home = () => {
@@ -273,7 +274,8 @@ const Home = () => {
             <div className="max-w-6xl mx-auto">
               <ScrollReveal direction="up" delay={0.1}>
                 <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-                  <span className="text-green-500 text-xs sm:text-sm font-medium">✦ MY WORK</span>
+                  <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
+                  <ShinyText size="lg">MY WORK</ShinyText>
                 </div>
               </ScrollReveal>
 
@@ -408,9 +410,11 @@ const Home = () => {
               <div className="bg-white dark:bg-gray-900 rounded-2xl sm:rounded-3xl py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-16 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
                 <div className="max-w-4xl mx-auto text-center">
                   <ScrollReveal direction="up" delay={0.1}>
-                    <div className="flex items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-                      <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-green-500 text-xs sm:text-sm font-medium">Available for work</span>
+                    <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+                      <div className="w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full animate-pulse"></div>
+                      <ShinyText size="xl" className="font-medium">
+                        Available for work
+                      </ShinyText>
                     </div>
                   </ScrollReveal>
 
