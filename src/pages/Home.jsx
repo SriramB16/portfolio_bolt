@@ -9,19 +9,34 @@ import ScrollReveal from '../components/ScrollReveal';
 const Home = () => {
   const [showIntro, setShowIntro] = useState(true);
   const [contentVisible, setContentVisible] = useState(false);
+  const [pageLoaded, setPageLoaded] = useState(false);
 
   useEffect(() => {
-    // Always show intro animation for 4 seconds
-    const introTimer = setTimeout(() => {
-      setShowIntro(false);
-      // Delay content appearance for smooth transition
-      setTimeout(() => {
-        setContentVisible(true);
-      }, 300);
-    }, 4000);
+    // Mark page as loaded
+    setPageLoaded(true);
 
-    return () => clearTimeout(introTimer);
-  }, []);
+    // Always show intro animation for minimum 4 seconds
+    const minIntroTime = 4000;
+    const startTime = Date.now();
+
+    const checkIntroCompletion = () => {
+      const elapsedTime = Date.now() - startTime;
+      
+      if (elapsedTime >= minIntroTime && pageLoaded) {
+        setShowIntro(false);
+        // Delay content appearance for smooth transition
+        setTimeout(() => {
+          setContentVisible(true);
+        }, 300);
+      } else {
+        // Check again after a short delay
+        setTimeout(checkIntroCompletion, 100);
+      }
+    };
+
+    // Start checking after minimum time
+    setTimeout(checkIntroCompletion, minIntroTime);
+  }, [pageLoaded]);
 
   const handleIntroComplete = () => {
     // This is called by the animation component but we control timing with useEffect
