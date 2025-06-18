@@ -1,16 +1,19 @@
-/* Ryzes Font Face Declaration */
+/* Ryzes Font Face Declarations */
 @font-face {
   font-family: 'Ryzes';
-  src: url('./ryzes-ax92x.ttf') format('truetype');
-  font-weight: normal;
+  src: url('./Ryzes-Regular.woff2') format('woff2'),
+       url('./Ryzes-Regular.woff') format('woff'),
+       url('./Ryzes-Regular.ttf') format('truetype');
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
-/* Additional weight variations using the same file */
 @font-face {
   font-family: 'Ryzes';
-  src: url('./ryzes-ax92x.ttf') format('truetype');
+  src: url('./Ryzes-Bold.woff2') format('woff2'),
+       url('./Ryzes-Bold.woff') format('woff'),
+       url('./Ryzes-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -18,7 +21,9 @@
 
 @font-face {
   font-family: 'Ryzes';
-  src: url('./ryzes-ax92x.ttf') format('truetype');
+  src: url('./Ryzes-Black.woff2') format('woff2'),
+       url('./Ryzes-Black.woff') format('woff'),
+       url('./Ryzes-Black.ttf') format('truetype');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
