@@ -69,7 +69,7 @@ const TechMarquee = () => {
           gradient={false}
           speed={40}
           direction="right"
-          pauseOnHover={true}
+          pauseOnHover={false}
           className="bg-gray-50 dark:bg-gray-900 py-6 mt-4"
         >
           {technologies.slice().reverse().map((tech, index) => (
