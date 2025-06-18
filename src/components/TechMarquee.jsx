@@ -34,7 +34,7 @@ const TechMarquee = () => {
       <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 lg:w-40 xl:w-48 bg-gradient-to-l from-white dark:from-black to-transparent z-10 pointer-events-none"></div>
       
       <Marquee
-        gradient={true}
+        gradient={false}
         speed={50}
         pauseOnHover={false}
         className="bg-gray-50 dark:bg-gray-900 py-6"
