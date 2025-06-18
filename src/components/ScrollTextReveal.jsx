@@ -2,11 +2,16 @@ import React, { useEffect, useRef, useState } from 'react';
 
 const ScrollTextReveal = () => {
   const containerRef = useRef(null);
-  const [revealedWords, setRevealedWords] = useState(new Set());
+  const [revealedLetters, setRevealedLetters] = useState(new Set());
 
-  const text = "I’m Sriram — a developer who loves turning ideas into smooth, functional digital experiences. With 2 years of experience, I focus on writing clean code and building things people enjoy using. I’m always exploring, learning, and growing with the tech that keeps me inspired";
+  const text = "I'm Sriram — a developer who loves turning ideas into smooth, functional digital experiences. With 2 years of experience, I focus on writing clean code and building things people enjoy using. I'm always exploring, learning, and growing with the tech that keeps me inspired";
   
-  const words = text.split(' ');
+  // Split text into letters while preserving spaces
+  const letters = text.split('').map((char, index) => ({
+    char: char === ' ' ? '\u00A0' : char, // Use non-breaking space
+    index,
+    isSpace: char === ' '
+  }));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,31 +26,31 @@ const ScrollTextReveal = () => {
       const containerBottom = containerRect.bottom;
       const containerHeight = containerRect.height;
       
-      // Start revealing when container enters viewport
-      const startReveal = windowHeight;
-      const endReveal = -containerHeight;
+      // Start revealing when container enters viewport, end when it exits
+      const startReveal = windowHeight * 0.8; // Start earlier for smoother effect
+      const endReveal = -containerHeight * 0.2;
       
       // Calculate scroll progress through the container
       const scrollProgress = Math.max(0, Math.min(1, (startReveal - containerTop) / (startReveal - endReveal)));
       
-      // Calculate how many words should be revealed based on scroll progress
-      const totalWords = words.length;
-      const wordsToReveal = Math.floor(scrollProgress * totalWords);
+      // Calculate how many letters should be revealed based on scroll progress
+      const totalLetters = letters.length;
+      const lettersToReveal = Math.floor(scrollProgress * totalLetters);
       
-      // Create new set of revealed word indices
-      const newRevealedWords = new Set();
-      for (let i = 0; i < wordsToReveal; i++) {
-        newRevealedWords.add(i);
+      // Create new set of revealed letter indices
+      const newRevealedLetters = new Set();
+      for (let i = 0; i < lettersToReveal; i++) {
+        newRevealedLetters.add(i);
       }
       
-      setRevealedWords(newRevealedWords);
+      setRevealedLetters(newRevealedLetters);
     };
 
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial call
     
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [words.length]);
+  }, [letters.length]);
 
   return (
     <section 
@@ -60,20 +65,21 @@ const ScrollTextReveal = () => {
 
         {/* Animated Text */}
         <div className="text-center">
-          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-relaxed font-medium font-satoshi">
-            {words.map((word, index) => (
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-relaxed font-light font-satoshi tracking-wide">
+            {letters.map((letter, index) => (
               <span
                 key={index}
-                className={`inline-block mr-2 sm:mr-3 md:mr-4 transition-all duration-500 ease-out ${
-                  revealedWords.has(index)
-                    ? 'text-black dark:text-white opacity-100 transform translate-y-0'
-                    : 'text-gray-300 dark:text-gray-700 opacity-40 transform translate-y-2'
-                }`}
+                className={`inline-block transition-all duration-700 ease-out ${
+                  revealedLetters.has(index)
+                    ? 'text-black dark:text-white opacity-100 transform translate-y-0 scale-100'
+                    : 'text-gray-300 dark:text-gray-700 opacity-30 transform translate-y-1 scale-95'
+                } ${letter.isSpace ? 'w-2 sm:w-3' : ''}`}
                 style={{
-                  transitionDelay: `${index * 50}ms`
+                  transitionDelay: `${index * 20}ms`,
+                  transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
                 }}
               >
-                {word}
+                {letter.char}
               </span>
             ))}
           </p>
