@@ -196,11 +196,6 @@ const Home = () => {
                       </Link>
                     </div>
 
-                    {/* Separator Line - Only visible on mobile */}
-                    <div className="order-2 lg:hidden">
-                      <div className="w-full h-px bg-gray-400 dark:bg-gray-600"></div>
-                    </div>
-
                     {/* Social Links - Third on mobile, left on desktop */}
                     <div className="order-3 lg:order-1 flex justify-center lg:justify-start">
                       <div 
