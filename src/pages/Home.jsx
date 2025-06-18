@@ -278,7 +278,7 @@ const Home = () => {
                   </p>
                 </ScrollReveal>
 
-                {/* Project Grid - Staggered Layout */}
+                {/* Project Grid - Proper Staggered Layout */}
                 <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
                   {/* First Column */}
                   <div className="space-y-6 sm:space-y-8">
@@ -308,10 +308,10 @@ const Home = () => {
                       </div>
                     </ScrollReveal>
 
-                    {/* Project 3 - Lower */}
+                    {/* Project 3 - Much Lower */}
                     <ScrollReveal direction="up" delay={0.6}>
                       <div 
-                        className="group cursor-pointer mt-8 sm:mt-12 md:mt-16"
+                        className="group cursor-pointer mt-16 sm:mt-20 md:mt-24 lg:mt-32"
                         onMouseEnter={() => setHoveredProject(3)}
                         onMouseLeave={() => setHoveredProject(null)}
                       >
@@ -337,10 +337,10 @@ const Home = () => {
 
                   {/* Second Column */}
                   <div className="space-y-6 sm:space-y-8">
-                    {/* Project 2 - Lower */}
+                    {/* Project 2 - Much Lower */}
                     <ScrollReveal direction="up" delay={0.5}>
                       <div 
-                        className="group cursor-pointer mt-4 sm:mt-6 md:mt-8"
+                        className="group cursor-pointer mt-12 sm:mt-16 md:mt-20 lg:mt-24"
                         onMouseEnter={() => setHoveredProject(2)}
                         onMouseLeave={() => setHoveredProject(null)}
                       >

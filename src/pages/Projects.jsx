@@ -5,6 +5,7 @@ import ScrollReveal from '../components/ScrollReveal';
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('All');
+  const [hoveredProject, setHoveredProject] = useState(null);
   
   const filters = ['All', 'Web Apps', 'Mobile', 'UI/UX', 'Open Source'];
   
@@ -17,7 +18,8 @@ export default function Projects() {
       image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       liveUrl: '#',
-      githubUrl: '#'
+      githubUrl: '#',
+      bgColor: 'bg-yellow-200 dark:bg-yellow-300'
     },
     {
       id: 2,
@@ -27,7 +29,8 @@ export default function Projects() {
       image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['React Native', 'Firebase', 'Redux'],
       liveUrl: '#',
-      githubUrl: '#'
+      githubUrl: '#',
+      bgColor: 'bg-purple-200 dark:bg-purple-300'
     },
     {
       id: 3,
@@ -37,7 +40,8 @@ export default function Projects() {
       image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Figma', 'Storybook', 'React'],
       liveUrl: '#',
-      githubUrl: '#'
+      githubUrl: '#',
+      bgColor: 'bg-gray-200 dark:bg-gray-300'
     },
     {
       id: 4,
@@ -47,7 +51,8 @@ export default function Projects() {
       image: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Vue.js', 'Weather API', 'Chart.js'],
       liveUrl: '#',
-      githubUrl: '#'
+      githubUrl: '#',
+      bgColor: 'bg-green-200 dark:bg-green-300'
     },
     {
       id: 5,
@@ -57,7 +62,8 @@ export default function Projects() {
       image: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['JavaScript', 'D3.js', 'NPM'],
       liveUrl: '#',
-      githubUrl: '#'
+      githubUrl: '#',
+      bgColor: 'bg-blue-200 dark:bg-blue-300'
     },
     {
       id: 6,
@@ -67,7 +73,8 @@ export default function Projects() {
       image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['React', 'Tailwind CSS', 'Framer Motion'],
       liveUrl: '#',
-      githubUrl: '#'
+      githubUrl: '#',
+      bgColor: 'bg-pink-200 dark:bg-pink-300'
     }
   ];
 
@@ -109,59 +116,95 @@ export default function Projects() {
           </div>
         </ScrollReveal>
 
-        {/* Projects Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredProjects.map((project, index) => (
-            <ScrollReveal key={project.id} direction="up" delay={0.3 + index * 0.1}>
-              <div className="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="relative overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-40 sm:h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 sm:gap-4">
-                    <a 
-                      href={project.liveUrl}
-                      className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110"
-                    >
-                      <ExternalLink size={18} className="sm:w-5 sm:h-5" />
-                    </a>
-                    <a 
-                      href={project.githubUrl}
-                      className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110"
-                    >
-                      <Github size={18} className="sm:w-5 sm:h-5" />
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="p-4 sm:p-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-lg sm:text-xl font-semibold text-black dark:text-white">{project.title}</h3>
-                    <span className="text-xs px-2 sm:px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full">
-                      {project.category}
-                    </span>
-                  </div>
-                  
-                  <p className="text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-1 sm:gap-2">
-                    {project.technologies.map((tech) => (
-                      <span 
-                        key={tech}
-                        className="text-xs px-2 py-1 bg-black dark:bg-golden text-white dark:text-black rounded-md"
+        {/* Projects Grid - Staggered Layout */}
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
+          {/* First Column */}
+          <div className="space-y-6 sm:space-y-8">
+            {filteredProjects.filter((_, index) => index % 4 === 0 || index % 4 === 2).map((project, index) => (
+              <ScrollReveal key={project.id} direction="up" delay={0.3 + index * 0.1}>
+                <div 
+                  className={`group cursor-pointer ${index % 2 === 1 ? 'mt-16 sm:mt-20 md:mt-24 lg:mt-32' : ''}`}
+                  onMouseEnter={() => setHoveredProject(project.id)}
+                  onMouseLeave={() => setHoveredProject(null)}
+                >
+                  <div className={`${project.bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 ${
+                    hoveredProject && hoveredProject !== project.id ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
+                  }`}>
+                    <img 
+                      src={project.image}
+                      alt={project.title}
+                      className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 sm:gap-4 rounded-2xl sm:rounded-3xl">
+                      <a 
+                        href={project.liveUrl}
+                        className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110"
                       >
-                        {tech}
-                      </span>
-                    ))}
+                        <ExternalLink size={18} className="sm:w-5 sm:h-5" />
+                      </a>
+                      <a 
+                        href={project.githubUrl}
+                        className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110"
+                      >
+                        <Github size={18} className="sm:w-5 sm:h-5" />
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2 text-black dark:text-white">{project.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">{project.category}</p>
+                    </div>
+                    <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">2024</span>
                   </div>
                 </div>
-              </div>
-            </ScrollReveal>
-          ))}
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* Second Column */}
+          <div className="space-y-6 sm:space-y-8">
+            {filteredProjects.filter((_, index) => index % 4 === 1 || index % 4 === 3).map((project, index) => (
+              <ScrollReveal key={project.id} direction="up" delay={0.4 + index * 0.1}>
+                <div 
+                  className={`group cursor-pointer ${index % 2 === 0 ? 'mt-12 sm:mt-16 md:mt-20 lg:mt-24' : ''}`}
+                  onMouseEnter={() => setHoveredProject(project.id)}
+                  onMouseLeave={() => setHoveredProject(null)}
+                >
+                  <div className={`${project.bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 ${
+                    hoveredProject && hoveredProject !== project.id ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
+                  }`}>
+                    <img 
+                      src={project.image}
+                      alt={project.title}
+                      className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 sm:gap-4 rounded-2xl sm:rounded-3xl">
+                      <a 
+                        href={project.liveUrl}
+                        className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110"
+                      >
+                        <ExternalLink size={18} className="sm:w-5 sm:h-5" />
+                      </a>
+                      <a 
+                        href={project.githubUrl}
+                        className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110"
+                      >
+                        <Github size={18} className="sm:w-5 sm:h-5" />
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2 text-black dark:text-white">{project.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">{project.category}</p>
+                    </div>
+                    <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">2024</span>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
 
         {/* Call to Action */}
