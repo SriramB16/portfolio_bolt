@@ -48,13 +48,13 @@ const IntroAnimation = ({ onComplete }) => {
             {animationStarted && (
               <SplitText
                 text="SRIRAM"
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl 3xl:text-[12rem] font-black intro-text"
+                className="font-clash text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl 3xl:text-[12rem] font-black intro-text"
                 delay={0.2}
                 duration={0.8}
                 staggerDelay={0.15}
                 animationType="slideUp"
                 style={{
-                  fontFamily: "'Orbitron', 'Inter', sans-serif",
+                  fontFamily: "'Clash Display', 'Inter', sans-serif",
                   color: '#FFFFFF',
                   fontWeight: 900,
                   letterSpacing: '0.1em'

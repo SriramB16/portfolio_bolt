@@ -30,7 +30,7 @@ const Contact = () => {
         {/* Header */}
         <ScrollReveal direction="up" delay={0.1}>
           <div className="text-center mb-12 sm:mb-16">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4 sm:mb-6">
+            <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4 sm:mb-6">
               Get In <span className="bg-gradient-to-r from-gray-700 to-black dark:from-golden dark:to-golden-light bg-clip-text text-transparent">Touch</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
@@ -44,7 +44,7 @@ const Contact = () => {
           <div className="space-y-6 sm:space-y-8">
             <ScrollReveal direction="left" delay={0.2}>
               <div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-4 sm:mb-6">Let's Talk</h2>
+                <h2 className="font-clash text-2xl sm:text-3xl font-bold text-black dark:text-white mb-4 sm:mb-6">Let's Talk</h2>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
                   I'm always open to discussing new opportunities, creative projects, or potential collaborations. 
                   Feel free to reach out if you have any questions or just want to say hello!
@@ -95,7 +95,7 @@ const Contact = () => {
           {/* Contact Form */}
           <ScrollReveal direction="right" delay={0.3}>
             <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
-              <h2 className="text-xl sm:text-2xl font-bold text-black dark:text-white mb-4 sm:mb-6">Send a Message</h2>
+              <h2 className="font-clash text-xl sm:text-2xl font-bold text-black dark:text-white mb-4 sm:mb-6">Send a Message</h2>
               
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
@@ -175,7 +175,7 @@ const Contact = () => {
         {/* Additional CTA */}
         <ScrollReveal direction="up" delay={0.7}>
           <div className="text-center mt-12 sm:mt-16 bg-white dark:bg-gray-900 rounded-2xl p-8 sm:p-12 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
-            <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-3 sm:mb-4">Ready to Start Your Project?</h2>
+            <h2 className="font-clash text-2xl sm:text-3xl font-bold text-black dark:text-white mb-3 sm:mb-4">Ready to Start Your Project?</h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
               Let's discuss your ideas and turn them into reality. I'm here to help you create something amazing.
             </p>

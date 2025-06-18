@@ -11,7 +11,7 @@ const About = () => {
         {/* Header */}
         <ScrollReveal direction="up" delay={0.1}>
           <div className="text-center mb-12 sm:mb-16">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4 sm:mb-6">
+            <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4 sm:mb-6">
               About <span className="bg-gradient-to-r from-gray-700 to-black dark:from-golden dark:to-golden-light bg-clip-text text-transparent">Me</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
@@ -23,7 +23,7 @@ const About = () => {
         {/* Tech Stack Marquee */}
         <ScrollReveal direction="up" delay={0.2}>
           <div className="mb-12 sm:mb-16">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black dark:text-white text-center mb-6 sm:mb-8">
+            <h2 className="font-clash text-xl sm:text-2xl md:text-3xl font-bold text-black dark:text-white text-center mb-6 sm:mb-8">
               Technologies I Work With
             </h2>
             <TechMarquee />
@@ -57,7 +57,7 @@ const About = () => {
           {/* Right Column - Story */}
           <div className="space-y-4 sm:space-y-6">
             <ScrollReveal direction="right" delay={0.3}>
-              <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-4 sm:mb-6">My Story</h2>
+              <h2 className="font-clash text-2xl sm:text-3xl font-bold text-black dark:text-white mb-4 sm:mb-6">My Story</h2>
             </ScrollReveal>
             
             <ScrollReveal direction="right" delay={0.4}>
@@ -103,7 +103,7 @@ const About = () => {
         {/* Skills Section */}
         <ScrollReveal direction="up" delay={0.8}>
           <div className="mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white text-center mb-8 sm:mb-12">Skills & Technologies</h2>
+            <h2 className="font-clash text-2xl sm:text-3xl font-bold text-black dark:text-white text-center mb-8 sm:mb-12">Skills & Technologies</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {[
                 {
@@ -121,7 +121,7 @@ const About = () => {
               ].map((category, index) => (
                 <ScrollReveal key={category.title} direction="up" delay={0.9 + index * 0.1}>
                   <div className="p-6 sm:p-8 bg-white dark:bg-gray-900 rounded-2xl shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
-                    <h3 className="text-lg sm:text-xl font-semibold text-black dark:text-white mb-3 sm:mb-4">{category.title}</h3>
+                    <h3 className="font-clash text-lg sm:text-xl font-semibold text-black dark:text-white mb-3 sm:mb-4">{category.title}</h3>
                     <div className="space-y-2">
                       {category.skills.map((skill) => (
                         <div key={skill} className="flex justify-between items-center">
@@ -142,7 +142,7 @@ const About = () => {
         {/* Call to Action */}
         <ScrollReveal direction="up" delay={1.2}>
           <div className="text-center bg-white dark:bg-gray-900 rounded-2xl p-8 sm:p-12 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
-            <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-3 sm:mb-4">Let's Work Together</h2>
+            <h2 className="font-clash text-2xl sm:text-3xl font-bold text-black dark:text-white mb-3 sm:mb-4">Let's Work Together</h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
               I'm always interested in new opportunities and exciting projects. 
               Let's discuss how we can bring your ideas to life.

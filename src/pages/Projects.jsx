@@ -88,7 +88,7 @@ export default function Projects() {
         {/* Header */}
         <ScrollReveal direction="up" delay={0.1}>
           <div className="text-center mb-12 sm:mb-16">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4 sm:mb-6">
+            <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4 sm:mb-6">
               My <span className="bg-gradient-to-r from-gray-700 to-black dark:from-golden dark:to-golden-light bg-clip-text text-transparent">Projects</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
@@ -152,7 +152,7 @@ export default function Projects() {
                   </div>
                   <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2 text-black dark:text-white">{project.title}</h3>
+                      <h3 className="font-clash text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2 text-black dark:text-white">{project.title}</h3>
                       <p className="text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">{project.category}</p>
                     </div>
                     <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">2024</span>
@@ -196,7 +196,7 @@ export default function Projects() {
                   </div>
                   <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2 text-black dark:text-white">{project.title}</h3>
+                      <h3 className="font-clash text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2 text-black dark:text-white">{project.title}</h3>
                       <p className="text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">{project.category}</p>
                     </div>
                     <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">2024</span>
@@ -210,7 +210,7 @@ export default function Projects() {
         {/* Call to Action */}
         <ScrollReveal direction="up" delay={0.8}>
           <div className="text-center mt-12 sm:mt-16 bg-white dark:bg-gray-900 rounded-2xl p-8 sm:p-12 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
-            <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-3 sm:mb-4">Have a Project in Mind?</h2>
+            <h2 className="font-clash text-2xl sm:text-3xl font-bold text-black dark:text-white mb-3 sm:mb-4">Have a Project in Mind?</h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
               I'm always excited to work on new projects and collaborate with amazing people. 
               Let's create something incredible together.

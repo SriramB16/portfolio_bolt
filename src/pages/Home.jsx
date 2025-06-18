@@ -152,7 +152,7 @@ const Home = () => {
                     </ScrollReveal>
 
                     <ScrollReveal direction="up" delay={0.2}>
-                      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-tight mb-6 sm:mb-8">
+                      <h1 className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-tight mb-6 sm:mb-8">
                         Crafting <span className="text-green-500">purpose driven</span><br />
                         <span className="text-green-500">experiences</span> that inspire<br />
                         & engage.
@@ -213,7 +213,7 @@ const Home = () => {
               <section className="py-8 sm:py-12 md:py-16 border-t border-gray-200 dark:border-gray-800">
                 <div className="overflow-hidden">
                   <div className="flex animate-marquee-slow whitespace-nowrap">
-                    <div className="flex items-center gap-4 sm:gap-6 md:gap-8 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-400 dark:text-gray-600 pr-4 sm:pr-6 md:pr-8">
+                    <div className="flex items-center gap-4 sm:gap-6 md:gap-8 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-400 dark:text-gray-600 pr-4 sm:pr-6 md:pr-8 font-clash">
                       <span>Development</span>
                       <span className="text-gray-300 dark:text-gray-700">✦</span>
                       <span>Mentor</span>
@@ -254,7 +254,7 @@ const Home = () => {
                 </ScrollReveal>
 
                 <ScrollReveal direction="up" delay={0.2}>
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4">Selected Projects</h2>
+                  <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4">Selected Projects</h2>
                 </ScrollReveal>
 
                 <ScrollReveal direction="up" delay={0.3}>
@@ -285,7 +285,7 @@ const Home = () => {
                         </div>
                         <div className="flex justify-between items-start">
                           <div>
-                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2">{projects[0].title}</h3>
+                            <h3 className="font-clash text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2">{projects[0].title}</h3>
                             <p className="text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">{projects[0].category}</p>
                           </div>
                           <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">{projects[0].year}</span>
@@ -311,7 +311,7 @@ const Home = () => {
                         </div>
                         <div className="flex justify-between items-start">
                           <div>
-                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2">{projects[2].title}</h3>
+                            <h3 className="font-clash text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2">{projects[2].title}</h3>
                             <p className="text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">{projects[2].category}</p>
                           </div>
                           <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">{projects[2].year}</span>
@@ -340,7 +340,7 @@ const Home = () => {
                         </div>
                         <div className="flex justify-between items-start">
                           <div>
-                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2">{projects[1].title}</h3>
+                            <h3 className="font-clash text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2">{projects[1].title}</h3>
                             <p className="text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">{projects[1].category}</p>
                           </div>
                           <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">{projects[1].year}</span>
@@ -366,7 +366,7 @@ const Home = () => {
                         </div>
                         <div className="flex justify-between items-start">
                           <div>
-                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2">{projects[3].title}</h3>
+                            <h3 className="font-clash text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2">{projects[3].title}</h3>
                             <p className="text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">{projects[3].category}</p>
                           </div>
                           <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">{projects[3].year}</span>
@@ -391,7 +391,7 @@ const Home = () => {
                     </ScrollReveal>
 
                     <ScrollReveal direction="up" delay={0.2}>
-                      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-tight text-black dark:text-white">
+                      <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-tight text-black dark:text-white">
                         Let's create your<br />
                         next big idea.
                       </h2>
