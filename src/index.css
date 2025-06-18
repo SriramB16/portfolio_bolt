@@ -93,8 +93,10 @@
 .intro-text-ryzes {
   font-family: 'Ryzes', 'Orbitron', 'Inter', sans-serif !important;
   font-weight: 900 !important;
-  letter-spacing: 0.15em !important;
+  letter-spacing: 0.1em !important;
   text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Split text animation improvements */
@@ -106,6 +108,7 @@
   transform-style: preserve-3d;
   backface-visibility: hidden;
   transition: all 0.3s ease;
+  font-family: inherit !important;
 }
 
 /* Custom page scrollbar */

@@ -91,15 +91,16 @@ const IntroAnimation = ({ onComplete }) => {
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
                   fontWeight: 900,
-                  letterSpacing: '0.15em',
+                  letterSpacing: '0.1em',
                   filter: 'drop-shadow(0 0 30px rgba(255, 215, 0, 0.4))',
+                  textShadow: '0 0 50px rgba(255, 215, 0, 0.3)',
                 }}
               />
             )}
           </div>
 
           {/* Particle effects */}
-          {Array.from({ length: 20 }).map((_, i) => (
+          {Array.from({ length: 25 }).map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-golden rounded-full"
@@ -109,11 +110,35 @@ const IntroAnimation = ({ onComplete }) => {
               }}
               animate={{
                 opacity: [0, 1, 0],
-                scale: [0, 1, 0],
-                y: [0, -100, 0]
+                scale: [0, 1.5, 0],
+                y: [0, -150, 0]
               }}
               transition={{
-                duration: 3,
+                duration: 4,
+                repeat: Infinity,
+                delay: Math.random() * 3,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+
+          {/* Additional floating elements */}
+          {Array.from({ length: 8 }).map((_, i) => (
+            <motion.div
+              key={`float-${i}`}
+              className="absolute w-2 h-2 bg-golden-light/60 rounded-full blur-sm"
+              style={{
+                left: `${20 + Math.random() * 60}%`,
+                top: `${20 + Math.random() * 60}%`,
+              }}
+              animate={{
+                x: [0, 50, -50, 0],
+                y: [0, -30, 30, 0],
+                opacity: [0.3, 0.8, 0.3],
+                scale: [1, 1.3, 1]
+              }}
+              transition={{
+                duration: 6,
                 repeat: Infinity,
                 delay: Math.random() * 2,
                 ease: "easeInOut"
