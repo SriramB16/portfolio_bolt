@@ -1,26 +1,55 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import SplitText from './SplitText';
 
 const IntroAnimation = ({ onComplete }) => {
+  const [currentLetterIndex, setCurrentLetterIndex] = useState(0);
   const [showSlideUp, setShowSlideUp] = useState(false);
-  const [animationStarted, setAnimationStarted] = useState(false);
+  const letters = ['S', 'R', 'I', 'R', 'A', 'M'];
 
   useEffect(() => {
-    // Start animation immediately
-    setAnimationStarted(true);
-    
-    // After 3.5 seconds, start slide up animation
-    const slideUpTimer = setTimeout(() => {
-      setShowSlideUp(true);
-      // Complete animation after slide up
-      setTimeout(() => {
-        onComplete();
-      }, 800);
-    }, 3500);
+    // Animate letters sequentially
+    const letterInterval = setInterval(() => {
+      setCurrentLetterIndex(prev => {
+        if (prev < letters.length - 1) {
+          return prev + 1;
+        } else {
+          clearInterval(letterInterval);
+          // Start slide up after a brief pause
+          setTimeout(() => {
+            setShowSlideUp(true);
+            // Complete animation
+            setTimeout(() => {
+              onComplete();
+            }, 800);
+          }, 800);
+          return prev;
+        }
+      });
+    }, 200);
 
-    return () => clearTimeout(slideUpTimer);
-  }, [onComplete]);
+    return () => clearInterval(letterInterval);
+  }, [onComplete, letters.length]);
+
+  const letterVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 100, 
+      scale: 0.5,
+      rotateX: -90
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      rotateX: 0,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 200,
+        duration: 0.8
+      }
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 1 },
@@ -37,8 +66,7 @@ const IntroAnimation = ({ onComplete }) => {
     <AnimatePresence>
       {!showSlideUp && (
         <motion.div 
-          className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden"
-          style={{ backgroundColor: '#000000' }}
+          className="fixed inset-0 z-50 bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center overflow-hidden"
           variants={containerVariants}
           initial="hidden"
           exit="exit"
@@ -74,33 +102,51 @@ const IntroAnimation = ({ onComplete }) => {
             />
           </div>
 
-          {/* Main text animation - centered */}
-          <div className="relative z-10 text-center px-4 flex items-center justify-center min-h-screen">
-            {animationStarted && (
-              <SplitText
-                text="SRIRAM"
-                className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-black intro-text-ryzes"
-                delay={0.2}
-                duration={0.8}
-                staggerDelay={0.15}
-                animationType="slideUp"
-                style={{
-                  fontFamily: "'Ryzes', 'Orbitron', 'Inter', sans-serif",
-                  background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  fontWeight: 900,
-                  letterSpacing: '0.1em',
-                  filter: 'drop-shadow(0 0 30px rgba(255, 215, 0, 0.4))',
-                  textShadow: '0 0 50px rgba(255, 215, 0, 0.3)',
-                }}
-              />
-            )}
+          {/* Letters container - smaller and more centered */}
+          <div className="flex space-x-2 md:space-x-4 lg:space-x-6 relative z-10">
+            {letters.map((letter, index) => (
+              <motion.div
+                key={index}
+                className="relative"
+                variants={letterVariants}
+                initial="hidden"
+                animate={index <= currentLetterIndex ? "visible" : "hidden"}
+              >
+                <motion.span
+                  className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black"
+                  style={{
+                    fontFamily: "'Ryzes', 'Orbitron', 'Inter', sans-serif",
+                    background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    filter: 'drop-shadow(0 0 20px rgba(255, 215, 0, 0.3))',
+                  }}
+                  whileHover={{ 
+                    scale: 1.1,
+                    filter: 'drop-shadow(0 0 30px rgba(255, 215, 0, 0.6))'
+                  }}
+                >
+                  {letter}
+                </motion.span>
+                
+                {/* Glow effect */}
+                <motion.div
+                  className="absolute inset-0 text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-golden/20 blur-sm"
+                  style={{ fontFamily: "'Ryzes', 'Orbitron', 'Inter', sans-serif" }}
+                  animate={{
+                    opacity: [0.2, 0.5, 0.2]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: index * 0.1 }}
+                >
+                  {letter}
+                </motion.div>
+              </motion.div>
+            ))}
           </div>
 
           {/* Particle effects */}
-          {Array.from({ length: 25 }).map((_, i) => (
+          {Array.from({ length: 20 }).map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-golden rounded-full"
@@ -110,35 +156,11 @@ const IntroAnimation = ({ onComplete }) => {
               }}
               animate={{
                 opacity: [0, 1, 0],
-                scale: [0, 1.5, 0],
-                y: [0, -150, 0]
+                scale: [0, 1, 0],
+                y: [0, -100, 0]
               }}
               transition={{
-                duration: 4,
-                repeat: Infinity,
-                delay: Math.random() * 3,
-                ease: "easeInOut"
-              }}
-            />
-          ))}
-
-          {/* Additional floating elements */}
-          {Array.from({ length: 8 }).map((_, i) => (
-            <motion.div
-              key={`float-${i}`}
-              className="absolute w-2 h-2 bg-golden-light/60 rounded-full blur-sm"
-              style={{
-                left: `${20 + Math.random() * 60}%`,
-                top: `${20 + Math.random() * 60}%`,
-              }}
-              animate={{
-                x: [0, 50, -50, 0],
-                y: [0, -30, 30, 0],
-                opacity: [0.3, 0.8, 0.3],
-                scale: [1, 1.3, 1]
-              }}
-              transition={{
-                duration: 6,
+                duration: 3,
                 repeat: Infinity,
                 delay: Math.random() * 2,
                 ease: "easeInOut"
