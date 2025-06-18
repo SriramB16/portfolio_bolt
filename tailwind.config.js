@@ -5,9 +5,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        clash: ['Clash Display', 'Inter', 'system-ui', 'sans-serif'],
-        display: ['Clash Display', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Satoshi', 'system-ui', 'sans-serif'],
+        satoshi: ['Satoshi', 'system-ui', 'sans-serif'],
+        clash: ['Clash Display', 'Satoshi', 'system-ui', 'sans-serif'],
+        display: ['Clash Display', 'Satoshi', 'system-ui', 'sans-serif'],
       },
       colors: {
         'golden': '#FFD700',

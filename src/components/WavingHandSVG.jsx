@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const WavingHandSVG = ({ className = "w-4 h-4 sm:w-5 sm:h-5" }) => {
+const WavingHandSVG = ({ className = "w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" }) => {
   return (
     <motion.div
       className={`inline-block ${className}`}

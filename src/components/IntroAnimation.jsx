@@ -54,7 +54,7 @@ const IntroAnimation = ({ onComplete }) => {
                 staggerDelay={0.15}
                 animationType="slideUp"
                 style={{
-                  fontFamily: "'Clash Display', 'Inter', sans-serif",
+                  fontFamily: "'Clash Display', 'Satoshi', sans-serif",
                   color: '#FFFFFF',
                   fontWeight: 900,
                   letterSpacing: '0.1em'

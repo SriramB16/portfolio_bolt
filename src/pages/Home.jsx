@@ -142,10 +142,10 @@ const Home = () => {
                   {/* Left Column */}
                   <div className="order-2 lg:order-1">
                     <ScrollReveal direction="up" delay={0.1}>
-                      <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+                      <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
                         <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse"></div>
-                        <span className="text-green-500 text-xs sm:text-sm font-medium flex items-center gap-1 sm:gap-2">
-                          <WavingHandSVG className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <span className="text-green-500 text-sm sm:text-base md:text-lg font-medium flex items-center gap-2 sm:gap-3">
+                          <WavingHandSVG className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
                           Hey! It's me Sriram
                         </span>
                       </div>
