@@ -28,7 +28,7 @@ const SplitText = ({
       y: 100, 
       opacity: 0,
       rotateX: -90,
-      scale: 0.5
+      scale: 0.8
     },
     visible: { 
       y: 0, 
@@ -46,7 +46,7 @@ const SplitText = ({
 
   return (
     <motion.div
-      className={`inline-block split-text-container ${className}`}
+      className={`inline-block ${className}`}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -60,17 +60,8 @@ const SplitText = ({
           style={{ 
             display: 'inline-block',
             marginRight: letter === ' ' ? '0.5em' : '0',
-            fontFamily: 'inherit',
-            fontWeight: 'inherit',
-            background: 'inherit',
-            WebkitBackgroundClip: 'inherit',
-            WebkitTextFillColor: 'inherit',
-            backgroundClip: 'inherit',
-            filter: 'inherit'
-          }}
-          whileHover={{ 
-            scale: 1.1,
-            filter: 'drop-shadow(0 0 40px rgba(255, 215, 0, 0.8))'
+            color: '#FFFFFF',
+            fontWeight: 900
           }}
         >
           {letter === ' ' ? '\u00A0' : letter}
