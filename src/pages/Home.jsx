@@ -278,11 +278,11 @@ const Home = () => {
                   </p>
                 </ScrollReveal>
 
-                {/* Project Grid - Proper Staggered Layout */}
+                {/* Projects Grid - True Staggered Layout */}
                 <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
                   {/* First Column */}
                   <div className="space-y-6 sm:space-y-8">
-                    {/* Project 1 - Higher */}
+                    {/* Project 1 - Top */}
                     <ScrollReveal direction="up" delay={0.4}>
                       <div 
                         className="group cursor-pointer"
@@ -311,7 +311,7 @@ const Home = () => {
                     {/* Project 3 - Much Lower */}
                     <ScrollReveal direction="up" delay={0.6}>
                       <div 
-                        className="group cursor-pointer mt-16 sm:mt-20 md:mt-24 lg:mt-32"
+                        className="group cursor-pointer mt-20 sm:mt-24 md:mt-28 lg:mt-32 xl:mt-36"
                         onMouseEnter={() => setHoveredProject(3)}
                         onMouseLeave={() => setHoveredProject(null)}
                       >
@@ -337,10 +337,10 @@ const Home = () => {
 
                   {/* Second Column */}
                   <div className="space-y-6 sm:space-y-8">
-                    {/* Project 2 - Much Lower */}
+                    {/* Project 2 - Lower */}
                     <ScrollReveal direction="up" delay={0.5}>
                       <div 
-                        className="group cursor-pointer mt-12 sm:mt-16 md:mt-20 lg:mt-24"
+                        className="group cursor-pointer mt-16 sm:mt-20 md:mt-24 lg:mt-28"
                         onMouseEnter={() => setHoveredProject(2)}
                         onMouseLeave={() => setHoveredProject(null)}
                       >
@@ -363,7 +363,7 @@ const Home = () => {
                       </div>
                     </ScrollReveal>
 
-                    {/* Project 4 - Higher */}
+                    {/* Project 4 - Top */}
                     <ScrollReveal direction="up" delay={0.7}>
                       <div 
                         className="group cursor-pointer"

@@ -82,6 +82,19 @@ export default function Projects() {
     ? projects 
     : projects.filter(project => project.category === activeFilter);
 
+  // Define stagger positions for each project
+  const getStaggerClass = (index) => {
+    const staggerPattern = [
+      '', // Project 1: Top
+      'mt-16 sm:mt-20 md:mt-24 lg:mt-28', // Project 2: Lower
+      'mt-20 sm:mt-24 md:mt-28 lg:mt-32 xl:mt-36', // Project 3: Much Lower
+      '', // Project 4: Top
+      'mt-12 sm:mt-16 md:mt-20 lg:mt-24', // Project 5: Medium
+      'mt-8 sm:mt-12 md:mt-16 lg:mt-20' // Project 6: Small
+    ];
+    return staggerPattern[index % staggerPattern.length] || '';
+  };
+
   return (
     <div className="pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black">
       <div className="max-w-6xl mx-auto">
@@ -116,18 +129,18 @@ export default function Projects() {
           </div>
         </ScrollReveal>
 
-        {/* Projects Grid - Staggered Layout */}
+        {/* Projects Grid - True Staggered Layout */}
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
           {/* First Column */}
           <div className="space-y-6 sm:space-y-8">
-            {filteredProjects.filter((_, index) => index % 4 === 0 || index % 4 === 2).map((project, index) => (
+            {filteredProjects.filter((_, index) => index % 2 === 0).map((project, index) => (
               <ScrollReveal key={project.id} direction="up" delay={0.3 + index * 0.1}>
                 <div 
-                  className={`group cursor-pointer ${index % 2 === 1 ? 'mt-16 sm:mt-20 md:mt-24 lg:mt-32' : ''}`}
+                  className={`group cursor-pointer ${getStaggerClass(index * 2)}`}
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}
                 >
-                  <div className={`${project.bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 ${
+                  <div className={`${project.bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 relative ${
                     hoveredProject && hoveredProject !== project.id ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
                   }`}>
                     <img 
@@ -164,14 +177,14 @@ export default function Projects() {
 
           {/* Second Column */}
           <div className="space-y-6 sm:space-y-8">
-            {filteredProjects.filter((_, index) => index % 4 === 1 || index % 4 === 3).map((project, index) => (
+            {filteredProjects.filter((_, index) => index % 2 === 1).map((project, index) => (
               <ScrollReveal key={project.id} direction="up" delay={0.4 + index * 0.1}>
                 <div 
-                  className={`group cursor-pointer ${index % 2 === 0 ? 'mt-12 sm:mt-16 md:mt-20 lg:mt-24' : ''}`}
+                  className={`group cursor-pointer ${getStaggerClass(index * 2 + 1)}`}
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}
                 >
-                  <div className={`${project.bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 ${
+                  <div className={`${project.bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 relative ${
                     hoveredProject && hoveredProject !== project.id ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
                   }`}>
                     <img 
