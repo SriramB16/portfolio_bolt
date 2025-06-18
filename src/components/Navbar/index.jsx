@@ -114,7 +114,7 @@ const Navbar = () => {
             rounded-full transition-all duration-300 ease-out
             shadow-sm py-3
             ${isHomePage 
-              ? 'bg-black/90 backdrop-blur-sm dark:shadow-gray-800/20' 
+              ? 'bg-black/90 backdrop-blur-sm' 
               : 'bg-white/90 dark:bg-black/90 backdrop-blur-sm dark:shadow-gray-800/20'
             }
           `}

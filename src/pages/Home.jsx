@@ -8,6 +8,7 @@ import ScrollReveal from '../components/ScrollReveal';
 const Home = () => {
   const [showIntro, setShowIntro] = useState(false);
   const [contentVisible, setContentVisible] = useState(false);
+  const [hoveredProject, setHoveredProject] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -64,6 +65,73 @@ const Home = () => {
     }
   };
 
+  // Waving hand animation
+  const WavingHand = () => (
+    <motion.span
+      className="inline-block text-2xl ml-2"
+      animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
+      transition={{
+        duration: 2.5,
+        repeat: Infinity,
+        repeatDelay: 1,
+        ease: "easeInOut"
+      }}
+    >
+      👋
+    </motion.span>
+  );
+
+  const projects = [
+    {
+      id: 1,
+      title: 'E-Commerce Platform',
+      category: 'Web Apps',
+      description: 'A full-stack e-commerce solution with React, Node.js, and Stripe integration.',
+      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
+      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      liveUrl: '#',
+      githubUrl: '#',
+      bgColor: 'bg-yellow-200',
+      year: '2024'
+    },
+    {
+      id: 2,
+      title: 'Task Management App',
+      category: 'Mobile',
+      description: 'A React Native app for team collaboration and project management.',
+      image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
+      technologies: ['React Native', 'Firebase', 'Redux'],
+      liveUrl: '#',
+      githubUrl: '#',
+      bgColor: 'bg-purple-200',
+      year: '2024'
+    },
+    {
+      id: 3,
+      title: 'Design System',
+      category: 'UI/UX',
+      description: 'A comprehensive design system with reusable components and guidelines.',
+      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
+      technologies: ['Figma', 'Storybook', 'React'],
+      liveUrl: '#',
+      githubUrl: '#',
+      bgColor: 'bg-yellow-200',
+      year: '2024'
+    },
+    {
+      id: 4,
+      title: 'Weather Dashboard',
+      category: 'Web Apps',
+      description: 'A beautiful weather application with real-time data and forecasts.',
+      image: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800',
+      technologies: ['Vue.js', 'Weather API', 'Chart.js'],
+      liveUrl: '#',
+      githubUrl: '#',
+      bgColor: 'bg-green-200',
+      year: '2024'
+    }
+  ];
+
   return (
     <>
       <AnimatePresence>
@@ -76,59 +144,77 @@ const Home = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="bg-black text-white min-h-screen"
+            className="bg-black dark:bg-black text-white min-h-screen"
           >
             {/* Hero Section */}
             <section className="min-h-screen flex flex-col justify-center px-6 md:px-10 lg:px-16 pt-32 pb-24">
-              <div className="max-w-6xl mx-auto w-full">
-                <ScrollReveal direction="up" delay={0.1}>
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-green-500 text-sm font-medium">Hey! It's me Sriram.</span>
-                  </div>
-                </ScrollReveal>
+              <div className="max-w-7xl mx-auto w-full">
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
+                  {/* Left Column */}
+                  <div>
+                    <ScrollReveal direction="up" delay={0.1}>
+                      <div className="flex items-center gap-3 mb-8">
+                        <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                        <span className="text-green-500 text-sm font-medium">
+                          Hey! It's me Sriram
+                          <WavingHand />
+                        </span>
+                      </div>
+                    </ScrollReveal>
 
-                <ScrollReveal direction="up" delay={0.2}>
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-8">
-                    Crafting <span className="text-green-500">purpose driven</span><br />
-                    <span className="text-green-500">experiences</span> that inspire<br />
-                    & engage.
-                  </h1>
-                </ScrollReveal>
+                    <ScrollReveal direction="up" delay={0.2}>
+                      <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-8">
+                        Crafting <span className="text-green-500">purpose driven</span><br />
+                        <span className="text-green-500">experiences</span> that inspire<br />
+                        & engage.
+                      </h1>
+                    </ScrollReveal>
 
-                <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
-                  <ScrollReveal direction="up" delay={0.3}>
-                    <p className="text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed">
-                      I work with brands globally to build pixel-perfect, engaging, and accessible digital 
-                      experiences that drive results and achieve business goals.
-                    </p>
-                  </ScrollReveal>
+                    <ScrollReveal direction="up" delay={0.3}>
+                      <div className="w-16 h-px bg-gray-600 mb-8"></div>
+                    </ScrollReveal>
 
-                  <ScrollReveal direction="up" delay={0.4}>
-                    <div className="flex flex-col sm:flex-row gap-4 lg:flex-col xl:flex-row">
-                      <div className="flex gap-6 text-sm">
-                        <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
-                          LINKEDIN <ArrowRight size={16} className="rotate-45" />
+                    <ScrollReveal direction="up" delay={0.4}>
+                      <div className="flex flex-wrap gap-6 text-sm mb-8">
+                        <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 group">
+                          LINKEDIN 
+                          <ArrowRight size={16} className="rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </a>
-                        <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
-                          GITHUB <ArrowRight size={16} className="rotate-45" />
+                        <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 group">
+                          GITHUB 
+                          <ArrowRight size={16} className="rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </a>
-                        <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
-                          INSTAGRAM <ArrowRight size={16} className="rotate-45" />
+                        <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 group">
+                          INSTAGRAM 
+                          <ArrowRight size={16} className="rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </a>
-                        <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2">
-                          GMAIL <ArrowRight size={16} className="rotate-45" />
+                        <a href="#" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 group">
+                          GMAIL 
+                          <ArrowRight size={16} className="rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </a>
                       </div>
+                    </ScrollReveal>
+
+                    <ScrollReveal direction="up" delay={0.5}>
                       <Link 
                         to="/about"
-                        className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-200 transition-all duration-300 text-center"
+                        className="inline-block border border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-black transition-all duration-300"
                         onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
                       >
                         Know me better
                       </Link>
-                    </div>
-                  </ScrollReveal>
+                    </ScrollReveal>
+                  </div>
+
+                  {/* Right Column */}
+                  <div>
+                    <ScrollReveal direction="up" delay={0.3}>
+                      <p className="text-gray-400 text-lg leading-relaxed">
+                        I work with brands globally to build pixel-perfect, engaging, and accessible digital 
+                        experiences that drive results and achieve business goals.
+                      </p>
+                    </ScrollReveal>
+                  </div>
                 </div>
               </div>
             </section>
@@ -137,8 +223,16 @@ const Home = () => {
             <ScrollReveal direction="up" delay={0.5}>
               <section className="py-16 border-t border-gray-800">
                 <div className="overflow-hidden">
-                  <div className="flex animate-marquee whitespace-nowrap">
-                    <div className="flex items-center gap-8 text-2xl md:text-3xl lg:text-4xl font-bold text-gray-600">
+                  <div className="flex animate-marquee-slow whitespace-nowrap">
+                    <div className="flex items-center gap-8 text-2xl md:text-3xl lg:text-4xl font-bold text-gray-600 pr-8">
+                      <span>Development</span>
+                      <span className="text-gray-800">✦</span>
+                      <span>Mentor</span>
+                      <span className="text-gray-800">✦</span>
+                      <span>Websites</span>
+                      <span className="text-gray-800">✦</span>
+                      <span>Designing</span>
+                      <span className="text-gray-800">✦</span>
                       <span>Development</span>
                       <span className="text-gray-800">✦</span>
                       <span>Mentor</span>
@@ -180,90 +274,117 @@ const Home = () => {
                   </p>
                 </ScrollReveal>
 
-                {/* Project Grid */}
-                <div className="grid lg:grid-cols-2 gap-8 mb-16">
-                  {/* Project 1 - Aora */}
-                  <ScrollReveal direction="up" delay={0.4}>
-                    <div className="group cursor-pointer">
-                      <div className="bg-yellow-200 rounded-3xl p-8 mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden">
-                        <img 
-                          src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                          alt="Aora Project"
-                          className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="text-2xl font-bold mb-2">Aora</h3>
-                          <p className="text-gray-400 mb-2">Development</p>
-                        </div>
-                        <span className="text-gray-400">2024</span>
-                      </div>
-                    </div>
-                  </ScrollReveal>
-
-                  {/* Project 2 - Code Screenshot */}
-                  <ScrollReveal direction="up" delay={0.5}>
-                    <div className="group cursor-pointer">
-                      <div className="bg-purple-200 rounded-3xl p-8 mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden">
-                        <img 
-                          src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                          alt="Code Screenshot Project"
-                          className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="text-2xl font-bold mb-2">Code Screenshot</h3>
-                          <p className="text-gray-400 mb-2">Development & Design</p>
-                        </div>
-                        <span className="text-gray-400">2024</span>
-                      </div>
-                    </div>
-                  </ScrollReveal>
-                </div>
-
-                {/* Second Row Projects */}
+                {/* Project Grid - Staggered Layout */}
                 <div className="grid lg:grid-cols-2 gap-8">
-                  {/* Project 3 - Mobile App */}
-                  <ScrollReveal direction="up" delay={0.6}>
-                    <div className="group cursor-pointer">
-                      <div className="bg-yellow-200 rounded-3xl p-8 mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden">
-                        <img 
-                          src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                          alt="Mobile App Project"
-                          className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="text-2xl font-bold mb-2">Aora</h3>
-                          <p className="text-gray-400 mb-2">Mobile Development</p>
+                  {/* First Row */}
+                  <div className="space-y-8">
+                    {/* Project 1 - Higher */}
+                    <ScrollReveal direction="up" delay={0.4}>
+                      <div 
+                        className="group cursor-pointer"
+                        onMouseEnter={() => setHoveredProject(1)}
+                        onMouseLeave={() => setHoveredProject(null)}
+                      >
+                        <div className={`${projects[0].bgColor} rounded-3xl p-8 mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 ${
+                          hoveredProject && hoveredProject !== 1 ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
+                        }`}>
+                          <img 
+                            src={projects[0].image}
+                            alt={projects[0].title}
+                            className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                          />
                         </div>
-                        <span className="text-gray-400">2024</span>
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h3 className="text-2xl font-bold mb-2">{projects[0].title}</h3>
+                            <p className="text-gray-400 mb-2">{projects[0].category}</p>
+                          </div>
+                          <span className="text-gray-400">{projects[0].year}</span>
+                        </div>
                       </div>
-                    </div>
-                  </ScrollReveal>
+                    </ScrollReveal>
 
-                  {/* Project 4 - Web Platform */}
-                  <ScrollReveal direction="up" delay={0.7}>
-                    <div className="group cursor-pointer">
-                      <div className="bg-green-200 rounded-3xl p-8 mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden">
-                        <img 
-                          src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                          alt="Web Platform Project"
-                          className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="text-2xl font-bold mb-2">Web Platform</h3>
-                          <p className="text-gray-400 mb-2">Full Stack Development</p>
+                    {/* Project 3 - Lower */}
+                    <ScrollReveal direction="up" delay={0.6}>
+                      <div 
+                        className="group cursor-pointer mt-16"
+                        onMouseEnter={() => setHoveredProject(3)}
+                        onMouseLeave={() => setHoveredProject(null)}
+                      >
+                        <div className={`${projects[2].bgColor} rounded-3xl p-8 mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 ${
+                          hoveredProject && hoveredProject !== 3 ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
+                        }`}>
+                          <img 
+                            src={projects[2].image}
+                            alt={projects[2].title}
+                            className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                          />
                         </div>
-                        <span className="text-gray-400">2024</span>
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h3 className="text-2xl font-bold mb-2">{projects[2].title}</h3>
+                            <p className="text-gray-400 mb-2">{projects[2].category}</p>
+                          </div>
+                          <span className="text-gray-400">{projects[2].year}</span>
+                        </div>
                       </div>
-                    </div>
-                  </ScrollReveal>
+                    </ScrollReveal>
+                  </div>
+
+                  {/* Second Column */}
+                  <div className="space-y-8">
+                    {/* Project 2 - Lower */}
+                    <ScrollReveal direction="up" delay={0.5}>
+                      <div 
+                        className="group cursor-pointer mt-8"
+                        onMouseEnter={() => setHoveredProject(2)}
+                        onMouseLeave={() => setHoveredProject(null)}
+                      >
+                        <div className={`${projects[1].bgColor} rounded-3xl p-8 mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 ${
+                          hoveredProject && hoveredProject !== 2 ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
+                        }`}>
+                          <img 
+                            src={projects[1].image}
+                            alt={projects[1].title}
+                            className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h3 className="text-2xl font-bold mb-2">{projects[1].title}</h3>
+                            <p className="text-gray-400 mb-2">{projects[1].category}</p>
+                          </div>
+                          <span className="text-gray-400">{projects[1].year}</span>
+                        </div>
+                      </div>
+                    </ScrollReveal>
+
+                    {/* Project 4 - Higher */}
+                    <ScrollReveal direction="up" delay={0.7}>
+                      <div 
+                        className="group cursor-pointer"
+                        onMouseEnter={() => setHoveredProject(4)}
+                        onMouseLeave={() => setHoveredProject(null)}
+                      >
+                        <div className={`${projects[3].bgColor} rounded-3xl p-8 mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 ${
+                          hoveredProject && hoveredProject !== 4 ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
+                        }`}>
+                          <img 
+                            src={projects[3].image}
+                            alt={projects[3].title}
+                            className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h3 className="text-2xl font-bold mb-2">{projects[3].title}</h3>
+                            <p className="text-gray-400 mb-2">{projects[3].category}</p>
+                          </div>
+                          <span className="text-gray-400">{projects[3].year}</span>
+                        </div>
+                      </div>
+                    </ScrollReveal>
+                  </div>
                 </div>
               </div>
             </section>
@@ -288,10 +409,13 @@ const Home = () => {
                 <ScrollReveal direction="up" delay={0.3}>
                   <Link 
                     to="/contact"
-                    className="inline-block bg-white text-black px-8 py-4 rounded-full font-medium hover:bg-gray-200 transition-all duration-300 text-lg"
+                    className="group relative inline-block border border-white text-white px-8 py-4 rounded-full font-medium overflow-hidden transition-all duration-300"
                     onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
                   >
-                    Contact Me
+                    <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
+                      Contact Me
+                    </span>
+                    <div className="absolute inset-0 bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
                   </Link>
                 </ScrollReveal>
               </div>

@@ -109,8 +109,17 @@
   font-weight: 900 !important;
 }
 
-/* Marquee animation */
+/* Marquee animations */
 @keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee-slow {
   0% {
     transform: translateX(0%);
   }
@@ -121,6 +130,10 @@
 
 .animate-marquee {
   animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-slow {
+  animation: marquee-slow 60s linear infinite;
 }
 
 /* Custom page scrollbar */
@@ -235,4 +248,23 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Dark mode specific styles for home page */
+.dark .bg-black {
+  background-color: #000000 !important;
+}
+
+/* Light mode styles for home page */
+.bg-black {
+  background-color: #000000 !important;
+}
+
+/* Ensure text is always white on home page */
+.home-page-text {
+  color: #ffffff !important;
+}
+
+.dark .home-page-text {
+  color: #ffffff !important;
 }
