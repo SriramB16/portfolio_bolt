@@ -109,6 +109,27 @@
   font-weight: 900 !important;
 }
 
+/* Marquee container styles */
+.marquee-container {
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+/* Hide marquee scrollbar */
+.marquee-container .rfm-marquee {
+  overflow: hidden !important;
+}
+
+.marquee-container .rfm-child {
+  overflow: hidden !important;
+}
+
+/* Ensure marquee takes full width */
+.marquee-container .rfm-marquee-container {
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
