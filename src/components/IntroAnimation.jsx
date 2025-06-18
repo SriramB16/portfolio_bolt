@@ -48,7 +48,7 @@ const IntroAnimation = ({ onComplete }) => {
             {animationStarted && (
               <SplitText
                 text="SRIRAM"
-                className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-black intro-text"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl 3xl:text-[12rem] font-black intro-text"
                 delay={0.2}
                 duration={0.8}
                 staggerDelay={0.15}

@@ -32,14 +32,14 @@ const Navbar = () => {
 
   // Custom Sun Component
   const SunIcon = () => (
-    <div className="relative w-5 h-5 flex items-center justify-center">
+    <div className="relative w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center">
       <div className="sun-container">
         <svg
-          width="18"
-          height="18"
+          width="16"
+          height="16"
+          className="sm:w-[18px] sm:h-[18px]"
           viewBox="0 0 24 24"
           fill="none"
-          className="sun-icon"
         >
           {/* Sun rays */}
           <g className="sun-rays">
@@ -73,19 +73,19 @@ const Navbar = () => {
       <div className={`fixed top-0 left-0 w-full md:hidden z-50 transition-colors duration-300 ${
         isHomePage ? 'bg-[#f7f8fa] dark:bg-black' : 'bg-[#f7f8fa] dark:bg-black'
       }`}>
-        <div className="flex items-center justify-between p-4">
-          <span className={`text-xl font-bold ${isHomePage ? 'text-black dark:text-white' : 'text-black dark:text-white'}`}>SR</span>
+        <div className="flex items-center justify-between p-3 sm:p-4">
+          <span className={`text-lg sm:text-xl font-bold ${isHomePage ? 'text-black dark:text-white' : 'text-black dark:text-white'}`}>SR</span>
           <button 
             onClick={toggleDarkMode}
             aria-label="Toggle dark mode"
             className="relative p-2 rounded-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 overflow-hidden"
           >
-            <div className="relative w-5 h-5">
+            <div className="relative w-4 h-4 sm:w-5 sm:h-5">
               {/* Moon Icon for Light Mode */}
               <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
                 darkMode ? 'opacity-0 rotate-180 scale-0' : 'opacity-100 rotate-0 scale-100'
               }`}>
-                <Moon size={18} className="text-black" />
+                <Moon size={16} className="sm:w-[18px] sm:h-[18px] text-black" />
               </div>
               
               {/* Sun Icon for Dark Mode */}
@@ -111,34 +111,34 @@ const Navbar = () => {
             flex items-center justify-between 
             rounded-full bg-white/90 dark:bg-black/90
             backdrop-blur-sm transition-all duration-300 ease-out
-            shadow-sm dark:shadow-gray-800/20 py-3
+            shadow-sm dark:shadow-gray-800/20 py-2 sm:py-3
           "
         >
-          <div className="flex-1 flex justify-start pl-6">
+          <div className="flex-1 flex justify-start pl-4 sm:pl-6">
             <Logo />
           </div>
           
           <div className="flex-1 flex justify-center">
-            <div className="flex items-center space-x-8">
-              <NavLink to="/" label="Home" icon={<Home size={18} />} active={location.pathname === '/'} onClick={handleNavClick} />
-              <NavLink to="/about" label="About" icon={<User size={18} />} active={location.pathname === '/about'} onClick={handleNavClick} />
-              <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={18} />} active={location.pathname === '/projects'} onClick={handleNavClick} />
-              <NavLink to="/contact" label="Contact" icon={<Mail size={18} />} active={location.pathname === '/contact'} onClick={handleNavClick} />
+            <div className="flex items-center space-x-4 sm:space-x-6 lg:space-x-8">
+              <NavLink to="/" label="Home" icon={<Home size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/'} onClick={handleNavClick} />
+              <NavLink to="/about" label="About" icon={<User size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/about'} onClick={handleNavClick} />
+              <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/projects'} onClick={handleNavClick} />
+              <NavLink to="/contact" label="Contact" icon={<Mail size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/contact'} onClick={handleNavClick} />
             </div>
           </div>
           
-          <div className="flex-1 flex justify-end pr-6">
+          <div className="flex-1 flex justify-end pr-4 sm:pr-6">
             <button 
               onClick={toggleDarkMode}
               aria-label="Toggle dark mode"
               className="relative p-2 rounded-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 overflow-hidden group"
             >
-              <div className="relative w-5 h-5">
+              <div className="relative w-4 h-4 sm:w-5 sm:h-5">
                 {/* Moon Icon for Light Mode */}
                 <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
                   darkMode ? 'opacity-0 rotate-180 scale-0' : 'opacity-100 rotate-0 scale-100'
                 }`}>
-                  <Moon size={18} className="text-black group-hover:text-gray-800 transition-colors duration-200" />
+                  <Moon size={16} className="sm:w-[18px] sm:h-[18px] text-black group-hover:text-gray-800 transition-colors duration-200" />
                 </div>
                 
                 {/* Sun Icon for Dark Mode */}
@@ -166,10 +166,10 @@ const Navbar = () => {
           transition-colors duration-300
         ">
           <div className="flex items-center justify-around py-2">
-            <NavLink to="/" label="Home" icon={<Home size={20} />} active={location.pathname === '/'} onClick={handleNavClick} />
-            <NavLink to="/about" label="About" icon={<User size={20} />} active={location.pathname === '/about'} onClick={handleNavClick} />
-            <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={20} />} active={location.pathname === '/projects'} onClick={handleNavClick} />
-            <NavLink to="/contact" label="Contact" icon={<Mail size={20} />} active={location.pathname === '/contact'} onClick={handleNavClick} />
+            <NavLink to="/" label="Home" icon={<Home size={18} className="sm:w-5 sm:h-5" />} active={location.pathname === '/'} onClick={handleNavClick} />
+            <NavLink to="/about" label="About" icon={<User size={18} className="sm:w-5 sm:h-5" />} active={location.pathname === '/about'} onClick={handleNavClick} />
+            <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={18} className="sm:w-5 sm:h-5" />} active={location.pathname === '/projects'} onClick={handleNavClick} />
+            <NavLink to="/contact" label="Contact" icon={<Mail size={18} className="sm:w-5 sm:h-5" />} active={location.pathname === '/contact'} onClick={handleNavClick} />
           </div>
         </nav>
       </div>

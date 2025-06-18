@@ -76,15 +76,15 @@ export default function Projects() {
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <div className="pt-32 pb-24 px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black">
+    <div className="pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <ScrollReveal direction="up" delay={0.1}>
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4 sm:mb-6">
               My <span className="bg-gradient-to-r from-gray-700 to-black dark:from-golden dark:to-golden-light bg-clip-text text-transparent">Projects</span>
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
               A collection of projects that showcase my skills and passion for creating digital solutions.
             </p>
           </div>
@@ -92,12 +92,12 @@ export default function Projects() {
 
         {/* Filter Buttons */}
         <ScrollReveal direction="up" delay={0.2}>
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-4">
             {filters.map((filter) => (
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 ${
+                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 text-sm sm:text-base ${
                   activeFilter === filter
                     ? 'bg-black dark:bg-golden text-white dark:text-black'
                     : 'bg-white dark:bg-gray-800 text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
@@ -110,7 +110,7 @@ export default function Projects() {
         </ScrollReveal>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredProjects.map((project, index) => (
             <ScrollReveal key={project.id} direction="up" delay={0.3 + index * 0.1}>
               <div className="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
@@ -118,37 +118,37 @@ export default function Projects() {
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-40 sm:h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 sm:gap-4">
                     <a 
                       href={project.liveUrl}
-                      className="p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110"
+                      className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110"
                     >
-                      <ExternalLink size={20} />
+                      <ExternalLink size={18} className="sm:w-5 sm:h-5" />
                     </a>
                     <a 
                       href={project.githubUrl}
-                      className="p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110"
+                      className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110"
                     >
-                      <Github size={20} />
+                      <Github size={18} className="sm:w-5 sm:h-5" />
                     </a>
                   </div>
                 </div>
                 
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-xl font-semibold text-black dark:text-white">{project.title}</h3>
-                    <span className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full">
+                    <h3 className="text-lg sm:text-xl font-semibold text-black dark:text-white">{project.title}</h3>
+                    <span className="text-xs px-2 sm:px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full">
                       {project.category}
                     </span>
                   </div>
                   
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 text-sm leading-relaxed">
                     {project.description}
                   </p>
                   
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1 sm:gap-2">
                     {project.technologies.map((tech) => (
                       <span 
                         key={tech}
@@ -166,15 +166,15 @@ export default function Projects() {
 
         {/* Call to Action */}
         <ScrollReveal direction="up" delay={0.8}>
-          <div className="text-center mt-16 bg-white dark:bg-gray-900 rounded-2xl p-12">
-            <h2 className="text-3xl font-bold text-black dark:text-white mb-4">Have a Project in Mind?</h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+          <div className="text-center mt-12 sm:mt-16 bg-white dark:bg-gray-900 rounded-2xl p-8 sm:p-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-3 sm:mb-4">Have a Project in Mind?</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
               I'm always excited to work on new projects and collaborate with amazing people. 
               Let's create something incredible together.
             </p>
             <Link 
               to="/contact"
-              className="inline-block bg-black dark:bg-golden text-white dark:text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105"
+              className="inline-block bg-black dark:bg-golden text-white dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 text-sm sm:text-base"
             >
               Start a Project
             </Link>

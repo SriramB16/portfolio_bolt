@@ -25,27 +25,27 @@ const Contact = () => {
   };
 
   return (
-    <div className="pt-32 pb-24 px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black">
+    <div className="pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <ScrollReveal direction="up" delay={0.1}>
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4 sm:mb-6">
               Get In <span className="bg-gradient-to-r from-gray-700 to-black dark:from-golden dark:to-golden-light bg-clip-text text-transparent">Touch</span>
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
               I'd love to hear from you. Whether you have a project in mind or just want to chat about technology.
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <ScrollReveal direction="left" delay={0.2}>
               <div>
-                <h2 className="text-3xl font-bold text-black dark:text-white mb-6">Let's Talk</h2>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-4 sm:mb-6">Let's Talk</h2>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
                   I'm always open to discussing new opportunities, creative projects, or potential collaborations. 
                   Feel free to reach out if you have any questions or just want to say hello!
                 </p>
@@ -53,20 +53,20 @@ const Contact = () => {
             </ScrollReveal>
 
             {/* Contact Details */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {[
                 { icon: Mail, title: 'Email', info: 'Sriram@example.com' },
                 { icon: Phone, title: 'Phone', info: '+91 1234567890' },
                 { icon: MapPin, title: 'Location', info: 'Bangalore, IND' }
               ].map((contact, index) => (
                 <ScrollReveal key={contact.title} direction="left" delay={0.3 + index * 0.1}>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-black dark:bg-golden rounded-full flex items-center justify-center">
-                      <contact.icon size={20} className="text-white dark:text-black" />
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-black dark:bg-golden rounded-full flex items-center justify-center">
+                      <contact.icon size={18} className="sm:w-5 sm:h-5 text-white dark:text-black" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-black dark:text-white">{contact.title}</h3>
-                      <p className="text-gray-600 dark:text-gray-300">{contact.info}</p>
+                      <h3 className="font-semibold text-black dark:text-white text-sm sm:text-base">{contact.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">{contact.info}</p>
                     </div>
                   </div>
                 </ScrollReveal>
@@ -76,15 +76,15 @@ const Contact = () => {
             {/* Social Links */}
             <ScrollReveal direction="left" delay={0.6}>
               <div>
-                <h3 className="font-semibold text-black dark:text-white mb-4">Follow Me</h3>
-                <div className="flex gap-4">
+                <h3 className="font-semibold text-black dark:text-white mb-3 sm:mb-4 text-sm sm:text-base">Follow Me</h3>
+                <div className="flex gap-3 sm:gap-4">
                   {[Github, Linkedin, Twitter].map((Icon, index) => (
                     <a 
                       key={index}
                       href="#" 
-                      className="w-12 h-12 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110"
+                      className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110"
                     >
-                      <Icon size={20} />
+                      <Icon size={18} className="sm:w-5 sm:h-5" />
                     </a>
                   ))}
                 </div>
@@ -94,11 +94,11 @@ const Contact = () => {
 
           {/* Contact Form */}
           <ScrollReveal direction="right" delay={0.3}>
-            <div className="bg-white dark:bg-gray-900 rounded-2xl p-8">
-              <h2 className="text-2xl font-bold text-black dark:text-white mb-6">Send a Message</h2>
+            <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 sm:p-8">
+              <h2 className="text-xl sm:text-2xl font-bold text-black dark:text-white mb-4 sm:mb-6">Send a Message</h2>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-black dark:text-white mb-2">
                       Name
@@ -109,7 +109,7 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300 text-sm sm:text-base"
                       required
                     />
                   </div>
@@ -124,7 +124,7 @@ const Contact = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300 text-sm sm:text-base"
                       required
                     />
                   </div>
@@ -140,7 +140,7 @@ const Contact = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300 text-sm sm:text-base"
                     required
                   />
                 </div>
@@ -152,19 +152,19 @@ const Contact = () => {
                   <textarea
                     id="message"
                     name="message"
-                    rows={6}
+                    rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300 resize-none"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300 resize-none text-sm sm:text-base"
                     required
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-black dark:bg-golden text-white dark:text-black px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+                  className="w-full bg-black dark:bg-golden text-white dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base"
                 >
-                  <Send size={20} />
+                  <Send size={18} className="sm:w-5 sm:h-5" />
                   Send Message
                 </button>
               </form>
@@ -174,18 +174,18 @@ const Contact = () => {
 
         {/* Additional CTA */}
         <ScrollReveal direction="up" delay={0.7}>
-          <div className="text-center mt-16 bg-white dark:bg-gray-900 rounded-2xl p-12">
-            <h2 className="text-3xl font-bold text-black dark:text-white mb-4">Ready to Start Your Project?</h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+          <div className="text-center mt-12 sm:mt-16 bg-white dark:bg-gray-900 rounded-2xl p-8 sm:p-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-3 sm:mb-4">Ready to Start Your Project?</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
               Let's discuss your ideas and turn them into reality. I'm here to help you create something amazing.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-black dark:bg-golden text-white dark:text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <button className="bg-black dark:bg-golden text-white dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 text-sm sm:text-base">
                 Schedule a Call
               </button>
               <Link 
                 to="/projects"
-                className="inline-block border-2 border-black dark:border-golden text-black dark:text-golden px-8 py-4 rounded-full font-semibold hover:bg-black hover:text-white dark:hover:bg-golden dark:hover:text-black transition-all duration-300"
+                className="inline-block border-2 border-black dark:border-golden text-black dark:text-golden px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-black hover:text-white dark:hover:bg-golden dark:hover:text-black transition-all duration-300 text-sm sm:text-base"
               >
                 View My Work
               </Link>
