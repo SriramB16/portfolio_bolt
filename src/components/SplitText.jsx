@@ -7,7 +7,8 @@ const SplitText = ({
   delay = 0,
   duration = 0.5,
   staggerDelay = 0.1,
-  animationType = 'slideUp'
+  animationType = 'slideUp',
+  style = {}
 }) => {
   const letters = text.split('');
 
@@ -22,101 +23,26 @@ const SplitText = ({
     },
   };
 
-  const getLetterVariants = () => {
-    switch (animationType) {
-      case 'slideUp':
-        return {
-          hidden: { 
-            y: 100, 
-            opacity: 0,
-            rotateX: -90,
-            scale: 0.8
-          },
-          visible: { 
-            y: 0, 
-            opacity: 1,
-            rotateX: 0,
-            scale: 1,
-            transition: {
-              type: "spring",
-              damping: 12,
-              stiffness: 200,
-              duration: duration
-            }
-          },
-        };
-      case 'fadeIn':
-        return {
-          hidden: { opacity: 0, scale: 0.8 },
-          visible: { 
-            opacity: 1, 
-            scale: 1,
-            transition: { duration: duration }
-          },
-        };
-      case 'slideDown':
-        return {
-          hidden: { y: -100, opacity: 0 },
-          visible: { 
-            y: 0, 
-            opacity: 1,
-            transition: { duration: duration }
-          },
-        };
-      case 'slideLeft':
-        return {
-          hidden: { x: 100, opacity: 0 },
-          visible: { 
-            x: 0, 
-            opacity: 1,
-            transition: { duration: duration }
-          },
-        };
-      case 'slideRight':
-        return {
-          hidden: { x: -100, opacity: 0 },
-          visible: { 
-            x: 0, 
-            opacity: 1,
-            transition: { duration: duration }
-          },
-        };
-      case 'scale':
-        return {
-          hidden: { scale: 0, opacity: 0 },
-          visible: { 
-            scale: 1, 
-            opacity: 1,
-            transition: { 
-              type: "spring",
-              stiffness: 300,
-              damping: 20,
-              duration: duration 
-            }
-          },
-        };
-      case 'rotate':
-        return {
-          hidden: { rotate: 180, opacity: 0 },
-          visible: { 
-            rotate: 0, 
-            opacity: 1,
-            transition: { duration: duration }
-          },
-        };
-      default:
-        return {
-          hidden: { y: 100, opacity: 0 },
-          visible: { 
-            y: 0, 
-            opacity: 1,
-            transition: { duration: duration }
-          },
-        };
-    }
+  const letterVariants = {
+    hidden: { 
+      y: 100, 
+      opacity: 0,
+      rotateX: -90,
+      scale: 0.8
+    },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      rotateX: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 200,
+        duration: duration
+      }
+    },
   };
-
-  const letterVariants = getLetterVariants();
 
   return (
     <motion.div
@@ -124,15 +50,18 @@ const SplitText = ({
       variants={containerVariants}
       initial="hidden"
       animate="visible"
+      style={style}
     >
       {letters.map((letter, index) => (
         <motion.span
           key={index}
-          className="inline-block"
+          className="inline-block split-text-letter"
           variants={letterVariants}
           style={{ 
-            display: letter === ' ' ? 'inline' : 'inline-block',
-            marginRight: letter === ' ' ? '0.5em' : '0'
+            display: 'inline-block',
+            marginRight: letter === ' ' ? '0.5em' : '0',
+            color: '#FFFFFF',
+            fontWeight: 900
           }}
         >
           {letter === ' ' ? '\u00A0' : letter}

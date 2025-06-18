@@ -89,6 +89,14 @@
   }
 }
 
+/* Intro animation specific styles */
+.intro-text {
+  font-family: 'Orbitron', 'Inter', sans-serif !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.1em !important;
+  color: #FFFFFF !important;
+}
+
 /* Split text animation improvements */
 .split-text-container {
   perspective: 1000px;
@@ -97,6 +105,8 @@
 .split-text-letter {
   transform-style: preserve-3d;
   backface-visibility: hidden;
+  color: #FFFFFF !important;
+  font-weight: 900 !important;
 }
 
 /* Custom scrollbar */
@@ -196,28 +206,4 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* Intro animation specific styles */
-.intro-text {
-  font-family: 'Orbitron', 'Inter', sans-serif;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-}
-
-/* Enhance the split text animation */
-@keyframes letterSlideUp {
-  from {
-    transform: translateY(100px) rotateX(-90deg) scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0) rotateX(0deg) scale(1);
-    opacity: 1;
-  }
-}
-
-.letter-animate {
-  animation: letterSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
