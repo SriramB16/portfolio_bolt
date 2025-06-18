@@ -162,25 +162,23 @@ const Home = () => {
                   </div>
                 </ScrollReveal>
 
-                {/* Section 3: Flex Container - Empty Border Div + Description (Equal Width) */}
-                <div className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-0 mb-8 sm:mb-12">
-                  {/* Left: Empty Border Div - Takes 50% width */}
-                  <ScrollReveal direction="up" delay={0.3}>
-                    <div className="w-full lg:w-1/2 flex items-start lg:pr-8 xl:pr-12">
+                {/* Section 3: Flex Container - Border + Description (Equal Width using flex: 1) */}
+                <ScrollReveal direction="up" delay={0.3}>
+                  <div className="flex flex-col lg:flex-row mb-8 sm:mb-12 w-full">
+                    {/* Left: Empty Border Div - flex: 1 for equal width */}
+                    <div className="flex-1 flex items-start lg:pr-8 xl:pr-12">
                       <div className="w-16 sm:w-20 md:w-24 lg:w-32 xl:w-40 h-px bg-gray-400 dark:bg-gray-600 lg:mt-2"></div>
                     </div>
-                  </ScrollReveal>
 
-                  {/* Right: Description Text - Takes 50% width */}
-                  <ScrollReveal direction="up" delay={0.3}>
-                    <div className="w-full lg:w-1/2">
+                    {/* Right: Description Text - flex: 1 for equal width */}
+                    <div className="flex-1 mt-6 lg:mt-0">
                       <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg lg:text-xl leading-relaxed font-satoshi">
                         I work with brands globally to build pixel-perfect, engaging, and accessible digital 
                         experiences that drive results and achieve business goals.
                       </p>
                     </div>
-                  </ScrollReveal>
-                </div>
+                  </div>
+                </ScrollReveal>
 
                 {/* Section 4: Flex Container - Social Links + Button */}
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8">
