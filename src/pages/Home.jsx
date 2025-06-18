@@ -162,72 +162,78 @@ const Home = () => {
                   </div>
                 </ScrollReveal>
 
-                {/* Section 3: Flex Container - Border + Description (Equal Width using flex: 1) */}
+                {/* Section 3: Flex Container - Line + Description (Equal Width) */}
                 <ScrollReveal direction="up" delay={0.3}>
                   <div className="flex flex-col lg:flex-row mb-8 sm:mb-12 w-full">
-                    {/* Left: Empty Border Div - flex: 1 for equal width */}
-                    <div className="flex-1 flex items-start lg:pr-8 xl:pr-12">
-                      <div className="w-16 sm:w-20 md:w-24 lg:w-32 xl:w-40 h-px bg-gray-400 dark:bg-gray-600 lg:mt-2"></div>
+                    {/* Text - First on mobile, left on desktop */}
+                    <div className="flex-1 flex items-center order-1 lg:order-2 mb-6 lg:mb-0">
+                      <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg lg:text-xl leading-relaxed font-satoshi">
+                        I work with brands globally to build pixel-perfect, engaging, and accessible digital experiences that drive results and achieve business goals.
+                      </p>
                     </div>
 
-                    {/* Right: Description Text - flex: 1 for equal width */}
-                    <div className="flex-1 mt-6 lg:mt-0">
-                      <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg lg:text-xl leading-relaxed font-satoshi">
-                        I work with brands globally to build pixel-perfect, engaging, and accessible digital 
-                        experiences that drive results and achieve business goals.
-                      </p>
+                    {/* Line - Second on mobile, right on desktop */}
+                    <div className="flex-1 flex justify-end items-center order-2 lg:order-1 lg:pr-8 xl:pr-12">
+                      <div className="w-full h-px bg-gray-400 dark:bg-gray-600"></div>
                     </div>
                   </div>
                 </ScrollReveal>
 
-                {/* Section 4: Flex Container - Social Links + Button */}
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8">
-                  {/* Left: Social Links with Hover Effects */}
-                  <ScrollReveal direction="up" delay={0.4}>
-                    <div 
-                      className="flex flex-wrap gap-4 sm:gap-6 lg:gap-8 text-sm sm:text-base lg:text-lg font-satoshi"
-                      onMouseLeave={() => setHoveredSocialLink(null)}
-                    >
-                      {[
-                        { name: 'LINKEDIN', href: '#' },
-                        { name: 'GITHUB', href: '#' },
-                        { name: 'INSTAGRAM', href: '#' },
-                        { name: 'GMAIL', href: '#' }
-                      ].map((social) => (
-                        <a 
-                          key={social.name}
-                          href={social.href} 
-                          className={`transition-all duration-300 flex items-center gap-2 group ${
-                            hoveredSocialLink && hoveredSocialLink !== social.name
-                              ? 'text-gray-400 dark:text-gray-600 opacity-50'
-                              : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
-                          }`}
-                          onMouseEnter={() => setHoveredSocialLink(social.name)}
-                        >
-                          {social.name}
-                          <ArrowRight 
-                            size={16} 
-                            className="sm:w-[18px] sm:h-[18px] lg:w-5 lg:h-5 -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" 
-                          />
-                        </a>
-                      ))}
+                {/* Section 4: Flex Container - Button + Social Links */}
+                <ScrollReveal direction="up" delay={0.4}>
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8">
+                    {/* Button - First on mobile, right on desktop */}
+                    <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+                      <Link 
+                        to="/about"
+                        className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 text-sm sm:text-base lg:text-lg font-satoshi hover:shadow-lg hover:shadow-black/20 dark:hover:shadow-black/40"
+                        onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
+                      >
+                        <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
+                          Know me better
+                        </span>
+                        <div className="absolute inset-0 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+                      </Link>
                     </div>
-                  </ScrollReveal>
 
-                  {/* Right: Know me better button */}
-                  <ScrollReveal direction="up" delay={0.5}>
-                    <Link 
-                      to="/about"
-                      className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 text-sm sm:text-base lg:text-lg font-satoshi hover:shadow-lg hover:shadow-black/20 dark:hover:shadow-black/40"
-                      onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
-                    >
-                      <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
-                        Know me better
-                      </span>
-                      <div className="absolute inset-0 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-                    </Link>
-                  </ScrollReveal>
-                </div>
+                    {/* Separator Line - Only visible on mobile */}
+                    <div className="order-2 lg:hidden">
+                      <div className="w-full h-px bg-gray-400 dark:bg-gray-600"></div>
+                    </div>
+
+                    {/* Social Links - Third on mobile, left on desktop */}
+                    <div className="order-3 lg:order-1 flex justify-center lg:justify-start">
+                      <div 
+                        className="flex flex-wrap gap-4 sm:gap-6 lg:gap-8 text-sm sm:text-base lg:text-lg font-satoshi"
+                        onMouseLeave={() => setHoveredSocialLink(null)}
+                      >
+                        {[
+                          { name: 'LINKEDIN', href: '#' },
+                          { name: 'GITHUB', href: '#' },
+                          { name: 'INSTAGRAM', href: '#' },
+                          { name: 'GMAIL', href: '#' }
+                        ].map((social) => (
+                          <a 
+                            key={social.name}
+                            href={social.href} 
+                            className={`transition-all duration-300 flex items-center gap-2 group ${
+                              hoveredSocialLink && hoveredSocialLink !== social.name
+                                ? 'text-gray-400 dark:text-gray-600 opacity-50'
+                                : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
+                            }`}
+                            onMouseEnter={() => setHoveredSocialLink(social.name)}
+                          >
+                            {social.name}
+                            <ArrowRight 
+                              size={16} 
+                              className="sm:w-[18px] sm:h-[18px] lg:w-5 lg:h-5 -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" 
+                            />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </ScrollReveal>
 
               </div>
             </section>
