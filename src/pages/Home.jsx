@@ -196,8 +196,8 @@ const Home = () => {
                       </Link>
                     </div>
 
-                    {/* Social Links - Third on mobile, left on desktop */}
-                    <div className="order-3 lg:order-1 flex justify-center lg:justify-start">
+                    {/* Social Links - Second on mobile, left on desktop */}
+                    <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
                       <div 
                         className="flex flex-wrap gap-4 sm:gap-6 lg:gap-8 text-sm sm:text-base lg:text-lg font-satoshi"
                         onMouseLeave={() => setHoveredSocialLink(null)}
