@@ -143,7 +143,7 @@ const Home = () => {
                 {/* Section 1: Hey! It's me Sriram - Full Width Flexbox */}
                 <ScrollReveal direction="up" delay={0.1}>
                   <div className="w-full flex items-center gap-3 sm:gap-4 mb-8 sm:mb-12">
-                    <div className="w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full animate-pulse"></div>
+                    
                     <WavingHandSVG className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" />
                     <span className="text-green-500 text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium font-satoshi">
                       Hey! It's me Sriram
