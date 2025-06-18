@@ -4,7 +4,7 @@ const ScrollTextReveal = () => {
   const containerRef = useRef(null);
   const [revealedWords, setRevealedWords] = useState(new Set());
 
-  const text = "I'm Devraj Chatribin, with over 5+ years of experience in design & development with strong focus on producing high quality & impactful digital experiences. I have worked with some of the most innovative industry leaders to help build their top-notch products.";
+  const text = "I’m Sriram — a developer who loves turning ideas into smooth, functional digital experiences. With 2 years of experience, I focus on writing clean code and building things people enjoy using. I’m always exploring, learning, and growing with the tech that keeps me inspired";
   
   const words = text.split(' ');
 
