@@ -11,23 +11,20 @@ const Home = () => {
   const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
-    // Check if this is the first visit or a reload to the home page
-    const hasSeenIntro = sessionStorage.getItem('hasSeenIntro');
-    
-    if (hasSeenIntro) {
+    // Always show intro animation for 4 seconds
+    const introTimer = setTimeout(() => {
       setShowIntro(false);
-      setContentVisible(true);
-    } else {
-      sessionStorage.setItem('hasSeenIntro', 'true');
-    }
+      // Delay content appearance for smooth transition
+      setTimeout(() => {
+        setContentVisible(true);
+      }, 300);
+    }, 4000);
+
+    return () => clearTimeout(introTimer);
   }, []);
 
   const handleIntroComplete = () => {
-    setShowIntro(false);
-    // Delay content appearance for smooth transition
-    setTimeout(() => {
-      setContentVisible(true);
-    }, 300);
+    // This is called by the animation component but we control timing with useEffect
   };
 
   const containerVariants = {
