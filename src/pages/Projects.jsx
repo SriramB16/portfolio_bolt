@@ -82,19 +82,6 @@ export default function Projects() {
     ? projects 
     : projects.filter(project => project.category === activeFilter);
 
-  // Define stagger positions for each project
-  const getStaggerClass = (index) => {
-    const staggerPattern = [
-      '', // Project 1: Top
-      'mt-16 sm:mt-20 md:mt-24 lg:mt-28', // Project 2: Lower
-      'mt-20 sm:mt-24 md:mt-28 lg:mt-32 xl:mt-36', // Project 3: Much Lower
-      '', // Project 4: Top
-      'mt-12 sm:mt-16 md:mt-20 lg:mt-24', // Project 5: Medium
-      'mt-8 sm:mt-12 md:mt-16 lg:mt-20' // Project 6: Small
-    ];
-    return staggerPattern[index % staggerPattern.length] || '';
-  };
-
   return (
     <div className="pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black">
       <div className="max-w-6xl mx-auto">
@@ -129,14 +116,14 @@ export default function Projects() {
           </div>
         </ScrollReveal>
 
-        {/* Projects Grid - True Staggered Layout */}
+        {/* Projects Grid - True Staggered Masonry Layout */}
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
-          {/* First Column */}
+          {/* First Column - Starts at top */}
           <div className="space-y-6 sm:space-y-8">
             {filteredProjects.filter((_, index) => index % 2 === 0).map((project, index) => (
               <ScrollReveal key={project.id} direction="up" delay={0.3 + index * 0.1}>
                 <div 
-                  className={`group cursor-pointer ${getStaggerClass(index * 2)}`}
+                  className="group cursor-pointer"
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}
                 >
@@ -175,12 +162,12 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* Second Column */}
-          <div className="space-y-6 sm:space-y-8">
+          {/* Second Column - Starts lower to create stagger effect */}
+          <div className="space-y-6 sm:space-y-8 mt-16 sm:mt-20 md:mt-24 lg:mt-32">
             {filteredProjects.filter((_, index) => index % 2 === 1).map((project, index) => (
               <ScrollReveal key={project.id} direction="up" delay={0.4 + index * 0.1}>
                 <div 
-                  className={`group cursor-pointer ${getStaggerClass(index * 2 + 1)}`}
+                  className="group cursor-pointer"
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}
                 >

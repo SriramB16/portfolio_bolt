@@ -278,11 +278,11 @@ const Home = () => {
                   </p>
                 </ScrollReveal>
 
-                {/* Projects Grid - True Staggered Layout */}
+                {/* Projects Grid - True Staggered Masonry Layout */}
                 <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
-                  {/* First Column */}
+                  {/* First Column - Starts at top */}
                   <div className="space-y-6 sm:space-y-8">
-                    {/* Project 1 - Top */}
+                    {/* Project 1 - E-Commerce Platform */}
                     <ScrollReveal direction="up" delay={0.4}>
                       <div 
                         className="group cursor-pointer"
@@ -308,10 +308,10 @@ const Home = () => {
                       </div>
                     </ScrollReveal>
 
-                    {/* Project 3 - Much Lower */}
+                    {/* Project 3 - Design System */}
                     <ScrollReveal direction="up" delay={0.6}>
                       <div 
-                        className="group cursor-pointer mt-20 sm:mt-24 md:mt-28 lg:mt-32 xl:mt-36"
+                        className="group cursor-pointer"
                         onMouseEnter={() => setHoveredProject(3)}
                         onMouseLeave={() => setHoveredProject(null)}
                       >
@@ -335,12 +335,12 @@ const Home = () => {
                     </ScrollReveal>
                   </div>
 
-                  {/* Second Column */}
-                  <div className="space-y-6 sm:space-y-8">
-                    {/* Project 2 - Lower */}
+                  {/* Second Column - Starts lower to create stagger effect */}
+                  <div className="space-y-6 sm:space-y-8 mt-16 sm:mt-20 md:mt-24 lg:mt-32">
+                    {/* Project 2 - Task Management App */}
                     <ScrollReveal direction="up" delay={0.5}>
                       <div 
-                        className="group cursor-pointer mt-16 sm:mt-20 md:mt-24 lg:mt-28"
+                        className="group cursor-pointer"
                         onMouseEnter={() => setHoveredProject(2)}
                         onMouseLeave={() => setHoveredProject(null)}
                       >
@@ -363,7 +363,7 @@ const Home = () => {
                       </div>
                     </ScrollReveal>
 
-                    {/* Project 4 - Top */}
+                    {/* Project 4 - Weather Dashboard */}
                     <ScrollReveal direction="up" delay={0.7}>
                       <div 
                         className="group cursor-pointer"
