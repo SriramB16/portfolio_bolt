@@ -61,8 +61,8 @@ const Contact = () => {
               ].map((contact, index) => (
                 <ScrollReveal key={contact.title} direction="left" delay={0.3 + index * 0.1}>
                   <div className="flex items-center gap-3 sm:gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-black dark:bg-golden rounded-full flex items-center justify-center shadow-lg shadow-black/20 dark:shadow-black/30">
-                      <contact.icon size={18} className="sm:w-5 sm:h-5 text-white dark:text-black" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-golden rounded-full flex items-center justify-center shadow-lg shadow-black/20 dark:shadow-black/30 border border-black dark:border-golden">
+                      <contact.icon size={18} className="sm:w-5 sm:h-5 text-black dark:text-black" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-black dark:text-white text-sm sm:text-base">{contact.title}</h3>
@@ -82,7 +82,7 @@ const Contact = () => {
                     <a 
                       key={index}
                       href="#" 
-                      className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110 shadow-lg shadow-black/10 dark:shadow-black/20 hover:shadow-xl hover:shadow-black/15 dark:hover:shadow-black/30"
+                      className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110 shadow-lg shadow-black/10 dark:shadow-black/20 hover:shadow-xl hover:shadow-black/15 dark:hover:shadow-black/30 border border-gray-200 dark:border-gray-700"
                     >
                       <Icon size={18} className="sm:w-5 sm:h-5" />
                     </a>
@@ -162,7 +162,7 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-black dark:bg-golden text-white dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50"
+                  className="w-full bg-white dark:bg-golden text-black dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50 border border-black dark:border-golden"
                 >
                   <Send size={18} className="sm:w-5 sm:h-5" />
                   Send Message
@@ -180,7 +180,7 @@ const Contact = () => {
               Let's discuss your ideas and turn them into reality. I'm here to help you create something amazing.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <button className="bg-black dark:bg-golden text-white dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50">
+              <button className="bg-white dark:bg-golden text-black dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50 border border-black dark:border-golden">
                 Schedule a Call
               </button>
               <Link 

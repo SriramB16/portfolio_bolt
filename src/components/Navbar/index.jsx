@@ -185,14 +185,18 @@ const NavLink = ({ to, label, icon, active = false, onClick }) => {
       className={`
         flex flex-col items-center gap-1
         md:flex-row md:gap-1 lg:gap-2
-        transition-all duration-200 px-1 sm:px-2
+        transition-all duration-200 px-1 sm:px-2 relative
         ${active 
-          ? 'text-gray-700 dark:text-golden' 
-          : 'text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200 hover:scale-105'}
+          ? 'text-black dark:text-golden font-semibold' 
+          : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:scale-105'}
       `}
     >
       {icon}
       <span className="text-xs md:text-xs lg:text-sm font-medium whitespace-nowrap">{label}</span>
+      {/* Active indicator */}
+      {active && (
+        <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-black dark:bg-golden rounded-full md:hidden"></div>
+      )}
     </Link>
   );
 };

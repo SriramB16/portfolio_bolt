@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import PageTransition from './components/PageTransition';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
@@ -56,6 +57,7 @@ function App() {
               </PageTransition>
             } />
           </Routes>
+          <Footer />
         </div>
       </Router>
     </ThemeProvider>
