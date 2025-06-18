@@ -70,24 +70,22 @@ const Navbar = () => {
   return (
     <>
       {/* Mobile top logo */}
-      <div className={`fixed top-0 left-0 w-full md:hidden z-50 ${isHomePage ? 'bg-black' : 'bg-white dark:bg-black'}`}>
+      <div className={`fixed top-0 left-0 w-full md:hidden z-50 transition-colors duration-300 ${
+        isHomePage ? 'bg-white dark:bg-black' : 'bg-white dark:bg-black'
+      }`}>
         <div className="flex items-center justify-between p-4">
-          <span className={`text-xl font-bold ${isHomePage ? 'text-white' : 'text-black dark:text-white'}`}>SR</span>
+          <span className={`text-xl font-bold ${isHomePage ? 'text-black dark:text-white' : 'text-black dark:text-white'}`}>SR</span>
           <button 
             onClick={toggleDarkMode}
             aria-label="Toggle dark mode"
-            className={`relative p-2 rounded-full transition-all duration-300 overflow-hidden ${
-              isHomePage 
-                ? 'bg-gray-800 text-gray-300 hover:bg-gray-700' 
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-            }`}
+            className="relative p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 overflow-hidden"
           >
             <div className="relative w-5 h-5">
               {/* Moon Icon for Light Mode */}
               <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
                 darkMode ? 'opacity-0 rotate-180 scale-0' : 'opacity-100 rotate-0 scale-100'
               }`}>
-                <Moon size={18} className={isHomePage ? "text-white" : "text-black"} />
+                <Moon size={18} className="text-black" />
               </div>
               
               {/* Sun Icon for Dark Mode */}
@@ -109,28 +107,23 @@ const Navbar = () => {
           style={{
             width: `${scrollWidth}%`,
           }}
-          className={`
+          className="
             flex items-center justify-between 
-            rounded-full transition-all duration-300 ease-out
-            shadow-sm py-3
-            ${isHomePage 
-              ? 'bg-black/90 backdrop-blur-sm' 
-              : 'bg-white/90 dark:bg-black/90 backdrop-blur-sm dark:shadow-gray-800/20'
-            }
-          `}
+            rounded-full bg-white/90 dark:bg-black/90
+            backdrop-blur-sm transition-all duration-300 ease-out
+            shadow-sm dark:shadow-gray-800/20 py-3
+          "
         >
           <div className="flex-1 flex justify-start pl-6">
-            <div className={isHomePage ? 'text-white' : ''}>
-              <Logo />
-            </div>
+            <Logo />
           </div>
           
           <div className="flex-1 flex justify-center">
             <div className="flex items-center space-x-8">
-              <NavLink to="/" label="Home" icon={<Home size={18} />} active={location.pathname === '/'} onClick={handleNavClick} isHomePage={isHomePage} />
-              <NavLink to="/about" label="About" icon={<User size={18} />} active={location.pathname === '/about'} onClick={handleNavClick} isHomePage={isHomePage} />
-              <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={18} />} active={location.pathname === '/projects'} onClick={handleNavClick} isHomePage={isHomePage} />
-              <NavLink to="/contact" label="Contact" icon={<Mail size={18} />} active={location.pathname === '/contact'} onClick={handleNavClick} isHomePage={isHomePage} />
+              <NavLink to="/" label="Home" icon={<Home size={18} />} active={location.pathname === '/'} onClick={handleNavClick} />
+              <NavLink to="/about" label="About" icon={<User size={18} />} active={location.pathname === '/about'} onClick={handleNavClick} />
+              <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={18} />} active={location.pathname === '/projects'} onClick={handleNavClick} />
+              <NavLink to="/contact" label="Contact" icon={<Mail size={18} />} active={location.pathname === '/contact'} onClick={handleNavClick} />
             </div>
           </div>
           
@@ -138,20 +131,14 @@ const Navbar = () => {
             <button 
               onClick={toggleDarkMode}
               aria-label="Toggle dark mode"
-              className={`relative p-2 rounded-full transition-all duration-300 overflow-hidden group ${
-                isHomePage 
-                  ? 'bg-gray-800 text-gray-300 hover:bg-gray-700' 
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-              }`}
+              className="relative p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 overflow-hidden group"
             >
               <div className="relative w-5 h-5">
                 {/* Moon Icon for Light Mode */}
                 <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
                   darkMode ? 'opacity-0 rotate-180 scale-0' : 'opacity-100 rotate-0 scale-100'
                 }`}>
-                  <Moon size={18} className={`group-hover:text-gray-800 transition-colors duration-200 ${
-                    isHomePage ? 'text-white' : 'text-black'
-                  }`} />
+                  <Moon size={18} className="text-black group-hover:text-gray-800 transition-colors duration-200" />
                 </div>
                 
                 {/* Sun Icon for Dark Mode */}
@@ -173,20 +160,16 @@ const Navbar = () => {
 
       {/* Bottom navbar for mobile */}
       <div className="fixed bottom-0 left-0 w-full md:hidden z-50 px-2 py-2">
-        <nav className={`
-          backdrop-blur-sm
+        <nav className="
+          bg-white/90 dark:bg-black/90 backdrop-blur-sm
           shadow-[0_-1px_2px_0_rgba(0,0,0,0.05)] dark:shadow-gray-800/20
           transition-colors duration-300
-          ${isHomePage 
-            ? 'bg-black/90' 
-            : 'bg-white/90 dark:bg-black/90'
-          }
-        `}>
+        ">
           <div className="flex items-center justify-around py-2">
-            <NavLink to="/" label="Home" icon={<Home size={20} />} active={location.pathname === '/'} onClick={handleNavClick} isHomePage={isHomePage} />
-            <NavLink to="/about" label="About" icon={<User size={20} />} active={location.pathname === '/about'} onClick={handleNavClick} isHomePage={isHomePage} />
-            <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={20} />} active={location.pathname === '/projects'} onClick={handleNavClick} isHomePage={isHomePage} />
-            <NavLink to="/contact" label="Contact" icon={<Mail size={20} />} active={location.pathname === '/contact'} onClick={handleNavClick} isHomePage={isHomePage} />
+            <NavLink to="/" label="Home" icon={<Home size={20} />} active={location.pathname === '/'} onClick={handleNavClick} />
+            <NavLink to="/about" label="About" icon={<User size={20} />} active={location.pathname === '/about'} onClick={handleNavClick} />
+            <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={20} />} active={location.pathname === '/projects'} onClick={handleNavClick} />
+            <NavLink to="/contact" label="Contact" icon={<Mail size={20} />} active={location.pathname === '/contact'} onClick={handleNavClick} />
           </div>
         </nav>
       </div>
@@ -194,7 +177,7 @@ const Navbar = () => {
   );
 };
 
-const NavLink = ({ to, label, icon, active = false, onClick, isHomePage = false }) => {
+const NavLink = ({ to, label, icon, active = false, onClick }) => {
   return (
     <Link 
       to={to}
@@ -204,12 +187,8 @@ const NavLink = ({ to, label, icon, active = false, onClick, isHomePage = false 
         md:flex-row md:gap-2
         transition-all duration-200
         ${active 
-          ? (isHomePage ? 'text-white' : 'text-gray-700 dark:text-golden')
-          : (isHomePage 
-              ? 'text-gray-400 hover:text-white hover:scale-105' 
-              : 'text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200 hover:scale-105'
-            )
-        }
+          ? 'text-gray-700 dark:text-golden' 
+          : 'text-black dark:text-white hover:text-gray-800 dark:hover:text-gray-200 hover:scale-105'}
       `}
     >
       {icon}

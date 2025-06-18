@@ -10,7 +10,7 @@ const Logo = () => {
       href="/" 
       className={`text-xl font-extrabold tracking-tighter ${
         isHomePage 
-          ? 'text-white' 
+          ? 'text-black dark:text-white' 
           : 'bg-gradient-to-r from-black to-gray-600 dark:from-golden dark:to-golden-light bg-clip-text text-transparent'
       }`}
     >
