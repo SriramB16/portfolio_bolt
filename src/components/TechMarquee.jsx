@@ -26,32 +26,34 @@ const TechMarquee = () => {
   ];
 
   return (
-    <div className="w-full overflow-hidden relative">
+    <div className="w-screen -mx-6 md:-mx-10 lg:-mx-16 overflow-hidden">
       {/* First marquee row */}
-      <div className="relative">
+      <div className="relative py-8">
         {/* Left gradient overlay */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white dark:from-black to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white dark:from-black to-transparent z-10 pointer-events-none"></div>
         
         {/* Right gradient overlay */}
-        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white dark:from-black to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white dark:from-black to-transparent z-10 pointer-events-none"></div>
         
         <Marquee
           gradient={false}
           speed={50}
           pauseOnHover={true}
-          className="py-6 marquee-container"
+          className="marquee-full-width"
+          style={{ width: '100%' }}
         >
           {technologies.map((tech, index) => (
             <div
               key={`${tech.name}-${index}`}
-              className="flex items-center gap-3 bg-white dark:bg-gray-800 px-6 py-4 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 mx-4 hover:scale-105 transition-transform duration-300 group whitespace-nowrap"
+              className="flex items-center gap-3 bg-white dark:bg-gray-800 px-6 py-4 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 mx-4 hover:scale-105 transition-transform duration-300 group whitespace-nowrap min-w-fit"
+              style={{ marginTop: '4px', marginBottom: '4px' }}
             >
-              <div className="relative">
-                <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
+              <div className="relative flex-shrink-0">
+                <span className="text-2xl group-hover:scale-110 transition-transform duration-300 block">
                   {tech.icon}
                 </span>
               </div>
-              <span className="font-semibold text-gray-700 dark:text-gray-300">
+              <span className="font-semibold text-gray-700 dark:text-gray-300 flex-shrink-0">
                 {tech.name}
               </span>
               <div className={`absolute inset-0 bg-gradient-to-r ${tech.color} opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300`}></div>
@@ -61,31 +63,33 @@ const TechMarquee = () => {
       </div>
       
       {/* Second row with reverse direction */}
-      <div className="relative mt-4">
+      <div className="relative py-8">
         {/* Left gradient overlay */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white dark:from-black to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white dark:from-black to-transparent z-10 pointer-events-none"></div>
         
         {/* Right gradient overlay */}
-        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white dark:from-black to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white dark:from-black to-transparent z-10 pointer-events-none"></div>
         
         <Marquee
           gradient={false}
           speed={40}
           direction="right"
           pauseOnHover={true}
-          className="py-6 marquee-container"
+          className="marquee-full-width"
+          style={{ width: '100%' }}
         >
           {technologies.slice().reverse().map((tech, index) => (
             <div
               key={`${tech.name}-reverse-${index}`}
-              className="flex items-center gap-3 bg-white dark:bg-gray-800 px-6 py-4 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 mx-4 hover:scale-105 transition-transform duration-300 group whitespace-nowrap"
+              className="flex items-center gap-3 bg-white dark:bg-gray-800 px-6 py-4 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 mx-4 hover:scale-105 transition-transform duration-300 group whitespace-nowrap min-w-fit"
+              style={{ marginTop: '4px', marginBottom: '4px' }}
             >
-              <div className="relative">
-                <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
+              <div className="relative flex-shrink-0">
+                <span className="text-2xl group-hover:scale-110 transition-transform duration-300 block">
                   {tech.icon}
                 </span>
               </div>
-              <span className="font-semibold text-gray-700 dark:text-gray-300">
+              <span className="font-semibold text-gray-700 dark:text-gray-300 flex-shrink-0">
                 {tech.name}
               </span>
               <div className={`absolute inset-0 bg-gradient-to-r ${tech.color} opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300`}></div>
