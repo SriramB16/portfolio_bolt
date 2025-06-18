@@ -6,6 +6,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        ryzes: ['Ryzes', 'Orbitron', 'Inter', 'system-ui', 'sans-serif'],
+        orbitron: ['Orbitron', 'Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         'golden': '#FFD700',

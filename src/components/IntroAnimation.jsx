@@ -43,25 +43,83 @@ const IntroAnimation = ({ onComplete }) => {
           initial="hidden"
           exit="exit"
         >
+          {/* Animated background elements */}
+          <div className="absolute inset-0">
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-r from-golden/10 via-transparent to-golden-light/10"
+              animate={{
+                background: [
+                  "linear-gradient(45deg, rgba(255,215,0,0.1), transparent, rgba(255,165,0,0.1))",
+                  "linear-gradient(225deg, rgba(255,165,0,0.1), transparent, rgba(255,215,0,0.1))",
+                  "linear-gradient(45deg, rgba(255,215,0,0.1), transparent, rgba(255,165,0,0.1))"
+                ]
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div 
+              className="absolute top-1/4 left-1/4 w-96 h-96 bg-golden/5 rounded-full blur-3xl"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.6, 0.3]
+              }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div 
+              className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-golden-light/5 rounded-full blur-3xl"
+              animate={{
+                scale: [1.2, 1, 1.2],
+                opacity: [0.6, 0.3, 0.6]
+              }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+            />
+          </div>
+
           {/* Main text animation - centered */}
           <div className="relative z-10 text-center px-4 flex items-center justify-center min-h-screen">
             {animationStarted && (
               <SplitText
                 text="SRIRAM"
-                className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-black intro-text"
+                className="text-6xl md:text-8xl lg:text-9xl xl:text-[12rem] font-black intro-text-ryzes"
                 delay={0.2}
                 duration={0.8}
                 staggerDelay={0.15}
                 animationType="slideUp"
                 style={{
-                  fontFamily: "'Orbitron', 'Inter', sans-serif",
-                  color: '#FFFFFF',
+                  fontFamily: "'Ryzes', 'Orbitron', 'Inter', sans-serif",
+                  background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
                   fontWeight: 900,
-                  letterSpacing: '0.1em'
+                  letterSpacing: '0.15em',
+                  filter: 'drop-shadow(0 0 30px rgba(255, 215, 0, 0.4))',
                 }}
               />
             )}
           </div>
+
+          {/* Particle effects */}
+          {Array.from({ length: 20 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-golden rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                opacity: [0, 1, 0],
+                scale: [0, 1, 0],
+                y: [0, -100, 0]
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
         </motion.div>
       )}
     </AnimatePresence>
