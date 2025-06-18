@@ -36,7 +36,7 @@ const TechMarquee = () => {
       <Marquee
         gradient={false}
         speed={50}
-        pauseOnHover={true}
+        pauseOnHover={false}
         className="bg-gray-50 dark:bg-gray-900 py-6"
       >
         {technologies.map((tech, index) => (
