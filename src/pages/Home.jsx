@@ -289,13 +289,13 @@ const Home = () => {
                         onMouseEnter={() => setHoveredProject(1)}
                         onMouseLeave={() => setHoveredProject(null)}
                       >
-                        <div className={`${projects[0].bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 ${
+                        <div className={`${projects[0].bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 hover:-translate-y-2 ${
                           hoveredProject && hoveredProject !== 1 ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
                         }`}>
                           <img 
                             src={projects[0].image}
                             alt={projects[0].title}
-                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/20 dark:shadow-black/40"
+                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/30 dark:shadow-black/50"
                           />
                         </div>
                         <div className="flex justify-between items-start">
@@ -315,13 +315,13 @@ const Home = () => {
                         onMouseEnter={() => setHoveredProject(3)}
                         onMouseLeave={() => setHoveredProject(null)}
                       >
-                        <div className={`${projects[2].bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 ${
+                        <div className={`${projects[2].bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 hover:-translate-y-2 ${
                           hoveredProject && hoveredProject !== 3 ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
                         }`}>
                           <img 
                             src={projects[2].image}
                             alt={projects[2].title}
-                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/20 dark:shadow-black/40"
+                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/30 dark:shadow-black/50"
                           />
                         </div>
                         <div className="flex justify-between items-start">
@@ -344,13 +344,13 @@ const Home = () => {
                         onMouseEnter={() => setHoveredProject(2)}
                         onMouseLeave={() => setHoveredProject(null)}
                       >
-                        <div className={`${projects[1].bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 ${
+                        <div className={`${projects[1].bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 hover:-translate-y-2 ${
                           hoveredProject && hoveredProject !== 2 ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
                         }`}>
                           <img 
                             src={projects[1].image}
                             alt={projects[1].title}
-                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/20 dark:shadow-black/40"
+                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/30 dark:shadow-black/50"
                           />
                         </div>
                         <div className="flex justify-between items-start">
@@ -370,13 +370,13 @@ const Home = () => {
                         onMouseEnter={() => setHoveredProject(4)}
                         onMouseLeave={() => setHoveredProject(null)}
                       >
-                        <div className={`${projects[3].bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 ${
+                        <div className={`${projects[3].bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 hover:-translate-y-2 ${
                           hoveredProject && hoveredProject !== 4 ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
                         }`}>
                           <img 
                             src={projects[3].image}
                             alt={projects[3].title}
-                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/20 dark:shadow-black/40"
+                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/30 dark:shadow-black/50"
                           />
                         </div>
                         <div className="flex justify-between items-start">
@@ -393,10 +393,10 @@ const Home = () => {
               </div>
             </section>
 
-            {/* CTA Section - Pure White with Margins */}
+            {/* CTA Section - Pure White with Margins and 3D Effect */}
             <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-10 lg:px-16">
               <div className="mx-4 sm:mx-6 md:mx-12 lg:mx-16 xl:mx-24">
-                <div className="bg-white dark:bg-gray-900 rounded-2xl sm:rounded-3xl py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-16">
+                <div className="bg-white dark:bg-gray-900 rounded-2xl sm:rounded-3xl py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-16 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
                   <div className="max-w-4xl mx-auto text-center">
                     <ScrollReveal direction="up" delay={0.1}>
                       <div className="flex items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
@@ -415,7 +415,7 @@ const Home = () => {
                     <ScrollReveal direction="up" delay={0.3}>
                       <Link 
                         to="/contact"
-                        className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 text-sm sm:text-base"
+                        className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 text-sm sm:text-base hover:shadow-lg hover:shadow-black/20 dark:hover:shadow-black/40"
                         onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
                       >
                         <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">

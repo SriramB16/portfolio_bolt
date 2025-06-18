@@ -104,7 +104,7 @@ export default function Projects() {
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 text-sm sm:text-base ${
+                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/10 dark:shadow-black/20 hover:shadow-xl hover:shadow-black/15 dark:hover:shadow-black/30 ${
                   activeFilter === filter
                     ? 'bg-black dark:bg-golden text-white dark:text-black'
                     : 'bg-white dark:bg-gray-800 text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
@@ -127,24 +127,24 @@ export default function Projects() {
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}
                 >
-                  <div className={`${project.bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 relative ${
+                  <div className={`${project.bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 relative shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 hover:-translate-y-2 ${
                     hoveredProject && hoveredProject !== project.id ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
                   }`}>
                     <img 
                       src={project.image}
                       alt={project.title}
-                      className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/20 dark:shadow-black/40"
+                      className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/30 dark:shadow-black/50"
                     />
                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 sm:gap-4 rounded-2xl sm:rounded-3xl">
                       <a 
                         href={project.liveUrl}
-                        className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110"
+                        className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110 shadow-lg shadow-black/20"
                       >
                         <ExternalLink size={18} className="sm:w-5 sm:h-5" />
                       </a>
                       <a 
                         href={project.githubUrl}
-                        className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110"
+                        className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110 shadow-lg shadow-black/20"
                       >
                         <Github size={18} className="sm:w-5 sm:h-5" />
                       </a>
@@ -171,24 +171,24 @@ export default function Projects() {
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}
                 >
-                  <div className={`${project.bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 relative ${
+                  <div className={`${project.bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 relative shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 hover:-translate-y-2 ${
                     hoveredProject && hoveredProject !== project.id ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
                   }`}>
                     <img 
                       src={project.image}
                       alt={project.title}
-                      className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/20 dark:shadow-black/40"
+                      className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/30 dark:shadow-black/50"
                     />
                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 sm:gap-4 rounded-2xl sm:rounded-3xl">
                       <a 
                         href={project.liveUrl}
-                        className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110"
+                        className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110 shadow-lg shadow-black/20"
                       >
                         <ExternalLink size={18} className="sm:w-5 sm:h-5" />
                       </a>
                       <a 
                         href={project.githubUrl}
-                        className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110"
+                        className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110 shadow-lg shadow-black/20"
                       >
                         <Github size={18} className="sm:w-5 sm:h-5" />
                       </a>
@@ -209,7 +209,7 @@ export default function Projects() {
 
         {/* Call to Action */}
         <ScrollReveal direction="up" delay={0.8}>
-          <div className="text-center mt-12 sm:mt-16 bg-white dark:bg-gray-900 rounded-2xl p-8 sm:p-12">
+          <div className="text-center mt-12 sm:mt-16 bg-white dark:bg-gray-900 rounded-2xl p-8 sm:p-12 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
             <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-3 sm:mb-4">Have a Project in Mind?</h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
               I'm always excited to work on new projects and collaborate with amazing people. 
@@ -217,7 +217,7 @@ export default function Projects() {
             </p>
             <Link 
               to="/contact"
-              className="inline-block bg-black dark:bg-golden text-white dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+              className="inline-block bg-black dark:bg-golden text-white dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50"
             >
               Start a Project
             </Link>

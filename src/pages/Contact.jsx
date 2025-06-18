@@ -61,7 +61,7 @@ const Contact = () => {
               ].map((contact, index) => (
                 <ScrollReveal key={contact.title} direction="left" delay={0.3 + index * 0.1}>
                   <div className="flex items-center gap-3 sm:gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-black dark:bg-golden rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-black dark:bg-golden rounded-full flex items-center justify-center shadow-lg shadow-black/20 dark:shadow-black/30">
                       <contact.icon size={18} className="sm:w-5 sm:h-5 text-white dark:text-black" />
                     </div>
                     <div>
@@ -82,7 +82,7 @@ const Contact = () => {
                     <a 
                       key={index}
                       href="#" 
-                      className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110"
+                      className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110 shadow-lg shadow-black/10 dark:shadow-black/20 hover:shadow-xl hover:shadow-black/15 dark:hover:shadow-black/30"
                     >
                       <Icon size={18} className="sm:w-5 sm:h-5" />
                     </a>
@@ -94,7 +94,7 @@ const Contact = () => {
 
           {/* Contact Form */}
           <ScrollReveal direction="right" delay={0.3}>
-            <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 sm:p-8">
+            <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
               <h2 className="text-xl sm:text-2xl font-bold text-black dark:text-white mb-4 sm:mb-6">Send a Message</h2>
               
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
@@ -109,7 +109,7 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300 text-sm sm:text-base shadow-sm shadow-black/5 dark:shadow-black/10"
                       required
                     />
                   </div>
@@ -124,7 +124,7 @@ const Contact = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300 text-sm sm:text-base shadow-sm shadow-black/5 dark:shadow-black/10"
                       required
                     />
                   </div>
@@ -140,7 +140,7 @@ const Contact = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300 text-sm sm:text-base shadow-sm shadow-black/5 dark:shadow-black/10"
                     required
                   />
                 </div>
@@ -155,14 +155,14 @@ const Contact = () => {
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300 resize-none text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300 resize-none text-sm sm:text-base shadow-sm shadow-black/5 dark:shadow-black/10"
                     required
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-black dark:bg-golden text-white dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base"
+                  className="w-full bg-black dark:bg-golden text-white dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50"
                 >
                   <Send size={18} className="sm:w-5 sm:h-5" />
                   Send Message
@@ -174,18 +174,18 @@ const Contact = () => {
 
         {/* Additional CTA */}
         <ScrollReveal direction="up" delay={0.7}>
-          <div className="text-center mt-12 sm:mt-16 bg-white dark:bg-gray-900 rounded-2xl p-8 sm:p-12">
+          <div className="text-center mt-12 sm:mt-16 bg-white dark:bg-gray-900 rounded-2xl p-8 sm:p-12 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
             <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-3 sm:mb-4">Ready to Start Your Project?</h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
               Let's discuss your ideas and turn them into reality. I'm here to help you create something amazing.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <button className="bg-black dark:bg-golden text-white dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 text-sm sm:text-base">
+              <button className="bg-black dark:bg-golden text-white dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50">
                 Schedule a Call
               </button>
               <Link 
                 to="/projects"
-                className="inline-block border-2 border-black dark:border-golden text-black dark:text-golden px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-black hover:text-white dark:hover:bg-golden dark:hover:text-black transition-all duration-300 text-sm sm:text-base"
+                className="inline-block border-2 border-black dark:border-golden text-black dark:text-golden px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-black hover:text-white dark:hover:bg-golden dark:hover:text-black transition-all duration-300 text-sm sm:text-base shadow-lg shadow-black/10 dark:shadow-black/20 hover:shadow-xl hover:shadow-black/15 dark:hover:shadow-black/30"
               >
                 View My Work
               </Link>

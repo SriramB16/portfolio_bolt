@@ -35,18 +35,18 @@ const About = () => {
           {/* Left Column - Photo and Stats */}
           <div className="space-y-6 sm:space-y-8">
             <ScrollReveal direction="left" delay={0.3}>
-              <div className="bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-2xl h-64 sm:h-80 md:h-96 flex items-center justify-center">
+              <div className="bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-2xl h-64 sm:h-80 md:h-96 flex items-center justify-center shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
                 <span className="text-4xl sm:text-5xl md:text-6xl">👨‍💻</span>
               </div>
             </ScrollReveal>
             
             <ScrollReveal direction="left" delay={0.4}>
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="text-center p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-xl">
+                <div className="text-center p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-xl shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
                   <div className="text-2xl sm:text-3xl font-bold text-black dark:text-golden mb-1 sm:mb-2">50+</div>
                   <div className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Projects Completed</div>
                 </div>
-                <div className="text-center p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-xl">
+                <div className="text-center p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-xl shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
                   <div className="text-2xl sm:text-3xl font-bold text-black dark:text-golden mb-1 sm:mb-2">3+</div>
                   <div className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Years Experience</div>
                 </div>
@@ -120,7 +120,7 @@ const About = () => {
                 }
               ].map((category, index) => (
                 <ScrollReveal key={category.title} direction="up" delay={0.9 + index * 0.1}>
-                  <div className="p-6 sm:p-8 bg-white dark:bg-gray-900 rounded-2xl">
+                  <div className="p-6 sm:p-8 bg-white dark:bg-gray-900 rounded-2xl shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
                     <h3 className="text-lg sm:text-xl font-semibold text-black dark:text-white mb-3 sm:mb-4">{category.title}</h3>
                     <div className="space-y-2">
                       {category.skills.map((skill) => (
@@ -141,7 +141,7 @@ const About = () => {
 
         {/* Call to Action */}
         <ScrollReveal direction="up" delay={1.2}>
-          <div className="text-center bg-white dark:bg-gray-900 rounded-2xl p-8 sm:p-12">
+          <div className="text-center bg-white dark:bg-gray-900 rounded-2xl p-8 sm:p-12 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
             <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-3 sm:mb-4">Let's Work Together</h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
               I'm always interested in new opportunities and exciting projects. 
@@ -149,7 +149,7 @@ const About = () => {
             </p>
             <Link 
               to="/contact"
-              className="inline-block bg-black dark:bg-golden text-white dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+              className="inline-block bg-black dark:bg-golden text-white dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50"
               onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
             >
               Get In Touch
