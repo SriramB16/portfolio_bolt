@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import TechMarquee from '../components/TechMarquee';
@@ -7,27 +7,40 @@ import IntroAnimation from '../components/IntroAnimation';
 import ScrollReveal from '../components/ScrollReveal';
 
 const Home = () => {
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(false);
   const [contentVisible, setContentVisible] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    // Always show intro animation first, regardless of session storage
-    // The intro animation will run for minimum 4 seconds
-    const minIntroTime = 4000;
-    
-    const introTimer = setTimeout(() => {
-      setShowIntro(false);
-      // Delay content appearance for smooth transition
-      setTimeout(() => {
+    // Only show intro animation if we're on the home page
+    if (location.pathname === '/') {
+      // Check if this is a fresh page load (not navigation from another page)
+      const navigationEntries = performance.getEntriesByType('navigation');
+      const isPageReload = navigationEntries.length > 0 && 
+        (navigationEntries[0].type === 'reload' || navigationEntries[0].type === 'navigate');
+      
+      // Also check if this is the first time visiting the site in this session
+      const hasSeenIntroThisSession = sessionStorage.getItem('hasSeenIntroThisSession');
+      
+      if (isPageReload || !hasSeenIntroThisSession) {
+        setShowIntro(true);
+        sessionStorage.setItem('hasSeenIntroThisSession', 'true');
+      } else {
+        // If navigating from another page, show content immediately
         setContentVisible(true);
-      }, 300);
-    }, minIntroTime);
-
-    return () => clearTimeout(introTimer);
-  }, []);
+      }
+    } else {
+      // If not on home page, show content immediately
+      setContentVisible(true);
+    }
+  }, [location.pathname]);
 
   const handleIntroComplete = () => {
-    // This is called by the animation component but timing is controlled by useEffect
+    setShowIntro(false);
+    // Delay content appearance for smooth transition
+    setTimeout(() => {
+      setContentVisible(true);
+    }, 300);
   };
 
   const containerVariants = {
