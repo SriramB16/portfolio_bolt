@@ -4,6 +4,7 @@ import { ArrowRight, ExternalLink, Github } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import IntroAnimation from '../components/IntroAnimation';
 import ScrollReveal from '../components/ScrollReveal';
+import WavingHandSVG from '../components/WavingHandSVG';
 
 const Home = () => {
   const [showIntro, setShowIntro] = useState(false);
@@ -67,22 +68,6 @@ const Home = () => {
       }
     }
   };
-
-  // Waving hand animation
-  const WavingHand = () => (
-    <motion.span
-      className="inline-block text-sm sm:text-base ml-1"
-      animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
-      transition={{
-        duration: 2.5,
-        repeat: Infinity,
-        repeatDelay: 1,
-        ease: "easeInOut"
-      }}
-    >
-      👋
-    </motion.span>
-  );
 
   // Projects with beautiful background colors
   const projects = [
@@ -159,9 +144,9 @@ const Home = () => {
                     <ScrollReveal direction="up" delay={0.1}>
                       <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
                         <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse"></div>
-                        <span className="text-green-500 text-xs sm:text-sm font-medium flex items-center">
+                        <span className="text-green-500 text-xs sm:text-sm font-medium flex items-center gap-1 sm:gap-2">
                           Hey! It's me Sriram
-                          <WavingHand />
+                          <WavingHandSVG className="w-4 h-4 sm:w-5 sm:h-5" />
                         </span>
                       </div>
                     </ScrollReveal>
