@@ -23,9 +23,9 @@ const ScrollTextReveal = () => {
       const containerBottom = containerRect.bottom;
       const containerHeight = containerRect.height;
       
-      // Start revealing when container enters viewport, end when it exits
-      const startReveal = windowHeight * 0.8;
-      const endReveal = -containerHeight * 0.2;
+      // More aggressive reveal timing - starts earlier and completes faster
+      const startReveal = windowHeight * 0.9; // Start when 90% down the viewport
+      const endReveal = -containerHeight * 0.1; // End when 10% of container is above viewport
       
       // Calculate scroll progress through the container
       const scrollProgress = Math.max(0, Math.min(1, (startReveal - containerTop) / (startReveal - endReveal)));
@@ -33,6 +33,18 @@ const ScrollTextReveal = () => {
       // Calculate how many words should be revealed based on scroll progress
       const totalWords = words.length;
       const wordsToReveal = Math.floor(scrollProgress * totalWords);
+      
+      // If the section is completely out of view (scrolled past), reset
+      if (containerBottom < 0) {
+        setRevealedWords(new Set());
+        return;
+      }
+      
+      // If the section hasn't entered the viewport yet, ensure no words are revealed
+      if (containerTop > windowHeight) {
+        setRevealedWords(new Set());
+        return;
+      }
       
       // Create new set of revealed word indices
       const newRevealedWords = new Set();
@@ -67,13 +79,13 @@ const ScrollTextReveal = () => {
             {words.map((word, index) => (
               <span
                 key={index}
-                className={`inline-block transition-all duration-500 ease-out mr-2 sm:mr-3 ${
+                className={`inline-block transition-all duration-300 ease-out mr-2 sm:mr-3 ${
                   revealedWords.has(index)
                     ? 'text-black dark:text-white opacity-100 transform translate-y-0'
                     : 'text-gray-300 dark:text-gray-700 opacity-30 transform translate-y-2'
                 }`}
                 style={{
-                  transitionDelay: `${index * 50}ms`
+                  transitionDelay: `${index * 20}ms` // Reduced from 50ms to 20ms for faster animation
                 }}
               >
                 {word}
