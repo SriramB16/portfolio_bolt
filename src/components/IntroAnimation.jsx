@@ -1,55 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import SplitText from './SplitText';
 
 const IntroAnimation = ({ onComplete }) => {
-  const [currentLetterIndex, setCurrentLetterIndex] = useState(0);
   const [showSlideUp, setShowSlideUp] = useState(false);
-  const letters = ['S', 'R', 'I', 'R', 'A', 'M'];
+  const [animationStarted, setAnimationStarted] = useState(false);
 
   useEffect(() => {
-    // Animate letters sequentially
-    const letterInterval = setInterval(() => {
-      setCurrentLetterIndex(prev => {
-        if (prev < letters.length - 1) {
-          return prev + 1;
-        } else {
-          clearInterval(letterInterval);
-          // Start slide up after a brief pause
-          setTimeout(() => {
-            setShowSlideUp(true);
-            // Complete animation
-            setTimeout(() => {
-              onComplete();
-            }, 800);
-          }, 800);
-          return prev;
-        }
-      });
-    }, 200);
+    // Start animation immediately
+    setAnimationStarted(true);
+    
+    // After 3.5 seconds, start slide up animation
+    const slideUpTimer = setTimeout(() => {
+      setShowSlideUp(true);
+      // Complete animation after slide up
+      setTimeout(() => {
+        onComplete();
+      }, 800);
+    }, 3500);
 
-    return () => clearInterval(letterInterval);
-  }, [onComplete, letters.length]);
-
-  const letterVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 100, 
-      scale: 0.5,
-      rotateX: -90
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      scale: 1,
-      rotateX: 0,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 200,
-        duration: 0.8
-      }
-    }
-  };
+    return () => clearTimeout(slideUpTimer);
+  }, [onComplete]);
 
   const containerVariants = {
     hidden: { opacity: 1 },
@@ -58,6 +29,16 @@ const IntroAnimation = ({ onComplete }) => {
       transition: {
         duration: 0.8,
         ease: [0.76, 0, 0.24, 1]
+      }
+    }
+  };
+
+  const backgroundVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.5
       }
     }
   };
@@ -73,107 +54,110 @@ const IntroAnimation = ({ onComplete }) => {
           exit="exit"
         >
           {/* Subtle animated background elements */}
-          <div className="absolute inset-0">
+          <motion.div 
+            className="absolute inset-0"
+            variants={backgroundVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {/* Subtle gradient overlay */}
             <motion.div 
               className="absolute inset-0"
               style={{
-                background: 'linear-gradient(45deg, rgba(64,64,64,0.1), transparent, rgba(96,96,96,0.1))'
+                background: 'radial-gradient(circle at center, rgba(64,64,64,0.1) 0%, transparent 70%)'
               }}
               animate={{
                 background: [
-                  "linear-gradient(45deg, rgba(64,64,64,0.1), transparent, rgba(96,96,96,0.1))",
-                  "linear-gradient(225deg, rgba(96,96,96,0.1), transparent, rgba(64,64,64,0.1))",
-                  "linear-gradient(45deg, rgba(64,64,64,0.1), transparent, rgba(96,96,96,0.1))"
+                  "radial-gradient(circle at center, rgba(64,64,64,0.1) 0%, transparent 70%)",
+                  "radial-gradient(circle at center, rgba(96,96,96,0.15) 0%, transparent 70%)",
+                  "radial-gradient(circle at center, rgba(64,64,64,0.1) 0%, transparent 70%)"
                 ]
               }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
-            <motion.div 
-              className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl"
-              style={{ backgroundColor: 'rgba(128,128,128,0.05)' }}
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.6, 0.3]
-              }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div 
-              className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl"
-              style={{ backgroundColor: 'rgba(160,160,160,0.05)' }}
-              animate={{
-                scale: [1.2, 1, 1.2],
-                opacity: [0.6, 0.3, 0.6]
-              }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-            />
-          </div>
-
-          {/* Letters container */}
-          <div className="flex space-x-2 md:space-x-4 lg:space-x-6 relative z-10">
-            {letters.map((letter, index) => (
+            
+            {/* Floating particles */}
+            {Array.from({ length: 15 }).map((_, i) => (
               <motion.div
-                key={index}
-                className="relative"
-                variants={letterVariants}
-                initial="hidden"
-                animate={index <= currentLetterIndex ? "visible" : "hidden"}
-              >
-                <motion.span
-                  className="text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black"
-                  style={{
-                    fontFamily: "'Orbitron', 'Inter', sans-serif",
-                    color: '#FFFFFF',
-                    filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))',
-                  }}
-                  whileHover={{ 
-                    scale: 1.1,
-                    filter: 'drop-shadow(0 0 30px rgba(255, 255, 255, 0.6))'
-                  }}
-                >
-                  {letter}
-                </motion.span>
-                
-                {/* Glow effect */}
-                <motion.div
-                  className="absolute inset-0 text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black blur-sm"
-                  style={{ 
-                    fontFamily: "'Orbitron', 'Inter', sans-serif",
-                    color: 'rgba(255, 255, 255, 0.2)'
-                  }}
-                  animate={{
-                    opacity: [0.2, 0.5, 0.2]
-                  }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: index * 0.1 }}
-                >
-                  {letter}
-                </motion.div>
-              </motion.div>
+                key={i}
+                className="absolute w-1 h-1 rounded-full"
+                style={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.3)',
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                }}
+                animate={{
+                  opacity: [0, 1, 0],
+                  scale: [0, 1, 0],
+                  y: [0, -100, 0]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  delay: Math.random() * 2,
+                  ease: "easeInOut"
+                }}
+              />
             ))}
+          </motion.div>
+
+          {/* Main text animation */}
+          <div className="relative z-10 text-center px-4">
+            {animationStarted && (
+              <SplitText
+                text="SRIRAM"
+                className="text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black"
+                delay={0.2}
+                duration={0.8}
+                staggerDelay={0.15}
+                animationType="slideUp"
+                style={{
+                  fontFamily: "'Orbitron', 'Inter', sans-serif",
+                  color: '#FFFFFF',
+                  filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))',
+                }}
+              />
+            )}
+            
+            {/* Glow effect behind text */}
+            <motion.div
+              className="absolute inset-0 flex items-center justify-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 1 }}
+            >
+              <div
+                className="text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black blur-sm"
+                style={{ 
+                  fontFamily: "'Orbitron', 'Inter', sans-serif",
+                  color: 'rgba(255, 255, 255, 0.1)'
+                }}
+              >
+                SRIRAM
+              </div>
+            </motion.div>
           </div>
 
-          {/* Particle effects */}
-          {Array.from({ length: 20 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 rounded-full"
-              style={{
-                backgroundColor: '#FFFFFF',
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                opacity: [0, 1, 0],
-                scale: [0, 1, 0],
-                y: [0, -100, 0]
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-                ease: "easeInOut"
-              }}
-            />
-          ))}
+          {/* Subtle pulse effect */}
+          <motion.div
+            className="absolute inset-0 border border-white/10 rounded-full"
+            style={{
+              width: '200px',
+              height: '200px',
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)'
+            }}
+            animate={{
+              scale: [1, 2, 1],
+              opacity: [0.5, 0, 0.5]
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
         </motion.div>
       )}
     </AnimatePresence>
