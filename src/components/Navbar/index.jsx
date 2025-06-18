@@ -59,6 +59,11 @@ const Navbar = () => {
     </div>
   );
 
+  // Handle navigation clicks to mark internal navigation
+  const handleNavClick = () => {
+    sessionStorage.setItem('internalNavigation', 'true');
+  };
+
   return (
     <>
       {/* Mobile top logo */}
@@ -110,10 +115,10 @@ const Navbar = () => {
           
           <div className="flex-1 flex justify-center">
             <div className="flex items-center space-x-8">
-              <NavLink to="/" label="Home" icon={<Home size={18} />} active={location.pathname === '/'} />
-              <NavLink to="/about" label="About" icon={<User size={18} />} active={location.pathname === '/about'} />
-              <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={18} />} active={location.pathname === '/projects'} />
-              <NavLink to="/contact" label="Contact" icon={<Mail size={18} />} active={location.pathname === '/contact'} />
+              <NavLink to="/" label="Home" icon={<Home size={18} />} active={location.pathname === '/'} onClick={handleNavClick} />
+              <NavLink to="/about" label="About" icon={<User size={18} />} active={location.pathname === '/about'} onClick={handleNavClick} />
+              <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={18} />} active={location.pathname === '/projects'} onClick={handleNavClick} />
+              <NavLink to="/contact" label="Contact" icon={<Mail size={18} />} active={location.pathname === '/contact'} onClick={handleNavClick} />
             </div>
           </div>
           
@@ -156,10 +161,10 @@ const Navbar = () => {
           transition-colors duration-300
         ">
           <div className="flex items-center justify-around py-2">
-            <NavLink to="/" label="Home" icon={<Home size={20} />} active={location.pathname === '/'} />
-            <NavLink to="/about" label="About" icon={<User size={20} />} active={location.pathname === '/about'} />
-            <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={20} />} active={location.pathname === '/projects'} />
-            <NavLink to="/contact" label="Contact" icon={<Mail size={20} />} active={location.pathname === '/contact'} />
+            <NavLink to="/" label="Home" icon={<Home size={20} />} active={location.pathname === '/'} onClick={handleNavClick} />
+            <NavLink to="/about" label="About" icon={<User size={20} />} active={location.pathname === '/about'} onClick={handleNavClick} />
+            <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={20} />} active={location.pathname === '/projects'} onClick={handleNavClick} />
+            <NavLink to="/contact" label="Contact" icon={<Mail size={20} />} active={location.pathname === '/contact'} onClick={handleNavClick} />
           </div>
         </nav>
       </div>
@@ -167,10 +172,11 @@ const Navbar = () => {
   );
 };
 
-const NavLink = ({ to, label, icon, active = false }) => {
+const NavLink = ({ to, label, icon, active = false, onClick }) => {
   return (
     <Link 
       to={to}
+      onClick={onClick}
       className={`
         flex flex-col items-center gap-1
         md:flex-row md:gap-2
