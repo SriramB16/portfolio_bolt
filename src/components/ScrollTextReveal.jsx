@@ -75,7 +75,7 @@ const ScrollTextReveal = () => {
 
         {/* Animated Text */}
         <div className="text-center">
-          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-relaxed font-normal font-satoshi tracking-wide">
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-relaxed font-medium font-satoshi tracking-wide">
             {words.map((word, index) => (
               <span
                 key={index}
