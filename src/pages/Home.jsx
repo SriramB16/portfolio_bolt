@@ -162,9 +162,9 @@ const Home = () => {
                   </div>
                 </ScrollReveal>
 
-                {/* Section 3: Flex Container - Line + Description (Equal Width) */}
+                {/* Section 3: Flex Container - Empty Border Div + Description (Equal Width) */}
                 <div className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-0 mb-8 sm:mb-12">
-                  {/* Left: Border Div - Takes 50% width */}
+                  {/* Left: Empty Border Div - Takes 50% width */}
                   <ScrollReveal direction="up" delay={0.3}>
                     <div className="w-full lg:w-1/2 flex items-start lg:pr-8 xl:pr-12">
                       <div className="w-16 sm:w-20 md:w-24 lg:w-32 xl:w-40 h-px bg-gray-400 dark:bg-gray-600 lg:mt-2"></div>
