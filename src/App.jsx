@@ -8,25 +8,20 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 
-// Component to handle scroll to top on route change
-const ScrollToTop = () => {
+// Component to handle navigation tracking
+const NavigationTracker = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Get the current path
-    const currentPath = location.pathname;
-    
-    // Check if this is a first-time visit to this page in this session
-    const visitedPages = JSON.parse(sessionStorage.getItem('visitedPages') || '[]');
-    
-    if (!visitedPages.includes(currentPath)) {
-      // First time visiting this page - scroll to top
-      window.scrollTo(0, 0);
-      // Add this page to visited pages
-      visitedPages.push(currentPath);
-      sessionStorage.setItem('visitedPages', JSON.stringify(visitedPages));
-    }
-    // If revisiting, don't scroll to top (maintain scroll position)
+    // Mark that we're doing internal navigation when changing routes
+    // This helps distinguish between page loads and internal navigation
+    const handleRouteChange = () => {
+      if (location.pathname !== '/') {
+        sessionStorage.setItem('internalNavigation', 'true');
+      }
+    };
+
+    handleRouteChange();
   }, [location.pathname]);
 
   return null;
@@ -36,7 +31,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <ScrollToTop />
+        <NavigationTracker />
         <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
           <Navbar />
           <Routes>

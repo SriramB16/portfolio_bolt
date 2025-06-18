@@ -12,23 +12,32 @@ const Home = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Only show intro animation if we're on the home page
+    // Only check for intro animation if we're on the home page
     if (location.pathname === '/') {
-      // Check if this is a fresh page load (not navigation from another page)
+      // Check if this is a genuine page load (not navigation from another page)
       const navigationEntries = performance.getEntriesByType('navigation');
-      const isPageReload = navigationEntries.length > 0 && 
+      const isPageLoad = navigationEntries.length > 0 && 
         (navigationEntries[0].type === 'reload' || navigationEntries[0].type === 'navigate');
       
-      // Also check if this is the first time visiting the site in this session
-      const hasSeenIntroThisSession = sessionStorage.getItem('hasSeenIntroThisSession');
+      // Check if this is the first time visiting the site in this browser session
+      const hasSeenIntroEver = sessionStorage.getItem('hasSeenIntroEver');
       
-      if (isPageReload || !hasSeenIntroThisSession) {
+      // Check if we came from another page (internal navigation)
+      const cameFromInternalNavigation = sessionStorage.getItem('internalNavigation');
+      
+      // Show intro only if:
+      // 1. It's a page load (not internal navigation) AND
+      // 2. Either it's the first time ever OR it's a reload on home page
+      if (isPageLoad && !cameFromInternalNavigation && (!hasSeenIntroEver || navigationEntries[0].type === 'reload')) {
         setShowIntro(true);
-        sessionStorage.setItem('hasSeenIntroThisSession', 'true');
+        sessionStorage.setItem('hasSeenIntroEver', 'true');
       } else {
-        // If navigating from another page, show content immediately
+        // If navigating from another page or already seen intro, show content immediately
         setContentVisible(true);
       }
+      
+      // Clear the internal navigation flag
+      sessionStorage.removeItem('internalNavigation');
     } else {
       // If not on home page, show content immediately
       setContentVisible(true);
@@ -104,6 +113,7 @@ const Home = () => {
                     <Link 
                       to="/projects"
                       className="group flex items-center gap-2 bg-black dark:bg-golden text-white dark:text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105"
+                      onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
                     >
                       View My Work
                       <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -189,6 +199,7 @@ const Home = () => {
                             <Link 
                               to="/projects"
                               className="text-black dark:text-golden font-semibold hover:underline"
+                              onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
                             >
                               View Project →
                             </Link>
