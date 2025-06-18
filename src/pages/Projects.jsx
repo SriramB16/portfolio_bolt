@@ -19,7 +19,7 @@ export default function Projects() {
       technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       liveUrl: '#',
       githubUrl: '#',
-      bgColor: 'bg-yellow-200 dark:bg-yellow-300'
+      bgColor: 'bg-gradient-to-br from-yellow-200 via-yellow-300 to-orange-200 dark:from-yellow-300 dark:via-yellow-400 dark:to-orange-300'
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ export default function Projects() {
       technologies: ['React Native', 'Firebase', 'Redux'],
       liveUrl: '#',
       githubUrl: '#',
-      bgColor: 'bg-purple-200 dark:bg-purple-300'
+      bgColor: 'bg-gradient-to-br from-purple-200 via-purple-300 to-pink-200 dark:from-purple-300 dark:via-purple-400 dark:to-pink-300'
     },
     {
       id: 3,
@@ -41,7 +41,7 @@ export default function Projects() {
       technologies: ['Figma', 'Storybook', 'React'],
       liveUrl: '#',
       githubUrl: '#',
-      bgColor: 'bg-gray-200 dark:bg-gray-300'
+      bgColor: 'bg-gradient-to-br from-gray-200 via-gray-300 to-slate-200 dark:from-gray-300 dark:via-gray-400 dark:to-slate-300'
     },
     {
       id: 4,
@@ -52,7 +52,7 @@ export default function Projects() {
       technologies: ['Vue.js', 'Weather API', 'Chart.js'],
       liveUrl: '#',
       githubUrl: '#',
-      bgColor: 'bg-green-200 dark:bg-green-300'
+      bgColor: 'bg-gradient-to-br from-green-200 via-emerald-300 to-teal-200 dark:from-green-300 dark:via-emerald-400 dark:to-teal-300'
     },
     {
       id: 5,
@@ -63,7 +63,7 @@ export default function Projects() {
       technologies: ['JavaScript', 'D3.js', 'NPM'],
       liveUrl: '#',
       githubUrl: '#',
-      bgColor: 'bg-blue-200 dark:bg-blue-300'
+      bgColor: 'bg-gradient-to-br from-blue-200 via-blue-300 to-cyan-200 dark:from-blue-300 dark:via-blue-400 dark:to-cyan-300'
     },
     {
       id: 6,
@@ -74,7 +74,7 @@ export default function Projects() {
       technologies: ['React', 'Tailwind CSS', 'Framer Motion'],
       liveUrl: '#',
       githubUrl: '#',
-      bgColor: 'bg-pink-200 dark:bg-pink-300'
+      bgColor: 'bg-gradient-to-br from-pink-200 via-rose-300 to-red-200 dark:from-pink-300 dark:via-rose-400 dark:to-red-300'
     }
   ];
 
@@ -133,7 +133,7 @@ export default function Projects() {
                     <img 
                       src={project.image}
                       alt={project.title}
-                      className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                      className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/20 dark:shadow-black/40"
                     />
                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 sm:gap-4 rounded-2xl sm:rounded-3xl">
                       <a 
@@ -163,7 +163,7 @@ export default function Projects() {
           </div>
 
           {/* Second Column - Starts lower to create stagger effect */}
-          <div className="space-y-6 sm:space-y-8 mt-16 sm:mt-20 md:mt-24 lg:mt-32">
+          <div className="space-y-6 sm:space-y-8 mt-8 sm:mt-12 md:mt-16 lg:mt-20">
             {filteredProjects.filter((_, index) => index % 2 === 1).map((project, index) => (
               <ScrollReveal key={project.id} direction="up" delay={0.4 + index * 0.1}>
                 <div 
@@ -177,7 +177,7 @@ export default function Projects() {
                     <img 
                       src={project.image}
                       alt={project.title}
-                      className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                      className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/20 dark:shadow-black/40"
                     />
                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 sm:gap-4 rounded-2xl sm:rounded-3xl">
                       <a 

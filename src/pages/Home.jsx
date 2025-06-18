@@ -84,7 +84,7 @@ const Home = () => {
     </motion.span>
   );
 
-  // Projects from the projects page
+  // Projects with beautiful background colors
   const projects = [
     {
       id: 1,
@@ -95,7 +95,7 @@ const Home = () => {
       technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       liveUrl: '#',
       githubUrl: '#',
-      bgColor: 'bg-yellow-200 dark:bg-yellow-300',
+      bgColor: 'bg-gradient-to-br from-yellow-200 via-yellow-300 to-orange-200 dark:from-yellow-300 dark:via-yellow-400 dark:to-orange-300',
       year: '2024'
     },
     {
@@ -107,7 +107,7 @@ const Home = () => {
       technologies: ['React Native', 'Firebase', 'Redux'],
       liveUrl: '#',
       githubUrl: '#',
-      bgColor: 'bg-purple-200 dark:bg-purple-300',
+      bgColor: 'bg-gradient-to-br from-purple-200 via-purple-300 to-pink-200 dark:from-purple-300 dark:via-purple-400 dark:to-pink-300',
       year: '2024'
     },
     {
@@ -119,7 +119,7 @@ const Home = () => {
       technologies: ['Figma', 'Storybook', 'React'],
       liveUrl: '#',
       githubUrl: '#',
-      bgColor: 'bg-gray-200 dark:bg-gray-300',
+      bgColor: 'bg-gradient-to-br from-gray-200 via-gray-300 to-slate-200 dark:from-gray-300 dark:via-gray-400 dark:to-slate-300',
       year: '2024'
     },
     {
@@ -131,7 +131,7 @@ const Home = () => {
       technologies: ['Vue.js', 'Weather API', 'Chart.js'],
       liveUrl: '#',
       githubUrl: '#',
-      bgColor: 'bg-green-200 dark:bg-green-300',
+      bgColor: 'bg-gradient-to-br from-green-200 via-emerald-300 to-teal-200 dark:from-green-300 dark:via-emerald-400 dark:to-teal-300',
       year: '2024'
     }
   ];
@@ -295,7 +295,7 @@ const Home = () => {
                           <img 
                             src={projects[0].image}
                             alt={projects[0].title}
-                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/20 dark:shadow-black/40"
                           />
                         </div>
                         <div className="flex justify-between items-start">
@@ -321,7 +321,7 @@ const Home = () => {
                           <img 
                             src={projects[2].image}
                             alt={projects[2].title}
-                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/20 dark:shadow-black/40"
                           />
                         </div>
                         <div className="flex justify-between items-start">
@@ -336,7 +336,7 @@ const Home = () => {
                   </div>
 
                   {/* Second Column - Starts lower to create stagger effect */}
-                  <div className="space-y-6 sm:space-y-8 mt-16 sm:mt-20 md:mt-24 lg:mt-32">
+                  <div className="space-y-6 sm:space-y-8 mt-8 sm:mt-12 md:mt-16 lg:mt-20">
                     {/* Project 2 - Task Management App */}
                     <ScrollReveal direction="up" delay={0.5}>
                       <div 
@@ -350,7 +350,7 @@ const Home = () => {
                           <img 
                             src={projects[1].image}
                             alt={projects[1].title}
-                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/20 dark:shadow-black/40"
                           />
                         </div>
                         <div className="flex justify-between items-start">
@@ -376,7 +376,7 @@ const Home = () => {
                           <img 
                             src={projects[3].image}
                             alt={projects[3].title}
-                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/20 dark:shadow-black/40"
                           />
                         </div>
                         <div className="flex justify-between items-start">
