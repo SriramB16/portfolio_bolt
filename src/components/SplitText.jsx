@@ -61,8 +61,7 @@ const SplitText = ({
             display: 'inline-block',
             marginRight: letter === ' ' ? '0.5em' : '0',
             color: '#FFFFFF',
-            fontWeight: 800,
-            fontFamily: "'Coda', 'Inter', sans-serif"
+            fontWeight: 900
           }}
         >
           {letter === ' ' ? '\u00A0' : letter}

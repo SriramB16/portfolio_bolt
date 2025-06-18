@@ -91,8 +91,8 @@
 
 /* Intro animation specific styles */
 .intro-text {
-  font-family: 'Coda', 'Inter', sans-serif !important;
-  font-weight: 800 !important;
+  font-family: 'Orbitron', 'Inter', sans-serif !important;
+  font-weight: 900 !important;
   letter-spacing: 0.1em !important;
   color: #FFFFFF !important;
 }
@@ -106,8 +106,7 @@
   transform-style: preserve-3d;
   backface-visibility: hidden;
   color: #FFFFFF !important;
-  font-weight: 800 !important;
-  font-family: 'Coda', 'Inter', sans-serif !important;
+  font-weight: 900 !important;
 }
 
 /* Custom page scrollbar */
