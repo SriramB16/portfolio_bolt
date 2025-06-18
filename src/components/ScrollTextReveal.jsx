@@ -23,9 +23,25 @@ const ScrollTextReveal = () => {
       const containerBottom = containerRect.bottom;
       const containerHeight = containerRect.height;
       
-      // More aggressive reveal timing - starts earlier and completes faster
-      const startReveal = windowHeight * 0.9; // Start when 90% down the viewport
-      const endReveal = -containerHeight * 0.1; // End when 10% of container is above viewport
+      // If coming from below (section is above viewport), show completed animation
+      if (containerBottom < 0) {
+        const allWords = new Set();
+        for (let i = 0; i < words.length; i++) {
+          allWords.add(i);
+        }
+        setRevealedWords(allWords);
+        return;
+      }
+      
+      // If section hasn't entered viewport from top yet, reset animation
+      if (containerTop > windowHeight) {
+        setRevealedWords(new Set());
+        return;
+      }
+      
+      // Animation timing - starts earlier and completes faster
+      const startReveal = windowHeight * 0.8; // Start when 80% down the viewport
+      const endReveal = -containerHeight * 0.2; // End when 20% of container is above viewport
       
       // Calculate scroll progress through the container
       const scrollProgress = Math.max(0, Math.min(1, (startReveal - containerTop) / (startReveal - endReveal)));
@@ -33,18 +49,6 @@ const ScrollTextReveal = () => {
       // Calculate how many words should be revealed based on scroll progress
       const totalWords = words.length;
       const wordsToReveal = Math.floor(scrollProgress * totalWords);
-      
-      // If the section is completely out of view (scrolled past), reset
-      if (containerBottom < 0) {
-        setRevealedWords(new Set());
-        return;
-      }
-      
-      // If the section hasn't entered the viewport yet, ensure no words are revealed
-      if (containerTop > windowHeight) {
-        setRevealedWords(new Set());
-        return;
-      }
       
       // Create new set of revealed word indices
       const newRevealedWords = new Set();
@@ -85,7 +89,7 @@ const ScrollTextReveal = () => {
                     : 'text-gray-300 dark:text-gray-700 opacity-30 transform translate-y-2'
                 }`}
                 style={{
-                  transitionDelay: `${index * 20}ms` // Reduced from 50ms to 20ms for faster animation
+                  transitionDelay: `${index * 15}ms` // Faster animation
                 }}
               >
                 {word}
