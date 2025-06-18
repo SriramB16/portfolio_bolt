@@ -4,6 +4,7 @@ import { ArrowRight, ExternalLink, Github } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import IntroAnimation from '../components/IntroAnimation';
 import ScrollReveal from '../components/ScrollReveal';
+import ScrollTextReveal from '../components/ScrollTextReveal';
 import WavingHandSVG from '../components/WavingHandSVG';
 
 const Home = () => {
@@ -263,6 +264,9 @@ const Home = () => {
               </div>
             </section>
           </ScrollReveal>
+
+          {/* Scroll Text Reveal Section */}
+          <ScrollTextReveal />
 
           {/* Projects Section */}
           <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-10 lg:px-16">
