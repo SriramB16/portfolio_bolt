@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ExternalLink, Github, Filter } from 'lucide-react';
+import ScrollReveal from '../components/ScrollReveal';
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -78,99 +79,107 @@ export default function Projects() {
     <div className="pt-32 pb-24 px-6 md:px-10 lg:px-16">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-6">
-            My <span className="bg-gradient-to-r from-gray-700 to-black dark:from-golden dark:to-golden-light bg-clip-text text-transparent">Projects</span>
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            A collection of projects that showcase my skills and passion for creating digital solutions.
-          </p>
-        </div>
+        <ScrollReveal direction="up" delay={0.1}>
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-6">
+              My <span className="bg-gradient-to-r from-gray-700 to-black dark:from-golden dark:to-golden-light bg-clip-text text-transparent">Projects</span>
+            </h1>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              A collection of projects that showcase my skills and passion for creating digital solutions.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                activeFilter === filter
-                  ? 'bg-black dark:bg-golden text-white dark:text-black'
-                  : 'bg-gray-100 dark:bg-gray-800 text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700'
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
+        <ScrollReveal direction="up" delay={0.2}>
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {filters.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 ${
+                  activeFilter === filter
+                    ? 'bg-black dark:bg-golden text-white dark:text-black'
+                    : 'bg-gray-100 dark:bg-gray-800 text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700'
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+        </ScrollReveal>
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
-            <div key={project.id} className="group bg-gray-50 dark:bg-gray-900 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <div className="relative overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                  <a 
-                    href={project.liveUrl}
-                    className="p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors"
-                  >
-                    <ExternalLink size={20} />
-                  </a>
-                  <a 
-                    href={project.githubUrl}
-                    className="p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors"
-                  >
-                    <Github size={20} />
-                  </a>
-                </div>
-              </div>
-              
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xl font-semibold text-black dark:text-white">{project.title}</h3>
-                  <span className="text-xs px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full">
-                    {project.category}
-                  </span>
-                </div>
-                
-                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech) => (
-                    <span 
-                      key={tech}
-                      className="text-xs px-2 py-1 bg-black dark:bg-golden text-white dark:text-black rounded-md"
+          {filteredProjects.map((project, index) => (
+            <ScrollReveal key={project.id} direction="up" delay={0.3 + index * 0.1}>
+              <div className="group bg-gray-50 dark:bg-gray-900 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                    <a 
+                      href={project.liveUrl}
+                      className="p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110"
                     >
-                      {tech}
+                      <ExternalLink size={20} />
+                    </a>
+                    <a 
+                      href={project.githubUrl}
+                      className="p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110"
+                    >
+                      <Github size={20} />
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-xl font-semibold text-black dark:text-white">{project.title}</h3>
+                    <span className="text-xs px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full">
+                      {project.category}
                     </span>
-                  ))}
+                  </div>
+                  
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech) => (
+                      <span 
+                        key={tech}
+                        className="text-xs px-2 py-1 bg-black dark:bg-golden text-white dark:text-black rounded-md"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16 bg-gray-50 dark:bg-gray-900 rounded-2xl p-12">
-          <h2 className="text-3xl font-bold text-black dark:text-white mb-4">Have a Project in Mind?</h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-            I'm always excited to work on new projects and collaborate with amazing people. 
-            Let's create something incredible together.
-          </p>
-          <Link 
-            to="/contact"
-            className="inline-block bg-black dark:bg-golden text-white dark:text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105"
-          >
-            Start a Project
-          </Link>
-        </div>
+        <ScrollReveal direction="up" delay={0.8}>
+          <div className="text-center mt-16 bg-gray-50 dark:bg-gray-900 rounded-2xl p-12">
+            <h2 className="text-3xl font-bold text-black dark:text-white mb-4">Have a Project in Mind?</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+              I'm always excited to work on new projects and collaborate with amazing people. 
+              Let's create something incredible together.
+            </p>
+            <Link 
+              to="/contact"
+              className="inline-block bg-black dark:bg-golden text-white dark:text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-800 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105"
+            >
+              Start a Project
+            </Link>
+          </div>
+        </ScrollReveal>
       </div>
     </div>
   );
