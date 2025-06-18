@@ -135,153 +135,79 @@ const Home = () => {
             animate="visible"
             className="bg-[#f7f8fa] dark:bg-black text-black dark:text-white min-h-screen transition-colors duration-300"
           >
-            {/* Hero Section with CSS Grid */}
+            {/* Hero Section with Flexbox Layout */}
             <section className="min-h-screen flex flex-col justify-center px-4 sm:px-6 md:px-10 lg:px-16 pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24">
               <div className="max-w-7xl mx-auto w-full">
-                {/* CSS Grid Layout - Desktop */}
-                <div className="hidden lg:grid grid-cols-5 grid-rows-5 gap-0 min-h-[70vh]">
-                  {/* Div 1: Hey! It's me Sriram */}
-                  <div className="col-start-1 col-end-4 row-start-1 row-end-2 flex items-center">
-                    <ScrollReveal direction="up" delay={0.1}>
-                      <div className="flex items-center gap-4">
-                        <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
-                        <WavingHandSVG className="w-12 h-12" />
-                        <span className="text-green-500 text-2xl font-medium font-satoshi">
-                          Hey! It's me Sriram
-                        </span>
-                      </div>
-                    </ScrollReveal>
+                
+                {/* Section 1: Hey! It's me Sriram - Full Width Flexbox */}
+                <ScrollReveal direction="up" delay={0.1}>
+                  <div className="w-full flex items-center gap-3 sm:gap-4 mb-8 sm:mb-12">
+                    <div className="w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full animate-pulse"></div>
+                    <WavingHandSVG className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" />
+                    <span className="text-green-500 text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium font-satoshi">
+                      Hey! It's me Sriram
+                    </span>
                   </div>
+                </ScrollReveal>
 
-                  {/* Div 2: Main Heading */}
-                  <div className="col-start-1 col-end-5 row-start-2 row-end-4 flex items-start">
-                    <ScrollReveal direction="up" delay={0.2}>
-                      <h1 className="font-clash text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-tight">
-                        Crafting <span className="text-green-500">purpose driven</span><br />
-                        <span className="text-green-500">experiences</span> that inspire<br />
-                        & engage.
-                      </h1>
-                    </ScrollReveal>
-                  </div>
-
-                  {/* Div 3: Description Text */}
-                  <div className="col-start-4 col-end-6 row-start-4 row-end-5 flex items-center">
-                    <ScrollReveal direction="up" delay={0.3}>
-                      <p className="text-gray-600 dark:text-gray-400 text-xl leading-relaxed font-satoshi">
-                        I work with brands globally to build pixel-perfect, engaging, and accessible digital 
-                        experiences that drive results and achieve business goals.
-                      </p>
-                    </ScrollReveal>
-                  </div>
-
-                  {/* Div 4: Line and Social Links */}
-                  <div className="col-start-1 col-end-4 row-start-4 row-end-6 flex flex-col justify-start pt-4">
-                    <ScrollReveal direction="up" delay={0.3}>
-                      <div className="w-24 h-px bg-gray-400 dark:bg-gray-600 mb-8"></div>
-                    </ScrollReveal>
-                    
-                    <ScrollReveal direction="up" delay={0.4}>
-                      <div className="flex flex-wrap gap-8 text-base font-satoshi">
-                        <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
-                          LINKEDIN 
-                          <ArrowRight size={18} className="rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                        </a>
-                        <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
-                          GITHUB 
-                          <ArrowRight size={18} className="rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                        </a>
-                        <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
-                          INSTAGRAM 
-                          <ArrowRight size={18} className="rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                        </a>
-                        <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
-                          GMAIL 
-                          <ArrowRight size={18} className="rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                        </a>
-                      </div>
-                    </ScrollReveal>
-                  </div>
-
-                  {/* Div 5: Know me better button */}
-                  <div className="col-start-4 col-end-6 row-start-5 row-end-6 flex items-end">
-                    <ScrollReveal direction="up" delay={0.5}>
-                      <Link 
-                        to="/about"
-                        className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-10 py-4 rounded-full font-medium overflow-hidden transition-all duration-300 text-lg font-satoshi hover:shadow-lg hover:shadow-black/20 dark:hover:shadow-black/40"
-                        onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
-                      >
-                        <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
-                          Know me better
-                        </span>
-                        <div className="absolute inset-0 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-                      </Link>
-                    </ScrollReveal>
-                  </div>
-                </div>
-
-                {/* Mobile/Tablet Layout - Stacked in order */}
-                <div className="lg:hidden space-y-8">
-                  {/* Div 1: Hey! It's me Sriram */}
-                  <ScrollReveal direction="up" delay={0.1}>
-                    <div className="flex items-center gap-3 sm:gap-4">
-                      <div className="w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full animate-pulse"></div>
-                      <WavingHandSVG className="w-8 h-8 sm:w-10 sm:h-10" />
-                      <span className="text-green-500 text-lg sm:text-xl md:text-2xl font-medium font-satoshi">
-                        Hey! It's me Sriram
-                      </span>
-                    </div>
-                  </ScrollReveal>
-
-                  {/* Div 2: Main Heading */}
-                  <ScrollReveal direction="up" delay={0.2}>
-                    <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+                {/* Section 2: Main Heading - 80% width on larger screens */}
+                <ScrollReveal direction="up" delay={0.2}>
+                  <div className="w-full lg:w-4/5 mb-8 sm:mb-12 lg:mb-16">
+                    <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-tight">
                       Crafting <span className="text-green-500">purpose driven</span><br />
                       <span className="text-green-500">experiences</span> that inspire<br />
                       & engage.
                     </h1>
-                  </ScrollReveal>
-
-                  {/* Div 3: Description Text */}
-                  <ScrollReveal direction="up" delay={0.3}>
-                    <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg leading-relaxed font-satoshi">
-                      I work with brands globally to build pixel-perfect, engaging, and accessible digital 
-                      experiences that drive results and achieve business goals.
-                    </p>
-                  </ScrollReveal>
-
-                  {/* Div 4: Line and Social Links */}
-                  <div className="space-y-6">
-                    <ScrollReveal direction="up" delay={0.3}>
-                      <div className="w-16 sm:w-20 h-px bg-gray-400 dark:bg-gray-600"></div>
-                    </ScrollReveal>
-                    
-                    <ScrollReveal direction="up" delay={0.4}>
-                      <div className="flex flex-wrap gap-4 sm:gap-6 text-sm sm:text-base font-satoshi">
-                        <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
-                          LINKEDIN 
-                          <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px] rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                        </a>
-                        <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
-                          GITHUB 
-                          <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px] rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                        </a>
-                        <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
-                          INSTAGRAM 
-                          <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px] rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                        </a>
-                        <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
-                          GMAIL 
-                          <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px] rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                        </a>
-                      </div>
-                    </ScrollReveal>
                   </div>
+                </ScrollReveal>
 
-                  {/* Div 5: Know me better button */}
+                {/* Section 3: Flex Container - Line + Description */}
+                <div className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-12 xl:gap-16 mb-8 sm:mb-12">
+                  {/* Left: Line */}
+                  <ScrollReveal direction="up" delay={0.3}>
+                    <div className="w-16 sm:w-20 md:w-24 lg:w-32 h-px bg-gray-400 dark:bg-gray-600 lg:mt-2"></div>
+                  </ScrollReveal>
+
+                  {/* Right: Description Text */}
+                  <ScrollReveal direction="up" delay={0.3}>
+                    <div className="flex-1 lg:max-w-lg xl:max-w-xl">
+                      <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg lg:text-xl leading-relaxed font-satoshi">
+                        I work with brands globally to build pixel-perfect, engaging, and accessible digital 
+                        experiences that drive results and achieve business goals.
+                      </p>
+                    </div>
+                  </ScrollReveal>
+                </div>
+
+                {/* Section 4: Flex Container - Social Links + Button */}
+                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8">
+                  {/* Left: Social Links */}
+                  <ScrollReveal direction="up" delay={0.4}>
+                    <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-8 text-sm sm:text-base lg:text-lg font-satoshi">
+                      <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
+                        LINKEDIN 
+                        <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px] lg:w-5 lg:h-5 rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </a>
+                      <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
+                        GITHUB 
+                        <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px] lg:w-5 lg:h-5 rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </a>
+                      <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
+                        INSTAGRAM 
+                        <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px] lg:w-5 lg:h-5 rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </a>
+                      <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
+                        GMAIL 
+                        <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px] lg:w-5 lg:h-5 rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </a>
+                    </div>
+                  </ScrollReveal>
+
+                  {/* Right: Know me better button */}
                   <ScrollReveal direction="up" delay={0.5}>
                     <Link 
                       to="/about"
-                      className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 text-sm sm:text-base font-satoshi hover:shadow-lg hover:shadow-black/20 dark:hover:shadow-black/40"
+                      className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 text-sm sm:text-base lg:text-lg font-satoshi hover:shadow-lg hover:shadow-black/20 dark:hover:shadow-black/40"
                       onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
                     >
                       <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
@@ -291,6 +217,7 @@ const Home = () => {
                     </Link>
                   </ScrollReveal>
                 </div>
+
               </div>
             </section>
 
