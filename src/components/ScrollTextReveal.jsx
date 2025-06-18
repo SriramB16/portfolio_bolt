@@ -4,7 +4,7 @@ const ScrollTextReveal = () => {
   const containerRef = useRef(null);
   const [revealedLetters, setRevealedLetters] = useState(new Set());
 
-  const text = "I'm Sriram — a developer who loves turning ideas into smooth, functional digital experiences. With 2 years of experience, I focus on writing clean code and building things people enjoy using. I'm always exploring, learning, and growing with the tech that keeps me inspired";
+  const text = "I'm Sriram -- a developer who loves turning ideas into smooth, functional digital experiences. With 2 years of experience, I focus on writing clean code and building things people enjoy using. I'm always exploring, learning, and growing with the tech that keeps me inspired";
   
   // Split text into letters while preserving spaces
   const letters = text.split('').map((char, index) => ({
