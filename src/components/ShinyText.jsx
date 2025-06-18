@@ -19,7 +19,7 @@ const ShinyText = ({ children, className = "", size = "base" }) => {
       `}
       style={{
         backgroundSize: '200% 100%',
-        animation: 'shine 10s ease-in-out infinite'
+        animation: 'shine 20s ease-in-out infinite'
       }}
     >
       {children}
