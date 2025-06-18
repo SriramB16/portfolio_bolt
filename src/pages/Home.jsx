@@ -10,6 +10,7 @@ const Home = () => {
   const [showIntro, setShowIntro] = useState(false);
   const [contentVisible, setContentVisible] = useState(false);
   const [hoveredProject, setHoveredProject] = useState(null);
+  const [hoveredSocialLink, setHoveredSocialLink] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -161,16 +162,18 @@ const Home = () => {
                   </div>
                 </ScrollReveal>
 
-                {/* Section 3: Flex Container - Line + Description */}
-                <div className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-12 xl:gap-16 mb-8 sm:mb-12">
-                  {/* Left: Line */}
+                {/* Section 3: Flex Container - Line + Description (Equal Width) */}
+                <div className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-0 mb-8 sm:mb-12">
+                  {/* Left: Border Div - Takes 50% width */}
                   <ScrollReveal direction="up" delay={0.3}>
-                    <div className="w-16 sm:w-20 md:w-24 lg:w-32 h-px bg-gray-400 dark:bg-gray-600 lg:mt-2"></div>
+                    <div className="w-full lg:w-1/2 flex items-start lg:pr-8 xl:pr-12">
+                      <div className="w-16 sm:w-20 md:w-24 lg:w-32 xl:w-40 h-px bg-gray-400 dark:bg-gray-600 lg:mt-2"></div>
+                    </div>
                   </ScrollReveal>
 
-                  {/* Right: Description Text */}
+                  {/* Right: Description Text - Takes 50% width */}
                   <ScrollReveal direction="up" delay={0.3}>
-                    <div className="flex-1 lg:max-w-lg xl:max-w-xl">
+                    <div className="w-full lg:w-1/2">
                       <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg lg:text-xl leading-relaxed font-satoshi">
                         I work with brands globally to build pixel-perfect, engaging, and accessible digital 
                         experiences that drive results and achieve business goals.
@@ -181,25 +184,35 @@ const Home = () => {
 
                 {/* Section 4: Flex Container - Social Links + Button */}
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8">
-                  {/* Left: Social Links */}
+                  {/* Left: Social Links with Hover Effects */}
                   <ScrollReveal direction="up" delay={0.4}>
-                    <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-8 text-sm sm:text-base lg:text-lg font-satoshi">
-                      <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
-                        LINKEDIN 
-                        <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px] lg:w-5 lg:h-5 rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      </a>
-                      <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
-                        GITHUB 
-                        <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px] lg:w-5 lg:h-5 rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      </a>
-                      <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
-                        INSTAGRAM 
-                        <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px] lg:w-5 lg:h-5 rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      </a>
-                      <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 group">
-                        GMAIL 
-                        <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px] lg:w-5 lg:h-5 rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      </a>
+                    <div 
+                      className="flex flex-wrap gap-4 sm:gap-6 lg:gap-8 text-sm sm:text-base lg:text-lg font-satoshi"
+                      onMouseLeave={() => setHoveredSocialLink(null)}
+                    >
+                      {[
+                        { name: 'LINKEDIN', href: '#' },
+                        { name: 'GITHUB', href: '#' },
+                        { name: 'INSTAGRAM', href: '#' },
+                        { name: 'GMAIL', href: '#' }
+                      ].map((social) => (
+                        <a 
+                          key={social.name}
+                          href={social.href} 
+                          className={`transition-all duration-300 flex items-center gap-2 group ${
+                            hoveredSocialLink && hoveredSocialLink !== social.name
+                              ? 'text-gray-400 dark:text-gray-600 opacity-50'
+                              : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
+                          }`}
+                          onMouseEnter={() => setHoveredSocialLink(social.name)}
+                        >
+                          {social.name}
+                          <ArrowRight 
+                            size={16} 
+                            className="sm:w-[18px] sm:h-[18px] lg:w-5 lg:h-5 -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" 
+                          />
+                        </a>
+                      ))}
                     </div>
                   </ScrollReveal>
 
