@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         <ScrollReveal direction="up" delay={0.1}>
           <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm text-center md:text-left">
-            © 2025 Devraj Chatribin. All rights reserved.
+            © 2025 Sriram Baskaran. All rights reserved.
           </p>
         </ScrollReveal>
 
