@@ -145,8 +145,8 @@ const Home = () => {
                       <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
                         <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse"></div>
                         <span className="text-green-500 text-xs sm:text-sm font-medium flex items-center gap-1 sm:gap-2">
-                          Hey! It's me Sriram
                           <WavingHandSVG className="w-4 h-4 sm:w-5 sm:h-5" />
+                          Hey! It's me Sriram
                         </span>
                       </div>
                     </ScrollReveal>
