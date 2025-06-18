@@ -68,7 +68,7 @@ const Home = () => {
   // Waving hand animation
   const WavingHand = () => (
     <motion.span
-      className="inline-block text-2xl ml-2"
+      className="inline-block text-base ml-1"
       animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
       transition={{
         duration: 2.5,
@@ -84,8 +84,8 @@ const Home = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      category: 'Web Apps',
+      title: 'Aora',
+      category: 'Development',
       description: 'A full-stack e-commerce solution with React, Node.js, and Stripe integration.',
       image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
@@ -96,8 +96,8 @@ const Home = () => {
     },
     {
       id: 2,
-      title: 'Task Management App',
-      category: 'Mobile',
+      title: 'Code Screenshot',
+      category: 'Development & Design',
       description: 'A React Native app for team collaboration and project management.',
       image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['React Native', 'Firebase', 'Redux'],
@@ -108,20 +108,20 @@ const Home = () => {
     },
     {
       id: 3,
-      title: 'Design System',
-      category: 'UI/UX',
+      title: 'Aora',
+      category: 'Development',
       description: 'A comprehensive design system with reusable components and guidelines.',
       image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Figma', 'Storybook', 'React'],
       liveUrl: '#',
       githubUrl: '#',
-      bgColor: 'bg-yellow-200',
+      bgColor: 'bg-gray-200',
       year: '2024'
     },
     {
       id: 4,
-      title: 'Weather Dashboard',
-      category: 'Web Apps',
+      title: 'Ochi',
+      category: 'Development & Design',
       description: 'A beautiful weather application with real-time data and forecasts.',
       image: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Vue.js', 'Weather API', 'Chart.js'],
@@ -144,7 +144,7 @@ const Home = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="bg-black dark:bg-black text-white min-h-screen"
+            className="bg-black text-white min-h-screen"
           >
             {/* Hero Section */}
             <section className="min-h-screen flex flex-col justify-center px-6 md:px-10 lg:px-16 pt-32 pb-24">
@@ -155,7 +155,7 @@ const Home = () => {
                     <ScrollReveal direction="up" delay={0.1}>
                       <div className="flex items-center gap-3 mb-8">
                         <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                        <span className="text-green-500 text-sm font-medium">
+                        <span className="text-green-500 text-sm font-medium flex items-center">
                           Hey! It's me Sriram
                           <WavingHand />
                         </span>
@@ -276,7 +276,7 @@ const Home = () => {
 
                 {/* Project Grid - Staggered Layout */}
                 <div className="grid lg:grid-cols-2 gap-8">
-                  {/* First Row */}
+                  {/* First Column */}
                   <div className="space-y-8">
                     {/* Project 1 - Higher */}
                     <ScrollReveal direction="up" delay={0.4}>
@@ -467,3 +467,5 @@ const Home = () => {
 };
 
 export default Home;
+
+export default Home
