@@ -32,7 +32,7 @@ function App() {
     <ThemeProvider>
       <Router>
         <NavigationTracker />
-        <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+        <div className="min-h-screen bg-[#f7f8fa] dark:bg-black transition-colors duration-300">
           <Navbar />
           <Routes>
             <Route path="/" element={

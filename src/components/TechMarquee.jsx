@@ -28,21 +28,21 @@ const TechMarquee = () => {
   return (
     <div className="w-full py-8 relative">
       {/* Left gradient overlay */}
-      <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 lg:w-40 xl:w-48 bg-gradient-to-r from-white dark:from-black to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 lg:w-40 xl:w-48 bg-gradient-to-r from-[#f7f8fa] dark:from-black to-transparent z-10 pointer-events-none"></div>
       
       {/* Right gradient overlay */}
-      <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 lg:w-40 xl:w-48 bg-gradient-to-l from-white dark:from-black to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 lg:w-40 xl:w-48 bg-gradient-to-l from-[#f7f8fa] dark:from-black to-transparent z-10 pointer-events-none"></div>
       
       <Marquee
         gradient={false}
         speed={50}
         pauseOnHover={false}
-        className="bg-gray-50 dark:bg-gray-900 py-6"
+        className="bg-white dark:bg-gray-900 py-6"
       >
         {technologies.map((tech, index) => (
           <div
             key={`${tech.name}-${index}`}
-            className="flex items-center gap-3 bg-white dark:bg-gray-800 px-6 py-4 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 mx-4 hover:scale-105 transition-transform duration-300 group"
+            className="flex items-center gap-3 bg-[#f7f8fa] dark:bg-gray-800 px-6 py-4 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 mx-4 hover:scale-105 transition-transform duration-300 group"
           >
             <div className="relative">
               <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
@@ -60,22 +60,22 @@ const TechMarquee = () => {
       {/* Second row with reverse direction */}
       <div className="relative">
         {/* Left gradient overlay */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 lg:w-40 xl:w-48 bg-gradient-to-r from-white dark:from-black to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 lg:w-40 xl:w-48 bg-gradient-to-r from-[#f7f8fa] dark:from-black to-transparent z-10 pointer-events-none"></div>
         
         {/* Right gradient overlay */}
-        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 lg:w-40 xl:w-48 bg-gradient-to-l from-white dark:from-black to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 lg:w-40 xl:w-48 bg-gradient-to-l from-[#f7f8fa] dark:from-black to-transparent z-10 pointer-events-none"></div>
         
         <Marquee
           gradient={false}
           speed={40}
           direction="right"
           pauseOnHover={false}
-          className="bg-gray-50 dark:bg-gray-900 py-6 mt-4"
+          className="bg-white dark:bg-gray-900 py-6 mt-4"
         >
           {technologies.slice().reverse().map((tech, index) => (
             <div
               key={`${tech.name}-reverse-${index}`}
-              className="flex items-center gap-3 bg-white dark:bg-gray-800 px-6 py-4 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 mx-4 hover:scale-105 transition-transform duration-300 group"
+              className="flex items-center gap-3 bg-[#f7f8fa] dark:bg-gray-800 px-6 py-4 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 mx-4 hover:scale-105 transition-transform duration-300 group"
             >
               <div className="relative">
                 <span className="text-2xl group-hover:scale-110 transition-transform duration-300">

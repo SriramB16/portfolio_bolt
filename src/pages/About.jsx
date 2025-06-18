@@ -6,7 +6,7 @@ import TechMarquee from '../components/TechMarquee';
 
 const About = () => {
   return (
-    <div className="pt-32 pb-24 px-6 md:px-10 lg:px-16">
+    <div className="pt-32 pb-24 px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <ScrollReveal direction="up" delay={0.1}>
@@ -42,11 +42,11 @@ const About = () => {
             
             <ScrollReveal direction="left" delay={0.4}>
               <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-6 bg-gray-50 dark:bg-gray-900 rounded-xl">
+                <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-xl">
                   <div className="text-3xl font-bold text-black dark:text-golden mb-2">50+</div>
                   <div className="text-gray-600 dark:text-gray-300">Projects Completed</div>
                 </div>
-                <div className="text-center p-6 bg-gray-50 dark:bg-gray-900 rounded-xl">
+                <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-xl">
                   <div className="text-3xl font-bold text-black dark:text-golden mb-2">3+</div>
                   <div className="text-gray-600 dark:text-gray-300">Years Experience</div>
                 </div>
@@ -120,7 +120,7 @@ const About = () => {
                 }
               ].map((category, index) => (
                 <ScrollReveal key={category.title} direction="up" delay={0.9 + index * 0.1}>
-                  <div className="p-8 bg-gray-50 dark:bg-gray-900 rounded-2xl">
+                  <div className="p-8 bg-white dark:bg-gray-900 rounded-2xl">
                     <h3 className="text-xl font-semibold text-black dark:text-white mb-4">{category.title}</h3>
                     <div className="space-y-2">
                       {category.skills.map((skill) => (
@@ -141,7 +141,7 @@ const About = () => {
 
         {/* Call to Action */}
         <ScrollReveal direction="up" delay={1.2}>
-          <div className="text-center bg-gray-50 dark:bg-gray-900 rounded-2xl p-12">
+          <div className="text-center bg-white dark:bg-gray-900 rounded-2xl p-12">
             <h2 className="text-3xl font-bold text-black dark:text-white mb-4">Let's Work Together</h2>
             <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
               I'm always interested in new opportunities and exciting projects. 

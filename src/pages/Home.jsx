@@ -147,7 +147,7 @@ const Home = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="bg-white dark:bg-black text-black dark:text-white min-h-screen transition-colors duration-300"
+            className="bg-[#f7f8fa] dark:bg-black text-black dark:text-white min-h-screen transition-colors duration-300"
           >
             {/* Hero Section */}
             <section className="min-h-screen flex flex-col justify-center px-6 md:px-10 lg:px-16 pt-32 pb-24">
@@ -392,35 +392,39 @@ const Home = () => {
               </div>
             </section>
 
-            {/* CTA Section */}
+            {/* CTA Section - Pure White with Margins */}
             <section className="py-24 px-6 md:px-10 lg:px-16">
-              <div className="max-w-4xl mx-auto text-center">
-                <ScrollReveal direction="up" delay={0.1}>
-                  <div className="flex items-center justify-center gap-3 mb-8">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-green-500 text-sm font-medium">Available for work</span>
+              <div className="mx-6 md:mx-12 lg:mx-16 xl:mx-24">
+                <div className="bg-white dark:bg-gray-900 rounded-3xl py-24 px-6 md:px-12 lg:px-16">
+                  <div className="max-w-4xl mx-auto text-center">
+                    <ScrollReveal direction="up" delay={0.1}>
+                      <div className="flex items-center justify-center gap-3 mb-8">
+                        <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                        <span className="text-green-500 text-sm font-medium">Available for work</span>
+                      </div>
+                    </ScrollReveal>
+
+                    <ScrollReveal direction="up" delay={0.2}>
+                      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight text-black dark:text-white">
+                        Let's create your<br />
+                        next big idea.
+                      </h2>
+                    </ScrollReveal>
+
+                    <ScrollReveal direction="up" delay={0.3}>
+                      <Link 
+                        to="/contact"
+                        className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-8 py-4 rounded-full font-medium overflow-hidden transition-all duration-300"
+                        onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
+                      >
+                        <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
+                          Contact Me
+                        </span>
+                        <div className="absolute inset-0 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+                      </Link>
+                    </ScrollReveal>
                   </div>
-                </ScrollReveal>
-
-                <ScrollReveal direction="up" delay={0.2}>
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-                    Let's create your<br />
-                    next big idea.
-                  </h2>
-                </ScrollReveal>
-
-                <ScrollReveal direction="up" delay={0.3}>
-                  <Link 
-                    to="/contact"
-                    className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-8 py-4 rounded-full font-medium overflow-hidden transition-all duration-300"
-                    onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
-                  >
-                    <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
-                      Contact Me
-                    </span>
-                    <div className="absolute inset-0 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-                  </Link>
-                </ScrollReveal>
+                </div>
               </div>
             </section>
 

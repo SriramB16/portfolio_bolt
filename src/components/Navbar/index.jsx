@@ -71,14 +71,14 @@ const Navbar = () => {
     <>
       {/* Mobile top logo */}
       <div className={`fixed top-0 left-0 w-full md:hidden z-50 transition-colors duration-300 ${
-        isHomePage ? 'bg-white dark:bg-black' : 'bg-white dark:bg-black'
+        isHomePage ? 'bg-[#f7f8fa] dark:bg-black' : 'bg-[#f7f8fa] dark:bg-black'
       }`}>
         <div className="flex items-center justify-between p-4">
           <span className={`text-xl font-bold ${isHomePage ? 'text-black dark:text-white' : 'text-black dark:text-white'}`}>SR</span>
           <button 
             onClick={toggleDarkMode}
             aria-label="Toggle dark mode"
-            className="relative p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 overflow-hidden"
+            className="relative p-2 rounded-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 overflow-hidden"
           >
             <div className="relative w-5 h-5">
               {/* Moon Icon for Light Mode */}
@@ -131,7 +131,7 @@ const Navbar = () => {
             <button 
               onClick={toggleDarkMode}
               aria-label="Toggle dark mode"
-              className="relative p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 overflow-hidden group"
+              className="relative p-2 rounded-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 overflow-hidden group"
             >
               <div className="relative w-5 h-5">
                 {/* Moon Icon for Light Mode */}

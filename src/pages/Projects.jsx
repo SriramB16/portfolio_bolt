@@ -76,7 +76,7 @@ export default function Projects() {
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <div className="pt-32 pb-24 px-6 md:px-10 lg:px-16">
+    <div className="pt-32 pb-24 px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <ScrollReveal direction="up" delay={0.1}>
@@ -100,7 +100,7 @@ export default function Projects() {
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 ${
                   activeFilter === filter
                     ? 'bg-black dark:bg-golden text-white dark:text-black'
-                    : 'bg-gray-100 dark:bg-gray-800 text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700'
+                    : 'bg-white dark:bg-gray-800 text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
                 }`}
               >
                 {filter}
@@ -113,7 +113,7 @@ export default function Projects() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
             <ScrollReveal key={project.id} direction="up" delay={0.3 + index * 0.1}>
-              <div className="group bg-gray-50 dark:bg-gray-900 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="relative overflow-hidden">
                   <img 
                     src={project.image} 
@@ -139,7 +139,7 @@ export default function Projects() {
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-xl font-semibold text-black dark:text-white">{project.title}</h3>
-                    <span className="text-xs px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full">
+                    <span className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full">
                       {project.category}
                     </span>
                   </div>
@@ -166,7 +166,7 @@ export default function Projects() {
 
         {/* Call to Action */}
         <ScrollReveal direction="up" delay={0.8}>
-          <div className="text-center mt-16 bg-gray-50 dark:bg-gray-900 rounded-2xl p-12">
+          <div className="text-center mt-16 bg-white dark:bg-gray-900 rounded-2xl p-12">
             <h2 className="text-3xl font-bold text-black dark:text-white mb-4">Have a Project in Mind?</h2>
             <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
               I'm always excited to work on new projects and collaborate with amazing people. 

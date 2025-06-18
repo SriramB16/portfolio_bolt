@@ -25,7 +25,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="pt-32 pb-24 px-6 md:px-10 lg:px-16">
+    <div className="pt-32 pb-24 px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <ScrollReveal direction="up" delay={0.1}>
@@ -82,7 +82,7 @@ const Contact = () => {
                     <a 
                       key={index}
                       href="#" 
-                      className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110"
+                      className="w-12 h-12 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110"
                     >
                       <Icon size={20} />
                     </a>
@@ -94,7 +94,7 @@ const Contact = () => {
 
           {/* Contact Form */}
           <ScrollReveal direction="right" delay={0.3}>
-            <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8">
+            <div className="bg-white dark:bg-gray-900 rounded-2xl p-8">
               <h2 className="text-2xl font-bold text-black dark:text-white mb-6">Send a Message</h2>
               
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -109,7 +109,7 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300"
                       required
                     />
                   </div>
@@ -124,7 +124,7 @@ const Contact = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300"
                       required
                     />
                   </div>
@@ -140,7 +140,7 @@ const Contact = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300"
                     required
                   />
                 </div>
@@ -155,7 +155,7 @@ const Contact = () => {
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 bg-[#f7f8fa] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-black dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-golden focus:border-transparent transition-all duration-300 resize-none"
                     required
                   ></textarea>
                 </div>
@@ -174,7 +174,7 @@ const Contact = () => {
 
         {/* Additional CTA */}
         <ScrollReveal direction="up" delay={0.7}>
-          <div className="text-center mt-16 bg-gray-50 dark:bg-gray-900 rounded-2xl p-12">
+          <div className="text-center mt-16 bg-white dark:bg-gray-900 rounded-2xl p-12">
             <h2 className="text-3xl font-bold text-black dark:text-white mb-4">Ready to Start Your Project?</h2>
             <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
               Let's discuss your ideas and turn them into reality. I'm here to help you create something amazing.
