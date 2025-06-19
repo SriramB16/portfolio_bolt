@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, ExternalLink, ChevronLeft, ChevronRight, Copy, Check } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, ChevronLeft, ChevronRight, Copy, Check } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import ShinyText from '../components/ShinyText';
 
@@ -324,32 +324,36 @@ const ProjectDetail = () => {
                   href={currentProject.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative inline-flex items-center gap-2 border border-black dark:border-white text-black dark:text-white px-6 py-3 rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50 w-full sm:w-auto justify-center"
+                  className="group relative inline-flex items-center gap-2 border border-black dark:border-white text-black dark:text-white px-6 py-3 rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 text-sm sm:text-base w-full sm:w-auto justify-center"
                 >
                   <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
                     Check it out
                   </span>
-                  <ExternalLink size={16} className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black" />
+                  <ArrowUpRight size={16} className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black" />
                   <div className="absolute inset-0 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
                 </a>
               </ScrollReveal>
             )}
 
             <ScrollReveal direction="right" delay={0.4}>
-              <div>
-                <h3 className="font-clash text-lg sm:text-xl font-semibold text-black dark:text-white mb-3">Roles</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light">
-                  {currentProject.roles}
-                </p>
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="font-clash text-lg sm:text-xl font-semibold text-black dark:text-white">Roles:</span>
+                  <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light">
+                    {currentProject.roles}
+                  </span>
+                </div>
               </div>
             </ScrollReveal>
 
             <ScrollReveal direction="right" delay={0.5}>
-              <div>
-                <h3 className="font-clash text-lg sm:text-xl font-semibold text-black dark:text-white mb-3">Client</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light">
-                  {currentProject.client}
-                </p>
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="font-clash text-lg sm:text-xl font-semibold text-black dark:text-white">Client:</span>
+                  <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light">
+                    {currentProject.client}
+                  </span>
+                </div>
               </div>
             </ScrollReveal>
           </div>
@@ -362,7 +366,7 @@ const ProjectDetail = () => {
               {currentProject.technologies.map((tech, index) => (
                 <span 
                   key={index}
-                  className="px-4 py-2 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base font-light shadow-lg shadow-black/10 dark:shadow-black/20 border border-gray-200 dark:border-gray-700"
+                  className="px-4 py-2 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base font-light border border-gray-200 dark:border-gray-700"
                 >
                   {tech}
                 </span>
@@ -476,27 +480,27 @@ const ProjectDetail = () => {
 
         {/* Navigation */}
         <ScrollReveal direction="up" delay={1.1}>
-          <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 mb-12 sm:mb-16">
+          <div className="flex flex-row justify-between items-center gap-3 sm:gap-4 mb-12 sm:mb-16">
             <button
               onClick={handlePrevProject}
-              className="group flex items-center gap-3 p-4 sm:p-6 bg-gray-900 dark:bg-gray-800 hover:bg-gray-800 dark:hover:bg-gray-700 rounded-xl transition-all duration-300 hover:scale-105 flex-1 sm:flex-none sm:min-w-[200px]"
+              className="group flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-xl transition-all duration-300 hover:scale-105 flex-1 sm:flex-none sm:min-w-[180px] md:min-w-[200px]"
             >
-              <ChevronLeft size={20} className="text-white group-hover:-translate-x-1 transition-transform duration-300 flex-shrink-0" />
+              <ChevronLeft size={18} className="text-gray-700 dark:text-white group-hover:-translate-x-1 transition-transform duration-300 flex-shrink-0" />
               <div className="text-left min-w-0">
-                <p className="text-xs sm:text-sm font-light text-gray-400">Prev</p>
-                <p className="text-sm sm:text-base font-medium text-white truncate">{projects[currentIndex > 0 ? currentIndex - 1 : projects.length - 1].title}</p>
+                <p className="text-xs font-light text-gray-500 dark:text-gray-400">Prev</p>
+                <p className="text-sm font-medium text-gray-700 dark:text-white truncate">{projects[currentIndex > 0 ? currentIndex - 1 : projects.length - 1].title}</p>
               </div>
             </button>
 
             <button
               onClick={handleNextProject}
-              className="group flex items-center gap-3 p-4 sm:p-6 bg-gray-900 dark:bg-gray-800 hover:bg-gray-800 dark:hover:bg-gray-700 rounded-xl transition-all duration-300 hover:scale-105 flex-1 sm:flex-none sm:min-w-[200px]"
+              className="group flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-xl transition-all duration-300 hover:scale-105 flex-1 sm:flex-none sm:min-w-[180px] md:min-w-[200px]"
             >
               <div className="text-right min-w-0 flex-1">
-                <p className="text-xs sm:text-sm font-light text-gray-400">Next</p>
-                <p className="text-sm sm:text-base font-medium text-white truncate">{projects[currentIndex < projects.length - 1 ? currentIndex + 1 : 0].title}</p>
+                <p className="text-xs font-light text-gray-500 dark:text-gray-400">Next</p>
+                <p className="text-sm font-medium text-gray-700 dark:text-white truncate">{projects[currentIndex < projects.length - 1 ? currentIndex + 1 : 0].title}</p>
               </div>
-              <ChevronRight size={20} className="text-white group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0" />
+              <ChevronRight size={18} className="text-gray-700 dark:text-white group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0" />
             </button>
           </div>
         </ScrollReveal>
