@@ -262,7 +262,7 @@ const Contact = () => {
                           className="overflow-hidden"
                         >
                           <div className="px-4 sm:px-5 pb-4 sm:pb-5">
-                            <p className="text-gray-700 dark:text-gray-400 leading-relaxed text-sm sm:text-base font-light">
+                            <p className="text-gray-700 dark:text-gray-400 leading-relaxed text-sm sm:text-base font-normal">
                               {faq.answer}
                             </p>
                           </div>
