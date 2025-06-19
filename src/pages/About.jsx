@@ -8,6 +8,7 @@ import ShinyText from '../components/ShinyText';
 const About = () => {
   const [hoveredStory, setHoveredStory] = useState(0);
   const [hoveredArrow, setHoveredArrow] = useState(false);
+  const [showAllExperience, setShowAllExperience] = useState(false);
   const processRef = useRef(null);
   const isProcessInView = useInView(processRef, { once: false, margin: "-100px" });
 
@@ -54,32 +55,34 @@ const About = () => {
   // Work experience data
   const workExperience = [
     {
-      company: 'TechCorp',
-      logo: '🚀',
+      company: 'OneShield Software',
+      logo: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=100',
       position: 'Software Engineer',
-      duration: 'Aug 2023 - Present',
-      bgColor: 'bg-blue-100 dark:bg-blue-900/20'
+      duration: 'Aug 2022 — Present'
     },
     {
-      company: 'StartupXYZ',
-      logo: '⚡',
+      company: 'Design and Code',
+      logo: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=100',
       position: 'Founder',
-      duration: 'Jan 2023 - Present',
-      bgColor: 'bg-purple-100 dark:bg-purple-900/20'
+      duration: 'Jan 2021 — Present'
     },
     {
-      company: 'DesignStudio',
-      logo: '🎨',
+      company: 'BlackboxAI',
+      logo: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=100',
       position: 'Design Engineer',
-      duration: 'Feb 2022 - Mar 2023',
-      bgColor: 'bg-green-100 dark:bg-green-900/20'
+      duration: 'Feb 2025 — Mar 2025'
     },
     {
-      company: 'DevAgency',
-      logo: '💻',
+      company: 'Social3',
+      logo: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=100',
       position: 'UI/UX Designer',
-      duration: 'Aug 2021 - Sep 2022',
-      bgColor: 'bg-orange-100 dark:bg-orange-900/20'
+      duration: 'Aug 2022 — Sep 2023'
+    },
+    {
+      company: 'TechCorp',
+      logo: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=100',
+      position: 'Frontend Developer',
+      duration: 'Jan 2022 — Jul 2022'
     }
   ];
 
@@ -126,6 +129,10 @@ const About = () => {
     link.click();
     document.body.removeChild(link);
   };
+
+  // Show only first 3 experiences initially, show all if more than 3
+  const displayedExperience = showAllExperience ? workExperience : workExperience.slice(0, 3);
+  const shouldShowMoreButton = workExperience.length > 3;
 
   return (
     <div className="pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 bg-[#f7f8fa] dark:bg-black overflow-x-hidden">
@@ -307,10 +314,10 @@ const About = () => {
       {/* Section 4: Work History */}
       <section className="px-4 sm:px-6 md:px-10 lg:px-16 mb-16 sm:mb-20 md:mb-24">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
+          <div className="grid lg:grid-cols-3 gap-8 sm:gap-12 lg:gap-16">
             
-            {/* Left - Title and Description */}
-            <div>
+            {/* Left - Title and Description (1/3 width) */}
+            <div className="lg:col-span-1">
               <ScrollReveal direction="left" delay={0.1}>
                 <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
                   <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
@@ -325,36 +332,40 @@ const About = () => {
               </ScrollReveal>
               
               <ScrollReveal direction="left" delay={0.3}>
-                <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed font-light">
                   I have worked with some of the most innovative industry leaders to help build their top-notch products.
                 </p>
               </ScrollReveal>
             </div>
 
-            {/* Right - Experience List */}
-            <div className="space-y-4 sm:space-y-6">
-              {workExperience.map((exp, index) => (
+            {/* Right - Experience List (2/3 width) */}
+            <div className="lg:col-span-2 space-y-4 sm:space-y-5">
+              {displayedExperience.map((exp, index) => (
                 <ScrollReveal key={index} direction="right" delay={0.4 + index * 0.1}>
-                  <div className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-lg shadow-black/5 dark:shadow-black/20 hover:shadow-xl hover:shadow-black/10 dark:hover:shadow-black/30 transition-all duration-300 hover:-translate-y-1">
+                  <div className="flex items-center gap-4 sm:gap-5 py-4 sm:py-5 px-4 sm:px-6 bg-white dark:bg-gray-900/50 rounded-2xl shadow-sm shadow-black/5 dark:shadow-black/10 hover:shadow-md hover:shadow-black/10 dark:hover:shadow-black/20 transition-all duration-300 hover:-translate-y-0.5">
                     
-                    {/* Company Logo */}
-                    <div className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 ${exp.bgColor} rounded-xl flex items-center justify-center text-xl sm:text-2xl md:text-3xl shadow-md`}>
-                      {exp.logo}
+                    {/* Company Logo - Round */}
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden shadow-md flex-shrink-0">
+                      <img 
+                        src={exp.logo}
+                        alt={`${exp.company} logo`}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     
                     {/* Company Info */}
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-clash text-lg sm:text-xl font-bold text-black dark:text-white mb-1">
+                      <h3 className="font-clash text-base sm:text-lg font-semibold text-black dark:text-white mb-0.5 sm:mb-1">
                         {exp.position}
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-1">
-                        {exp.company}
+                      <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light">
+                        @{exp.company}
                       </p>
                     </div>
                     
                     {/* Duration */}
-                    <div className="text-right">
-                      <p className="text-gray-500 dark:text-gray-500 text-xs sm:text-sm font-medium">
+                    <div className="text-right flex-shrink-0">
+                      <p className="text-gray-500 dark:text-gray-500 text-xs sm:text-sm font-light">
                         {exp.duration}
                       </p>
                     </div>
@@ -362,11 +373,17 @@ const About = () => {
                 </ScrollReveal>
               ))}
               
-              <ScrollReveal direction="right" delay={0.8}>
-                <button className="text-green-500 hover:text-green-600 dark:hover:text-green-400 font-medium text-sm sm:text-base transition-colors duration-300 mt-4">
-                  Show More
-                </button>
-              </ScrollReveal>
+              {/* Show More Button - Only visible if more than 3 experiences */}
+              {shouldShowMoreButton && (
+                <ScrollReveal direction="right" delay={0.8}>
+                  <button 
+                    onClick={() => setShowAllExperience(!showAllExperience)}
+                    className="text-green-500 hover:text-green-600 dark:hover:text-green-400 font-light text-sm sm:text-base transition-colors duration-300 mt-4 underline underline-offset-4"
+                  >
+                    {showAllExperience ? 'Show Less' : 'Show More'}
+                  </button>
+                </ScrollReveal>
+              )}
             </div>
           </div>
         </div>
@@ -384,7 +401,7 @@ const About = () => {
               <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-4 sm:mb-6">
                 My Design Process
               </h2>
-              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base max-w-3xl mx-auto">
+              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base max-w-3xl mx-auto font-light">
                 I have worked with some of the most innovative industry leaders to help build their top-notch products.
               </p>
             </div>
@@ -415,7 +432,7 @@ const About = () => {
                 </h3>
                 
                 {/* Description */}
-                <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed font-light">
                   {step.description}
                 </p>
               </motion.div>
