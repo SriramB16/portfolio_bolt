@@ -97,6 +97,7 @@ export default function Projects() {
                 delay={80}
                 animateBy="letters"
                 direction="bottom"
+                enableShinyEffect={true}
                 className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
               />
             </div>
@@ -216,6 +217,7 @@ export default function Projects() {
                 delay={80}
                 animateBy="letters"
                 direction="bottom"
+                enableShinyEffect={true}
                 className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
               />
             </div>

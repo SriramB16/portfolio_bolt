@@ -279,6 +279,7 @@ const Home = () => {
                   delay={100}
                   animateBy="letters"
                   direction="bottom"
+                  enableShinyEffect={true}
                   className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
                 />
               </div>
@@ -300,6 +301,7 @@ const Home = () => {
                     delay={80}
                     animateBy="letters"
                     direction="bottom"
+                    enableShinyEffect={true}
                     className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
                   />
                 </div>
@@ -330,6 +332,7 @@ const Home = () => {
                     delay={80}
                     animateBy="letters"
                     direction="bottom"
+                    enableShinyEffect={true}
                     className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
                   />
                 </div>
@@ -479,6 +482,7 @@ const Home = () => {
                         delay={100}
                         animateBy="letters"
                         direction="bottom"
+                        enableShinyEffect={true}
                         className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
                       />
                     </div>

@@ -9,9 +9,11 @@ const BlurText = ({
   direction = 'bottom',
   onAnimationComplete,
   className = '',
-  once = true
+  once = true,
+  enableShinyEffect = false
 }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [showShinyEffect, setShowShinyEffect] = useState(false);
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: once
@@ -22,6 +24,7 @@ const BlurText = ({
       setIsVisible(true);
     } else if (!once) {
       setIsVisible(false);
+      setShowShinyEffect(false);
     }
   }, [inView, once]);
 
@@ -81,16 +84,36 @@ const BlurText = ({
 
   const variants = getVariants();
 
+  const handleAnimationComplete = () => {
+    if (enableShinyEffect) {
+      setTimeout(() => {
+        setShowShinyEffect(true);
+      }, 300); // Small delay before shiny effect starts
+    }
+    if (onAnimationComplete) {
+      onAnimationComplete();
+    }
+  };
+
   const containerVariants = {
     hidden: {},
     visible: {
       transition: {
         staggerChildren: delay / 1000,
         delayChildren: 0.1,
-        onComplete: onAnimationComplete
+        onComplete: handleAnimationComplete
       }
     }
   };
+
+  const shinyTextStyle = enableShinyEffect && showShinyEffect ? {
+    background: 'linear-gradient(90deg, #10b981 0%, #34d399 25%, #6ee7b7 50%, #34d399 75%, #10b981 100%)',
+    backgroundSize: '200% 100%',
+    backgroundClip: 'text',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    animation: 'shine 3s ease-in-out infinite'
+  } : {};
 
   return (
     <motion.div
@@ -99,6 +122,7 @@ const BlurText = ({
       variants={containerVariants}
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"}
+      style={shinyTextStyle}
     >
       {textArray.map((char, index) => (
         <motion.span
