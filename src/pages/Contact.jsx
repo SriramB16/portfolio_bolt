@@ -69,7 +69,7 @@ const Contact = () => {
               ].map((contact, index) => (
                 <ScrollReveal key={contact.title} direction="left" delay={0.3 + index * 0.1}>
                   <div className="flex items-center gap-3 sm:gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-lg shadow-black/20 dark:shadow-black/30 border border-green-500">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-[#111116] rounded-full flex items-center justify-center shadow-lg shadow-black/20 dark:shadow-black/30 border border-green-500">
                       <contact.icon size={18} className="sm:w-5 sm:h-5 text-green-500" />
                     </div>
                     <div>
@@ -93,7 +93,7 @@ const Contact = () => {
                     <a 
                       key={index}
                       href="#" 
-                      className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-500 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110 shadow-lg shadow-black/10 dark:shadow-black/20 hover:shadow-xl hover:shadow-black/15 dark:hover:shadow-black/30 border border-gray-200 dark:border-gray-700 hover:border-green-500"
+                      className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-[#111116] rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-500 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110 shadow-lg shadow-black/10 dark:shadow-black/20 hover:shadow-xl hover:shadow-black/15 dark:hover:shadow-black/30 border border-gray-200 dark:border-gray-700 hover:border-green-500"
                     >
                       <Icon size={18} className="sm:w-5 sm:h-5" />
                     </a>
@@ -105,7 +105,7 @@ const Contact = () => {
 
           {/* Contact Form */}
           <ScrollReveal direction="right" delay={0.3}>
-            <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
+            <div className="bg-white dark:bg-[#111116] rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
               <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                 <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
                 <ShinyText size="lg">SEND A MESSAGE</ShinyText>
@@ -191,7 +191,7 @@ const Contact = () => {
 
         {/* Additional CTA */}
         <ScrollReveal direction="up" delay={0.7}>
-          <div className="text-center mt-12 sm:mt-16 bg-white dark:bg-gray-900 rounded-2xl p-8 sm:p-12 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
+          <div className="text-center mt-12 sm:mt-16 bg-white dark:bg-[#111116] rounded-2xl p-8 sm:p-12 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
             <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
               <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
               <ShinyText size="lg">READY TO START YOUR PROJECT?</ShinyText>

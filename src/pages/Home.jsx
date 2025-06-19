@@ -7,6 +7,7 @@ import ScrollReveal from '../components/ScrollReveal';
 import ScrollTextReveal from '../components/ScrollTextReveal';
 import ShinyText from '../components/ShinyText';
 import WavingHandSVG from '../components/WavingHandSVG';
+import ExpertiseAccordion from '../components/ExpertiseAccordion';
 
 const Home = () => {
   const [showMainContent, setShowMainContent] = useState(false);
@@ -269,6 +270,9 @@ const Home = () => {
           {/* Scroll Text Reveal Section */}
           <ScrollTextReveal />
 
+          {/* Areas of Expertise Accordion */}
+          <ExpertiseAccordion />
+
           {/* Projects Section */}
           <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-10 lg:px-16">
             <div className="max-w-6xl mx-auto">
@@ -407,7 +411,7 @@ const Home = () => {
           {/* CTA Section - Pure White with Margins and 3D Effect */}
           <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-10 lg:px-16">
             <div className="mx-4 sm:mx-6 md:mx-12 lg:mx-16 xl:mx-24">
-              <div className="bg-white dark:bg-gray-900 rounded-2xl sm:rounded-3xl py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-16 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
+              <div className="bg-white dark:bg-[#111116] rounded-2xl sm:rounded-3xl py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-16 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
                 <div className="max-w-4xl mx-auto text-center">
                   <ScrollReveal direction="up" delay={0.1}>
                     <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8">

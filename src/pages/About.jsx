@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Code, Coffee, Heart, Award } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import TechMarquee from '../components/TechMarquee';
+import ShinyText from '../components/ShinyText';
 
 const About = () => {
   return (
@@ -11,8 +12,12 @@ const About = () => {
         {/* Header */}
         <ScrollReveal direction="up" delay={0.1}>
           <div className="text-center mb-12 sm:mb-16">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+              <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
+              <ShinyText size="xl">ABOUT ME</ShinyText>
+            </div>
             <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4 sm:mb-6">
-              About <span className="bg-gradient-to-r from-gray-700 to-black dark:from-golden dark:to-golden-light bg-clip-text text-transparent">Me</span>
+              About <span className="text-green-500">Me</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
               I'm a passionate developer who loves creating digital experiences that make a difference.
@@ -23,9 +28,10 @@ const About = () => {
         {/* Tech Stack Marquee */}
         <ScrollReveal direction="up" delay={0.2}>
           <div className="mb-12 sm:mb-16">
-            <h2 className="font-clash text-xl sm:text-2xl md:text-3xl font-bold text-black dark:text-white text-center mb-6 sm:mb-8">
-              Technologies I Work With
-            </h2>
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+              <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
+              <ShinyText size="lg">TECHNOLOGIES I WORK WITH</ShinyText>
+            </div>
             <TechMarquee />
           </div>
         </ScrollReveal>
@@ -42,12 +48,12 @@ const About = () => {
             
             <ScrollReveal direction="left" delay={0.4}>
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="text-center p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-xl shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
-                  <div className="text-2xl sm:text-3xl font-bold text-black dark:text-golden mb-1 sm:mb-2">50+</div>
+                <div className="text-center p-4 sm:p-6 bg-white dark:bg-[#111116] rounded-xl shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
+                  <div className="text-2xl sm:text-3xl font-bold text-black dark:text-green-500 mb-1 sm:mb-2">50+</div>
                   <div className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Projects Completed</div>
                 </div>
-                <div className="text-center p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-xl shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
-                  <div className="text-2xl sm:text-3xl font-bold text-black dark:text-golden mb-1 sm:mb-2">3+</div>
+                <div className="text-center p-4 sm:p-6 bg-white dark:bg-[#111116] rounded-xl shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
+                  <div className="text-2xl sm:text-3xl font-bold text-black dark:text-green-500 mb-1 sm:mb-2">3+</div>
                   <div className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Years Experience</div>
                 </div>
               </div>
@@ -57,7 +63,10 @@ const About = () => {
           {/* Right Column - Story */}
           <div className="space-y-4 sm:space-y-6">
             <ScrollReveal direction="right" delay={0.3}>
-              <h2 className="font-clash text-2xl sm:text-3xl font-bold text-black dark:text-white mb-4 sm:mb-6">My Story</h2>
+              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
+                <ShinyText size="lg">MY STORY</ShinyText>
+              </div>
             </ScrollReveal>
             
             <ScrollReveal direction="right" delay={0.4}>
@@ -83,15 +92,15 @@ const About = () => {
 
             <ScrollReveal direction="right" delay={0.7}>
               <div className="flex flex-wrap gap-3 sm:gap-4 pt-4">
-                <div className="flex items-center gap-2 text-black dark:text-golden text-sm sm:text-base">
+                <div className="flex items-center gap-2 text-black dark:text-green-500 text-sm sm:text-base">
                   <Code size={18} className="sm:w-5 sm:h-5" />
                   <span>Clean Code Advocate</span>
                 </div>
-                <div className="flex items-center gap-2 text-black dark:text-golden text-sm sm:text-base">
+                <div className="flex items-center gap-2 text-black dark:text-green-500 text-sm sm:text-base">
                   <Coffee size={18} className="sm:w-5 sm:h-5" />
                   <span>Coffee Enthusiast</span>
                 </div>
-                <div className="flex items-center gap-2 text-black dark:text-golden text-sm sm:text-base">
+                <div className="flex items-center gap-2 text-black dark:text-green-500 text-sm sm:text-base">
                   <Heart size={18} className="sm:w-5 sm:h-5" />
                   <span>Open Source Contributor</span>
                 </div>
@@ -103,7 +112,10 @@ const About = () => {
         {/* Skills Section */}
         <ScrollReveal direction="up" delay={0.8}>
           <div className="mb-12 sm:mb-16">
-            <h2 className="font-clash text-2xl sm:text-3xl font-bold text-black dark:text-white text-center mb-8 sm:mb-12">Skills & Technologies</h2>
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
+              <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
+              <ShinyText size="lg">SKILLS & TECHNOLOGIES</ShinyText>
+            </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {[
                 {
@@ -120,14 +132,14 @@ const About = () => {
                 }
               ].map((category, index) => (
                 <ScrollReveal key={category.title} direction="up" delay={0.9 + index * 0.1}>
-                  <div className="p-6 sm:p-8 bg-white dark:bg-gray-900 rounded-2xl shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
+                  <div className="p-6 sm:p-8 bg-white dark:bg-[#111116] rounded-2xl shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
                     <h3 className="font-clash text-lg sm:text-xl font-semibold text-black dark:text-white mb-3 sm:mb-4">{category.title}</h3>
                     <div className="space-y-2">
                       {category.skills.map((skill) => (
                         <div key={skill} className="flex justify-between items-center">
                           <span className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">{skill}</span>
                           <div className="w-20 sm:w-24 h-2 bg-gray-200 dark:bg-gray-700 rounded-full">
-                            <div className="h-full bg-black dark:bg-golden rounded-full" style={{width: '85%'}}></div>
+                            <div className="h-full bg-black dark:bg-green-500 rounded-full" style={{width: '85%'}}></div>
                           </div>
                         </div>
                       ))}
@@ -141,7 +153,11 @@ const About = () => {
 
         {/* Call to Action */}
         <ScrollReveal direction="up" delay={1.2}>
-          <div className="text-center bg-white dark:bg-gray-900 rounded-2xl p-8 sm:p-12 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
+          <div className="text-center bg-white dark:bg-[#111116] rounded-2xl p-8 sm:p-12 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
+              <ShinyText size="lg">LET'S WORK TOGETHER</ShinyText>
+            </div>
             <h2 className="font-clash text-2xl sm:text-3xl font-bold text-black dark:text-white mb-3 sm:mb-4">Let's Work Together</h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
               I'm always interested in new opportunities and exciting projects. 
@@ -149,10 +165,13 @@ const About = () => {
             </p>
             <Link 
               to="/contact"
-              className="inline-block bg-white dark:bg-golden text-black dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-golden-light transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50 border border-black dark:border-golden"
+              className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50"
               onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
             >
-              Get In Touch
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
+                Get In Touch
+              </span>
+              <div className="absolute inset-0 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
             </Link>
           </div>
         </ScrollReveal>
