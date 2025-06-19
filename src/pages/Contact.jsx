@@ -238,7 +238,7 @@ const Contact = () => {
                       onClick={() => toggleFAQ(index)}
                       className="w-full p-4 sm:p-5 flex items-center justify-between text-left hover:bg-gray-50 dark:hover:bg-[#1a1a20] transition-colors duration-200"
                     >
-                      <span className="font-normal text-gray-800 dark:text-gray-200 text-sm sm:text-base pr-4">
+                      <span className="font-medium text-gray-800 dark:text-gray-200 text-sm sm:text-base pr-4">
                         {String(index + 1).padStart(2, '0')}. {faq.question}
                       </span>
                       <motion.div
