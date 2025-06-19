@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ExternalLink, ChevronLeft, ChevronRight, Copy, Check } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import ShinyText from '../components/ShinyText';
 
@@ -9,6 +9,7 @@ const ProjectDetail = () => {
   const navigate = useNavigate();
   const [currentProject, setCurrentProject] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [copiedStep, setCopiedStep] = useState(null);
 
   // Technology descriptions mapping
   const techDescriptions = {
@@ -59,6 +60,20 @@ const ProjectDetail = () => {
       liveUrl: 'https://example-ecommerce.com',
       roles: 'Full-stack Developer, UI/UX Designer',
       client: 'Personal Project',
+      buildSteps: [
+        {
+          title: 'Clone this repo',
+          command: 'git clone https://github.com/sriram/ecommerce-platform && cd ecommerce-platform'
+        },
+        {
+          title: 'Install project dependencies',
+          command: 'npm install'
+        },
+        {
+          title: 'Build the project and start a local server',
+          command: 'npm run build && npm run serve'
+        }
+      ],
       features: [
         'User authentication and authorization',
         'Product catalog with search and filtering',
@@ -113,6 +128,20 @@ const ProjectDetail = () => {
       liveUrl: 'https://design-system-docs.com',
       roles: 'UI/UX Designer, Frontend Developer',
       client: 'Enterprise Client',
+      buildSteps: [
+        {
+          title: 'Clone this repo',
+          command: 'git clone https://github.com/sriram/design-system && cd design-system'
+        },
+        {
+          title: 'Install project dependencies',
+          command: 'npm install'
+        },
+        {
+          title: 'Start Storybook development server',
+          command: 'npm run storybook'
+        }
+      ],
       features: [
         'Complete component library',
         'Design tokens and variables',
@@ -228,6 +257,16 @@ const ProjectDetail = () => {
   const handleNextProject = () => {
     const nextIndex = currentIndex < projects.length - 1 ? currentIndex + 1 : 0;
     navigate(`/projects/${projects[nextIndex].id}`);
+  };
+
+  const copyToClipboard = async (text, stepIndex) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedStep(stepIndex);
+      setTimeout(() => setCopiedStep(null), 2000);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
   };
 
   if (!currentProject) {
@@ -352,13 +391,15 @@ const ProjectDetail = () => {
         {/* Features Section */}
         <ScrollReveal direction="up" delay={0.8}>
           <div className="mb-12 sm:mb-16">
-            <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl font-bold text-black dark:text-white mb-6 sm:mb-8">
+            <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl font-bold text-black dark:text-white mb-2">
               Features
             </h2>
+            {/* Mild separator below heading */}
+            <div className="w-16 h-px bg-gray-300 dark:bg-gray-600 mb-6 sm:mb-8"></div>
             <div className="space-y-3 sm:space-y-4">
               {currentProject.features.map((feature, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 bg-gray-400 dark:text-gray-500 rounded-full mt-2.5 flex-shrink-0"></div>
+                  <div className="w-1.5 h-1.5 bg-gray-400 dark:bg-gray-500 rounded-full mt-2.5 flex-shrink-0"></div>
                   <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light leading-relaxed">{feature}</p>
                 </div>
               ))}
@@ -369,13 +410,15 @@ const ProjectDetail = () => {
         {/* Technologies Used Section */}
         <ScrollReveal direction="up" delay={0.9}>
           <div className="mb-12 sm:mb-16">
-            <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl font-bold text-black dark:text-white mb-6 sm:mb-8">
+            <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl font-bold text-black dark:text-white mb-2">
               Technologies used
             </h2>
+            {/* Mild separator below heading */}
+            <div className="w-16 h-px bg-gray-300 dark:bg-gray-600 mb-6 sm:mb-8"></div>
             <div className="space-y-3 sm:space-y-4">
               {currentProject.technologies.map((tech, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 bg-gray-400 dark:text-gray-500 rounded-full mt-2.5 flex-shrink-0"></div>
+                  <div className="w-1.5 h-1.5 bg-gray-400 dark:bg-gray-500 rounded-full mt-2.5 flex-shrink-0"></div>
                   <div className="text-sm sm:text-base font-light leading-relaxed">
                     <span className="text-black dark:text-white font-medium underline">{tech}</span>
                     <span className="text-gray-600 dark:text-gray-400"> - {techDescriptions[tech] || 'Technology description not available.'}</span>
@@ -386,35 +429,80 @@ const ProjectDetail = () => {
           </div>
         </ScrollReveal>
 
+        {/* Build Steps Section - Only show if buildSteps exist */}
+        {currentProject.buildSteps && (
+          <ScrollReveal direction="up" delay={1.0}>
+            <div className="mb-12 sm:mb-16">
+              {/* Section separator */}
+              <div className="w-full h-px bg-gray-200 dark:bg-gray-700 mb-8 sm:mb-12"></div>
+              
+              <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl font-bold text-black dark:text-white mb-2">
+                Build steps
+              </h2>
+              {/* Mild separator below heading */}
+              <div className="w-16 h-px bg-gray-300 dark:bg-gray-600 mb-6 sm:mb-8"></div>
+              
+              <div className="space-y-6 sm:space-y-8">
+                {currentProject.buildSteps.map((step, index) => (
+                  <div key={index}>
+                    <h3 className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light mb-3 sm:mb-4">
+                      {index + 1}. {step.title}
+                    </h3>
+                    <div className="relative bg-gray-900 dark:bg-gray-800 rounded-lg p-4 sm:p-6 font-mono text-sm sm:text-base overflow-x-auto">
+                      <code className="text-gray-300 dark:text-gray-200 whitespace-pre-wrap break-all">
+                        {step.command}
+                      </code>
+                      <button
+                        onClick={() => copyToClipboard(step.command, index)}
+                        className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 rounded-md bg-gray-700 dark:bg-gray-600 hover:bg-gray-600 dark:hover:bg-gray-500 transition-colors duration-200 group"
+                        title="Copy to clipboard"
+                      >
+                        {copiedStep === index ? (
+                          <Check size={16} className="text-green-400" />
+                        ) : (
+                          <Copy size={16} className="text-gray-300 group-hover:text-white" />
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+        )}
+
+        {/* Section separator before navigation */}
+        <div className="w-full h-px bg-gray-200 dark:bg-gray-700 mb-8 sm:mb-12"></div>
+
         {/* Navigation */}
-        <ScrollReveal direction="up" delay={1.0}>
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-8 pt-8 sm:pt-12 border-t border-gray-200 dark:border-gray-800 mb-12 sm:mb-16">
+        <ScrollReveal direction="up" delay={1.1}>
+          <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 mb-12 sm:mb-16">
             <button
               onClick={handlePrevProject}
-              className="group flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300"
+              className="group flex items-center gap-3 p-4 sm:p-6 bg-gray-900 dark:bg-gray-800 hover:bg-gray-800 dark:hover:bg-gray-700 rounded-xl transition-all duration-300 hover:scale-105 flex-1 sm:flex-none sm:min-w-[200px]"
             >
-              <ChevronLeft size={20} className="group-hover:-translate-x-1 transition-transform duration-300" />
-              <div className="text-left">
-                <p className="text-xs sm:text-sm font-light">Prev</p>
-                <p className="text-sm sm:text-base font-medium">{projects[currentIndex > 0 ? currentIndex - 1 : projects.length - 1].title}</p>
+              <ChevronLeft size={20} className="text-white group-hover:-translate-x-1 transition-transform duration-300 flex-shrink-0" />
+              <div className="text-left min-w-0">
+                <p className="text-xs sm:text-sm font-light text-gray-400">Prev</p>
+                <p className="text-sm sm:text-base font-medium text-white truncate">{projects[currentIndex > 0 ? currentIndex - 1 : projects.length - 1].title}</p>
               </div>
             </button>
 
             <button
               onClick={handleNextProject}
-              className="group flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300"
+              className="group flex items-center gap-3 p-4 sm:p-6 bg-gray-900 dark:bg-gray-800 hover:bg-gray-800 dark:hover:bg-gray-700 rounded-xl transition-all duration-300 hover:scale-105 flex-1 sm:flex-none sm:min-w-[200px]"
             >
-              <div className="text-right">
-                <p className="text-xs sm:text-sm font-light">Next</p>
-                <p className="text-sm sm:text-base font-medium">{projects[currentIndex < projects.length - 1 ? currentIndex + 1 : 0].title}</p>
+              <div className="text-right min-w-0 flex-1">
+                <p className="text-xs sm:text-sm font-light text-gray-400">Next</p>
+                <p className="text-sm sm:text-base font-medium text-white truncate">{projects[currentIndex < projects.length - 1 ? currentIndex + 1 : 0].title}</p>
               </div>
-              <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
+              <ChevronRight size={20} className="text-white group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0" />
             </button>
           </div>
         </ScrollReveal>
 
         {/* CTA Section */}
-        <ScrollReveal direction="up" delay={1.1}>
+        <ScrollReveal direction="up" delay={1.2}>
           <div className="text-center bg-white dark:bg-gray-900 rounded-2xl p-8 sm:p-12 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
             <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
