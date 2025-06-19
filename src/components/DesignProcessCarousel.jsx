@@ -1,8 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import { Edit3, Layers, Palette, Code, Shield } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const DesignProcessCarousel = () => {
-  const carouselRef = useRef(null);
+  const containerRef = useRef(null);
+  const cardsRef = useRef(null);
 
   const designProcess = [
     {
@@ -38,52 +43,44 @@ const DesignProcessCarousel = () => {
   ];
 
   useEffect(() => {
-    const initializeCarousel = async () => {
-      try {
-        // Dynamically import scroll-carousel
-        const ScrollCarousel = (await import('scroll-carousel')).default;
-        
-        if (carouselRef.current) {
-          new ScrollCarousel(carouselRef.current, {
-            smartSpeed: true,
-            direction: "rtl",
-            speed: 1,
-            autoplay: false
-          });
-        }
-      } catch (error) {
-        console.log('Scroll carousel not available, using fallback');
-        // Fallback: manual scroll handling
-        const handleScroll = () => {
-          if (!carouselRef.current) return;
-          
-          const rect = carouselRef.current.getBoundingClientRect();
-          const windowHeight = window.innerHeight;
-          const elementTop = rect.top;
-          const elementHeight = rect.height;
-          
-          // Calculate scroll progress when element is in view
-          if (elementTop < windowHeight && elementTop + elementHeight > 0) {
-            const scrollProgress = Math.max(0, Math.min(1, (windowHeight - elementTop) / (windowHeight + elementHeight)));
-            const translateX = (scrollProgress - 0.5) * 200; // Adjust multiplier for speed
-            
-            const carousel = carouselRef.current.querySelector('.carousel-track');
-            if (carousel) {
-              carousel.style.transform = `translateX(${translateX}px)`;
-            }
-          }
-        };
+    const container = containerRef.current;
+    const cards = cardsRef.current;
+    
+    if (!container || !cards) return;
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+    // Calculate the total width of all cards
+    const cardWidth = 320; // Width of each card including gap
+    const totalWidth = designProcess.length * cardWidth;
+    const containerWidth = container.offsetWidth;
+    const scrollDistance = totalWidth - containerWidth + 200; // Extra space for smooth ending
+
+    // Create horizontal scroll animation
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1,
+        invalidateOnRefresh: true,
       }
-    };
+    });
 
-    initializeCarousel();
+    tl.to(cards, {
+      x: -scrollDistance,
+      ease: "none",
+      duration: 1
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
-    <div className="w-full overflow-hidden bg-black dark:bg-black py-12 sm:py-16 md:py-20">
+    <div 
+      ref={containerRef}
+      className="w-full overflow-hidden bg-[#f7f8fa] dark:bg-black py-12 sm:py-16 md:py-20"
+    >
       {/* Left side content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-16 mb-8 sm:mb-12">
         <div className="max-w-md">
@@ -92,23 +89,23 @@ const DesignProcessCarousel = () => {
             <span className="text-green-500 text-sm sm:text-base font-medium tracking-wider">STEPS I FOLLOW</span>
           </div>
           
-          <h2 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
+          <h2 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4 sm:mb-6">
             My Design Process
           </h2>
           
-          <p className="text-gray-400 text-sm sm:text-base leading-relaxed font-light">
+          <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed font-light">
             I have worked with some of the most innovative industry leaders to help build their top-notch products.
           </p>
         </div>
       </div>
 
       {/* Horizontal scrolling carousel */}
-      <div 
-        ref={carouselRef}
-        className="scroll-carousel overflow-hidden"
-        style={{ width: '100vw' }}
-      >
-        <div className="carousel-track flex gap-6 sm:gap-8 px-4 sm:px-6 md:px-10 lg:px-16 transition-transform duration-100 ease-out">
+      <div className="relative overflow-hidden">
+        <div 
+          ref={cardsRef}
+          className="flex gap-6 sm:gap-8 px-4 sm:px-6 md:px-10 lg:px-16"
+          style={{ width: 'max-content' }}
+        >
           {designProcess.map((step, index) => {
             const IconComponent = step.icon;
             return (
