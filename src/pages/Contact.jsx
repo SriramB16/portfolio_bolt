@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Instagram, ChevronDown } from 'lucide-react';
+import { Send, Github, Linkedin, Twitter, Instagram, Mail, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import ScrollReveal from '../components/ScrollReveal';
 import ShinyText from '../components/ShinyText';
 
@@ -13,6 +14,7 @@ const Contact = () => {
   });
 
   const [activeFAQ, setActiveFAQ] = useState(null);
+  const [hoveredSocial, setHoveredSocial] = useState(null);
 
   const handleChange = (e) => {
     setFormData({
@@ -50,6 +52,14 @@ const Contact = () => {
     }
   ];
 
+  const socialLinks = [
+    { name: 'linkedin', icon: Linkedin, href: '#' },
+    { name: 'github', icon: Github, href: '#' },
+    { name: 'instagram', icon: Instagram, href: '#' },
+    { name: 'mail', icon: Mail, href: '#' },
+    { name: 'twitter', icon: Twitter, href: '#' }
+  ];
+
   return (
     <div className="pt-20 sm:pt-24 md:pt-32 pb-20 sm:pb-24 md:pb-28 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black">
       <div className="max-w-6xl mx-auto">
@@ -71,58 +81,47 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
           {/* Left Side - Contact Information */}
-          <div className="flex flex-col justify-center space-y-6 sm:space-y-8">
+          <div className="flex flex-col justify-center">
             <ScrollReveal direction="left" delay={0.2}>
-              <div>
-                <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                  <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
-                  <ShinyText size="lg">LET'S TALK</ShinyText>
+              <div className="bg-white dark:bg-[#111116] rounded-2xl p-6 sm:p-8 shadow-xl shadow-black/10 dark:shadow-black/30">
+                {/* Available for work status */}
+                <div className="flex items-center gap-2 mb-6">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="text-green-500 text-sm font-light">Available for work</span>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base font-light">
-                  I'm always open to discussing new opportunities, creative projects, or potential collaborations. 
-                  Feel free to reach out if you have any questions or just want to say hello!
+
+                {/* Profile Photo */}
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 mb-6 flex items-center justify-center overflow-hidden">
+                  <span className="text-2xl sm:text-3xl">👨‍💻</span>
+                </div>
+
+                {/* Description */}
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 text-sm sm:text-base font-light">
+                  My inbox is always open. Whether you have a project or just want to say Hi, I would love to hear from you. Feel free to contact me and I'll get back to you.
                 </p>
-              </div>
-            </ScrollReveal>
 
-            {/* Contact Details */}
-            <div className="space-y-4 sm:space-y-6">
-              {[
-                { icon: Mail, title: 'Email', info: 'Sriram@example.com' },
-                { icon: Phone, title: 'Phone', info: '+91 1234567890' },
-                { icon: MapPin, title: 'Location', info: 'Bangalore, IND' }
-              ].map((contact, index) => (
-                <ScrollReveal key={contact.title} direction="left" delay={0.3 + index * 0.1}>
-                  <div className="flex items-center gap-3 sm:gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-[#111116] rounded-full flex items-center justify-center shadow-lg shadow-black/20 dark:shadow-black/30 border border-green-500">
-                      <contact.icon size={18} className="sm:w-5 sm:h-5 text-green-500" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-black dark:text-white text-sm sm:text-base">{contact.title}</h3>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base font-light">{contact.info}</p>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-
-            {/* Social Links */}
-            <ScrollReveal direction="left" delay={0.6}>
-              <div>
-                <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                  <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
-                  <ShinyText size="base">FOLLOW ME</ShinyText>
-                </div>
-                <div className="flex gap-3 sm:gap-4">
-                  {[Github, Linkedin, Twitter, Instagram].map((Icon, index) => (
-                    <a 
-                      key={index}
-                      href="#" 
-                      className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-[#111116] rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-500 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110 shadow-lg shadow-black/10 dark:shadow-black/20 hover:shadow-xl hover:shadow-black/15 dark:hover:shadow-black/30 border border-gray-200 dark:border-gray-700 hover:border-green-500"
-                    >
-                      <Icon size={18} className="sm:w-5 sm:h-5" />
-                    </a>
-                  ))}
+                {/* Social Links */}
+                <div 
+                  className="flex gap-4"
+                  onMouseLeave={() => setHoveredSocial(null)}
+                >
+                  {socialLinks.map((social) => {
+                    const IconComponent = social.icon;
+                    return (
+                      <a 
+                        key={social.name}
+                        href={social.href} 
+                        className={`w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center transition-all duration-300 hover:border-green-500 hover:text-green-500 ${
+                          hoveredSocial && hoveredSocial !== social.name
+                            ? 'text-gray-400 dark:text-gray-600 opacity-40'
+                            : 'text-gray-600 dark:text-gray-400'
+                        }`}
+                        onMouseEnter={() => setHoveredSocial(social.name)}
+                      >
+                        <IconComponent size={16} />
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </ScrollReveal>
@@ -216,22 +215,22 @@ const Contact = () => {
 
         {/* FAQ Section */}
         <section className="mt-16 sm:mt-20 md:mt-24">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
-            {/* Left Side - FAQ Title */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 lg:gap-16">
+            {/* Left Side - FAQ Title (1/3 width) */}
             <ScrollReveal direction="left" delay={0.1}>
               <div>
                 <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
                   <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
                   <ShinyText size="lg">FAQS</ShinyText>
                 </div>
-                <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-black dark:text-white">
+                <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-black dark:text-white">
                   Have<br />Questions?
                 </h2>
               </div>
             </ScrollReveal>
 
-            {/* Right Side - FAQ Accordion */}
-            <div className="space-y-3 sm:space-y-4">
+            {/* Right Side - FAQ Accordion (2/3 width) */}
+            <div className="lg:col-span-2 space-y-2">
               {faqs.map((faq, index) => (
                 <ScrollReveal key={index} direction="right" delay={0.2 + index * 0.1}>
                   <div className="bg-white dark:bg-[#111116] rounded-xl shadow-lg shadow-black/5 dark:shadow-black/20 hover:shadow-xl hover:shadow-black/10 dark:hover:shadow-black/30 transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-800">
@@ -239,24 +238,37 @@ const Contact = () => {
                       onClick={() => toggleFAQ(index)}
                       className="w-full p-4 sm:p-5 flex items-center justify-between text-left hover:bg-gray-50 dark:hover:bg-[#1a1a20] transition-colors duration-200"
                     >
-                      <span className="font-light text-black dark:text-white text-sm sm:text-base pr-4">
+                      <span className="font-light text-gray-800 dark:text-gray-200 text-sm sm:text-base pr-4">
                         {String(index + 1).padStart(2, '0')}. {faq.question}
                       </span>
-                      <ChevronDown 
-                        size={16} 
-                        className={`sm:w-[18px] sm:h-[18px] text-gray-500 dark:text-gray-400 transition-transform duration-200 ${
-                          activeFAQ === index ? 'rotate-180' : ''
-                        }`} 
-                      />
+                      <motion.div
+                        animate={{ rotate: activeFAQ === index ? 180 : 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                      >
+                        <ChevronDown 
+                          size={16} 
+                          className="sm:w-[18px] sm:h-[18px] text-gray-500 dark:text-gray-400" 
+                        />
+                      </motion.div>
                     </button>
                     
-                    {activeFAQ === index && (
-                      <div className="px-4 sm:px-5 pb-4 sm:pb-5">
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base font-light">
-                          {faq.answer}
-                        </p>
-                      </div>
-                    )}
+                    <AnimatePresence>
+                      {activeFAQ === index && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-4 sm:px-5 pb-4 sm:pb-5">
+                            <p className="text-gray-700 dark:text-gray-400 leading-relaxed text-sm sm:text-base font-light">
+                              {faq.answer}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </ScrollReveal>
               ))}
