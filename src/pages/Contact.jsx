@@ -96,7 +96,7 @@ const Contact = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 text-sm sm:text-base font-light">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 text-sm sm:text-base font-normal">
                   My inbox is always open. Whether you have a project or just want to say Hi, I would love to hear from you. Feel free to contact me and I'll get back to you.
                 </p>
 
