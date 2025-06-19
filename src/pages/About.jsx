@@ -65,7 +65,20 @@ const About = () => {
       logo: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=100',
       position: 'Design Engineer',
       duration: 'Feb 2025 — Mar 2025'
+    },
+    {
+      company: 'Social3',
+      logo: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=100',
+      position: 'UI/UX Designer',
+      duration: 'Aug 2022 — Sep 2023'
+    },
+    {
+      company: 'TechCorp',
+      logo: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=100',
+      position: 'Frontend Developer',
+      duration: 'Jan 2022 — Jul 2022'
     }
+    
   ];
 
   const handleDownloadResume = () => {
