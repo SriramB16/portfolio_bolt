@@ -102,27 +102,29 @@ export default function Projects() {
           </div>
         </ScrollReveal>
 
-        {/* Filter Buttons */}
+        {/* Filter Buttons - Moved to right on larger screens */}
         <ScrollReveal direction="up" delay={0.2}>
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-4">
+          <div className="flex flex-wrap justify-center lg:justify-end gap-3 sm:gap-4 mb-8 sm:mb-12 px-4">
             {filters.map((filter) => (
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
                 className={`group relative px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/10 dark:shadow-black/20 hover:shadow-xl hover:shadow-black/15 dark:hover:shadow-black/30 overflow-hidden ${
                   activeFilter === filter
-                    ? 'border border-green-500 text-green-500'
-                    : 'border border-black dark:border-white text-black dark:text-white'
+                    ? 'bg-green-500 text-white border border-green-500'
+                    : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600 hover:border-green-500 dark:hover:border-green-500'
                 }`}
               >
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
+                <span className={`relative z-10 transition-colors duration-300 ${
+                  activeFilter === filter 
+                    ? 'text-white' 
+                    : 'group-hover:text-green-500'
+                }`}>
                   {filter}
                 </span>
-                <div className={`absolute inset-0 ${
-                  activeFilter === filter 
-                    ? 'bg-green-500 transform translate-y-0' 
-                    : 'bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0'
-                } transition-transform duration-300 ease-out`}></div>
+                {activeFilter !== filter && (
+                  <div className="absolute inset-0 bg-green-50 dark:bg-green-900/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+                )}
               </button>
             ))}
           </div>
