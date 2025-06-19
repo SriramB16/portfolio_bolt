@@ -452,21 +452,21 @@ const ProjectDetail = () => {
                     <h3 className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light mb-2 sm:mb-3 md:mb-4">
                       {index + 1}. {step.title}
                     </h3>
-                    <div className="relative bg-gray-900 dark:bg-gray-800 rounded-lg p-3 sm:p-4 md:p-6 font-mono text-xs sm:text-sm md:text-base overflow-hidden">
+                    <div className="relative bg-gray-100 dark:bg-gray-800 rounded-lg p-3 sm:p-4 md:p-6 font-mono text-xs sm:text-sm md:text-base overflow-hidden border border-gray-200 dark:border-gray-700">
                       <div className="overflow-x-auto">
-                        <code className="text-gray-300 dark:text-gray-200 whitespace-nowrap block">
+                        <code className="text-gray-800 dark:text-gray-200 whitespace-nowrap block">
                           {step.command}
                         </code>
                       </div>
                       <button
                         onClick={() => copyToClipboard(step.command, index)}
-                        className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 p-1.5 sm:p-2 rounded-md bg-gray-700 dark:bg-gray-600 hover:bg-gray-600 dark:hover:bg-gray-500 transition-colors duration-200 group"
+                        className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 p-1.5 sm:p-2 rounded-md bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors duration-200 group border border-gray-300 dark:border-gray-500"
                         title="Copy to clipboard"
                       >
                         {copiedStep === index ? (
-                          <Check size={14} className="sm:w-4 sm:h-4 text-green-400" />
+                          <Check size={14} className="sm:w-4 sm:h-4 text-green-600 dark:text-green-400" />
                         ) : (
-                          <Copy size={14} className="sm:w-4 sm:h-4 text-gray-300 group-hover:text-white" />
+                          <Copy size={14} className="sm:w-4 sm:h-4 text-gray-600 dark:text-gray-300 group-hover:text-gray-800 dark:group-hover:text-white" />
                         )}
                       </button>
                     </div>
