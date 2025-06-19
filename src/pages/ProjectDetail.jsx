@@ -10,6 +10,37 @@ const ProjectDetail = () => {
   const [currentProject, setCurrentProject] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Technology descriptions mapping
+  const techDescriptions = {
+    'React': 'Front-End JavaScript library.',
+    'Node.js': 'Backend JavaScript runtime environment.',
+    'MongoDB': 'NoSQL document database.',
+    'Stripe': 'Payment processing platform.',
+    'Express': 'Web application framework for Node.js.',
+    'JWT': 'JSON Web Tokens for authentication.',
+    'React Native': 'Cross-platform mobile app framework.',
+    'Firebase': 'Backend-as-a-Service platform.',
+    'Redux': 'State management library for JavaScript apps.',
+    'TypeScript': 'Typed superset of JavaScript.',
+    'Expo': 'Platform for universal React applications.',
+    'Figma': 'Collaborative interface design tool.',
+    'Storybook': 'Tool for building UI components in isolation.',
+    'Sass': 'CSS preprocessor with additional features.',
+    'Vue.js': 'Progressive JavaScript framework.',
+    'Weather API': 'Service for weather data retrieval.',
+    'Chart.js': 'JavaScript charting library.',
+    'Vuex': 'State management pattern for Vue.js.',
+    'Tailwind CSS': 'Utility-first CSS framework.',
+    'JavaScript': 'High-level programming language.',
+    'D3.js': 'Data visualization library.',
+    'NPM': 'Package manager for JavaScript.',
+    'Webpack': 'Module bundler for JavaScript applications.',
+    'Jest': 'JavaScript testing framework.',
+    'Framer Motion': 'Animation library for React.',
+    'Vite': 'Build tool and development server.',
+    'Vercel': 'Deployment platform for frontend frameworks.'
+  };
+
   // All projects data
   const projects = [
     {
@@ -205,7 +236,7 @@ const ProjectDetail = () => {
 
   return (
     <div className="pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         {/* Back Button and Year */}
         <ScrollReveal direction="up" delay={0.1}>
           <div className="flex items-center justify-between mb-8 sm:mb-12">
@@ -222,7 +253,7 @@ const ProjectDetail = () => {
 
         {/* Banner Image */}
         <ScrollReveal direction="up" delay={0.2}>
-          <div className="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden mb-8 sm:mb-12 shadow-2xl shadow-black/10 dark:shadow-black/30">
+          <div className="w-full h-64 sm:h-80 md:h-96 lg:h-[400px] rounded-2xl sm:rounded-3xl overflow-hidden mb-8 sm:mb-12 shadow-2xl shadow-black/10 dark:shadow-black/30">
             <img 
               src={currentProject.bannerImage} 
               alt={currentProject.title}
@@ -236,7 +267,7 @@ const ProjectDetail = () => {
           {/* Left Column - Title and Description */}
           <div className="lg:col-span-2">
             <ScrollReveal direction="left" delay={0.3}>
-              <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4 sm:mb-6">
+              <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-black dark:text-white mb-4 sm:mb-6">
                 {currentProject.title}
               </h1>
               <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-light">
@@ -321,18 +352,14 @@ const ProjectDetail = () => {
         {/* Features Section */}
         <ScrollReveal direction="up" delay={0.8}>
           <div className="mb-12 sm:mb-16">
-            <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-              <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
-              <ShinyText size="lg">FEATURES</ShinyText>
-            </div>
             <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl font-bold text-black dark:text-white mb-6 sm:mb-8">
-              Key Features
+              Features
             </h2>
-            <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+            <div className="space-y-3 sm:space-y-4">
               {currentProject.features.map((feature, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light">{feature}</p>
+                  <div className="w-1.5 h-1.5 bg-gray-400 dark:text-gray-500 rounded-full mt-2.5 flex-shrink-0"></div>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light leading-relaxed">{feature}</p>
                 </div>
               ))}
             </div>
@@ -342,46 +369,17 @@ const ProjectDetail = () => {
         {/* Technologies Used Section */}
         <ScrollReveal direction="up" delay={0.9}>
           <div className="mb-12 sm:mb-16">
-            <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-              <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
-              <ShinyText size="lg">TECHNOLOGIES USED</ShinyText>
-            </div>
             <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl font-bold text-black dark:text-white mb-6 sm:mb-8">
-              Built With
+              Technologies used
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div className="space-y-3 sm:space-y-4">
               {currentProject.technologies.map((tech, index) => (
-                <div key={index} className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg shadow-black/10 dark:shadow-black/20 border border-gray-200 dark:border-gray-700">
-                  <h4 className="font-clash text-lg font-semibold text-black dark:text-white mb-2">{tech}</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm font-light">
-                    {tech === 'React' && 'Frontend JavaScript library'}
-                    {tech === 'Node.js' && 'Backend JavaScript runtime'}
-                    {tech === 'MongoDB' && 'NoSQL database'}
-                    {tech === 'Stripe' && 'Payment processing'}
-                    {tech === 'Express' && 'Web framework'}
-                    {tech === 'JWT' && 'Authentication tokens'}
-                    {tech === 'React Native' && 'Mobile app framework'}
-                    {tech === 'Firebase' && 'Backend as a service'}
-                    {tech === 'Redux' && 'State management'}
-                    {tech === 'TypeScript' && 'Typed JavaScript'}
-                    {tech === 'Expo' && 'React Native platform'}
-                    {tech === 'Figma' && 'Design tool'}
-                    {tech === 'Storybook' && 'Component documentation'}
-                    {tech === 'Sass' && 'CSS preprocessor'}
-                    {tech === 'Vue.js' && 'Progressive framework'}
-                    {tech === 'Weather API' && 'Weather data service'}
-                    {tech === 'Chart.js' && 'Data visualization'}
-                    {tech === 'Vuex' && 'State management'}
-                    {tech === 'Tailwind CSS' && 'Utility-first CSS'}
-                    {tech === 'JavaScript' && 'Programming language'}
-                    {tech === 'D3.js' && 'Data visualization library'}
-                    {tech === 'NPM' && 'Package manager'}
-                    {tech === 'Webpack' && 'Module bundler'}
-                    {tech === 'Jest' && 'Testing framework'}
-                    {tech === 'Framer Motion' && 'Animation library'}
-                    {tech === 'Vite' && 'Build tool'}
-                    {tech === 'Vercel' && 'Deployment platform'}
-                  </p>
+                <div key={index} className="flex items-start gap-3">
+                  <div className="w-1.5 h-1.5 bg-gray-400 dark:text-gray-500 rounded-full mt-2.5 flex-shrink-0"></div>
+                  <div className="text-sm sm:text-base font-light leading-relaxed">
+                    <span className="text-black dark:text-white font-medium underline">{tech}</span>
+                    <span className="text-gray-600 dark:text-gray-400"> - {techDescriptions[tech] || 'Technology description not available.'}</span>
+                  </div>
                 </div>
               ))}
             </div>
