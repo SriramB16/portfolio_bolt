@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import ScrollReveal from '../components/ScrollReveal';
 import ShinyText from '../components/ShinyText';
 import DesignProcessCarousel from '../components/DesignProcessCarousel';
-import BlurText from '../components/BlurText';
 
 const About = () => {
   const [hoveredStory, setHoveredStory] = useState(0);
@@ -161,13 +160,11 @@ const About = () => {
             {/* Right - Text Content */}
             <div className="text-center lg:text-left">
               <ScrollReveal direction="right" delay={0.2}>
-                <BlurText
-                  text="A creative developer & digital designer"
-                  delay={120}
-                  animateBy="letters"
-                  direction="bottom"
-                  className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 sm:mb-8"
-                />
+                <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 sm:mb-8">
+                  A <span className="text-green-500">creative</span><br />
+                  <span className="text-green-500">developer</span> &<br />
+                  digital designer
+                </h1>
               </ScrollReveal>
               
               <ScrollReveal direction="right" delay={0.3}>
@@ -223,13 +220,9 @@ const About = () => {
             {/* Right - Story Text */}
             <div className="space-y-6 sm:space-y-8">
               <ScrollReveal direction="right" delay={0.3}>
-                <BlurText
-                  text="Experience"
-                  delay={120}
-                  animateBy="letters"
-                  direction="bottom"
-                  className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white"
-                />
+                <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white">
+                  Experience
+                </h2>
               </ScrollReveal>
               
               <div className="space-y-4 sm:space-y-6">
@@ -292,25 +285,14 @@ const About = () => {
               <ScrollReveal direction="left" delay={0.1}>
                 <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
                   <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
-                  <BlurText
-                    text="WORK HISTORY"
-                    delay={80}
-                    animateBy="letters"
-                    direction="bottom"
-                    enableShinyEffect={true}
-                    className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
-                  />
+                  <ShinyText size="lg">WORK HISTORY</ShinyText>
                 </div>
               </ScrollReveal>
               
               <ScrollReveal direction="left" delay={0.2}>
-                <BlurText
-                  text="Experience"
-                  delay={120}
-                  animateBy="letters"
-                  direction="bottom"
-                  className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-4 sm:mb-6"
-                />
+                <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-4 sm:mb-6">
+                  Experience
+                </h2>
               </ScrollReveal>
               
               <ScrollReveal direction="left" delay={0.3}>
@@ -371,40 +353,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* Section 5: Design Process Carousel with Blur Text */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[#f7f8fa] dark:bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-16">
-          {/* Header content */}
-          <div className="mb-8 sm:mb-12 lg:mb-16">
-            <div className="max-w-md">
-              <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-                <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
-                <BlurText
-                  text="STEPS I FOLLOW"
-                  delay={80}
-                  animateBy="letters"
-                  direction="bottom"
-                  enableShinyEffect={true}
-                  className="text-green-500 text-sm sm:text-base font-medium tracking-wider"
-                />
-              </div>
-              
-              <BlurText
-                text="My Design Process"
-                delay={120}
-                animateBy="letters"
-                direction="bottom"
-                className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4 sm:mb-6"
-              />
-              
-              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed font-light">
-                I have worked with some of the most innovative industry leaders to help build their top-notch products.
-              </p>
-            </div>
-          </div>
-        </div>
-        <DesignProcessCarousel />
-      </section>
+      {/* Section 5: Design Process Carousel */}
+      <DesignProcessCarousel />
 
       {/* Section 6: Available for Work CTA */}
       <section className="px-4 sm:px-6 md:px-10 lg:px-16 mb-16 sm:mb-20 md:mb-24">
@@ -414,25 +364,17 @@ const About = () => {
               <ScrollReveal direction="up" delay={0.1}>
                 <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8">
                   <div className="w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full animate-pulse"></div>
-                  <BlurText
-                    text="Available for work"
-                    delay={100}
-                    animateBy="letters"
-                    direction="bottom"
-                    enableShinyEffect={true}
-                    className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
-                  />
+                  <ShinyText size="xl" className="font-medium">
+                    Available for work
+                  </ShinyText>
                 </div>
               </ScrollReveal>
 
               <ScrollReveal direction="up" delay={0.2}>
-                <BlurText
-                  text="Let's create your next big idea."
-                  delay={120}
-                  animateBy="letters"
-                  direction="bottom"
-                  className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-tight text-black dark:text-white"
-                />
+                <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-tight text-black dark:text-white">
+                  Let's create your<br />
+                  next big idea.
+                </h2>
               </ScrollReveal>
 
               <ScrollReveal direction="up" delay={0.3}>
