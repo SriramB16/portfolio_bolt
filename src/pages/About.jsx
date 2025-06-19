@@ -246,28 +246,28 @@ const About = () => {
         </div>
       </section>
 
-      {/* Section 3: Technologies Marquee */}
-      <section className="mb-16 sm:mb-20 md:mb-24 relative overflow-hidden">
+      {/* Section 3: Technologies Marquee - Smaller Version */}
+      <section className="mb-12 sm:mb-16 md:mb-20 relative overflow-hidden py-4 sm:py-6">
         {/* Left gradient overlay */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 lg:w-40 bg-gradient-to-r from-[#f7f8fa] dark:from-black to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-12 md:w-16 lg:w-20 bg-gradient-to-r from-[#f7f8fa] dark:from-black to-transparent z-10 pointer-events-none"></div>
         
         {/* Right gradient overlay */}
-        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 lg:w-40 bg-gradient-to-l from-[#f7f8fa] dark:from-black to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-12 md:w-16 lg:w-20 bg-gradient-to-l from-[#f7f8fa] dark:from-black to-transparent z-10 pointer-events-none"></div>
         
-        <div className="flex animate-marquee whitespace-nowrap py-6 sm:py-8">
+        <div className="flex animate-marquee whitespace-nowrap">
           {[...technologies, ...technologies].map((tech, index) => (
             <div
               key={`${tech.name}-${index}`}
-              className="flex items-center gap-3 sm:gap-4 bg-white dark:bg-gray-800 px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 mx-2 sm:mx-3 md:mx-4 hover:scale-105 transition-transform duration-300 group whitespace-nowrap"
+              className="flex items-center gap-2 sm:gap-2.5 bg-white dark:bg-gray-800 px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-full shadow-md border border-gray-200 dark:border-gray-700 mx-1.5 sm:mx-2 hover:scale-105 transition-transform duration-300 group whitespace-nowrap"
             >
-              <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0">
+              <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0">
                 <img 
                   src={tech.logo}
                   alt={`${tech.name} logo`}
                   className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
-              <span className="font-medium text-gray-700 dark:text-gray-300 text-sm sm:text-base md:text-lg">
+              <span className="font-medium text-gray-700 dark:text-gray-300 text-xs sm:text-sm md:text-base">
                 {tech.name}
               </span>
             </div>
