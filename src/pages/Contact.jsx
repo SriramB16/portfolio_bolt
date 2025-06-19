@@ -80,61 +80,69 @@ const Contact = () => {
         </ScrollReveal>
 
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
-          {/* Left Side - Contact Information */}
+          {/* Left Side - Contact Information with Glass Morphism */}
           <div className="flex flex-col justify-center">
             <ScrollReveal direction="left" delay={0.2}>
-              <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-2xl p-6 sm:p-8 shadow-xl shadow-black/10 dark:shadow-black/30 border border-white/20 dark:border-gray-700/30">
-                {/* Available for work status */}
-                <div className="flex items-center gap-2 mb-6">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-green-500 text-sm font-normal">Available for work</span>
-                </div>
+              <div className="relative">
+                {/* Glass morphism background layers */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-blue-50/30 to-purple-50/40 dark:from-gray-800/40 dark:via-blue-900/20 dark:to-purple-900/30 rounded-2xl backdrop-blur-xl"></div>
+                <div className="absolute inset-0 bg-white/20 dark:bg-gray-900/20 rounded-2xl backdrop-blur-sm"></div>
+                
+                {/* Content */}
+                <div className="relative bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/10 dark:shadow-black/30 border border-white/30 dark:border-gray-700/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
+                  {/* Available for work status */}
+                  <div className="flex items-center gap-2 mb-6">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span className="text-green-500 text-sm font-normal">Available for work</span>
+                  </div>
 
-                {/* Profile Photo */}
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 mb-6 flex items-center justify-center overflow-hidden">
-                  <span className="text-2xl sm:text-3xl">👨‍💻</span>
-                </div>
+                  {/* Profile Photo */}
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-gray-200/80 to-gray-300/80 dark:from-gray-700/80 dark:to-gray-800/80 backdrop-blur-sm mb-6 flex items-center justify-center overflow-hidden border border-white/30 dark:border-gray-600/30">
+                    <span className="text-2xl sm:text-3xl">👨‍💻</span>
+                  </div>
 
-                {/* Description */}
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-sm sm:text-base font-normal">
-                  My inbox is always open. Whether you have a project or just want to say Hi, I would love to hear from you. Feel free to contact me and I'll get back to you.
-                </p>
+                  {/* Description */}
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-sm sm:text-base font-normal">
+                    My inbox is always open. Whether you have a project or just want to say Hi, I would love to hear from you. Feel free to contact me and I'll get back to you.
+                  </p>
 
-                {/* Social Links */}
-                <div 
-                  className="flex gap-4"
-                  onMouseLeave={() => setHoveredSocial(null)}
-                >
-                  {socialLinks.map((social) => {
-                    const IconComponent = social.icon;
-                    return (
-                      <a 
-                        key={social.name}
-                        href={social.href} 
-                        className={`w-10 h-10 rounded-full border border-gray-200/50 dark:border-gray-600/50 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:border-green-500 hover:text-green-500 hover:bg-green-50 dark:hover:bg-green-900/20 ${
-                          hoveredSocial && hoveredSocial !== social.name
-                            ? 'text-gray-400 dark:text-gray-600 opacity-40'
-                            : 'text-gray-600 dark:text-gray-400'
-                        }`}
-                        onMouseEnter={() => setHoveredSocial(social.name)}
-                      >
-                        <IconComponent size={16} />
-                      </a>
-                    );
-                  })}
+                  {/* Social Links */}
+                  <div 
+                    className="flex gap-4"
+                    onMouseLeave={() => setHoveredSocial(null)}
+                  >
+                    {socialLinks.map((social) => {
+                      const IconComponent = social.icon;
+                      return (
+                        <a 
+                          key={social.name}
+                          href={social.href} 
+                          className={`w-10 h-10 rounded-full border border-white/40 dark:border-gray-600/40 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:border-green-500 hover:text-green-500 hover:bg-green-50/50 dark:hover:bg-green-900/20 hover:backdrop-blur-md ${
+                            hoveredSocial && hoveredSocial !== social.name
+                              ? 'text-gray-400 dark:text-gray-600 opacity-40'
+                              : 'text-gray-600 dark:text-gray-400'
+                          }`}
+                          onMouseEnter={() => setHoveredSocial(social.name)}
+                        >
+                          <IconComponent size={16} />
+                        </a>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
           </div>
 
-          {/* Right Side - Contact Form with Blur Background */}
+          {/* Right Side - Contact Form with Enhanced Glass Morphism */}
           <ScrollReveal direction="right" delay={0.3}>
             <div className="relative">
-              {/* Background with gradient and blur */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 via-purple-50/80 to-pink-50/80 dark:from-blue-900/20 dark:via-purple-900/20 dark:to-pink-900/20 rounded-2xl backdrop-blur-xl"></div>
+              {/* Multiple glass morphism background layers for depth */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-100/50 via-purple-100/40 to-pink-100/50 dark:from-blue-900/30 dark:via-purple-900/25 dark:to-pink-900/30 rounded-2xl backdrop-blur-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-tl from-white/30 via-transparent to-white/20 dark:from-gray-800/30 dark:via-transparent dark:to-gray-700/20 rounded-2xl backdrop-blur-xl"></div>
               
-              {/* Form container */}
-              <div className="relative bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1 border border-white/30 dark:border-gray-700/30">
+              {/* Form container with glass effect */}
+              <div className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1 border border-white/40 dark:border-gray-700/40">
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                   <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
                   <ShinyText size="lg">SEND A MESSAGE</ShinyText>
@@ -152,7 +160,7 @@ const Contact = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 transition-all duration-300 text-sm sm:text-base shadow-sm shadow-black/5 dark:shadow-black/10 font-light placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/40 dark:bg-gray-800/40 backdrop-blur-md border border-white/30 dark:border-gray-600/30 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 focus:bg-white/60 dark:focus:bg-gray-800/60 transition-all duration-300 text-sm sm:text-base shadow-lg shadow-black/5 dark:shadow-black/10 font-light placeholder:text-gray-500 dark:placeholder:text-gray-400"
                         required
                       />
                     </div>
@@ -167,7 +175,7 @@ const Contact = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 transition-all duration-300 text-sm sm:text-base shadow-sm shadow-black/5 dark:shadow-black/10 font-light placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/40 dark:bg-gray-800/40 backdrop-blur-md border border-white/30 dark:border-gray-600/30 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 focus:bg-white/60 dark:focus:bg-gray-800/60 transition-all duration-300 text-sm sm:text-base shadow-lg shadow-black/5 dark:shadow-black/10 font-light placeholder:text-gray-500 dark:placeholder:text-gray-400"
                         required
                       />
                     </div>
@@ -183,7 +191,7 @@ const Contact = () => {
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 transition-all duration-300 text-sm sm:text-base shadow-sm shadow-black/5 dark:shadow-black/10 font-light placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/40 dark:bg-gray-800/40 backdrop-blur-md border border-white/30 dark:border-gray-600/30 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 focus:bg-white/60 dark:focus:bg-gray-800/60 transition-all duration-300 text-sm sm:text-base shadow-lg shadow-black/5 dark:shadow-black/10 font-light placeholder:text-gray-500 dark:placeholder:text-gray-400"
                       required
                     />
                   </div>
@@ -198,14 +206,14 @@ const Contact = () => {
                       rows={5}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 transition-all duration-300 resize-none text-sm sm:text-base shadow-sm shadow-black/5 dark:shadow-black/10 font-light placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/40 dark:bg-gray-800/40 backdrop-blur-md border border-white/30 dark:border-gray-600/30 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 focus:bg-white/60 dark:focus:bg-gray-800/60 transition-all duration-300 resize-none text-sm sm:text-base shadow-lg shadow-black/5 dark:shadow-black/10 font-light placeholder:text-gray-500 dark:placeholder:text-gray-400"
                       required
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
-                    className="group relative w-full border border-gray-800/80 dark:border-gray-200/80 text-gray-800 dark:text-gray-200 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-light overflow-hidden transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50 bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm"
+                    className="group relative w-full border border-gray-800/60 dark:border-gray-200/60 text-gray-800 dark:text-gray-200 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-light overflow-hidden transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base shadow-xl shadow-black/20 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/30 dark:hover:shadow-black/50 bg-white/30 dark:bg-gray-800/30 backdrop-blur-lg hover:backdrop-blur-xl"
                   >
                     <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
                       Send Message
@@ -219,7 +227,7 @@ const Contact = () => {
           </ScrollReveal>
         </div>
 
-        {/* FAQ Section */}
+        {/* FAQ Section with Glass Morphism */}
         <section className="mt-16 sm:mt-20 md:mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 lg:gap-16">
             {/* Left Side - FAQ Title (1/3 width) */}
@@ -235,46 +243,51 @@ const Contact = () => {
               </div>
             </ScrollReveal>
 
-            {/* Right Side - FAQ Accordion (2/3 width) */}
+            {/* Right Side - FAQ Accordion (2/3 width) with Glass Morphism */}
             <div className="lg:col-span-2 space-y-2">
               {faqs.map((faq, index) => (
                 <ScrollReveal key={index} direction="right" delay={0.2 + index * 0.1}>
-                  <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-xl shadow-lg shadow-black/5 dark:shadow-black/20 hover:shadow-xl hover:shadow-black/10 dark:hover:shadow-black/30 transition-all duration-300 overflow-hidden border border-white/20 dark:border-gray-700/30">
-                    <button
-                      onClick={() => toggleFAQ(index)}
-                      className="w-full p-4 sm:p-5 flex items-center justify-between text-left hover:bg-white/50 dark:hover:bg-gray-800/50 transition-colors duration-200"
-                    >
-                      <span className="font-medium text-gray-800 dark:text-gray-200 text-sm sm:text-base pr-4">
-                        {String(index + 1).padStart(2, '0')}. {faq.question}
-                      </span>
-                      <motion.div
-                        animate={{ rotate: activeFAQ === index ? 180 : 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                      >
-                        <ChevronDown 
-                          size={16} 
-                          className="sm:w-[18px] sm:h-[18px] text-gray-500 dark:text-gray-400" 
-                        />
-                      </motion.div>
-                    </button>
+                  <div className="relative">
+                    {/* Glass morphism background */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-blue-50/20 to-purple-50/30 dark:from-gray-800/30 dark:via-blue-900/15 dark:to-purple-900/20 rounded-xl backdrop-blur-xl"></div>
                     
-                    <AnimatePresence>
-                      {activeFAQ === index && (
+                    <div className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl rounded-xl shadow-xl shadow-black/5 dark:shadow-black/20 hover:shadow-2xl hover:shadow-black/10 dark:hover:shadow-black/30 transition-all duration-300 overflow-hidden border border-white/30 dark:border-gray-700/30">
+                      <button
+                        onClick={() => toggleFAQ(index)}
+                        className="w-full p-4 sm:p-5 flex items-center justify-between text-left hover:bg-white/30 dark:hover:bg-gray-800/30 backdrop-blur-sm transition-all duration-300"
+                      >
+                        <span className="font-normal text-gray-800 dark:text-gray-200 text-sm sm:text-base pr-4">
+                          {String(index + 1).padStart(2, '0')}. {faq.question}
+                        </span>
                         <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
+                          animate={{ rotate: activeFAQ === index ? 180 : 0 }}
                           transition={{ duration: 0.3, ease: "easeInOut" }}
-                          className="overflow-hidden"
                         >
-                          <div className="px-4 sm:px-5 pb-4 sm:pb-5">
-                            <p className="text-gray-700 dark:text-gray-400 leading-relaxed text-sm sm:text-base font-normal">
-                              {faq.answer}
-                            </p>
-                          </div>
+                          <ChevronDown 
+                            size={16} 
+                            className="sm:w-[18px] sm:h-[18px] text-gray-500 dark:text-gray-400" 
+                          />
                         </motion.div>
-                      )}
-                    </AnimatePresence>
+                      </button>
+                      
+                      <AnimatePresence>
+                        {activeFAQ === index && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="overflow-hidden"
+                          >
+                            <div className="px-4 sm:px-5 pb-4 sm:pb-5 bg-white/20 dark:bg-gray-800/20 backdrop-blur-sm">
+                              <p className="text-gray-700 dark:text-gray-400 leading-relaxed text-sm sm:text-base font-light">
+                                {faq.answer}
+                              </p>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   </div>
                 </ScrollReveal>
               ))}
