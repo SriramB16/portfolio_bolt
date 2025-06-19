@@ -117,7 +117,7 @@ const About = () => {
                   
                   {/* Spinning Text Circle - Positioned further outside */}
                   <div 
-                    className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 md:-bottom-6 md:-right-6 lg:-bottom-4 lg:-right-4 xl:-bottom-6 xl:-right-6"
+                    className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 md:-bottom-8 md:-right-8 lg:-bottom-6 lg:-right-6 xl:-bottom-8 xl:-right-8"
                     onMouseEnter={() => setHoveredArrow(true)}
                     onMouseLeave={() => setHoveredArrow(false)}
                   >
@@ -153,8 +153,11 @@ const About = () => {
                           <ArrowUpRight 
                             size={16} 
                             className={`sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-5 lg:h-5 xl:w-6 xl:h-6 text-gray-800 transition-all duration-300 ${
-                              hoveredArrow ? 'rotate-0 scale-110' : '-rotate-45 scale-100'
+                              hoveredArrow ? 'rotate-90 scale-110' : 'rotate-[40deg] scale-100'
                             }`}
+                            style={{
+                              transformOrigin: 'center'
+                            }}
                           />
                         </div>
                       </div>
@@ -164,8 +167,8 @@ const About = () => {
               </div>
             </ScrollReveal>
 
-            {/* Right - Text Content (2/3 width) */}
-            <div className="lg:col-span-2 text-center lg:text-left">
+            {/* Right - Text Content (2/3 width) - Moved more to the right */}
+            <div className="lg:col-span-2 text-center lg:text-left lg:pl-8 xl:pl-12">
               <ScrollReveal direction="right" delay={0.2}>
                 <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight mb-6 sm:mb-8">
                   A <span className="text-green-500">creative</span><br />
