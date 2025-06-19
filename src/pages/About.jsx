@@ -27,28 +27,23 @@ const About = () => {
     }
   ];
 
-  // Technologies for marquee
+  // Technologies for marquee - using only uploaded logos
   const technologies = [
-    { name: 'React', image: '⚛️' },
-    { name: 'JavaScript', image: '🟨' },
-    { name: 'TypeScript', image: '🔷' },
-    { name: 'Node.js', image: '🟢' },
-    { name: 'Python', image: '🐍' },
-    { name: 'HTML5', image: '🧡' },
-    { name: 'CSS3', image: '🔵' },
-    { name: 'Tailwind', image: '💨' },
-    { name: 'MongoDB', image: '🍃' },
-    { name: 'PostgreSQL', image: '🐘' },
-    { name: 'Git', image: '📝' },
-    { name: 'Docker', image: '🐳' },
-    { name: 'AWS', image: '☁️' },
-    { name: 'Next.js', image: '▲' },
-    { name: 'Vue.js', image: '💚' },
-    { name: 'Express', image: '🚀' },
-    { name: 'GraphQL', image: '🔗' },
-    { name: 'Redis', image: '🔴' },
-    { name: 'Figma', image: '🎨' },
-    { name: 'VS Code', image: '💙' }
+    { name: 'React', logo: '/src/assets/logos/react_logo.png' },
+    { name: 'JavaScript', logo: '/src/assets/logos/javascript_logo.png' },
+    { name: 'Node.js', logo: '/src/assets/logos/nodejs_logo.png' },
+    { name: 'Python', logo: '/src/assets/logos/Python_logo.png' },
+    { name: 'HTML5', logo: '/src/assets/logos/HTML_logo.png' },
+    { name: 'CSS3', logo: '/src/assets/logos/CSS_logo.png' },
+    { name: 'Tailwind CSS', logo: '/src/assets/logos/tailwind_logo.png' },
+    { name: 'Bootstrap', logo: '/src/assets/logos/bootstrap_logo.png' },
+    { name: 'MongoDB', logo: '/src/assets/logos/mongodb_logo.png' },
+    { name: 'PostgreSQL', logo: '/src/assets/logos/postgresql_logo.png' },
+    { name: 'SQL', logo: '/src/assets/logos/sql_logo.png' },
+    { name: 'Git', logo: '/src/assets/logos/git_logo.png' },
+    { name: 'GitHub', logo: '/src/assets/logos/github_logo.png' },
+    { name: 'Express.js', logo: '/src/assets/logos/expressjs_logo.png' },
+    { name: 'Figma', logo: '/src/assets/logos/figma_logo.png' }
   ];
 
   // Work experience data
@@ -265,9 +260,13 @@ const About = () => {
               key={`${tech.name}-${index}`}
               className="flex items-center gap-3 sm:gap-4 bg-white dark:bg-gray-800 px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 mx-2 sm:mx-3 md:mx-4 hover:scale-105 transition-transform duration-300 group whitespace-nowrap"
             >
-              <span className="text-xl sm:text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-300">
-                {tech.image}
-              </span>
+              <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0">
+                <img 
+                  src={tech.logo}
+                  alt={`${tech.name} logo`}
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
               <span className="font-medium text-gray-700 dark:text-gray-300 text-sm sm:text-base md:text-lg">
                 {tech.name}
               </span>
