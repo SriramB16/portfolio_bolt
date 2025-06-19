@@ -106,30 +106,23 @@ const About = () => {
             <ScrollReveal direction="left" delay={0.1}>
               <div className="relative flex justify-center lg:justify-start">
                 <div className="relative">
-                  {/* Main Photo - Hexagon Shape */}
-                  <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 relative">
-                    <div 
-                      className="w-full h-full overflow-hidden shadow-2xl shadow-black/20 dark:shadow-black/40"
-                      style={{
-                        clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
-                      }}
-                    >
-                      <img 
-                        src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800"
-                        alt="Sriram"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                  {/* Main Photo */}
+                  <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-2xl shadow-black/20 dark:shadow-black/40">
+                    <img 
+                      src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Sriram"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   
-                  {/* Spinning Text with Arrow - Updated Design */}
+                  {/* Spinning Text with Arrow */}
                   <div 
                     className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6"
                     onMouseEnter={() => setHoveredArrow(true)}
                     onMouseLeave={() => setHoveredArrow(false)}
                   >
                     <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36">
-                      {/* Spinning Text Circle */}
+                      {/* Spinning Text */}
                       <svg 
                         className="w-full h-full animate-spin-slow" 
                         viewBox="0 0 100 100"
@@ -137,19 +130,19 @@ const About = () => {
                         <defs>
                           <path
                             id="circle"
-                            d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0"
+                            d="M 50, 50 m -20, 0 a 20,20 0 1,1 40,0 a 20,20 0 1,1 -40,0"
                           />
                         </defs>
-                        <text className="text-[4px] sm:text-[5px] md:text-[6px] fill-gray-600 dark:fill-gray-400 font-medium uppercase tracking-wider">
-                          <textPath href="#circle" startOffset="0%">
-                            LET'S TALK • LET'S TALK • LET'S TALK • 
+                        <text className="text-[6px] sm:text-[7px] md:text-[8px] fill-gray-600 dark:fill-gray-400 font-medium">
+                          <textPath href="#circle">
+                            AVAILABLE FOR WORK • AVAILABLE FOR WORK • 
                           </textPath>
                         </text>
                       </svg>
                       
                       {/* Center Arrow */}
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg cursor-pointer transition-all duration-300 hover:scale-110 hover:bg-green-600">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg cursor-pointer transition-all duration-300 hover:scale-110">
                           <ArrowUpRight 
                             size={16} 
                             className={`sm:w-5 sm:h-5 md:w-6 md:h-6 text-white transition-transform duration-300 ${
@@ -208,26 +201,18 @@ const About = () => {
           </ScrollReveal>
 
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
-            {/* Left - Dynamic Image with Organic Shape */}
+            {/* Left - Dynamic Image */}
             <ScrollReveal direction="left" delay={0.2}>
-              <div className="relative bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 shadow-xl shadow-black/15 dark:shadow-black/30 aspect-[4/3] overflow-hidden">
-                {/* Organic blob shape */}
-                <div 
-                  className="w-full h-full"
-                  style={{
-                    clipPath: 'polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%)'
-                  }}
-                >
-                  <motion.img
-                    key={hoveredStory}
-                    src={storyData[hoveredStory]?.image}
-                    alt="Story illustration"
-                    className="w-full h-full object-cover"
-                    initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, ease: 'easeInOut' }}
-                  />
-                </div>
+              <div className="relative bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl shadow-black/15 dark:shadow-black/30 aspect-[4/3]">
+                <motion.img
+                  key={hoveredStory}
+                  src={storyData[hoveredStory]?.image}
+                  alt="Story illustration"
+                  className="w-full h-full object-cover"
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               </div>
             </ScrollReveal>
