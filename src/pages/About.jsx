@@ -172,7 +172,7 @@ const About = () => {
               <ScrollReveal direction="right" delay={0.2}>
                 <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight mb-6 sm:mb-8">
                   A <span className="text-green-500">creative</span>
-                  <span className="text-green-500">developer</span> &<br />
+                  <span className="text-green-500"> developer</span> &<br />
                   digital designer
                 </h1>
               </ScrollReveal>
