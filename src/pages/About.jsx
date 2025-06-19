@@ -1,16 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Download, Edit3, Layers, Palette, Code, Shield } from 'lucide-react';
-import { motion, useInView } from 'framer-motion';
+import { ArrowUpRight, Download } from 'lucide-react';
+import { motion } from 'framer-motion';
 import ScrollReveal from '../components/ScrollReveal';
 import ShinyText from '../components/ShinyText';
+import DesignProcessCarousel from '../components/DesignProcessCarousel';
 
 const About = () => {
   const [hoveredStory, setHoveredStory] = useState(0);
   const [hoveredArrow, setHoveredArrow] = useState(false);
   const [showAllExperience, setShowAllExperience] = useState(false);
-  const processRef = useRef(null);
-  const isProcessInView = useInView(processRef, { once: false, margin: "-100px" });
 
   // Story sections with corresponding images
   const storyData = [
@@ -83,40 +82,6 @@ const About = () => {
       logo: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=100',
       position: 'Frontend Developer',
       duration: 'Jan 2022 — Jul 2022'
-    }
-  ];
-
-  // Design process steps with real icons
-  const designProcess = [
-    {
-      number: '01',
-      title: 'Strategize',
-      description: 'To create something awesome, one must first talk about the details. Planning is essential.',
-      icon: Edit3
-    },
-    {
-      number: '02',
-      title: 'Wireframe',
-      description: 'After hashing out the details of the website, it\'s easy to throw the ideas onto pen & paper.',
-      icon: Layers
-    },
-    {
-      number: '03',
-      title: 'Design',
-      description: 'The most fun part of all - adding pizzaz to the wireframes and bring it to life.',
-      icon: Palette
-    },
-    {
-      number: '04',
-      title: 'Development',
-      description: 'The design may be final but it needs to be functional and practical. Development is key.',
-      icon: Code
-    },
-    {
-      number: '05',
-      title: 'Quality Assurance',
-      description: 'Website load times, SEO, file optimization, etc., weigh in to the quality of the site.',
-      icon: Shield
     }
   ];
 
@@ -389,75 +354,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* Section 5: Design Process */}
-      <section ref={processRef} className="px-4 sm:px-6 md:px-10 lg:px-16 mb-16 sm:mb-20 md:mb-24">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-8 sm:gap-12 lg:gap-16">
-            
-            {/* Left - Title and Description (1/3 width) */}
-            <div className="lg:col-span-1">
-              <ScrollReveal direction="left" delay={0.1}>
-                <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-                  <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
-                  <ShinyText size="lg">STEPS I FOLLOW</ShinyText>
-                </div>
-              </ScrollReveal>
-              
-              <ScrollReveal direction="left" delay={0.2}>
-                <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-4 sm:mb-6">
-                  My Design Process
-                </h2>
-              </ScrollReveal>
-              
-              <ScrollReveal direction="left" delay={0.3}>
-                <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed font-light">
-                  I have worked with some of the most innovative industry leaders to help build their top-notch products.
-                </p>
-              </ScrollReveal>
-            </div>
-
-            {/* Right - Process Cards (2/3 width) */}
-            <div className="lg:col-span-2">
-              <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
-                {designProcess.map((step, index) => {
-                  const IconComponent = step.icon;
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ x: 100, opacity: 0 }}
-                      animate={isProcessInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
-                      transition={{ 
-                        duration: 0.6, 
-                        delay: index * 0.15,
-                        ease: "easeOut"
-                      }}
-                      className="bg-white dark:bg-gray-900 rounded-2xl p-6 sm:p-8 shadow-xl shadow-black/5 dark:shadow-black/20 hover:shadow-2xl hover:shadow-black/10 dark:hover:shadow-black/30 transition-all duration-500 hover:-translate-y-2"
-                    >
-                      {/* Icon */}
-                      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4 sm:mb-6">
-                        <IconComponent 
-                          size={24} 
-                          className="sm:w-7 sm:h-7 text-green-500" 
-                        />
-                      </div>
-                      
-                      {/* Number and Title */}
-                      <h3 className="font-clash text-lg sm:text-xl font-bold text-black dark:text-white mb-2 sm:mb-3">
-                        {step.number}. {step.title}
-                      </h3>
-                      
-                      {/* Description */}
-                      <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed font-light">
-                        {step.description}
-                      </p>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Section 5: Design Process Carousel */}
+      <DesignProcessCarousel />
 
       {/* Section 6: Available for Work CTA */}
       <section className="px-4 sm:px-6 md:px-10 lg:px-16 mb-16 sm:mb-20 md:mb-24">
