@@ -97,17 +97,17 @@ const About = () => {
   return (
     <div className="pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 bg-[#f7f8fa] dark:bg-black overflow-x-hidden">
       
-      {/* Section 1: Hero with Photo and Spinning Text */}
+      {/* Section 1: Hero with Circular Photo and Spinning Text */}
       <section className="px-4 sm:px-6 md:px-10 lg:px-16 mb-16 sm:mb-20 md:mb-24">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
             
-            {/* Left - Photo with Spinning Text */}
+            {/* Left - Circular Photo with Spinning Text */}
             <ScrollReveal direction="left" delay={0.1}>
               <div className="relative flex justify-center lg:justify-start">
                 <div className="relative">
-                  {/* Main Photo */}
-                  <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-2xl shadow-black/20 dark:shadow-black/40">
+                  {/* Main Circular Photo */}
+                  <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl shadow-black/20 dark:shadow-black/40">
                     <img 
                       src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800"
                       alt="Sriram"
@@ -115,38 +115,42 @@ const About = () => {
                     />
                   </div>
                   
-                  {/* Spinning Text with Arrow */}
+                  {/* Spinning Text Circle - Positioned half outside */}
                   <div 
-                    className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6"
+                    className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8"
                     onMouseEnter={() => setHoveredArrow(true)}
                     onMouseLeave={() => setHoveredArrow(false)}
                   >
-                    <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36">
-                      {/* Spinning Text */}
+                    <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32">
+                      {/* Spinning Text Circle */}
                       <svg 
                         className="w-full h-full animate-spin-slow" 
-                        viewBox="0 0 100 100"
+                        viewBox="0 0 120 120"
+                        style={{ animation: 'spin 15s linear infinite' }}
                       >
                         <defs>
                           <path
-                            id="circle"
-                            d="M 50, 50 m -20, 0 a 20,20 0 1,1 40,0 a 20,20 0 1,1 -40,0"
+                            id="textCircle"
+                            d="M 60, 60 m -45, 0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"
                           />
                         </defs>
-                        <text className="text-[6px] sm:text-[7px] md:text-[8px] fill-gray-600 dark:fill-gray-400 font-medium">
-                          <textPath href="#circle">
-                            AVAILABLE FOR WORK • AVAILABLE FOR WORK • 
+                        <text 
+                          className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] fill-gray-600 dark:fill-gray-400 font-medium tracking-wider"
+                          style={{ fontFamily: 'system-ui, sans-serif' }}
+                        >
+                          <textPath href="#textCircle" startOffset="0%">
+                            LET'S TALK • LET'S TALK • LET'S TALK • LET'S TALK • 
                           </textPath>
                         </text>
                       </svg>
                       
-                      {/* Center Arrow */}
+                      {/* Center Circle with Arrow */}
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg cursor-pointer transition-all duration-300 hover:scale-110">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-lg cursor-pointer transition-all duration-300 hover:scale-110 border border-gray-200 dark:border-gray-600">
                           <ArrowUpRight 
                             size={16} 
-                            className={`sm:w-5 sm:h-5 md:w-6 md:h-6 text-white transition-transform duration-300 ${
-                              hoveredArrow ? 'rotate-0' : '-rotate-45'
+                            className={`sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-gray-800 dark:text-gray-200 transition-all duration-300 ${
+                              hoveredArrow ? 'rotate-0 scale-110' : 'rotate-45 scale-100'
                             }`}
                           />
                         </div>
