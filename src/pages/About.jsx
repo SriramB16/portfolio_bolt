@@ -153,7 +153,7 @@ const About = () => {
                           <ArrowUpRight 
                             size={16} 
                             className={`sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-5 lg:h-5 xl:w-6 xl:h-6 text-gray-800 transition-all duration-300 ${
-                              hoveredArrow ? 'rotate-[-45deg] scale-110' : 'rotate-0 scale-100'
+                              hoveredArrow ? 'rotate-[45deg] scale-110' : 'rotate-0 scale-100'
                             }`}
                             style={{
                               transformOrigin: 'center'
