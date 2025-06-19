@@ -97,17 +97,17 @@ const About = () => {
   return (
     <div className="pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 bg-[#f7f8fa] dark:bg-black overflow-x-hidden">
       
-      {/* Section 1: Hero with Circular Photo and Spinning Text */}
+      {/* Section 1: Hero with Circular Photo and Spinning Text - New Layout */}
       <section className="px-4 sm:px-6 md:px-10 lg:px-16 mb-16 sm:mb-20 md:mb-24">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-3 gap-8 sm:gap-12 lg:gap-16 items-center">
             
-            {/* Left - Circular Photo with Spinning Text */}
+            {/* Left - Circular Photo with Spinning Text (1/3 width) */}
             <ScrollReveal direction="left" delay={0.1}>
               <div className="relative flex justify-center lg:justify-start">
                 <div className="relative">
                   {/* Main Circular Photo */}
-                  <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl shadow-black/20 dark:shadow-black/40">
+                  <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden shadow-2xl shadow-black/20 dark:shadow-black/40">
                     <img 
                       src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800"
                       alt="Sriram"
@@ -115,16 +115,19 @@ const About = () => {
                     />
                   </div>
                   
-                  {/* Spinning Text Circle - Positioned half outside */}
+                  {/* Spinning Text Circle - Positioned further outside */}
                   <div 
-                    className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8"
+                    className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 md:-bottom-6 md:-right-6 lg:-bottom-4 lg:-right-4 xl:-bottom-6 xl:-right-6"
                     onMouseEnter={() => setHoveredArrow(true)}
                     onMouseLeave={() => setHoveredArrow(false)}
                   >
-                    <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32">
+                    <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-28 lg:h-28 xl:w-32 xl:h-32">
+                      {/* White background circle */}
+                      <div className="absolute inset-0 bg-white dark:bg-white rounded-full shadow-lg"></div>
+                      
                       {/* Spinning Text Circle */}
                       <svg 
-                        className="w-full h-full animate-spin-slow" 
+                        className="w-full h-full relative z-10" 
                         viewBox="0 0 120 120"
                         style={{ animation: 'spin 15s linear infinite' }}
                       >
@@ -135,7 +138,7 @@ const About = () => {
                           />
                         </defs>
                         <text 
-                          className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] fill-gray-600 dark:fill-gray-400 font-medium tracking-wider"
+                          className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-[9px] xl:text-[10px] fill-gray-600 font-medium tracking-wider"
                           style={{ fontFamily: 'system-ui, sans-serif' }}
                         >
                           <textPath href="#textCircle" startOffset="0%">
@@ -145,12 +148,12 @@ const About = () => {
                       </svg>
                       
                       {/* Center Circle with Arrow */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-lg cursor-pointer transition-all duration-300 hover:scale-110 border border-gray-200 dark:border-gray-600">
+                      <div className="absolute inset-0 flex items-center justify-center z-20">
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-14 lg:h-14 xl:w-16 xl:h-16 bg-white rounded-full flex items-center justify-center shadow-lg cursor-pointer transition-all duration-300 hover:scale-110 border border-gray-200">
                           <ArrowUpRight 
                             size={16} 
-                            className={`sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-gray-800 dark:text-gray-200 transition-all duration-300 ${
-                              hoveredArrow ? 'rotate-0 scale-110' : 'rotate-45 scale-100'
+                            className={`sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-5 lg:h-5 xl:w-6 xl:h-6 text-gray-800 transition-all duration-300 ${
+                              hoveredArrow ? 'rotate-0 scale-110' : '-rotate-45 scale-100'
                             }`}
                           />
                         </div>
@@ -161,10 +164,10 @@ const About = () => {
               </div>
             </ScrollReveal>
 
-            {/* Right - Text Content */}
-            <div className="text-center lg:text-left">
+            {/* Right - Text Content (2/3 width) */}
+            <div className="lg:col-span-2 text-center lg:text-left">
               <ScrollReveal direction="right" delay={0.2}>
-                <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 sm:mb-8">
+                <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight mb-6 sm:mb-8">
                   A <span className="text-green-500">creative</span><br />
                   <span className="text-green-500">developer</span> &<br />
                   digital designer
@@ -172,7 +175,7 @@ const About = () => {
               </ScrollReveal>
               
               <ScrollReveal direction="right" delay={0.3}>
-                <p className="text-gray-600 dark:text-gray-400 text-lg sm:text-xl leading-relaxed mb-8 sm:mb-10 max-w-lg mx-auto lg:mx-0">
+                <p className="text-gray-600 dark:text-gray-400 text-lg sm:text-xl lg:text-lg xl:text-xl leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto lg:mx-0">
                   I collaborate with brands globally to design impactful, mission-focused websites that drive results and achieve business goals.
                 </p>
               </ScrollReveal>
