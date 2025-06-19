@@ -49,42 +49,40 @@ const DesignProcessCarousel = () => {
     
     if (!section || !cards) return;
 
-    // Only apply horizontal scroll on larger screens
+    // Only apply horizontal scroll on larger screens (1024px+)
     const mediaQuery = window.matchMedia('(min-width: 1024px)');
     
-    const setupAnimation = () => {
+    const setupHorizontalScroll = () => {
       if (mediaQuery.matches) {
-        // Calculate the total width of all cards
-        const cardWidth = 280; // Width of each card including gap
+        // Calculate scroll distance
+        const cardWidth = 320; // Width of each card including gap
         const totalWidth = designProcess.length * cardWidth;
         const containerWidth = section.offsetWidth;
-        const scrollDistance = totalWidth - containerWidth + 100;
+        const scrollDistance = Math.max(0, totalWidth - containerWidth + 200);
 
-        // Create horizontal scroll animation that starts when section is fully visible
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: "top 20%", // Start when section is 20% from top
-            end: "bottom 80%", // End when section is 80% from bottom
-            scrub: 1.5,
-            invalidateOnRefresh: true,
-          }
-        });
-
-        tl.to(cards, {
-          x: -scrollDistance,
-          ease: "none",
-          duration: 1
-        });
+        if (scrollDistance > 0) {
+          // Create horizontal scroll animation
+          gsap.to(cards, {
+            x: -scrollDistance,
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: 1,
+              invalidateOnRefresh: true,
+            }
+          });
+        }
       }
     };
 
-    setupAnimation();
+    setupHorizontalScroll();
 
     // Re-setup on resize
     const handleResize = () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      setupAnimation();
+      setTimeout(setupHorizontalScroll, 100);
     };
 
     window.addEventListener('resize', handleResize);
@@ -103,7 +101,7 @@ const DesignProcessCarousel = () => {
       className="py-12 sm:py-16 md:py-20 lg:py-24 bg-[#f7f8fa] dark:bg-black"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-16">
-        {/* Left side content */}
+        {/* Header content */}
         <div className="mb-8 sm:mb-12 lg:mb-16">
           <div className="max-w-md">
             <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
@@ -121,14 +119,14 @@ const DesignProcessCarousel = () => {
           </div>
         </div>
 
-        {/* Cards container */}
+        {/* Desktop: Horizontal scrolling cards (1024px+) */}
         <div 
           ref={containerRef}
-          className="relative overflow-hidden"
+          className="hidden lg:block relative overflow-hidden"
         >
           <div 
             ref={cardsRef}
-            className="flex gap-4 sm:gap-6 lg:gap-8"
+            className="flex gap-6 xl:gap-8"
             style={{ width: 'max-content' }}
           >
             {designProcess.map((step, index) => {
@@ -136,23 +134,23 @@ const DesignProcessCarousel = () => {
               return (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-64 sm:w-72 lg:w-80 bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-100 dark:border-gray-800"
+                  className="flex-shrink-0 w-72 xl:w-80 bg-white dark:bg-gray-900 rounded-2xl p-6 xl:p-8 border border-gray-200 dark:border-gray-800"
                 >
                   {/* Icon */}
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4 sm:mb-6">
+                  <div className="w-14 h-14 xl:w-16 xl:h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6">
                     <IconComponent 
-                      size={20} 
-                      className="sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-green-500" 
+                      size={24} 
+                      className="xl:w-7 xl:h-7 text-green-500" 
                     />
                   </div>
                   
                   {/* Number and Title */}
-                  <h3 className="font-clash text-lg sm:text-xl lg:text-2xl font-bold text-black dark:text-white mb-3 sm:mb-4">
+                  <h3 className="font-clash text-xl xl:text-2xl font-bold text-black dark:text-white mb-4">
                     {step.number}. {step.title}
                   </h3>
                   
                   {/* Description */}
-                  <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed font-light">
+                  <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed font-light">
                     {step.description}
                   </p>
                 </div>
@@ -161,35 +159,69 @@ const DesignProcessCarousel = () => {
           </div>
         </div>
 
-        {/* Mobile: Show cards in grid on smaller screens */}
-        <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mt-8">
-          {designProcess.map((step, index) => {
-            const IconComponent = step.icon;
-            return (
-              <div
-                key={`mobile-${index}`}
-                className="bg-white dark:bg-gray-900 rounded-xl p-4 sm:p-6 border border-gray-100 dark:border-gray-800"
-              >
-                {/* Icon */}
-                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4">
-                  <IconComponent 
-                    size={20} 
-                    className="sm:w-6 sm:h-6 text-green-500" 
-                  />
+        {/* Mobile/Tablet: Infinite scroll animation (below 1024px) */}
+        <div className="lg:hidden relative overflow-hidden">
+          {/* First row - left to right */}
+          <div className="flex animate-marquee whitespace-nowrap mb-4">
+            {[...designProcess, ...designProcess].map((step, index) => {
+              const IconComponent = step.icon;
+              return (
+                <div
+                  key={`row1-${index}`}
+                  className="flex-shrink-0 w-64 sm:w-72 bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-gray-200 dark:border-gray-800 mx-2 sm:mx-3"
+                >
+                  {/* Icon */}
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4">
+                    <IconComponent 
+                      size={20} 
+                      className="sm:w-6 sm:h-6 text-green-500" 
+                    />
+                  </div>
+                  
+                  {/* Number and Title */}
+                  <h3 className="font-clash text-lg sm:text-xl font-bold text-black dark:text-white mb-3">
+                    {step.number}. {step.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed font-light">
+                    {step.description}
+                  </p>
                 </div>
-                
-                {/* Number and Title */}
-                <h3 className="font-clash text-lg sm:text-xl font-bold text-black dark:text-white mb-3">
-                  {step.number}. {step.title}
-                </h3>
-                
-                {/* Description */}
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed font-light">
-                  {step.description}
-                </p>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          {/* Second row - right to left */}
+          <div className="flex animate-marquee-reverse whitespace-nowrap">
+            {[...designProcess.slice().reverse(), ...designProcess.slice().reverse()].map((step, index) => {
+              const IconComponent = step.icon;
+              return (
+                <div
+                  key={`row2-${index}`}
+                  className="flex-shrink-0 w-64 sm:w-72 bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-gray-200 dark:border-gray-800 mx-2 sm:mx-3"
+                >
+                  {/* Icon */}
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4">
+                    <IconComponent 
+                      size={20} 
+                      className="sm:w-6 sm:h-6 text-green-500" 
+                    />
+                  </div>
+                  
+                  {/* Number and Title */}
+                  <h3 className="font-clash text-lg sm:text-xl font-bold text-black dark:text-white mb-3">
+                    {step.number}. {step.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed font-light">
+                    {step.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
