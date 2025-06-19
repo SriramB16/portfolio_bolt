@@ -9,7 +9,7 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 
-// Component to handle navigation tracking
+// Component to handle navigation tracking and scroll restoration
 const NavigationTracker = () => {
   const location = useLocation();
 
@@ -23,6 +23,11 @@ const NavigationTracker = () => {
     };
 
     handleRouteChange();
+  }, [location.pathname]);
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, [location.pathname]);
 
   return null;
