@@ -74,7 +74,7 @@ const Navbar = () => {
         isHomePage ? 'bg-[#f7f8fa] dark:bg-black' : 'bg-[#f7f8fa] dark:bg-black'
       }`}>
         <div className="flex items-center justify-between p-3 sm:p-4 max-w-full overflow-hidden">
-          <span className={`text-lg sm:text-xl font-bold ${isHomePage ? 'text-black dark:text-white' : 'text-black dark:text-white'} truncate`}>SR</span>
+          <Logo />
           <button 
             onClick={toggleDarkMode}
             aria-label="Toggle dark mode"
@@ -120,7 +120,7 @@ const Navbar = () => {
           </div>
           
           <div className="flex-1 flex justify-center min-w-0">
-            <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4 lg:space-x-6 xl:space-x-8">
+            <div className="flex items-center space-x-3 md:space-x-4 lg:space-x-6 xl:space-x-8">
               <NavLink to="/" label="Home" icon={<Home size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/'} onClick={handleNavClick} />
               <NavLink to="/about" label="About" icon={<User size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/about'} onClick={handleNavClick} />
               <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/projects'} onClick={handleNavClick} />
