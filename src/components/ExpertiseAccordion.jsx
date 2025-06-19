@@ -34,15 +34,6 @@ const ExpertiseAccordion = () => {
       skills: ['Logo Design', 'Brand Strategy', 'Visual Identity', 'Brand Guidelines', 'Marketing Materials', 'Brand Consistency'],
       image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
       color: 'from-orange-500 to-red-500'
-    },
-    {
-      id: 3,
-      title: 'Mobile Development',
-      icon: Smartphone,
-      description: 'Building native and cross-platform mobile applications that provide seamless experiences across iOS and Android devices.',
-      skills: ['React Native', 'Flutter', 'iOS Development', 'Android Development', 'App Store Optimization', 'Mobile UI/UX'],
-      image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800',
-      color: 'from-green-500 to-emerald-500'
     }
   ];
 
