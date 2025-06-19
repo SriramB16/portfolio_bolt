@@ -288,7 +288,7 @@ const Home = () => {
               </ScrollReveal>
 
               <ScrollReveal direction="up" delay={0.3}>
-                <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base lg:text-lg ">
+                <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base lg:text-lg mb-8 sm:mb-12 md:mb-16">
                   Here's a curated selection showcasing my expertise and the achieved results.
                 </p>
               </ScrollReveal>
