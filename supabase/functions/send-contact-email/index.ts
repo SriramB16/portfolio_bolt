@@ -44,12 +44,37 @@ serve(async (req) => {
       )
     }
 
-    // Email configuration - you'll need to set these in your Supabase project settings
+    // Email configuration - these need to be set in Supabase Edge Function environment variables
     const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
-    const YOUR_EMAIL = Deno.env.get('YOUR_EMAIL') || 'your-email@example.com'
+    const YOUR_EMAIL = Deno.env.get('YOUR_EMAIL')
 
+    // Check if environment variables are configured
     if (!RESEND_API_KEY) {
-      throw new Error('RESEND_API_KEY environment variable is not set')
+      console.error('RESEND_API_KEY environment variable is not set')
+      return new Response(
+        JSON.stringify({ 
+          error: 'Email service not configured',
+          details: 'Please configure RESEND_API_KEY in Supabase Edge Function environment variables'
+        }),
+        { 
+          status: 500, 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        }
+      )
+    }
+
+    if (!YOUR_EMAIL) {
+      console.error('YOUR_EMAIL environment variable is not set')
+      return new Response(
+        JSON.stringify({ 
+          error: 'Email service not configured',
+          details: 'Please configure YOUR_EMAIL in Supabase Edge Function environment variables'
+        }),
+        { 
+          status: 500, 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        }
+      )
     }
 
     // Email to you (notification)
@@ -134,6 +159,8 @@ serve(async (req) => {
       `
     }
 
+    console.log('Attempting to send emails...')
+
     // Send notification email to you
     const notificationResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -143,6 +170,14 @@ serve(async (req) => {
       },
       body: JSON.stringify(notificationEmail),
     })
+
+    const notificationResult = await notificationResponse.json()
+    console.log('Notification email response:', notificationResult)
+
+    if (!notificationResponse.ok) {
+      console.error('Failed to send notification email:', notificationResult)
+      throw new Error(`Failed to send notification email: ${notificationResult.message || 'Unknown error'}`)
+    }
 
     // Send auto-reply email to user
     const autoReplyResponse = await fetch('https://api.resend.com/emails', {
@@ -154,14 +189,23 @@ serve(async (req) => {
       body: JSON.stringify(autoReplyEmail),
     })
 
-    if (!notificationResponse.ok || !autoReplyResponse.ok) {
-      throw new Error('Failed to send emails')
+    const autoReplyResult = await autoReplyResponse.json()
+    console.log('Auto-reply email response:', autoReplyResult)
+
+    if (!autoReplyResponse.ok) {
+      console.error('Failed to send auto-reply email:', autoReplyResult)
+      // Don't fail the entire request if auto-reply fails
+      console.warn('Auto-reply failed, but notification was sent successfully')
     }
+
+    console.log('Emails sent successfully')
 
     return new Response(
       JSON.stringify({ 
         success: true, 
-        message: 'Emails sent successfully' 
+        message: 'Message sent successfully',
+        notificationSent: notificationResponse.ok,
+        autoReplySent: autoReplyResponse.ok
       }),
       { 
         status: 200, 
@@ -170,10 +214,10 @@ serve(async (req) => {
     )
 
   } catch (error) {
-    console.error('Error sending emails:', error)
+    console.error('Error in send-contact-email function:', error)
     return new Response(
       JSON.stringify({ 
-        error: 'Failed to send emails',
+        error: 'Failed to send message',
         details: error.message 
       }),
       { 

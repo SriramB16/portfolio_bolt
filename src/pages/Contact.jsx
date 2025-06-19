@@ -82,7 +82,11 @@ const Contact = () => {
     setFormStatus({ isSubmitting: true, isSuccess: false, isError: false, errorMessage: '' });
 
     try {
-      // Replace with your actual Supabase URL
+      // Check if Supabase environment variables are available
+      if (!import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_ANON_KEY) {
+        throw new Error('Supabase configuration is missing. Please check your environment variables.');
+      }
+
       const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-contact-email`, {
         method: 'POST',
         headers: {
@@ -104,15 +108,34 @@ const Contact = () => {
           setFormStatus(prev => ({ ...prev, isSuccess: false }));
         }, 5000);
       } else {
-        throw new Error(result.error || 'Failed to send message');
+        // Handle specific error cases
+        if (result.details && result.details.includes('RESEND_API_KEY')) {
+          throw new Error('Email service is not configured. Please contact the site administrator.');
+        } else if (result.details && result.details.includes('YOUR_EMAIL')) {
+          throw new Error('Email service is not configured. Please contact the site administrator.');
+        } else {
+          throw new Error(result.error || result.details || 'Failed to send message');
+        }
       }
     } catch (error) {
       console.error('Error sending message:', error);
+      
+      let errorMessage = 'Failed to send message. Please try again.';
+      
+      // Provide user-friendly error messages
+      if (error.message.includes('Email service is not configured')) {
+        errorMessage = 'The contact form is temporarily unavailable. Please try contacting me directly via email or social media.';
+      } else if (error.message.includes('Supabase configuration')) {
+        errorMessage = 'The contact form is not properly configured. Please try contacting me directly.';
+      } else if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+        errorMessage = 'Network error. Please check your internet connection and try again.';
+      }
+      
       setFormStatus({ 
         isSubmitting: false, 
         isSuccess: false, 
         isError: true, 
-        errorMessage: error.message || 'Failed to send message. Please try again.' 
+        errorMessage: errorMessage
       });
     }
   };
