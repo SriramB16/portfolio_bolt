@@ -26,30 +26,30 @@ const TechMarquee = () => {
   ];
 
   return (
-    <div className="w-full py-6 sm:py-8 relative">
+    <div className="w-full py-4 sm:py-6 md:py-8 relative overflow-hidden">
       {/* Left gradient overlay */}
-      <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-12 md:w-16 lg:w-24 xl:w-32 2xl:w-40 bg-gradient-to-r from-[#f7f8fa] dark:from-black to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute left-0 top-0 bottom-0 w-6 sm:w-8 md:w-12 lg:w-16 xl:w-24 2xl:w-32 bg-gradient-to-r from-[#f7f8fa] dark:from-black to-transparent z-10 pointer-events-none"></div>
       
       {/* Right gradient overlay */}
-      <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-12 md:w-16 lg:w-24 xl:w-32 2xl:w-40 bg-gradient-to-l from-[#f7f8fa] dark:from-black to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-6 sm:w-8 md:w-12 lg:w-16 xl:w-24 2xl:w-32 bg-gradient-to-l from-[#f7f8fa] dark:from-black to-transparent z-10 pointer-events-none"></div>
       
       <Marquee
         gradient={false}
         speed={50}
         pauseOnHover={false}
-        className="bg-white dark:bg-gray-900 py-4 sm:py-6"
+        className="bg-white dark:bg-gray-900 py-3 sm:py-4 md:py-6"
       >
         {technologies.map((tech, index) => (
           <div
             key={`${tech.name}-${index}`}
-            className="flex items-center gap-2 sm:gap-3 bg-[#f7f8fa] dark:bg-gray-800 px-4 sm:px-6 py-3 sm:py-4 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 mx-2 sm:mx-4 hover:scale-105 transition-transform duration-300 group"
+            className="flex items-center gap-1.5 sm:gap-2 md:gap-3 bg-[#f7f8fa] dark:bg-gray-800 px-2 sm:px-3 md:px-4 lg:px-6 py-2 sm:py-3 md:py-4 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 mx-1 sm:mx-2 md:mx-4 hover:scale-105 transition-transform duration-300 group whitespace-nowrap"
           >
             <div className="relative">
-              <span className="text-lg sm:text-xl md:text-2xl group-hover:scale-110 transition-transform duration-300">
+              <span className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl group-hover:scale-110 transition-transform duration-300">
                 {tech.icon}
               </span>
             </div>
-            <span className="font-semibold text-gray-700 dark:text-gray-300 whitespace-nowrap text-sm sm:text-base">
+            <span className="font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm md:text-base">
               {tech.name}
             </span>
             <div className={`absolute inset-0 bg-gradient-to-r ${tech.color} opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300`}></div>
@@ -60,29 +60,29 @@ const TechMarquee = () => {
       {/* Second row with reverse direction */}
       <div className="relative">
         {/* Left gradient overlay */}
-        <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-12 md:w-16 lg:w-24 xl:w-32 2xl:w-40 bg-gradient-to-r from-[#f7f8fa] dark:from-black to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-6 sm:w-8 md:w-12 lg:w-16 xl:w-24 2xl:w-32 bg-gradient-to-r from-[#f7f8fa] dark:from-black to-transparent z-10 pointer-events-none"></div>
         
         {/* Right gradient overlay */}
-        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-12 md:w-16 lg:w-24 xl:w-32 2xl:w-40 bg-gradient-to-l from-[#f7f8fa] dark:from-black to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-6 sm:w-8 md:w-12 lg:w-16 xl:w-24 2xl:w-32 bg-gradient-to-l from-[#f7f8fa] dark:from-black to-transparent z-10 pointer-events-none"></div>
         
         <Marquee
           gradient={false}
           speed={40}
           direction="right"
           pauseOnHover={false}
-          className="bg-white dark:bg-gray-900 py-4 sm:py-6 mt-3 sm:mt-4"
+          className="bg-white dark:bg-gray-900 py-3 sm:py-4 md:py-6 mt-2 sm:mt-3 md:mt-4"
         >
           {technologies.slice().reverse().map((tech, index) => (
             <div
               key={`${tech.name}-reverse-${index}`}
-              className="flex items-center gap-2 sm:gap-3 bg-[#f7f8fa] dark:bg-gray-800 px-4 sm:px-6 py-3 sm:py-4 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 mx-2 sm:mx-4 hover:scale-105 transition-transform duration-300 group"
+              className="flex items-center gap-1.5 sm:gap-2 md:gap-3 bg-[#f7f8fa] dark:bg-gray-800 px-2 sm:px-3 md:px-4 lg:px-6 py-2 sm:py-3 md:py-4 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 mx-1 sm:mx-2 md:mx-4 hover:scale-105 transition-transform duration-300 group whitespace-nowrap"
             >
               <div className="relative">
-                <span className="text-lg sm:text-xl md:text-2xl group-hover:scale-110 transition-transform duration-300">
+                <span className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl group-hover:scale-110 transition-transform duration-300">
                   {tech.icon}
                 </span>
               </div>
-              <span className="font-semibold text-gray-700 dark:text-gray-300 whitespace-nowrap text-sm sm:text-base">
+              <span className="font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm md:text-base">
                 {tech.name}
               </span>
               <div className={`absolute inset-0 bg-gradient-to-r ${tech.color} opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300`}></div>

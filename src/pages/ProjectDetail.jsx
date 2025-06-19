@@ -274,16 +274,16 @@ const ProjectDetail = () => {
   }
 
   return (
-    <div className="pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black">
-      <div className="max-w-4xl mx-auto">
+    <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 pb-16 sm:pb-20 md:pb-24 px-3 sm:px-4 md:px-6 lg:px-8 bg-[#f7f8fa] dark:bg-black overflow-x-hidden">
+      <div className="max-w-4xl mx-auto w-full">
         {/* Back Button and Year */}
         <ScrollReveal direction="up" delay={0.1}>
-          <div className="flex items-center justify-between mb-8 sm:mb-12">
+          <div className="flex items-center justify-between mb-6 sm:mb-8 md:mb-12">
             <Link 
               to="/projects"
               className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 group"
             >
-              <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform duration-300" />
+              <ArrowLeft size={16} className="sm:w-[18px] sm:h-[18px] group-hover:-translate-x-1 transition-transform duration-300" />
               <span className="text-sm sm:text-base font-light">Back to Projects</span>
             </Link>
             <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light">{currentProject.year}</span>
@@ -292,7 +292,7 @@ const ProjectDetail = () => {
 
         {/* Banner Image */}
         <ScrollReveal direction="up" delay={0.2}>
-          <div className="w-full h-64 sm:h-80 md:h-96 lg:h-[400px] rounded-2xl sm:rounded-3xl overflow-hidden mb-8 sm:mb-12 shadow-2xl shadow-black/10 dark:shadow-black/30">
+          <div className="w-full h-48 sm:h-64 md:h-80 lg:h-96 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden mb-6 sm:mb-8 md:mb-12 shadow-xl shadow-black/10 dark:shadow-black/30">
             <img 
               src={currentProject.bannerImage} 
               alt={currentProject.title}
@@ -302,21 +302,21 @@ const ProjectDetail = () => {
         </ScrollReveal>
 
         {/* Project Title and Info */}
-        <div className="grid lg:grid-cols-3 gap-8 sm:gap-12 lg:gap-16 mb-12 sm:mb-16">
+        <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12 md:mb-16">
           {/* Left Column - Title and Description */}
           <div className="lg:col-span-2">
             <ScrollReveal direction="left" delay={0.3}>
-              <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-black dark:text-white mb-4 sm:mb-6">
+              <h1 className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-3 sm:mb-4 md:mb-6 leading-tight">
                 {currentProject.title}
               </h1>
-              <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-light">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-light">
                 {currentProject.description}
               </p>
             </ScrollReveal>
           </div>
 
           {/* Right Column - Check it out button and Project Info */}
-          <div className="space-y-6 sm:space-y-8">
+          <div className="space-y-4 sm:space-y-6">
             {/* Check it out button - only show if liveUrl exists */}
             {currentProject.liveUrl && (
               <ScrollReveal direction="right" delay={0.3}>
@@ -324,12 +324,12 @@ const ProjectDetail = () => {
                   href={currentProject.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative inline-flex items-center gap-2 border border-black dark:border-white text-black dark:text-white px-6 py-3 rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 text-sm sm:text-base w-full sm:w-auto justify-center"
+                  className="group relative inline-flex items-center gap-2 border border-black dark:border-white text-black dark:text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 text-sm sm:text-base w-full sm:w-auto justify-center"
                 >
                   <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
                     Check it out
                   </span>
-                  <ArrowUpRight size={16} className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black" />
+                  <ArrowUpRight size={14} className="sm:w-4 sm:h-4 relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black" />
                   <div className="absolute inset-0 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
                 </a>
               </ScrollReveal>
@@ -337,8 +337,8 @@ const ProjectDetail = () => {
 
             <ScrollReveal direction="right" delay={0.4}>
               <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="font-clash text-lg sm:text-xl font-semibold text-black dark:text-white">Roles:</span>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                  <span className="font-clash text-base sm:text-lg font-semibold text-black dark:text-white">Roles:</span>
                   <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light">
                     {currentProject.roles}
                   </span>
@@ -348,8 +348,8 @@ const ProjectDetail = () => {
 
             <ScrollReveal direction="right" delay={0.5}>
               <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="font-clash text-lg sm:text-xl font-semibold text-black dark:text-white">Client:</span>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                  <span className="font-clash text-base sm:text-lg font-semibold text-black dark:text-white">Client:</span>
                   <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light">
                     {currentProject.client}
                   </span>
@@ -361,12 +361,12 @@ const ProjectDetail = () => {
 
         {/* Technologies Used */}
         <ScrollReveal direction="up" delay={0.6}>
-          <div className="mb-12 sm:mb-16">
-            <div className="flex flex-wrap gap-3 sm:gap-4">
+          <div className="mb-8 sm:mb-12 md:mb-16">
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               {currentProject.technologies.map((tech, index) => (
                 <span 
                   key={index}
-                  className="px-4 py-2 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base font-light border border-gray-200 dark:border-gray-700"
+                  className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-xs sm:text-sm md:text-base font-light border border-gray-200 dark:border-gray-700"
                 >
                   {tech}
                 </span>
@@ -377,10 +377,10 @@ const ProjectDetail = () => {
 
         {/* Screenshots */}
         <ScrollReveal direction="up" delay={0.7}>
-          <div className="mb-12 sm:mb-16">
-            <div className="space-y-6 sm:space-y-8">
+          <div className="mb-8 sm:mb-12 md:mb-16">
+            <div className="space-y-4 sm:space-y-6 md:space-y-8">
               {currentProject.screenshots.map((screenshot, index) => (
-                <div key={index} className="rounded-2xl overflow-hidden shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 transition-all duration-500 hover:-translate-y-1">
+                <div key={index} className="rounded-xl sm:rounded-2xl overflow-hidden shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 transition-all duration-500 hover:-translate-y-1">
                   <img 
                     src={screenshot} 
                     alt={`${currentProject.title} screenshot ${index + 1}`}
@@ -394,16 +394,16 @@ const ProjectDetail = () => {
 
         {/* Features Section */}
         <ScrollReveal direction="up" delay={0.8}>
-          <div className="mb-12 sm:mb-16">
-            <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl font-bold text-black dark:text-white mb-2">
+          <div className="mb-8 sm:mb-12 md:mb-16">
+            <h2 className="font-clash text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black dark:text-white mb-2">
               Features
             </h2>
             {/* Mild separator below heading */}
-            <div className="w-16 h-px bg-gray-300 dark:bg-gray-600 mb-6 sm:mb-8"></div>
-            <div className="space-y-3 sm:space-y-4">
+            <div className="w-12 sm:w-16 h-px bg-gray-300 dark:bg-gray-600 mb-4 sm:mb-6 md:mb-8"></div>
+            <div className="space-y-2 sm:space-y-3 md:space-y-4">
               {currentProject.features.map((feature, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 bg-gray-400 dark:bg-gray-500 rounded-full mt-2.5 flex-shrink-0"></div>
+                  <div className="w-1.5 h-1.5 bg-gray-400 dark:bg-gray-500 rounded-full mt-2 sm:mt-2.5 flex-shrink-0"></div>
                   <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light leading-relaxed">{feature}</p>
                 </div>
               ))}
@@ -413,17 +413,17 @@ const ProjectDetail = () => {
 
         {/* Technologies Used Section */}
         <ScrollReveal direction="up" delay={0.9}>
-          <div className="mb-12 sm:mb-16">
-            <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl font-bold text-black dark:text-white mb-2">
+          <div className="mb-8 sm:mb-12 md:mb-16">
+            <h2 className="font-clash text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black dark:text-white mb-2">
               Technologies used
             </h2>
             {/* Mild separator below heading */}
-            <div className="w-16 h-px bg-gray-300 dark:bg-gray-600 mb-6 sm:mb-8"></div>
-            <div className="space-y-3 sm:space-y-4">
+            <div className="w-12 sm:w-16 h-px bg-gray-300 dark:bg-gray-600 mb-4 sm:mb-6 md:mb-8"></div>
+            <div className="space-y-2 sm:space-y-3 md:space-y-4">
               {currentProject.technologies.map((tech, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 bg-gray-400 dark:bg-gray-500 rounded-full mt-2.5 flex-shrink-0"></div>
-                  <div className="text-sm sm:text-base font-light leading-relaxed">
+                  <div className="w-1.5 h-1.5 bg-gray-400 dark:bg-gray-500 rounded-full mt-2 sm:mt-2.5 flex-shrink-0"></div>
+                  <div className="text-sm sm:text-base font-light leading-relaxed min-w-0">
                     <span className="text-black dark:text-white font-medium underline">{tech}</span>
                     <span className="text-gray-600 dark:text-gray-400"> - {techDescriptions[tech] || 'Technology description not available.'}</span>
                   </div>
@@ -436,35 +436,37 @@ const ProjectDetail = () => {
         {/* Build Steps Section - Only show if buildSteps exist */}
         {currentProject.buildSteps && (
           <ScrollReveal direction="up" delay={1.0}>
-            <div className="mb-12 sm:mb-16">
+            <div className="mb-8 sm:mb-12 md:mb-16">
               {/* Section separator */}
-              <div className="w-full h-px bg-gray-200 dark:bg-gray-700 mb-8 sm:mb-12"></div>
+              <div className="w-full h-px bg-gray-200 dark:bg-gray-700 mb-6 sm:mb-8 md:mb-12"></div>
               
-              <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl font-bold text-black dark:text-white mb-2">
+              <h2 className="font-clash text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black dark:text-white mb-2">
                 Build steps
               </h2>
               {/* Mild separator below heading */}
-              <div className="w-16 h-px bg-gray-300 dark:bg-gray-600 mb-6 sm:mb-8"></div>
+              <div className="w-12 sm:w-16 h-px bg-gray-300 dark:bg-gray-600 mb-4 sm:mb-6 md:mb-8"></div>
               
-              <div className="space-y-6 sm:space-y-8">
+              <div className="space-y-4 sm:space-y-6 md:space-y-8">
                 {currentProject.buildSteps.map((step, index) => (
                   <div key={index}>
-                    <h3 className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light mb-3 sm:mb-4">
+                    <h3 className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light mb-2 sm:mb-3 md:mb-4">
                       {index + 1}. {step.title}
                     </h3>
-                    <div className="relative bg-gray-900 dark:bg-gray-800 rounded-lg p-4 sm:p-6 font-mono text-sm sm:text-base overflow-x-auto">
-                      <code className="text-gray-300 dark:text-gray-200 whitespace-pre-wrap break-all">
-                        {step.command}
-                      </code>
+                    <div className="relative bg-gray-900 dark:bg-gray-800 rounded-lg p-3 sm:p-4 md:p-6 font-mono text-xs sm:text-sm md:text-base overflow-hidden">
+                      <div className="overflow-x-auto">
+                        <code className="text-gray-300 dark:text-gray-200 whitespace-nowrap block">
+                          {step.command}
+                        </code>
+                      </div>
                       <button
                         onClick={() => copyToClipboard(step.command, index)}
-                        className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 rounded-md bg-gray-700 dark:bg-gray-600 hover:bg-gray-600 dark:hover:bg-gray-500 transition-colors duration-200 group"
+                        className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 p-1.5 sm:p-2 rounded-md bg-gray-700 dark:bg-gray-600 hover:bg-gray-600 dark:hover:bg-gray-500 transition-colors duration-200 group"
                         title="Copy to clipboard"
                       >
                         {copiedStep === index ? (
-                          <Check size={16} className="text-green-400" />
+                          <Check size={14} className="sm:w-4 sm:h-4 text-green-400" />
                         ) : (
-                          <Copy size={16} className="text-gray-300 group-hover:text-white" />
+                          <Copy size={14} className="sm:w-4 sm:h-4 text-gray-300 group-hover:text-white" />
                         )}
                       </button>
                     </div>
@@ -476,17 +478,17 @@ const ProjectDetail = () => {
         )}
 
         {/* Section separator before navigation */}
-        <div className="w-full h-px bg-gray-200 dark:bg-gray-700 mb-8 sm:mb-12"></div>
+        <div className="w-full h-px bg-gray-200 dark:bg-gray-700 mb-6 sm:mb-8 md:mb-12"></div>
 
         {/* Navigation */}
         <ScrollReveal direction="up" delay={1.1}>
-          <div className="flex flex-row justify-between items-center gap-3 sm:gap-4 mb-12 sm:mb-16">
+          <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 sm:gap-4 mb-8 sm:mb-12 md:mb-16">
             <button
               onClick={handlePrevProject}
-              className="group flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-xl transition-all duration-300 hover:scale-105 flex-1 sm:flex-none sm:min-w-[180px] md:min-w-[200px]"
+              className="group flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-xl transition-all duration-300 hover:scale-105 flex-1 sm:flex-none sm:min-w-0 sm:max-w-[200px]"
             >
-              <ChevronLeft size={18} className="text-gray-700 dark:text-white group-hover:-translate-x-1 transition-transform duration-300 flex-shrink-0" />
-              <div className="text-left min-w-0">
+              <ChevronLeft size={16} className="sm:w-[18px] sm:h-[18px] text-gray-700 dark:text-white group-hover:-translate-x-1 transition-transform duration-300 flex-shrink-0" />
+              <div className="text-left min-w-0 flex-1">
                 <p className="text-xs font-light text-gray-500 dark:text-gray-400">Prev</p>
                 <p className="text-sm font-medium text-gray-700 dark:text-white truncate">{projects[currentIndex > 0 ? currentIndex - 1 : projects.length - 1].title}</p>
               </div>
@@ -494,30 +496,30 @@ const ProjectDetail = () => {
 
             <button
               onClick={handleNextProject}
-              className="group flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-xl transition-all duration-300 hover:scale-105 flex-1 sm:flex-none sm:min-w-[180px] md:min-w-[200px]"
+              className="group flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-xl transition-all duration-300 hover:scale-105 flex-1 sm:flex-none sm:min-w-0 sm:max-w-[200px]"
             >
               <div className="text-right min-w-0 flex-1">
                 <p className="text-xs font-light text-gray-500 dark:text-gray-400">Next</p>
                 <p className="text-sm font-medium text-gray-700 dark:text-white truncate">{projects[currentIndex < projects.length - 1 ? currentIndex + 1 : 0].title}</p>
               </div>
-              <ChevronRight size={18} className="text-gray-700 dark:text-white group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0" />
+              <ChevronRight size={16} className="sm:w-[18px] sm:h-[18px] text-gray-700 dark:text-white group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0" />
             </button>
           </div>
         </ScrollReveal>
 
         {/* CTA Section */}
         <ScrollReveal direction="up" delay={1.2}>
-          <div className="text-center bg-white dark:bg-gray-900 rounded-2xl p-8 sm:p-12 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
-            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+          <div className="text-center bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4 md:mb-6">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
               <ShinyText size="lg">AVAILABLE FOR WORK</ShinyText>
             </div>
-            <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl font-bold text-black dark:text-white mb-4 sm:mb-6">
+            <h2 className="font-clash text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black dark:text-white mb-3 sm:mb-4 md:mb-6 leading-tight">
               Let's create your<br />next big idea.
             </h2>
             <Link 
               to="/contact"
-              className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50"
+              className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50"
             >
               <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
                 Contact Me
