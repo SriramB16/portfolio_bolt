@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
+import ProjectDetail from './pages/ProjectDetail';
 import Contact from './pages/Contact';
 
 // Component to handle navigation tracking and scroll restoration
@@ -54,6 +55,11 @@ function App() {
             <Route path="/projects" element={
               <PageTransition>
                 <Projects />
+              </PageTransition>
+            } />
+            <Route path="/projects/:id" element={
+              <PageTransition>
+                <ProjectDetail />
               </PageTransition>
             } />
             <Route path="/contact" element={

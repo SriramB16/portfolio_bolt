@@ -136,8 +136,9 @@ export default function Projects() {
           <div className="space-y-6 sm:space-y-8">
             {filteredProjects.filter((_, index) => index % 2 === 0).map((project, index) => (
               <ScrollReveal key={project.id} direction="up" delay={0.3 + index * 0.1}>
-                <div 
-                  className="group cursor-pointer"
+                <Link 
+                  to={`/projects/${project.id}`}
+                  className="group cursor-pointer block"
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}
                 >
@@ -149,29 +150,15 @@ export default function Projects() {
                       alt={project.title}
                       className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/30 dark:shadow-black/50"
                     />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 sm:gap-4 rounded-2xl sm:rounded-3xl">
-                      <a 
-                        href={project.liveUrl}
-                        className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110 shadow-lg shadow-black/20"
-                      >
-                        <ExternalLink size={18} className="sm:w-5 sm:h-5" />
-                      </a>
-                      <a 
-                        href={project.githubUrl}
-                        className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110 shadow-lg shadow-black/20"
-                      >
-                        <Github size={18} className="sm:w-5 sm:h-5" />
-                      </a>
-                    </div>
                   </div>
                   <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="font-clash text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2 text-black dark:text-white">{project.title}</h3>
+                      <h3 className="font-clash text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2 text-black dark:text-white group-hover:text-green-500 transition-colors duration-300">{project.title}</h3>
                       <p className="text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">{project.category}</p>
                     </div>
                     <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">2024</span>
                   </div>
-                </div>
+                </Link>
               </ScrollReveal>
             ))}
           </div>
@@ -180,8 +167,9 @@ export default function Projects() {
           <div className="space-y-6 sm:space-y-8 mt-8 sm:mt-12 md:mt-16 lg:mt-20">
             {filteredProjects.filter((_, index) => index % 2 === 1).map((project, index) => (
               <ScrollReveal key={project.id} direction="up" delay={0.4 + index * 0.1}>
-                <div 
-                  className="group cursor-pointer"
+                <Link 
+                  to={`/projects/${project.id}`}
+                  className="group cursor-pointer block"
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}
                 >
@@ -193,29 +181,15 @@ export default function Projects() {
                       alt={project.title}
                       className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/30 dark:shadow-black/50"
                     />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 sm:gap-4 rounded-2xl sm:rounded-3xl">
-                      <a 
-                        href={project.liveUrl}
-                        className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110 shadow-lg shadow-black/20"
-                      >
-                        <ExternalLink size={18} className="sm:w-5 sm:h-5" />
-                      </a>
-                      <a 
-                        href={project.githubUrl}
-                        className="p-2 sm:p-3 bg-white rounded-full text-black hover:bg-gray-100 transition-colors hover:scale-110 shadow-lg shadow-black/20"
-                      >
-                        <Github size={18} className="sm:w-5 sm:h-5" />
-                      </a>
-                    </div>
                   </div>
                   <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="font-clash text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2 text-black dark:text-white">{project.title}</h3>
+                      <h3 className="font-clash text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2 text-black dark:text-white group-hover:text-green-500 transition-colors duration-300">{project.title}</h3>
                       <p className="text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">{project.category}</p>
                     </div>
                     <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">2024</span>
                   </div>
-                </div>
+                </Link>
               </ScrollReveal>
             ))}
           </div>
