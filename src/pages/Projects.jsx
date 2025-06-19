@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ExternalLink, Github, Filter } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import ShinyText from '../components/ShinyText';
+import BlurText from '../components/BlurText';
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -91,11 +92,21 @@ export default function Projects() {
           <div className="text-center mb-12 sm:mb-16">
             <div className="flex items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
               <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
-              <ShinyText size="xl">MY WORK</ShinyText>
+              <BlurText
+                text="MY WORK"
+                delay={80}
+                animateBy="letters"
+                direction="bottom"
+                className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
+              />
             </div>
-            <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4 sm:mb-6">
-              My <span className="text-green-500">Projects</span>
-            </h1>
+            <BlurText
+              text="My Projects"
+              delay={120}
+              animateBy="letters"
+              direction="bottom"
+              className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4 sm:mb-6"
+            />
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
               A collection of projects that showcase my skills and passion for creating digital solutions.
             </p>
@@ -200,9 +211,21 @@ export default function Projects() {
           <div className="text-center mt-12 sm:mt-16 bg-white dark:bg-[#111116] rounded-2xl p-8 sm:p-12 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1">
             <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
               <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
-              <ShinyText size="lg">HAVE A PROJECT IN MIND?</ShinyText>
+              <BlurText
+                text="HAVE A PROJECT IN MIND?"
+                delay={80}
+                animateBy="letters"
+                direction="bottom"
+                className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
+              />
             </div>
-            <h2 className="font-clash text-2xl sm:text-3xl font-bold text-black dark:text-white mb-3 sm:mb-4">Have a Project in Mind?</h2>
+            <BlurText
+              text="Have a Project in Mind?"
+              delay={120}
+              animateBy="letters"
+              direction="bottom"
+              className="font-clash text-2xl sm:text-3xl font-bold text-black dark:text-white mb-3 sm:mb-4"
+            />
             <p className="text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
               I'm always excited to work on new projects and collaborate with amazing people. 
               Let's create something incredible together.

@@ -4,6 +4,7 @@ import { Send, Github, Linkedin, Twitter, Instagram, Mail, ChevronDown } from 'l
 import { motion, AnimatePresence } from 'framer-motion';
 import ScrollReveal from '../components/ScrollReveal';
 import ShinyText from '../components/ShinyText';
+import BlurText from '../components/BlurText';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -68,11 +69,21 @@ const Contact = () => {
           <div className="text-center mb-12 sm:mb-16">
             <div className="flex items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
               <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
-              <ShinyText size="xl">GET IN TOUCH</ShinyText>
+              <BlurText
+                text="GET IN TOUCH"
+                delay={80}
+                animateBy="letters"
+                direction="bottom"
+                className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
+              />
             </div>
-            <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-black dark:text-white mb-4 sm:mb-6">
-              Let's start a <span className="text-green-500">conversation</span>
-            </h1>
+            <BlurText
+              text="Let's start a conversation"
+              delay={120}
+              animateBy="letters"
+              direction="bottom"
+              className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-black dark:text-white mb-4 sm:mb-6"
+            />
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4 font-light">
               I'd love to hear from you. Whether you have a project in mind or just want to chat about technology.
             </p>
@@ -93,7 +104,13 @@ const Contact = () => {
                   {/* Available for work status */}
                   <div className="flex items-center gap-2 mb-6">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-green-500 text-sm font-normal">Available for work</span>
+                    <BlurText
+                      text="Available for work"
+                      delay={100}
+                      animateBy="letters"
+                      direction="bottom"
+                      className="text-green-500 text-sm font-normal"
+                    />
                   </div>
 
                   {/* Profile Photo */}
@@ -145,7 +162,13 @@ const Contact = () => {
               <div className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/10 dark:shadow-black/30 hover:shadow-3xl hover:shadow-black/15 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-1 border border-white/40 dark:border-gray-700/40">
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                   <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
-                  <ShinyText size="lg">SEND A MESSAGE</ShinyText>
+                  <BlurText
+                    text="SEND A MESSAGE"
+                    delay={80}
+                    animateBy="letters"
+                    direction="bottom"
+                    className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
+                  />
                 </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
@@ -235,11 +258,21 @@ const Contact = () => {
               <div>
                 <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
                   <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
-                  <ShinyText size="lg">FAQS</ShinyText>
+                  <BlurText
+                    text="FAQS"
+                    delay={80}
+                    animateBy="letters"
+                    direction="bottom"
+                    className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
+                  />
                 </div>
-                <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-black dark:text-white">
-                  Have<br />Questions?
-                </h2>
+                <BlurText
+                  text="Have Questions?"
+                  delay={120}
+                  animateBy="letters"
+                  direction="bottom"
+                  className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-black dark:text-white"
+                />
               </div>
             </ScrollReveal>
 

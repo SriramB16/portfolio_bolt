@@ -8,6 +8,7 @@ import ScrollTextReveal from '../components/ScrollTextReveal';
 import ShinyText from '../components/ShinyText';
 import WavingHandSVG from '../components/WavingHandSVG';
 import ExpertiseAccordion from '../components/ExpertiseAccordion';
+import BlurText from '../components/BlurText';
 
 const Home = () => {
   const [showMainContent, setShowMainContent] = useState(false);
@@ -267,11 +268,56 @@ const Home = () => {
             </section>
           </ScrollReveal>
 
-          {/* Scroll Text Reveal Section */}
-          <ScrollTextReveal />
+          {/* Scroll Text Reveal Section with Blur Text Heading */}
+          <section className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black">
+            <div className="max-w-6xl mx-auto">
+              {/* Section Header with Blur Text */}
+              <div className="flex items-center gap-2 sm:gap-3 mb-8 sm:mb-12 md:mb-16 justify-center">
+                <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
+                <BlurText
+                  text="ABOUT ME"
+                  delay={100}
+                  animateBy="letters"
+                  direction="bottom"
+                  className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
+                />
+              </div>
 
-          {/* Areas of Expertise Accordion */}
-          <ExpertiseAccordion />
+              {/* Animated Text */}
+              <ScrollTextReveal />
+            </div>
+          </section>
+
+          {/* Areas of Expertise Accordion with Blur Text */}
+          <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black">
+            <div className="max-w-7xl mx-auto">
+              {/* Section Header */}
+              <ScrollReveal direction="up" delay={0.1}>
+                <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 md:mb-12">
+                  <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
+                  <BlurText
+                    text="SPECIALITY"
+                    delay={80}
+                    animateBy="letters"
+                    direction="bottom"
+                    className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
+                  />
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal direction="up" delay={0.2}>
+                <BlurText
+                  text="Areas of Expertise"
+                  delay={120}
+                  animateBy="letters"
+                  direction="bottom"
+                  className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-black dark:text-white mb-8 sm:mb-12 md:mb-16"
+                />
+              </ScrollReveal>
+
+              <ExpertiseAccordion />
+            </div>
+          </section>
 
           {/* Projects Section */}
           <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-10 lg:px-16">
@@ -279,12 +325,24 @@ const Home = () => {
               <ScrollReveal direction="up" delay={0.1}>
                 <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
                   <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
-                  <ShinyText size="lg">MY WORK</ShinyText>
+                  <BlurText
+                    text="MY WORK"
+                    delay={80}
+                    animateBy="letters"
+                    direction="bottom"
+                    className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
+                  />
                 </div>
               </ScrollReveal>
 
               <ScrollReveal direction="up" delay={0.2}>
-                <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4">Selected Projects</h2>
+                <BlurText
+                  text="Selected Projects"
+                  delay={120}
+                  animateBy="letters"
+                  direction="bottom"
+                  className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4"
+                />
               </ScrollReveal>
 
               <ScrollReveal direction="up" delay={0.3}>
@@ -416,17 +474,24 @@ const Home = () => {
                   <ScrollReveal direction="up" delay={0.1}>
                     <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8">
                       <div className="w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full animate-pulse"></div>
-                      <ShinyText size="xl" className="font-medium">
-                        Available for work
-                      </ShinyText>
+                      <BlurText
+                        text="Available for work"
+                        delay={100}
+                        animateBy="letters"
+                        direction="bottom"
+                        className="text-green-500 text-base sm:text-lg md:text-xl font-medium tracking-wider"
+                      />
                     </div>
                   </ScrollReveal>
 
                   <ScrollReveal direction="up" delay={0.2}>
-                    <h2 className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-tight text-black dark:text-white">
-                      Let's create your<br />
-                      next big idea.
-                    </h2>
+                    <BlurText
+                      text="Let's create your next big idea."
+                      delay={120}
+                      animateBy="letters"
+                      direction="bottom"
+                      className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-tight text-black dark:text-white"
+                    />
                   </ScrollReveal>
 
                   <ScrollReveal direction="up" delay={0.3}>
