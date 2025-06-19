@@ -412,3 +412,22 @@ button, .btn, a[class*="btn"] {
     max-width: calc(50% - 0.375rem);
   }
 }
+
+/* Spinning text animation for About page */
+.animate-spin-slow {
+  animation: spin 20s linear infinite;
+}
+
+/* Custom marquee animation for technologies */
+@keyframes tech-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-tech-marquee {
+  animation: tech-marquee 40s linear infinite;
+}
