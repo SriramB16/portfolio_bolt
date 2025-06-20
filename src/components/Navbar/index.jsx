@@ -74,7 +74,9 @@ const Navbar = () => {
         isHomePage ? 'bg-[#f7f8fa] dark:bg-black' : 'bg-[#f7f8fa] dark:bg-black'
       }`}>
         <div className="flex items-center justify-between p-3 sm:p-4 max-w-full overflow-hidden">
-          <span className={`text-lg sm:text-xl font-bold ${isHomePage ? 'text-black dark:text-white' : 'text-black dark:text-white'} truncate`}>SR</span>
+          <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10">
+            <Logo />
+          </div>
           <button 
             onClick={toggleDarkMode}
             aria-label="Toggle dark mode"

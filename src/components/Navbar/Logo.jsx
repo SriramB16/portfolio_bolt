@@ -8,13 +8,13 @@ const Logo = () => {
   return (
     <a 
       href="/" 
-      className={`text-xl font-extrabold tracking-tighter ${
-        isHomePage 
-          ? 'text-black dark:text-white' 
-          : 'bg-gradient-to-r from-black to-gray-600 dark:from-golden dark:to-golden-light bg-clip-text text-transparent'
-      }`}
+      className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12"
     >
-      SR
+      <img 
+        src="/src/assets/logos/Downpic.cc-1459298651.jpg"
+        alt="SR Logo"
+        className="w-full h-full object-contain dark:invert transition-all duration-300"
+      />
     </a>
   );
 };
