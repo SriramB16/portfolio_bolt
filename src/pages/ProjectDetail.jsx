@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight, ChevronLeft, ChevronRight, Copy, Check } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import ShinyText from '../components/ShinyText';
+import SmartLink from '../components/SmartLink';
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -279,13 +280,13 @@ const ProjectDetail = () => {
         {/* Back Button and Year */}
         <ScrollReveal direction="up" delay={0.1}>
           <div className="flex items-center justify-between mb-6 sm:mb-8 md:mb-12">
-            <Link 
+            <SmartLink 
               to="/projects"
               className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 group"
             >
               <ArrowLeft size={16} className="sm:w-[18px] sm:h-[18px] group-hover:-translate-x-1 transition-transform duration-300" />
               <span className="text-sm sm:text-base font-light">Back to Projects</span>
-            </Link>
+            </SmartLink>
             <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base font-light">{currentProject.year}</span>
           </div>
         </ScrollReveal>
@@ -517,7 +518,7 @@ const ProjectDetail = () => {
             <h2 className="font-clash text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black dark:text-white mb-3 sm:mb-4 md:mb-6 leading-tight">
               Let's create your<br />next big idea.
             </h2>
-            <Link 
+            <SmartLink 
               to="/contact"
               className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50"
             >
@@ -525,7 +526,7 @@ const ProjectDetail = () => {
                 Contact Me
               </span>
               <div className="absolute inset-0 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-            </Link>
+            </SmartLink>
           </div>
         </ScrollReveal>
       </div>

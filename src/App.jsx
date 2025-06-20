@@ -10,22 +10,10 @@ import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
 import Contact from './pages/Contact';
 
-// Component to handle navigation tracking and scroll restoration
-const NavigationTracker = () => {
+// Component to handle scroll restoration
+const ScrollToTop = () => {
   const location = useLocation();
 
-  useEffect(() => {
-    // Mark that we're doing internal navigation when changing routes
-    // This helps distinguish between page loads and internal navigation
-    const handleRouteChange = () => {
-      // Mark internal navigation for any route change
-      sessionStorage.setItem('internalNavigation', 'true');
-    };
-
-    handleRouteChange();
-  }, [location.pathname]);
-
-  // Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
@@ -37,7 +25,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <NavigationTracker />
+        <ScrollToTop />
         <div className="min-h-screen bg-[#f7f8fa] dark:bg-black transition-colors duration-300">
           <Navbar />
           <Routes>

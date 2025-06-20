@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { ArrowRight, ExternalLink, Github } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import IntroAnimation from '../components/IntroAnimation';
@@ -8,6 +8,7 @@ import ScrollTextReveal from '../components/ScrollTextReveal';
 import ShinyText from '../components/ShinyText';
 import WavingHandSVG from '../components/WavingHandSVG';
 import ExpertiseAccordion from '../components/ExpertiseAccordion';
+import SmartLink from '../components/SmartLink';
 
 const Home = () => {
   const [showMainContent, setShowMainContent] = useState(false);
@@ -201,16 +202,15 @@ const Home = () => {
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8">
                   {/* Button - First on mobile, right on desktop */}
                   <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-                    <Link 
+                    <SmartLink 
                       to="/about"
                       className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 text-sm sm:text-base lg:text-lg font-satoshi hover:shadow-lg hover:shadow-black/20 dark:hover:shadow-black/40"
-                      onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
                     >
                       <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
                         Know me better
                       </span>
                       <div className="absolute inset-0 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-                    </Link>
+                    </SmartLink>
                   </div>
 
                   {/* Social Links - Second on mobile, left on desktop */}
@@ -318,8 +318,9 @@ const Home = () => {
                 <div className="space-y-6 sm:space-y-8">
                   {/* Project 1 - E-Commerce Platform */}
                   <ScrollReveal direction="up" delay={0.4}>
-                    <div 
-                      className="group cursor-pointer"
+                    <SmartLink 
+                      to={`/projects/${projects[0].id}`}
+                      className="group cursor-pointer block"
                       onMouseEnter={() => setHoveredProject(1)}
                       onMouseLeave={() => setHoveredProject(null)}
                     >
@@ -339,13 +340,14 @@ const Home = () => {
                         </div>
                         <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">{projects[0].year}</span>
                       </div>
-                    </div>
+                    </SmartLink>
                   </ScrollReveal>
 
                   {/* Project 3 - Design System */}
                   <ScrollReveal direction="up" delay={0.6}>
-                    <div 
-                      className="group cursor-pointer"
+                    <SmartLink 
+                      to={`/projects/${projects[2].id}`}
+                      className="group cursor-pointer block"
                       onMouseEnter={() => setHoveredProject(3)}
                       onMouseLeave={() => setHoveredProject(null)}
                     >
@@ -365,7 +367,7 @@ const Home = () => {
                         </div>
                         <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">{projects[2].year}</span>
                       </div>
-                    </div>
+                    </SmartLink>
                   </ScrollReveal>
                 </div>
 
@@ -373,8 +375,9 @@ const Home = () => {
                 <div className="space-y-6 sm:space-y-8 mt-8 sm:mt-12 md:mt-16 lg:mt-20">
                   {/* Project 2 - Task Management App */}
                   <ScrollReveal direction="up" delay={0.5}>
-                    <div 
-                      className="group cursor-pointer"
+                    <SmartLink 
+                      to={`/projects/${projects[1].id}`}
+                      className="group cursor-pointer block"
                       onMouseEnter={() => setHoveredProject(2)}
                       onMouseLeave={() => setHoveredProject(null)}
                     >
@@ -394,13 +397,14 @@ const Home = () => {
                         </div>
                         <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">{projects[1].year}</span>
                       </div>
-                    </div>
+                    </SmartLink>
                   </ScrollReveal>
 
                   {/* Project 4 - Weather Dashboard */}
                   <ScrollReveal direction="up" delay={0.7}>
-                    <div 
-                      className="group cursor-pointer"
+                    <SmartLink 
+                      to={`/projects/${projects[3].id}`}
+                      className="group cursor-pointer block"
                       onMouseEnter={() => setHoveredProject(4)}
                       onMouseLeave={() => setHoveredProject(null)}
                     >
@@ -420,7 +424,7 @@ const Home = () => {
                         </div>
                         <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">{projects[3].year}</span>
                       </div>
-                    </div>
+                    </SmartLink>
                   </ScrollReveal>
                 </div>
               </div>
@@ -449,16 +453,15 @@ const Home = () => {
                   </ScrollReveal>
 
                   <ScrollReveal direction="up" delay={0.3}>
-                    <Link 
+                    <SmartLink 
                       to="/contact"
                       className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 text-sm sm:text-base hover:shadow-lg hover:shadow-black/20 dark:hover:shadow-black/40"
-                      onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
                     >
                       <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
                         Contact Me
                       </span>
                       <div className="absolute inset-0 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-                    </Link>
+                    </SmartLink>
                   </ScrollReveal>
                 </div>
               </div>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { ExternalLink, Github, Filter } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import ShinyText from '../components/ShinyText';
+import SmartLink from '../components/SmartLink';
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -136,7 +136,7 @@ export default function Projects() {
           <div className="space-y-6 sm:space-y-8">
             {filteredProjects.filter((_, index) => index % 2 === 0).map((project, index) => (
               <ScrollReveal key={project.id} direction="up" delay={0.3 + index * 0.1}>
-                <Link 
+                <SmartLink 
                   to={`/projects/${project.id}`}
                   className="group cursor-pointer block"
                   onMouseEnter={() => setHoveredProject(project.id)}
@@ -158,7 +158,7 @@ export default function Projects() {
                     </div>
                     <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">2024</span>
                   </div>
-                </Link>
+                </SmartLink>
               </ScrollReveal>
             ))}
           </div>
@@ -167,7 +167,7 @@ export default function Projects() {
           <div className="space-y-6 sm:space-y-8 mt-8 sm:mt-12 md:mt-16 lg:mt-20">
             {filteredProjects.filter((_, index) => index % 2 === 1).map((project, index) => (
               <ScrollReveal key={project.id} direction="up" delay={0.4 + index * 0.1}>
-                <Link 
+                <SmartLink 
                   to={`/projects/${project.id}`}
                   className="group cursor-pointer block"
                   onMouseEnter={() => setHoveredProject(project.id)}
@@ -189,7 +189,7 @@ export default function Projects() {
                     </div>
                     <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">2024</span>
                   </div>
-                </Link>
+                </SmartLink>
               </ScrollReveal>
             ))}
           </div>
@@ -207,7 +207,7 @@ export default function Projects() {
               I'm always excited to work on new projects and collaborate with amazing people. 
               Let's create something incredible together.
             </p>
-            <Link 
+            <SmartLink 
               to="/contact"
               className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50"
             >
@@ -215,7 +215,7 @@ export default function Projects() {
                 Start a Project
               </span>
               <div className="absolute inset-0 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-            </Link>
+            </SmartLink>
           </div>
         </ScrollReveal>
       </div>

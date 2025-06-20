@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Moon, User, FolderGit2, Mail, Home } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
+import SmartLink from '../SmartLink';
 import Logo from './Logo';
 
 const Navbar = () => {
@@ -58,11 +59,6 @@ const Navbar = () => {
       </div>
     </div>
   );
-
-  // Handle navigation clicks to mark internal navigation
-  const handleNavClick = () => {
-    sessionStorage.setItem('internalNavigation', 'true');
-  };
 
   // Check if we're on the home page to adjust navbar styling
   const isHomePage = location.pathname === '/';
@@ -123,10 +119,10 @@ const Navbar = () => {
           
           <div className="flex-1 flex justify-center min-w-0">
             <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4 lg:space-x-6 xl:space-x-8">
-              <NavLink to="/" label="Home" icon={<Home size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/'} onClick={handleNavClick} />
-              <NavLink to="/about" label="About" icon={<User size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/about'} onClick={handleNavClick} />
-              <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/projects'} onClick={handleNavClick} />
-              <NavLink to="/contact" label="Contact" icon={<Mail size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/contact'} onClick={handleNavClick} />
+              <NavLink to="/" label="Home" icon={<Home size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/'} />
+              <NavLink to="/about" label="About" icon={<User size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/about'} />
+              <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/projects'} />
+              <NavLink to="/contact" label="Contact" icon={<Mail size={16} className="sm:w-[18px] sm:h-[18px]" />} active={location.pathname === '/contact'} />
             </div>
           </div>
           
@@ -170,10 +166,10 @@ const Navbar = () => {
           max-w-full overflow-hidden
         ">
           <div className="flex items-center justify-around py-2 px-1">
-            <NavLink to="/" label="Home" icon={<Home size={18} className="sm:w-5 sm:h-5" />} active={location.pathname === '/'} onClick={handleNavClick} />
-            <NavLink to="/about" label="About" icon={<User size={18} className="sm:w-5 sm:h-5" />} active={location.pathname === '/about'} onClick={handleNavClick} />
-            <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={18} className="sm:w-5 sm:h-5" />} active={location.pathname === '/projects'} onClick={handleNavClick} />
-            <NavLink to="/contact" label="Contact" icon={<Mail size={18} className="sm:w-5 sm:h-5" />} active={location.pathname === '/contact'} onClick={handleNavClick} />
+            <NavLink to="/" label="Home" icon={<Home size={18} className="sm:w-5 sm:h-5" />} active={location.pathname === '/'} />
+            <NavLink to="/about" label="About" icon={<User size={18} className="sm:w-5 sm:h-5" />} active={location.pathname === '/about'} />
+            <NavLink to="/projects" label="Projects" icon={<FolderGit2 size={18} className="sm:w-5 sm:h-5" />} active={location.pathname === '/projects'} />
+            <NavLink to="/contact" label="Contact" icon={<Mail size={18} className="sm:w-5 sm:h-5" />} active={location.pathname === '/contact'} />
           </div>
         </nav>
       </div>
@@ -181,11 +177,10 @@ const Navbar = () => {
   );
 };
 
-const NavLink = ({ to, label, icon, active = false, onClick }) => {
+const NavLink = ({ to, label, icon, active = false }) => {
   return (
-    <Link 
+    <SmartLink 
       to={to}
-      onClick={onClick}
       className={`
         flex flex-col items-center gap-1
         md:flex-row md:gap-1 lg:gap-2
@@ -203,7 +198,7 @@ const NavLink = ({ to, label, icon, active = false, onClick }) => {
       {active && (
         <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-black dark:bg-golden rounded-full md:hidden"></div>
       )}
-    </Link>
+    </SmartLink>
   );
 };
 

@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { ArrowUpRight, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ScrollReveal from '../components/ScrollReveal';
 import ShinyText from '../components/ShinyText';
 import DesignProcessCarousel from '../components/DesignProcessCarousel';
+import SmartLink from '../components/SmartLink';
 
 const About = () => {
   const [hoveredStory, setHoveredStory] = useState(0);
@@ -388,16 +388,15 @@ const About = () => {
               </ScrollReveal>
 
               <ScrollReveal direction="up" delay={0.3}>
-                <Link 
+                <SmartLink 
                   to="/contact"
                   className="group relative inline-block border border-black dark:border-white text-black dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 text-sm sm:text-base hover:shadow-lg hover:shadow-black/20 dark:hover:shadow-black/40"
-                  onClick={() => sessionStorage.setItem('internalNavigation', 'true')}
                 >
                   <span className="relative z-10 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
                     Contact Me
                   </span>
                   <div className="absolute inset-0 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-                </Link>
+                </SmartLink>
               </ScrollReveal>
             </div>
           </div>
