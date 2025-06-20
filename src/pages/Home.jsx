@@ -18,22 +18,30 @@ const Home = () => {
   useEffect(() => {
     // Only check for intro animation if we're on the home page
     if (location.pathname === '/') {
-      // Check if this is a fresh page load (not navigation)
-      const hasSeenIntroThisSession = sessionStorage.getItem('hasSeenIntroThisSession');
+      // Check if user has ever seen the intro animation
+      const hasSeenIntro = localStorage.getItem('hasSeenIntro');
+      
+      // Check if this is a page reload/refresh
       const isPageReload = performance.navigation?.type === 1 || 
                           (performance.getEntriesByType('navigation')[0]?.type === 'reload');
       
-      // Show intro only if:
-      // 1. Haven't seen it this session AND it's a fresh load, OR
-      // 2. It's a page reload on home page
-      if ((!hasSeenIntroThisSession && !sessionStorage.getItem('internalNavigation')) || isPageReload) {
-        sessionStorage.setItem('hasSeenIntroThisSession', 'true');
+      // Check if this is internal navigation (coming from another page)
+      const isInternalNavigation = sessionStorage.getItem('internalNavigation');
+      
+      // Show intro animation if:
+      // 1. User has never seen it before (first visit), OR
+      // 2. User is reloading/refreshing the home page specifically
+      const shouldShowIntro = !hasSeenIntro || (isPageReload && !isInternalNavigation);
+      
+      if (shouldShowIntro) {
+        // Mark that user has seen the intro
+        localStorage.setItem('hasSeenIntro', 'true');
         setShowMainContent(false);
       } else {
         setShowMainContent(true);
       }
       
-      // Clear internal navigation flag
+      // Clear internal navigation flag after checking
       sessionStorage.removeItem('internalNavigation');
     } else {
       setShowMainContent(true);

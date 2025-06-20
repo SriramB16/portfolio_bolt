@@ -14,18 +14,6 @@ import Contact from './pages/Contact';
 const NavigationTracker = () => {
   const location = useLocation();
 
-  useEffect(() => {
-    // Mark that we're doing internal navigation when changing routes
-    // This helps distinguish between page loads and internal navigation
-    const handleRouteChange = () => {
-      if (location.pathname !== '/') {
-        sessionStorage.setItem('internalNavigation', 'true');
-      }
-    };
-
-    handleRouteChange();
-  }, [location.pathname]);
-
   // Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0);
