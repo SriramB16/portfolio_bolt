@@ -23,10 +23,17 @@ const Home = () => {
                           (performance.getEntriesByType('navigation')[0]?.type === 'reload');
       
       // Check if this is internal navigation (coming from another page)
-      const isInternalNavigation = sessionStorage.getItem('internalNavigation');
+      const isInternalNavigation = sessionStorage.getItem('internalNavigation') === 'true';
       
       // Check if user has seen intro in this browser session
-      const hasSeenIntroThisSession = sessionStorage.getItem('hasSeenIntroThisSession');
+      const hasSeenIntroThisSession = sessionStorage.getItem('hasSeenIntroThisSession') === 'true';
+      
+      console.log('Intro animation check:', {
+        isPageReload,
+        isInternalNavigation,
+        hasSeenIntroThisSession,
+        pathname: location.pathname
+      });
       
       // Show intro animation if:
       // 1. User is reloading/refreshing the home page specifically, OR
@@ -34,15 +41,19 @@ const Home = () => {
       const shouldShowIntro = isPageReload || (!hasSeenIntroThisSession && !isInternalNavigation);
       
       if (shouldShowIntro) {
+        console.log('Showing intro animation');
         // Mark that user has seen the intro this session
         sessionStorage.setItem('hasSeenIntroThisSession', 'true');
         setShowMainContent(false);
       } else {
+        console.log('Skipping intro animation');
         setShowMainContent(true);
       }
       
       // Clear internal navigation flag after checking
-      sessionStorage.removeItem('internalNavigation');
+      if (isInternalNavigation) {
+        sessionStorage.removeItem('internalNavigation');
+      }
     } else {
       setShowMainContent(true);
     }
