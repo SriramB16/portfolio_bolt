@@ -3,6 +3,7 @@ import { ExternalLink, Github, Filter } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import ShinyText from '../components/ShinyText';
 import SmartLink from '../components/SmartLink';
+import ThemedButton from '../components/buttons/ThemedButton';
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -142,7 +143,7 @@ export default function Projects() {
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}
                 >
-                  <div className={`${project.bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 relative shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 hover:-translate-y-2 ${
+                  <div className={`${project.bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 hover:-translate-y-2 ${
                     hoveredProject && hoveredProject !== project.id ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
                   }`}>
                     <img 
@@ -173,7 +174,7 @@ export default function Projects() {
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}
                 >
-                  <div className={`${project.bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 relative shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 hover:-translate-y-2 ${
+                  <div className={`${project.bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 hover:-translate-y-2 ${
                     hoveredProject && hoveredProject !== project.id ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
                   }`}>
                     <img 
@@ -207,15 +208,12 @@ export default function Projects() {
               I'm always excited to work on new projects and collaborate with amazing people. 
               Let's create something incredible together.
             </p>
-            <SmartLink 
+            <ThemedButton 
               to="/contact"
-              className="group relative inline-block border border-black dark:border-white bg-transparent text-black dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50"
+              className="shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50"
             >
-              <span className="relative z-20 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
-                Start a Project
-              </span>
-              <div className="absolute inset-0 z-10 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-            </SmartLink>
+              Start a Project
+            </ThemedButton>
           </div>
         </ScrollReveal>
       </div>

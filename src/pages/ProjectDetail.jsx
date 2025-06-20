@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight, ChevronLeft, ChevronRight, Copy, Check } from 
 import ScrollReveal from '../components/ScrollReveal';
 import ShinyText from '../components/ShinyText';
 import SmartLink from '../components/SmartLink';
+import ThemedButton from '../components/buttons/ThemedButton';
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -321,18 +322,14 @@ const ProjectDetail = () => {
             {/* Check it out button - only show if liveUrl exists */}
             {currentProject.liveUrl && (
               <ScrollReveal direction="right" delay={0.3}>
-                <a
+                <ThemedButton
                   href={currentProject.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative inline-flex items-center gap-2 border border-black dark:border-white bg-transparent text-black dark:text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 text-sm sm:text-base w-full sm:w-auto justify-center"
+                  icon={<ArrowUpRight size={14} className="sm:w-4 sm:h-4" />}
+                  size="md"
+                  className="w-full sm:w-auto justify-center"
                 >
-                  <span className="relative z-20 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
-                    Check it out
-                  </span>
-                  <ArrowUpRight size={14} className="sm:w-4 sm:h-4 relative z-20 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black" />
-                  <div className="absolute inset-0 z-10 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-                </a>
+                  Check it out
+                </ThemedButton>
               </ScrollReveal>
             )}
 
@@ -518,15 +515,12 @@ const ProjectDetail = () => {
             <h2 className="font-clash text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black dark:text-white mb-3 sm:mb-4 md:mb-6 leading-tight">
               Let's create your<br />next big idea.
             </h2>
-            <SmartLink 
+            <ThemedButton 
               to="/contact"
-              className="group relative inline-block border border-black dark:border-white bg-transparent text-black dark:text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50"
+              className="shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50"
             >
-              <span className="relative z-20 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
-                Contact Me
-              </span>
-              <div className="absolute inset-0 z-10 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-            </SmartLink>
+              Contact Me
+            </ThemedButton>
           </div>
         </ScrollReveal>
       </div>

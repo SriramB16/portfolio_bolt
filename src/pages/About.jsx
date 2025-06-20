@@ -5,6 +5,7 @@ import ScrollReveal from '../components/ScrollReveal';
 import ShinyText from '../components/ShinyText';
 import DesignProcessCarousel from '../components/DesignProcessCarousel';
 import SmartLink from '../components/SmartLink';
+import ThemedButton from '../components/buttons/ThemedButton';
 
 const About = () => {
   const [hoveredStory, setHoveredStory] = useState(0);
@@ -184,16 +185,13 @@ const About = () => {
               </ScrollReveal>
               
               <ScrollReveal direction="right" delay={0.4}>
-                <button
+                <ThemedButton
                   onClick={handleDownloadResume}
-                  className="group relative inline-flex items-center gap-3 border border-black dark:border-white bg-transparent text-black dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 hover:scale-105 text-sm sm:text-base shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50"
+                  icon={<Download size={16} className="sm:w-[18px] sm:h-[18px]" />}
+                  className="shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50"
                 >
-                  <span className="relative z-20 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
-                    My Resume
-                  </span>
-                  <Download size={16} className="sm:w-[18px] sm:h-[18px] relative z-20 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black" />
-                  <div className="absolute inset-0 z-10 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-                </button>
+                  My Resume
+                </ThemedButton>
               </ScrollReveal>
             </div>
           </div>
@@ -388,15 +386,9 @@ const About = () => {
               </ScrollReveal>
 
               <ScrollReveal direction="up" delay={0.3}>
-                <SmartLink 
-                  to="/contact"
-                  className="group relative inline-block border border-black dark:border-white bg-transparent text-black dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 text-sm sm:text-base hover:shadow-lg hover:shadow-black/20 dark:hover:shadow-black/40"
-                >
-                  <span className="relative z-20 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
-                    Contact Me
-                  </span>
-                  <div className="absolute inset-0 z-10 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-                </SmartLink>
+                <ThemedButton to="/contact">
+                  Contact Me
+                </ThemedButton>
               </ScrollReveal>
             </div>
           </div>

@@ -9,6 +9,7 @@ import ShinyText from '../components/ShinyText';
 import WavingHandSVG from '../components/WavingHandSVG';
 import ExpertiseAccordion from '../components/ExpertiseAccordion';
 import SmartLink from '../components/SmartLink';
+import ThemedButton from '../components/buttons/ThemedButton';
 
 const Home = () => {
   const [showMainContent, setShowMainContent] = useState(false);
@@ -202,15 +203,13 @@ const Home = () => {
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8">
                   {/* Button - First on mobile, right on desktop */}
                   <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-                    <SmartLink 
+                    <ThemedButton 
                       to="/about"
-                      className="group relative inline-block border border-black dark:border-white bg-transparent text-black dark:text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 text-sm sm:text-base lg:text-lg font-satoshi hover:shadow-lg hover:shadow-black/20 dark:hover:shadow-black/40"
+                      size="xl"
+                      className="font-satoshi"
                     >
-                      <span className="relative z-20 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
-                        Know me better
-                      </span>
-                      <div className="absolute inset-0 z-10 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-                    </SmartLink>
+                      Know me better
+                    </ThemedButton>
                   </div>
 
                   {/* Social Links - Second on mobile, left on desktop */}
@@ -453,15 +452,9 @@ const Home = () => {
                   </ScrollReveal>
 
                   <ScrollReveal direction="up" delay={0.3}>
-                    <SmartLink 
-                      to="/contact"
-                      className="group relative inline-block border border-black dark:border-white bg-transparent text-black dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium overflow-hidden transition-all duration-300 text-sm sm:text-base hover:shadow-lg hover:shadow-black/20 dark:hover:shadow-black/40"
-                    >
-                      <span className="relative z-20 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
-                        Contact Me
-                      </span>
-                      <div className="absolute inset-0 z-10 bg-black dark:bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-                    </SmartLink>
+                    <ThemedButton to="/contact">
+                      Contact Me
+                    </ThemedButton>
                   </ScrollReveal>
                 </div>
               </div>
