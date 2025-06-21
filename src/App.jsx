@@ -21,18 +21,18 @@ const NavigationTracker = () => {
 
   useEffect(() => {
     // Mark that we're doing internal navigation when changing routes
-    // This helps distinguish between page loads and internal navigation
-    const handleRouteChange = () => {
-      // Mark internal navigation for any route change
-      sessionStorage.setItem("internalNavigation", "true");
-    };
-
-    handleRouteChange();
-  }, [location.pathname]);
-
-  // Scroll to top on route change
-  useEffect(() => {
+    sessionStorage.setItem("internalNavigation", "true");
+    
+    // Scroll to top immediately on route change
     window.scrollTo(0, 0);
+    
+    // Add a small delay to ensure scroll position is set before components mount
+    const timer = setTimeout(() => {
+      // Clear the navigation flag after a delay to allow components to detect it
+      sessionStorage.removeItem("internalNavigation");
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [location.pathname]);
 
   return null;

@@ -6,18 +6,53 @@ const ScrollTextReveal = () => {
   const containerRef = useRef(null);
   const location = useLocation();
   const [revealedWords, setRevealedWords] = useState(new Set());
+  const [hasUserScrolled, setHasUserScrolled] = useState(false);
+  const lastLocationRef = useRef(location.pathname);
 
   const text = "I'm Sriram -- a developer who loves turning ideas into smooth, functional digital experiences. With 2 years of experience, I focus on writing clean code and building things people enjoy using. I'm always exploring, learning, and growing with the tech that keeps me inspired";
   
-  // Split text into words
   const words = text.split(' ');
 
-  // Reset animation when location changes
+  // Track user scrolling and reset on navigation
   useEffect(() => {
-    setRevealedWords(new Set());
+    let scrollTimeout;
+    
+    const handleScroll = () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setHasUserScrolled(true);
+      }, 100);
+    };
+
+    // Reset when location changes
+    if (lastLocationRef.current !== location.pathname) {
+      setHasUserScrolled(false);
+      setRevealedWords(new Set());
+      lastLocationRef.current = location.pathname;
+      
+      // Add delay before allowing scroll animations
+      const navigationDelay = setTimeout(() => {
+        setHasUserScrolled(true);
+      }, 500);
+      
+      return () => {
+        clearTimeout(navigationDelay);
+        clearTimeout(scrollTimeout);
+      };
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
+    };
   }, [location.pathname]);
 
   useEffect(() => {
+    // Only run scroll animation if user has actually scrolled
+    if (!hasUserScrolled) return;
+
     const handleScroll = () => {
       if (!containerRef.current) return;
 
@@ -25,7 +60,6 @@ const ScrollTextReveal = () => {
       const containerRect = container.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       
-      // Calculate how much of the container is visible
       const containerTop = containerRect.top;
       const containerBottom = containerRect.bottom;
       const containerHeight = containerRect.height;
@@ -46,18 +80,15 @@ const ScrollTextReveal = () => {
         return;
       }
       
-      // Animation timing - starts when section enters viewport
-      const startReveal = windowHeight * 0.8; // Start when 80% down the viewport
-      const endReveal = -containerHeight * 0.2; // End when 20% of container is above viewport
+      // Animation timing
+      const startReveal = windowHeight * 0.8;
+      const endReveal = -containerHeight * 0.2;
       
-      // Calculate scroll progress through the container
       const scrollProgress = Math.max(0, Math.min(1, (startReveal - containerTop) / (startReveal - endReveal)));
       
-      // Calculate how many words should be revealed based on scroll progress
       const totalWords = words.length;
       const wordsToReveal = Math.floor(scrollProgress * totalWords);
       
-      // Create new set of revealed word indices
       const newRevealedWords = new Set();
       for (let i = 0; i < wordsToReveal; i++) {
         newRevealedWords.add(i);
@@ -66,18 +97,17 @@ const ScrollTextReveal = () => {
       setRevealedWords(newRevealedWords);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial call
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial call only if user has scrolled
     
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [words.length, location.pathname]);
+  }, [words.length, hasUserScrolled]);
 
   return (
     <section 
       ref={containerRef}
       className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black scroll-reveal-container"
       style={{
-        // Ensure consistent height to prevent layout shifts
         minHeight: '60vh'
       }}
     >
@@ -102,7 +132,6 @@ const ScrollTextReveal = () => {
                 style={{
                   transition: 'color 0.3s ease-out, opacity 0.3s ease-out',
                   transitionDelay: `${index * 15}ms`,
-                  // Prevent layout shifts
                   transform: 'translateZ(0)',
                   backfaceVisibility: 'hidden'
                 }}
