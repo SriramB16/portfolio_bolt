@@ -13,33 +13,8 @@ import ThemedButton from '../components/buttons/ThemedButton';
 import { projects as allProjects } from '../data/projectsData';
 
 const Home = () => {
-  // Initialize showMainContent based on initial conditions to prevent flicker
-  const [showMainContent, setShowMainContent] = useState(() => {
-    // Only check for intro animation if we're on the home page initially
-    if (typeof window !== 'undefined' && window.location.pathname === '/') {
-      // Check if this is internal navigation (coming from another page)
-      const isInternalNavigation = sessionStorage.getItem('internalNavigation') === 'true';
-      
-      // Check if user has seen intro in this browser session
-      const hasSeenIntroThisSession = sessionStorage.getItem('hasSeenIntroThisSession') === 'true';
-      
-      // If it's internal navigation or user has already seen intro, show main content immediately
-      if (isInternalNavigation || hasSeenIntroThisSession) {
-        return true;
-      }
-      
-      // Otherwise, check for page reload
-      const isPageReload = performance.navigation?.type === 1 || 
-                          (performance.getEntriesByType('navigation')[0]?.type === 'reload');
-      
-      // If it's not a page reload and not first visit, show main content
-      return !isPageReload && hasSeenIntroThisSession;
-    }
-    
-    // For non-home pages, always show main content
-    return true;
-  });
-
+  const [showMainContent, setShowMainContent] = useState(false);
+  const [introChecked, setIntroChecked] = useState(false);
   const [hoveredProject, setHoveredProject] = useState(null);
   const [hoveredSocialLink, setHoveredSocialLink] = useState(null);
   const location = useLocation();
@@ -59,33 +34,32 @@ const Home = () => {
   const column2Projects = homePageProjects.filter((_, index) => index % 2 === 1);
 
   useEffect(() => {
+    // Only run this logic once when component mounts or path changes
+    if (introChecked) return;
+
     // Only check for intro animation if we're on the home page
     if (location.pathname === '/') {
-      // Check if this is a page reload/refresh or first visit to the site
-      const isPageReload = performance.navigation?.type === 1 || 
-                          (performance.getEntriesByType('navigation')[0]?.type === 'reload');
-      
       // Check if this is internal navigation (coming from another page)
       const isInternalNavigation = sessionStorage.getItem('internalNavigation') === 'true';
       
       // Check if user has seen intro in this browser session
       const hasSeenIntroThisSession = sessionStorage.getItem('hasSeenIntroThisSession') === 'true';
       
-      // Check if this is the very first visit (no session storage set at all)
-      const isFirstVisit = !sessionStorage.getItem('hasSeenIntroThisSession');
+      // Check if this is a page reload/refresh
+      const isPageReload = performance.navigation?.type === 1 || 
+                          (performance.getEntriesByType('navigation')[0]?.type === 'reload');
       
       console.log('Intro animation check:', {
         isPageReload,
         isInternalNavigation,
         hasSeenIntroThisSession,
-        isFirstVisit,
         pathname: location.pathname
       });
       
       // Show intro animation ONLY if:
       // 1. User is reloading/refreshing the page, OR
-      // 2. This is the very first visit to the site (no session storage exists)
-      const shouldShowIntro = isPageReload || (isFirstVisit && !isInternalNavigation);
+      // 2. This is the very first visit to the site (no session storage exists AND not internal navigation)
+      const shouldShowIntro = isPageReload || (!hasSeenIntroThisSession && !isInternalNavigation);
       
       if (shouldShowIntro) {
         console.log('Showing intro animation');
@@ -94,10 +68,7 @@ const Home = () => {
         setShowMainContent(false);
       } else {
         console.log('Skipping intro animation - internal navigation or already seen');
-        // Ensure main content is shown immediately for internal navigation
-        if (!showMainContent) {
-          setShowMainContent(true);
-        }
+        setShowMainContent(true);
       }
       
       // Clear internal navigation flag after checking
@@ -106,11 +77,12 @@ const Home = () => {
       }
     } else {
       // Not on home page, always show main content
-      if (!showMainContent) {
-        setShowMainContent(true);
-      }
+      setShowMainContent(true);
     }
-  }, [location.pathname, showMainContent]);
+
+    // Mark that we've checked the intro logic
+    setIntroChecked(true);
+  }, [location.pathname, introChecked]);
 
   const handleIntroComplete = () => {
     setTimeout(() => {
