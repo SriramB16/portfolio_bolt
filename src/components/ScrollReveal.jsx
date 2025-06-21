@@ -15,7 +15,7 @@ const ScrollReveal = ({
   const ref = useRef(null);
   const isInView = useInView(ref, { 
     once, 
-    margin: "-100px 0px -100px 0px" 
+    margin: "-50px 0px -50px 0px" // Reduced margin for better triggering
   });
 
   const directionVariants = {
