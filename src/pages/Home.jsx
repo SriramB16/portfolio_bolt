@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ArrowRight, ExternalLink, Github } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -13,11 +13,11 @@ import ThemedButton from '../components/buttons/ThemedButton';
 import { projects as allProjects } from '../data/projectsData';
 
 const Home = () => {
-  const [showMainContent, setShowMainContent] = useState(false);
-  const [introChecked, setIntroChecked] = useState(false);
+  const [showMainContent, setShowMainContent] = useState(null); // null = loading, false = show intro, true = show main
   const [hoveredProject, setHoveredProject] = useState(null);
   const [hoveredSocialLink, setHoveredSocialLink] = useState(null);
   const location = useLocation();
+  const hasInitialized = useRef(false);
 
   // Define which projects to display on homepage (1st, 4th, 5th, 6th)
   const homePageProjectIds = [1, 4, 5, 6];
@@ -34,11 +34,18 @@ const Home = () => {
   const column2Projects = homePageProjects.filter((_, index) => index % 2 === 1);
 
   useEffect(() => {
-    // Only run this logic once when component mounts or path changes
-    if (introChecked) return;
+    // Prevent multiple initializations
+    if (hasInitialized.current) return;
+    
+    // Only run this logic for the home page
+    if (location.pathname !== '/') {
+      setShowMainContent(true);
+      hasInitialized.current = true;
+      return;
+    }
 
-    // Only check for intro animation if we're on the home page
-    if (location.pathname === '/') {
+    // Small delay to prevent flickering
+    const initTimer = setTimeout(() => {
       // Check if this is internal navigation (coming from another page)
       const isInternalNavigation = sessionStorage.getItem('internalNavigation') === 'true';
       
@@ -47,7 +54,8 @@ const Home = () => {
       
       // Check if this is a page reload/refresh
       const isPageReload = performance.navigation?.type === 1 || 
-                          (performance.getEntriesByType('navigation')[0]?.type === 'reload');
+                          (performance.getEntriesByType('navigation')[0]?.type === 'reload') ||
+                          !hasSeenIntroThisSession;
       
       console.log('Intro animation check:', {
         isPageReload,
@@ -59,7 +67,7 @@ const Home = () => {
       // Show intro animation ONLY if:
       // 1. User is reloading/refreshing the page, OR
       // 2. This is the very first visit to the site (no session storage exists AND not internal navigation)
-      const shouldShowIntro = isPageReload || (!hasSeenIntroThisSession && !isInternalNavigation);
+      const shouldShowIntro = !isInternalNavigation && (!hasSeenIntroThisSession || isPageReload);
       
       if (shouldShowIntro) {
         console.log('Showing intro animation');
@@ -75,20 +83,27 @@ const Home = () => {
       if (isInternalNavigation) {
         sessionStorage.removeItem('internalNavigation');
       }
-    } else {
-      // Not on home page, always show main content
-      setShowMainContent(true);
-    }
 
-    // Mark that we've checked the intro logic
-    setIntroChecked(true);
-  }, [location.pathname, introChecked]);
+      hasInitialized.current = true;
+    }, 50); // Small delay to prevent flickering
+
+    return () => clearTimeout(initTimer);
+  }, [location.pathname]);
 
   const handleIntroComplete = () => {
     setTimeout(() => {
       setShowMainContent(true);
     }, 300);
   };
+
+  // Show loading state to prevent flickering
+  if (showMainContent === null) {
+    return (
+      <div className="min-h-screen bg-[#f7f8fa] dark:bg-black flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-green-500 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
