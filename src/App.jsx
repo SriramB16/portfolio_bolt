@@ -26,7 +26,7 @@ function App() {
     <ThemeProvider>
       <Router>
         <ScrollToTop />
-        <div className="min-h-screen bg-[#f7f8fa] dark:bg-black transition-colors duration-300">
+        <div className="page-container min-h-screen bg-[#f7f8fa] dark:bg-black transition-colors duration-300">
           <Navbar />
           <Routes>
             <Route path="/" element={
@@ -55,7 +55,9 @@ function App() {
               </PageTransition>
             } />
           </Routes>
-          <Footer />
+          <div className="footer-container">
+            <Footer />
+          </div>
         </div>
       </Router>
     </ThemeProvider>
