@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const ScrollReveal = ({ 
   children, 
@@ -13,10 +13,30 @@ const ScrollReveal = ({
   once = true 
 }) => {
   const ref = useRef(null);
+  const location = useLocation();
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const [key, setKey] = useState(0);
+
+  // Reset animation state when location changes
+  useEffect(() => {
+    setHasAnimated(false);
+    setKey(prev => prev + 1); // Force re-render with new key
+  }, [location.pathname]);
+
   const isInView = useInView(ref, { 
-    once, 
-    margin: "-50px 0px -50px 0px" // Reduced margin for better triggering
+    once: false, // Always allow re-triggering
+    margin: "-50px 0px -50px 0px"
   });
+
+  // Track if animation should play
+  const shouldAnimate = isInView && (!hasAnimated || !once);
+
+  // Mark as animated when it comes into view
+  useEffect(() => {
+    if (isInView && !hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, [isInView, hasAnimated]);
 
   const directionVariants = {
     up: { y: distance, opacity: 0 },
@@ -29,9 +49,10 @@ const ScrollReveal = ({
 
   return (
     <motion.div
+      key={`${key}-${location.pathname}`} // Unique key per page
       ref={ref}
       initial={directionVariants[direction]}
-      animate={isInView ? { 
+      animate={shouldAnimate ? { 
         x: 0, 
         y: 0, 
         scale: 1, 

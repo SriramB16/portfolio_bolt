@@ -1,14 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import ShinyText from './ShinyText';
 
 const ScrollTextReveal = () => {
   const containerRef = useRef(null);
+  const location = useLocation();
   const [revealedWords, setRevealedWords] = useState(new Set());
 
   const text = "I'm Sriram -- a developer who loves turning ideas into smooth, functional digital experiences. With 2 years of experience, I focus on writing clean code and building things people enjoy using. I'm always exploring, learning, and growing with the tech that keeps me inspired";
   
   // Split text into words
   const words = text.split(' ');
+
+  // Reset animation when location changes
+  useEffect(() => {
+    setRevealedWords(new Set());
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,7 +70,7 @@ const ScrollTextReveal = () => {
     handleScroll(); // Initial call
     
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [words.length]);
+  }, [words.length, location.pathname]); // Add location.pathname as dependency
 
   return (
     <section 
@@ -82,7 +89,7 @@ const ScrollTextReveal = () => {
           <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-relaxed font-medium font-satoshi tracking-wide">
             {words.map((word, index) => (
               <span
-                key={index}
+                key={`${index}-${location.pathname}`} // Unique key per page
                 className={`inline-block transition-all duration-300 ease-out mr-2 sm:mr-3 ${
                   revealedWords.has(index)
                     ? 'text-black dark:text-white opacity-100 transform translate-y-0'

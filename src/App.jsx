@@ -10,12 +10,20 @@ import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
 import Contact from './pages/Contact';
 
-// Component to handle scroll restoration
+// Component to handle scroll restoration and animation reset
 const ScrollToTop = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // Scroll to top immediately when route changes
     window.scrollTo(0, 0);
+    
+    // Small delay to ensure smooth transition
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 50);
+
+    return () => clearTimeout(timer);
   }, [location.pathname]);
 
   return null;
