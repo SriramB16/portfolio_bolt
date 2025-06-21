@@ -13,7 +13,33 @@ import ThemedButton from '../components/buttons/ThemedButton';
 import { projects as allProjects } from '../data/projectsData';
 
 const Home = () => {
-  const [showMainContent, setShowMainContent] = useState(false);
+  // Initialize showMainContent based on initial conditions to prevent flicker
+  const [showMainContent, setShowMainContent] = useState(() => {
+    // Only check for intro animation if we're on the home page initially
+    if (typeof window !== 'undefined' && window.location.pathname === '/') {
+      // Check if this is internal navigation (coming from another page)
+      const isInternalNavigation = sessionStorage.getItem('internalNavigation') === 'true';
+      
+      // Check if user has seen intro in this browser session
+      const hasSeenIntroThisSession = sessionStorage.getItem('hasSeenIntroThisSession') === 'true';
+      
+      // If it's internal navigation or user has already seen intro, show main content immediately
+      if (isInternalNavigation || hasSeenIntroThisSession) {
+        return true;
+      }
+      
+      // Otherwise, check for page reload
+      const isPageReload = performance.navigation?.type === 1 || 
+                          (performance.getEntriesByType('navigation')[0]?.type === 'reload');
+      
+      // If it's not a page reload and not first visit, show main content
+      return !isPageReload && hasSeenIntroThisSession;
+    }
+    
+    // For non-home pages, always show main content
+    return true;
+  });
+
   const [hoveredProject, setHoveredProject] = useState(null);
   const [hoveredSocialLink, setHoveredSocialLink] = useState(null);
   const location = useLocation();
@@ -68,7 +94,10 @@ const Home = () => {
         setShowMainContent(false);
       } else {
         console.log('Skipping intro animation - internal navigation or already seen');
-        setShowMainContent(true);
+        // Ensure main content is shown immediately for internal navigation
+        if (!showMainContent) {
+          setShowMainContent(true);
+        }
       }
       
       // Clear internal navigation flag after checking
@@ -77,9 +106,11 @@ const Home = () => {
       }
     } else {
       // Not on home page, always show main content
-      setShowMainContent(true);
+      if (!showMainContent) {
+        setShowMainContent(true);
+      }
     }
-  }, [location.pathname]);
+  }, [location.pathname, showMainContent]);
 
   const handleIntroComplete = () => {
     setTimeout(() => {
