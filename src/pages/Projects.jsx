@@ -4,81 +4,13 @@ import ScrollReveal from '../components/ScrollReveal';
 import ShinyText from '../components/ShinyText';
 import SmartLink from '../components/SmartLink';
 import ThemedButton from '../components/buttons/ThemedButton';
+import { projects } from '../data/projectsData';
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('All');
   const [hoveredProject, setHoveredProject] = useState(null);
   
   const filters = ['All', 'Web Apps', 'Mobile', 'UI/UX', 'Open Source'];
-  
-  const projects = [
-    {
-      id: 1,
-      title: 'E-Commerce Platform',
-      category: 'Web Apps',
-      description: 'A full-stack e-commerce solution with React, Node.js, and Stripe integration.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      liveUrl: '#',
-      githubUrl: '#',
-      bgColor: 'bg-gradient-to-br from-yellow-200 via-yellow-300 to-orange-200 dark:from-yellow-300 dark:via-yellow-400 dark:to-orange-300'
-    },
-    {
-      id: 2,
-      title: 'Task Management App',
-      category: 'Mobile',
-      description: 'A React Native app for team collaboration and project management.',
-      image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React Native', 'Firebase', 'Redux'],
-      liveUrl: '#',
-      githubUrl: '#',
-      bgColor: 'bg-gradient-to-br from-purple-200 via-purple-300 to-pink-200 dark:from-purple-300 dark:via-purple-400 dark:to-pink-300'
-    },
-    {
-      id: 3,
-      title: 'Design System',
-      category: 'UI/UX',
-      description: 'A comprehensive design system with reusable components and guidelines.',
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Figma', 'Storybook', 'React'],
-      liveUrl: '#',
-      githubUrl: '#',
-      bgColor: 'bg-gradient-to-br from-gray-200 via-gray-300 to-slate-200 dark:from-gray-300 dark:via-gray-400 dark:to-slate-300'
-    },
-    {
-      id: 4,
-      title: 'Weather Dashboard',
-      category: 'Web Apps',
-      description: 'A beautiful weather application with real-time data and forecasts.',
-      image: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Vue.js', 'Weather API', 'Chart.js'],
-      liveUrl: '#',
-      githubUrl: '#',
-      bgColor: 'bg-gradient-to-br from-green-200 via-emerald-300 to-teal-200 dark:from-green-300 dark:via-emerald-400 dark:to-teal-300'
-    },
-    {
-      id: 5,
-      title: 'Open Source Library',
-      category: 'Open Source',
-      description: 'A lightweight JavaScript library for data visualization.',
-      image: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['JavaScript', 'D3.js', 'NPM'],
-      liveUrl: '#',
-      githubUrl: '#',
-      bgColor: 'bg-gradient-to-br from-blue-200 via-blue-300 to-cyan-200 dark:from-blue-300 dark:via-blue-400 dark:to-cyan-300'
-    },
-    {
-      id: 6,
-      title: 'Portfolio Website',
-      category: 'Web Apps',
-      description: 'A responsive portfolio website built with modern web technologies.',
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'Tailwind CSS', 'Framer Motion'],
-      liveUrl: '#',
-      githubUrl: '#',
-      bgColor: 'bg-gradient-to-br from-pink-200 via-rose-300 to-red-200 dark:from-pink-300 dark:via-rose-400 dark:to-red-300'
-    }
-  ];
 
   const filteredProjects = activeFilter === 'All' 
     ? projects 

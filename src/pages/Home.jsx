@@ -10,12 +10,27 @@ import WavingHandSVG from '../components/WavingHandSVG';
 import ExpertiseAccordion from '../components/ExpertiseAccordion';
 import SmartLink from '../components/SmartLink';
 import ThemedButton from '../components/buttons/ThemedButton';
+import { projects as allProjects } from '../data/projectsData';
 
 const Home = () => {
   const [showMainContent, setShowMainContent] = useState(false);
   const [hoveredProject, setHoveredProject] = useState(null);
   const [hoveredSocialLink, setHoveredSocialLink] = useState(null);
   const location = useLocation();
+
+  // Define which projects to display on homepage (1st, 4th, 5th, 6th)
+  const homePageProjectIds = [1, 4, 5, 6];
+  
+  // Filter projects for homepage
+  const homePageProjects = allProjects.filter(project => 
+    homePageProjectIds.includes(project.id)
+  );
+
+  // Distribute projects into columns for masonry layout
+  // Column 1: Projects 1 and 5 (indices 0 and 2 in homePageProjects)
+  // Column 2: Projects 4 and 6 (indices 1 and 3 in homePageProjects)
+  const column1Projects = homePageProjects.filter((_, index) => index % 2 === 0);
+  const column2Projects = homePageProjects.filter((_, index) => index % 2 === 1);
 
   useEffect(() => {
     // Only check for intro animation if we're on the home page
@@ -91,58 +106,6 @@ const Home = () => {
       }
     }
   };
-
-  // Projects with beautiful background colors
-  const projects = [
-    {
-      id: 1,
-      title: 'E-Commerce Platform',
-      category: 'Web Apps',
-      description: 'A full-stack e-commerce solution with React, Node.js, and Stripe integration.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      liveUrl: '#',
-      githubUrl: '#',
-      bgColor: 'bg-gradient-to-br from-yellow-200 via-yellow-300 to-orange-200 dark:from-yellow-300 dark:via-yellow-400 dark:to-orange-300',
-      year: '2024'
-    },
-    {
-      id: 2,
-      title: 'Task Management App',
-      category: 'Mobile',
-      description: 'A React Native app for team collaboration and project management.',
-      image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React Native', 'Firebase', 'Redux'],
-      liveUrl: '#',
-      githubUrl: '#',
-      bgColor: 'bg-gradient-to-br from-purple-200 via-purple-300 to-pink-200 dark:from-purple-300 dark:via-purple-400 dark:to-pink-300',
-      year: '2024'
-    },
-    {
-      id: 3,
-      title: 'Design System',
-      category: 'UI/UX',
-      description: 'A comprehensive design system with reusable components and guidelines.',
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Figma', 'Storybook', 'React'],
-      liveUrl: '#',
-      githubUrl: '#',
-      bgColor: 'bg-gradient-to-br from-gray-200 via-gray-300 to-slate-200 dark:from-gray-300 dark:via-gray-400 dark:to-slate-300',
-      year: '2024'
-    },
-    {
-      id: 4,
-      title: 'Weather Dashboard',
-      category: 'Web Apps',
-      description: 'A beautiful weather application with real-time data and forecasts.',
-      image: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Vue.js', 'Weather API', 'Chart.js'],
-      liveUrl: '#',
-      githubUrl: '#',
-      bgColor: 'bg-gradient-to-br from-green-200 via-emerald-300 to-teal-200 dark:from-green-300 dark:via-emerald-400 dark:to-teal-300',
-      year: '2024'
-    }
-  ];
 
   return (
     <AnimatePresence mode="wait">
@@ -315,118 +278,79 @@ const Home = () => {
               <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
                 {/* First Column - Starts at top */}
                 <div className="space-y-6 sm:space-y-8">
-                  {/* Project 1 - E-Commerce Platform */}
-                  <ScrollReveal direction="up" delay={0.4}>
-                    <SmartLink 
-                      to={`/projects/${projects[0].id}`}
-                      className="group cursor-pointer block"
-                      onMouseEnter={() => setHoveredProject(1)}
-                      onMouseLeave={() => setHoveredProject(null)}
-                    >
-                      <div className={`${projects[0].bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 hover:-translate-y-2 ${
-                        hoveredProject && hoveredProject !== 1 ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
-                      }`}>
-                        <img 
-                          src={projects[0].image}
-                          alt={projects[0].title}
-                          className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/30 dark:shadow-black/50"
-                        />
-                      </div>
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="font-clash text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2">{projects[0].title}</h3>
-                          <p className="text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">{projects[0].category}</p>
+                  {column1Projects.map((project, index) => (
+                    <ScrollReveal key={project.id} direction="up" delay={0.4 + index * 0.2}>
+                      <SmartLink 
+                        to={`/projects/${project.id}`}
+                        className="group cursor-pointer block"
+                        onMouseEnter={() => setHoveredProject(project.id)}
+                        onMouseLeave={() => setHoveredProject(null)}
+                      >
+                        <div className={`${project.bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 hover:-translate-y-2 ${
+                          hoveredProject && hoveredProject !== project.id ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
+                        }`}>
+                          <img 
+                            src={project.image}
+                            alt={project.title}
+                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/30 dark:shadow-black/50"
+                          />
                         </div>
-                        <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">{projects[0].year}</span>
-                      </div>
-                    </SmartLink>
-                  </ScrollReveal>
-
-                  {/* Project 3 - Design System */}
-                  <ScrollReveal direction="up" delay={0.6}>
-                    <SmartLink 
-                      to={`/projects/${projects[2].id}`}
-                      className="group cursor-pointer block"
-                      onMouseEnter={() => setHoveredProject(3)}
-                      onMouseLeave={() => setHoveredProject(null)}
-                    >
-                      <div className={`${projects[2].bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 hover:-translate-y-2 ${
-                        hoveredProject && hoveredProject !== 3 ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
-                      }`}>
-                        <img 
-                          src={projects[2].image}
-                          alt={projects[2].title}
-                          className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/30 dark:shadow-black/50"
-                        />
-                      </div>
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="font-clash text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2">{projects[2].title}</h3>
-                          <p className="text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">{projects[2].category}</p>
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h3 className="font-clash text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2">{project.title}</h3>
+                            <p className="text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">{project.category}</p>
+                          </div>
+                          <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">{project.year}</span>
                         </div>
-                        <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">{projects[2].year}</span>
-                      </div>
-                    </SmartLink>
-                  </ScrollReveal>
+                      </SmartLink>
+                    </ScrollReveal>
+                  ))}
                 </div>
 
                 {/* Second Column - Starts lower to create stagger effect */}
                 <div className="space-y-6 sm:space-y-8 mt-8 sm:mt-12 md:mt-16 lg:mt-20">
-                  {/* Project 2 - Task Management App */}
-                  <ScrollReveal direction="up" delay={0.5}>
-                    <SmartLink 
-                      to={`/projects/${projects[1].id}`}
-                      className="group cursor-pointer block"
-                      onMouseEnter={() => setHoveredProject(2)}
-                      onMouseLeave={() => setHoveredProject(null)}
-                    >
-                      <div className={`${projects[1].bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 hover:-translate-y-2 ${
-                        hoveredProject && hoveredProject !== 2 ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
-                      }`}>
-                        <img 
-                          src={projects[1].image}
-                          alt={projects[1].title}
-                          className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/30 dark:shadow-black/50"
-                        />
-                      </div>
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="font-clash text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2">{projects[1].title}</h3>
-                          <p className="text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">{projects[1].category}</p>
+                  {column2Projects.map((project, index) => (
+                    <ScrollReveal key={project.id} direction="up" delay={0.5 + index * 0.2}>
+                      <SmartLink 
+                        to={`/projects/${project.id}`}
+                        className="group cursor-pointer block"
+                        onMouseEnter={() => setHoveredProject(project.id)}
+                        onMouseLeave={() => setHoveredProject(null)}
+                      >
+                        <div className={`${project.bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 hover:-translate-y-2 ${
+                          hoveredProject && hoveredProject !== project.id ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
+                        }`}>
+                          <img 
+                            src={project.image}
+                            alt={project.title}
+                            className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/30 dark:shadow-black/50"
+                          />
                         </div>
-                        <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">{projects[1].year}</span>
-                      </div>
-                    </SmartLink>
-                  </ScrollReveal>
-
-                  {/* Project 4 - Weather Dashboard */}
-                  <ScrollReveal direction="up" delay={0.7}>
-                    <SmartLink 
-                      to={`/projects/${projects[3].id}`}
-                      className="group cursor-pointer block"
-                      onMouseEnter={() => setHoveredProject(4)}
-                      onMouseLeave={() => setHoveredProject(null)}
-                    >
-                      <div className={`${projects[3].bgColor} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 aspect-[4/3] flex items-center justify-center overflow-hidden transition-all duration-500 shadow-xl shadow-black/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-black/50 hover:-translate-y-2 ${
-                        hoveredProject && hoveredProject !== 4 ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
-                      }`}>
-                        <img 
-                          src={projects[3].image}
-                          alt={projects[3].title}
-                          className="w-3/4 sm:w-4/5 h-3/4 sm:h-4/5 object-cover rounded-xl sm:rounded-2xl group-hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black/30 dark:shadow-black/50"
-                        />
-                      </div>
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="font-clash text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2">{projects[3].title}</h3>
-                          <p className="text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">{projects[3].category}</p>
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h3 className="font-clash text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2">{project.title}</h3>
+                            <p className="text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">{project.category}</p>
+                          </div>
+                          <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">{project.year}</span>
                         </div>
-                        <span className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">{projects[3].year}</span>
-                      </div>
-                    </SmartLink>
-                  </ScrollReveal>
+                      </SmartLink>
+                    </ScrollReveal>
+                  ))}
                 </div>
               </div>
+
+              {/* View More Projects Button */}
+              <ScrollReveal direction="up" delay={0.9}>
+                <div className="text-center mt-8 sm:mt-12 md:mt-16">
+                  <ThemedButton 
+                    to="/projects"
+                    size="lg"
+                    className="shadow-lg shadow-black/20 dark:shadow-black/30 hover:shadow-xl hover:shadow-black/30 dark:hover:shadow-black/50"
+                  >
+                    View More Projects
+                  </ThemedButton>
+                </div>
+              </ScrollReveal>
             </div>
           </section>
 
