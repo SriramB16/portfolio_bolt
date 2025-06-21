@@ -1,7 +1,7 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
+import { useRef } from 'react';
 
 const ScrollReveal = ({ 
   children, 
@@ -13,17 +13,9 @@ const ScrollReveal = ({
   once = true 
 }) => {
   const ref = useRef(null);
-  const location = useLocation();
-  const [animationKey, setAnimationKey] = useState(0);
-
-  // Reset animation when location changes
-  useEffect(() => {
-    setAnimationKey(prev => prev + 1);
-  }, [location.pathname]);
-
   const isInView = useInView(ref, { 
     once, 
-    margin: "-100px 0px -100px 0px" // Trigger when element is 100px from viewport
+    margin: "-100px 0px -100px 0px" 
   });
 
   const directionVariants = {
@@ -37,7 +29,6 @@ const ScrollReveal = ({
 
   return (
     <motion.div
-      key={`scroll-reveal-${animationKey}`}
       ref={ref}
       initial={directionVariants[direction]}
       animate={isInView ? { 
