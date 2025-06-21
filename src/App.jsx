@@ -38,7 +38,7 @@ const NavigationTracker = () => {
   return null;
 };
 
-function App() {
+const App = () => {
   return (
     <ThemeProvider>
       <Router>
@@ -92,6 +92,6 @@ function App() {
       </Router>
     </ThemeProvider>
   );
-}
+};
 
 export default App;
