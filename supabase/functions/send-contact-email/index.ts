@@ -79,7 +79,7 @@ serve(async (req) => {
 
     // Email to you (notification)
     const notificationEmail = {
-      from: 'Sriram Portfolio <onboarding@resend.dev>',
+      from: 'Sriram Portfolio <contact@srirambaskaran.live>',
       to: [YOUR_EMAIL],
       subject: `New Contact Form Submission: ${subject}`,
       html: `
@@ -115,7 +115,7 @@ serve(async (req) => {
 
     // Auto-reply email to the user
     const autoReplyEmail = {
-      from: 'Sriram Baskaran <onboarding@resend.dev>',
+      from: 'Sriram Baskaran <contact@srirambaskaran.live>',
       to: [email],
       subject: 'Thank you for reaching out!',
       html: `
