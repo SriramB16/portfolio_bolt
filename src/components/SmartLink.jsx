@@ -8,8 +8,6 @@ const SmartLink = ({ to, children, onClick, ...props }) => {
     // Only set internalNavigation flag if we're navigating to a different path
     if (location.pathname !== to) {
       sessionStorage.setItem('internalNavigation', 'true');
-      // Immediately scroll to top when navigating to a different page
-      window.scrollTo(0, 0);
     }
     
     // Call the original onClick handler if provided

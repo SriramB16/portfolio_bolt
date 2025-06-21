@@ -10,13 +10,14 @@ import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
 import Contact from './pages/Contact';
 
-// Component to handle scroll to top on route change
-const ScrollToTop = () => {
+// Component to handle instant positioning at top on route change
+const InstantTopPosition = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Scroll to top immediately when route changes
-    window.scrollTo(0, 0);
+    // Set scroll position to top instantly without animation
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }, [location.pathname]);
 
   return null;
@@ -27,7 +28,7 @@ function App() {
     <ThemeProvider>
       <Router>
         <div className="page-container min-h-screen bg-[#f7f8fa] dark:bg-black transition-colors duration-300">
-          <ScrollToTop />
+          <InstantTopPosition />
           <LoadingProgressBar />
           <Navbar />
           <Routes>

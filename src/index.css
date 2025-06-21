@@ -11,7 +11,7 @@ html, body {
 /* Prevent layout shifts during animations */
 html {
   overflow-y: scroll; /* Always show vertical scrollbar space */
-  scroll-behavior: smooth;
+  scroll-behavior: auto; /* Disable smooth scrolling globally */
 }
 
 /* Ensure consistent scrollbar */
