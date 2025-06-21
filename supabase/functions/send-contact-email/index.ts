@@ -1,4 +1,4 @@
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -77,10 +77,10 @@ serve(async (req) => {
       )
     }
 
-    // Email to you (notification) - FROM: sridhanu2004@gmail.com TO: akonsmith1989@gil.com
+    // Email to you (notification)
     const notificationEmail = {
-      from: 'Sriram Portfolio <sridhanu2004@gmail.com>',
-      to: [YOUR_EMAIL], // This will be akonsmith1989@gil.com
+      from: 'Sriram Portfolio <onboarding@resend.dev>',
+      to: [YOUR_EMAIL],
       subject: `New Contact Form Submission: ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
@@ -113,10 +113,10 @@ serve(async (req) => {
       `
     }
 
-    // Auto-reply email to the user - FROM: sridhanu2004@gmail.com TO: user's email
+    // Auto-reply email to the user
     const autoReplyEmail = {
-      from: 'Sriram Baskaran <sridhanu2004@gmail.com>',
-      to: [email], // User's email address
+      from: 'Sriram Baskaran <onboarding@resend.dev>',
+      to: [email],
       subject: 'Thank you for reaching out!',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
@@ -141,8 +141,8 @@ serve(async (req) => {
             
             <ul style="color: #555; line-height: 1.6; margin-bottom: 20px;">
               <li>Check out my latest projects on my portfolio</li>
-              <li>Connect with me on LinkedIn</li>
-              <li>Follow my work on GitHub</li>
+              <li>Connect with me on <a href="#" style="color: #10b981;">LinkedIn</a></li>
+              <li>Follow my work on <a href="#" style="color: #10b981;">GitHub</a></li>
             </ul>
             
             <p style="color: #555; line-height: 1.6; margin-bottom: 30px;">
@@ -162,7 +162,7 @@ serve(async (req) => {
     console.log('Attempting to send emails...')
 
     // Send notification email to you
-    const notificationResponse = await fetch('https://api.resend.com/emails', {
+    const notificationResponse = await fetch('https://api.resend.com/emails',{
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
