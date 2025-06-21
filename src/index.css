@@ -424,9 +424,10 @@ button, .btn, a[class*="btn"] {
   animation: tech-marquee 40s linear infinite;
 }
 
-/* Prevent layout shifts during scroll animations */
+/* Prevent layout shifts during scroll animations - ENHANCED */
 .scroll-reveal-container {
-  min-height: 1px; /* Ensure container has height */
+  min-height: fit-content; /* Ensure container maintains its natural height */
+  will-change: transform, opacity; /* Optimize for animations */
 }
 
 /* Ensure smooth animations without layout shifts */
@@ -443,12 +444,14 @@ button, .btn, a[class*="btn"] {
 .page-container {
   min-height: 100vh;
   position: relative;
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
 }
 
 /* Fix for footer positioning */
 .footer-container {
   position: relative;
   z-index: 10;
+  overflow: hidden; /* Prevent any overflow from footer animations */
 }
 
 /* Loading progress bar styles */
@@ -467,4 +470,15 @@ button, .btn, a[class*="btn"] {
   background: linear-gradient(90deg, #10b981, #34d399, #6ee7b7);
   transition: width 0.1s ease-out;
   box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+}
+
+/* Additional safeguards to prevent scrollbar issues */
+body {
+  overflow-x: hidden !important; /* Force hide horizontal scrollbar */
+}
+
+/* Ensure footer doesn't cause overflow */
+footer {
+  max-width: 100vw;
+  box-sizing: border-box;
 }

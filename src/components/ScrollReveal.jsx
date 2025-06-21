@@ -8,14 +8,14 @@ const ScrollReveal = ({
   direction = 'up', 
   delay = 0, 
   duration = 0.6,
-  distance = 30, // Reduced from 50 to minimize layout shifts
+  distance = 20, // Reduced default distance to minimize layout shifts
   className = '',
   once = true 
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { 
     once, 
-    margin: "-20px 0px -20px 0px" // Further reduced margin for smoother triggering
+    margin: "-10px 0px -10px 0px" // Reduced margin for smoother triggering
   });
 
   const directionVariants = {
@@ -23,7 +23,7 @@ const ScrollReveal = ({
     down: { y: -distance, opacity: 0 },
     left: { x: distance, opacity: 0 },
     right: { x: -distance, opacity: 0 },
-    scale: { scale: 0.95, opacity: 0 }, // Reduced scale change
+    scale: { scale: 0.98, opacity: 0 }, // Minimal scale change
     fade: { opacity: 0 }
   };
 
@@ -45,6 +45,11 @@ const ScrollReveal = ({
       }}
       className={`scroll-reveal-container ${className}`}
       data-scroll-reveal="true"
+      style={{
+        // Ensure the container maintains its space to prevent layout shifts
+        minHeight: 'fit-content',
+        willChange: 'transform, opacity'
+      }}
     >
       {children}
     </motion.div>
