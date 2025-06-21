@@ -17,36 +17,43 @@ const ScrollReveal = ({
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const [hasUserScrolled, setHasUserScrolled] = useState(false);
   const lastLocationRef = useRef(location.pathname);
+  const isNavigatingRef = useRef(false);
   
   const isInView = useInView(ref, { 
     once, 
     margin: "-50px 0px -50px 0px"
   });
 
-  // Track if user has actually scrolled after navigation
+  // Track navigation state and user scrolling
   useEffect(() => {
     let scrollTimeout;
     
     const handleScroll = () => {
+      // Only count as user scroll if we're not in navigation state
+      if (isNavigatingRef.current) return;
+      
       // Clear any existing timeout
       clearTimeout(scrollTimeout);
       
-      // Set a small delay to ensure this is intentional scrolling, not programmatic
+      // Set a small delay to ensure this is intentional scrolling
       scrollTimeout = setTimeout(() => {
-        setHasUserScrolled(true);
-      }, 100);
+        if (!isNavigatingRef.current) {
+          setHasUserScrolled(true);
+        }
+      }, 50);
     };
 
-    // Reset scroll tracking when location changes
+    // Reset everything when location changes
     if (lastLocationRef.current !== location.pathname) {
       setHasUserScrolled(false);
       setShouldAnimate(false);
+      isNavigatingRef.current = true;
       lastLocationRef.current = location.pathname;
       
-      // Add a delay before allowing animations to prevent immediate triggering
+      // Clear navigation state after a brief delay
       const navigationDelay = setTimeout(() => {
-        setHasUserScrolled(true);
-      }, 500); // 500ms delay after navigation
+        isNavigatingRef.current = false;
+      }, 200);
       
       return () => {
         clearTimeout(navigationDelay);
@@ -64,9 +71,9 @@ const ScrollReveal = ({
 
   // Only allow animation if user has scrolled and element is in view
   useEffect(() => {
-    if (hasUserScrolled && isInView) {
+    if (hasUserScrolled && isInView && !isNavigatingRef.current) {
       setShouldAnimate(true);
-    } else if (!hasUserScrolled) {
+    } else if (!hasUserScrolled || isNavigatingRef.current) {
       setShouldAnimate(false);
     }
   }, [hasUserScrolled, isInView]);
