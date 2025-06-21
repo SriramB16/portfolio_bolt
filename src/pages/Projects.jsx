@@ -20,7 +20,7 @@ export default function Projects() {
     <div className="pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <ScrollReveal direction="up" delay={0.1}>
+        <ScrollReveal direction="up" delay={0.1} animateOnLoad={true}>
           <div className="text-center mb-12 sm:mb-16">
             <div className="flex items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
               <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
@@ -36,7 +36,7 @@ export default function Projects() {
         </ScrollReveal>
 
         {/* Filter Buttons - Moved to right on larger screens */}
-        <ScrollReveal direction="up" delay={0.2}>
+        <ScrollReveal direction="up" delay={0.2} animateOnLoad={true}>
           <div className="flex flex-wrap justify-center lg:justify-end gap-3 sm:gap-4 mb-8 sm:mb-12 px-4">
             {filters.map((filter) => (
               <button

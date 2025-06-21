@@ -175,7 +175,7 @@ const Contact = () => {
     <div className="pt-20 sm:pt-24 md:pt-32 pb-20 sm:pb-24 md:pb-28 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <ScrollReveal direction="up" delay={0.1}>
+        <ScrollReveal direction="up" delay={0.1} animateOnLoad={true}>
           <div className="text-center mb-12 sm:mb-16">
             <div className="flex items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
               <span className="text-green-500 text-xs sm:text-sm font-medium">✦ </span>
@@ -193,7 +193,7 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
           {/* Left Side - Contact Information with Glass Morphism */}
           <div className="flex flex-col justify-center">
-            <ScrollReveal direction="left" delay={0.2}>
+            <ScrollReveal direction="left" delay={0.2} animateOnLoad={true}>
               <div className="relative">
                 {/* Glass morphism background layers */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-blue-50/30 to-purple-50/40 dark:from-gray-800/40 dark:via-blue-900/20 dark:to-purple-900/30 rounded-2xl backdrop-blur-xl"></div>
@@ -246,7 +246,7 @@ const Contact = () => {
           </div>
 
           {/* Right Side - Contact Form with Enhanced Glass Morphism */}
-          <ScrollReveal direction="right" delay={0.3}>
+          <ScrollReveal direction="right" delay={0.3} animateOnLoad={true}>
             <div className="relative">
               {/* Multiple glass morphism background layers for depth */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-100/50 via-purple-100/40 to-pink-100/50 dark:from-blue-900/30 dark:via-purple-900/25 dark:to-pink-900/30 rounded-2xl backdrop-blur-2xl"></div>
