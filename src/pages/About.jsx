@@ -104,7 +104,7 @@ const About = () => {
           <div className="grid lg:grid-cols-3 gap-8 sm:gap-12 lg:gap-16 items-center">
             
             {/* Left - Circular Photo with Spinning Text (1/3 width) */}
-            <ScrollReveal direction="left" delay={0.1} animateOnLoad={true}>
+            <ScrollReveal direction="left" delay={0.1}>
               <div className="relative flex justify-center lg:justify-start">
                 <div className="relative">
                   {/* Main Circular Photo */}
@@ -170,7 +170,7 @@ const About = () => {
 
             {/* Right - Text Content (2/3 width) - Moved more to the right */}
             <div className="lg:col-span-2 text-center lg:text-left lg:pl-8 xl:pl-12">
-              <ScrollReveal direction="right" delay={0.2} animateOnLoad={true}>
+              <ScrollReveal direction="right" delay={0.2}>
                 <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight mb-6 sm:mb-8">
                   A <span className="text-green-500">creative</span><br />
                   <span className="text-green-500">developer</span> &<br />
@@ -178,13 +178,13 @@ const About = () => {
                 </h1>
               </ScrollReveal>
               
-              <ScrollReveal direction="right" delay={0.3} animateOnLoad={true}>
+              <ScrollReveal direction="right" delay={0.3}>
                 <p className="text-gray-600 dark:text-gray-400 text-lg sm:text-xl lg:text-lg xl:text-xl leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto lg:mx-0">
                   I collaborate with brands globally to design impactful, mission-focused websites that drive results and achieve business goals.
                 </p>
               </ScrollReveal>
               
-              <ScrollReveal direction="right" delay={0.4} animateOnLoad={true}>
+              <ScrollReveal direction="right" delay={0.4}>
                 <ThemedButton
                   onClick={handleDownloadResume}
                   icon={<Download size={16} className="sm:w-[18px] sm:h-[18px]" />}

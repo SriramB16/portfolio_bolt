@@ -1,58 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import ShinyText from './ShinyText';
 
 const ScrollTextReveal = () => {
   const containerRef = useRef(null);
-  const location = useLocation();
   const [revealedWords, setRevealedWords] = useState(new Set());
-  const [hasUserScrolled, setHasUserScrolled] = useState(false);
-  const lastLocationRef = useRef(location.pathname);
 
   const text = "I'm Sriram -- a developer who loves turning ideas into smooth, functional digital experiences. With 2 years of experience, I focus on writing clean code and building things people enjoy using. I'm always exploring, learning, and growing with the tech that keeps me inspired";
   
+  // Split text into words
   const words = text.split(' ');
 
-  // Track user scrolling and reset on navigation
   useEffect(() => {
-    let scrollTimeout;
-    
-    const handleScroll = () => {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        setHasUserScrolled(true);
-      }, 100);
-    };
-
-    // Reset when location changes
-    if (lastLocationRef.current !== location.pathname) {
-      setHasUserScrolled(false);
-      setRevealedWords(new Set());
-      lastLocationRef.current = location.pathname;
-      
-      // Add delay before allowing scroll animations
-      const navigationDelay = setTimeout(() => {
-        setHasUserScrolled(true);
-      }, 500);
-      
-      return () => {
-        clearTimeout(navigationDelay);
-        clearTimeout(scrollTimeout);
-      };
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      clearTimeout(scrollTimeout);
-    };
-  }, [location.pathname]);
-
-  useEffect(() => {
-    // Only run scroll animation if user has actually scrolled
-    if (!hasUserScrolled) return;
-
     const handleScroll = () => {
       if (!containerRef.current) return;
 
@@ -60,6 +18,7 @@ const ScrollTextReveal = () => {
       const containerRect = container.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       
+      // Calculate how much of the container is visible
       const containerTop = containerRect.top;
       const containerBottom = containerRect.bottom;
       const containerHeight = containerRect.height;
@@ -80,15 +39,18 @@ const ScrollTextReveal = () => {
         return;
       }
       
-      // Animation timing
-      const startReveal = windowHeight * 0.8;
-      const endReveal = -containerHeight * 0.2;
+      // Animation timing - starts earlier and completes faster
+      const startReveal = windowHeight * 0.8; // Start when 80% down the viewport
+      const endReveal = -containerHeight * 0.2; // End when 20% of container is above viewport
       
+      // Calculate scroll progress through the container
       const scrollProgress = Math.max(0, Math.min(1, (startReveal - containerTop) / (startReveal - endReveal)));
       
+      // Calculate how many words should be revealed based on scroll progress
       const totalWords = words.length;
       const wordsToReveal = Math.floor(scrollProgress * totalWords);
       
+      // Create new set of revealed word indices
       const newRevealedWords = new Set();
       for (let i = 0; i < wordsToReveal; i++) {
         newRevealedWords.add(i);
@@ -97,19 +59,16 @@ const ScrollTextReveal = () => {
       setRevealedWords(newRevealedWords);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial call only if user has scrolled
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
     
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [words.length, hasUserScrolled]);
+  }, [words.length]);
 
   return (
     <section 
       ref={containerRef}
-      className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black scroll-reveal-container"
-      style={{
-        minHeight: '60vh'
-      }}
+      className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f7f8fa] dark:bg-black"
     >
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
@@ -123,17 +82,14 @@ const ScrollTextReveal = () => {
           <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-relaxed font-medium font-satoshi tracking-wide">
             {words.map((word, index) => (
               <span
-                key={`${index}-${location.pathname}`}
-                className={`inline-block mr-2 sm:mr-3 ${
+                key={index}
+                className={`inline-block transition-all duration-300 ease-out mr-2 sm:mr-3 ${
                   revealedWords.has(index)
-                    ? 'text-black dark:text-white opacity-100'
-                    : 'text-gray-300 dark:text-gray-700 opacity-30'
+                    ? 'text-black dark:text-white opacity-100 transform translate-y-0'
+                    : 'text-gray-300 dark:text-gray-700 opacity-30 transform translate-y-2'
                 }`}
                 style={{
-                  transition: 'color 0.3s ease-out, opacity 0.3s ease-out',
-                  transitionDelay: `${index * 15}ms`,
-                  transform: 'translateZ(0)',
-                  backfaceVisibility: 'hidden'
+                  transitionDelay: `${index * 15}ms` // Faster animation
                 }}
               >
                 {word}

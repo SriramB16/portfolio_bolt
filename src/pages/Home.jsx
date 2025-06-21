@@ -147,7 +147,7 @@ const Home = () => {
             <div className="max-w-7xl mx-auto w-full">
               
               {/* Section 1: Hey! It's me Sriram - Full Width Flexbox */}
-              <ScrollReveal direction="up" delay={0.1} animateOnLoad={true}>
+              <ScrollReveal direction="up" delay={0.1}>
                 <div className="w-full flex items-center gap-3 sm:gap-4 mb-8 sm:mb-12">
                   <WavingHandSVG className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" />
                   <span className="text-green-500 text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium font-satoshi">
@@ -157,7 +157,7 @@ const Home = () => {
               </ScrollReveal>
 
               {/* Section 2: Main Heading - 80% width on larger screens */}
-              <ScrollReveal direction="up" delay={0.2} animateOnLoad={true}>
+              <ScrollReveal direction="up" delay={0.2}>
                 <div className="w-full lg:w-4/5 mb-8 sm:mb-12 lg:mb-16">
                   <h1 className="font-clash text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-tight">
                     Crafting <span className="text-green-500">purpose driven</span><br />
@@ -168,7 +168,7 @@ const Home = () => {
               </ScrollReveal>
 
               {/* Section 3: Flex Container - Line + Description (Equal Width) */}
-              <ScrollReveal direction="up" delay={0.3} animateOnLoad={true}>
+              <ScrollReveal direction="up" delay={0.3}>
                 <div className="flex flex-col lg:flex-row mb-8 sm:mb-12 w-full">
                   {/* Text - First on mobile, left on desktop */}
                   <div className="flex-1 flex items-center order-1 lg:order-2 mb-6 lg:mb-0">
@@ -185,7 +185,7 @@ const Home = () => {
               </ScrollReveal>
 
               {/* Section 4: Flex Container - Button + Social Links */}
-              <ScrollReveal direction="up" delay={0.4} animateOnLoad={true}>
+              <ScrollReveal direction="up" delay={0.4}>
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8">
                   {/* Button - First on mobile, right on desktop */}
                   <div className="order-1 lg:order-2 flex justify-center lg:justify-end">

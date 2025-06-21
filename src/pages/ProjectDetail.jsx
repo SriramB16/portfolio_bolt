@@ -86,7 +86,7 @@ const ProjectDetail = () => {
     <div className="pt-16 sm:pt-20 md:pt-24 lg:pt-32 pb-16 sm:pb-20 md:pb-24 px-3 sm:px-4 md:px-6 lg:px-8 bg-[#f7f8fa] dark:bg-black overflow-x-hidden">
       <div className="max-w-4xl mx-auto w-full">
         {/* Back Button and Year */}
-        <ScrollReveal direction="up" delay={0.1} animateOnLoad={true}>
+        <ScrollReveal direction="up" delay={0.1}>
           <div className="flex items-center justify-between mb-6 sm:mb-8 md:mb-12">
             <SmartLink 
               to="/projects"
@@ -100,7 +100,7 @@ const ProjectDetail = () => {
         </ScrollReveal>
 
         {/* Banner Image */}
-        <ScrollReveal direction="up" delay={0.2} animateOnLoad={true}>
+        <ScrollReveal direction="up" delay={0.2}>
           <div className="w-full h-48 sm:h-64 md:h-80 lg:h-96 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden mb-6 sm:mb-8 md:mb-12 shadow-xl shadow-black/10 dark:shadow-black/30">
             <img 
               src={currentProject.bannerImage} 
@@ -114,7 +114,7 @@ const ProjectDetail = () => {
         <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12 md:mb-16">
           {/* Left Column - Title and Description */}
           <div className="lg:col-span-2">
-            <ScrollReveal direction="left" delay={0.3} animateOnLoad={true}>
+            <ScrollReveal direction="left" delay={0.3}>
               <h1 className="font-clash text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-3 sm:mb-4 md:mb-6 leading-tight">
                 {currentProject.title}
               </h1>
@@ -128,7 +128,7 @@ const ProjectDetail = () => {
           <div className="space-y-4 sm:space-y-6">
             {/* Check it out button - only show if liveUrl exists */}
             {currentProject.liveUrl && (
-              <ScrollReveal direction="right" delay={0.3} animateOnLoad={true}>
+              <ScrollReveal direction="right" delay={0.3}>
                 <ThemedButton
                   href={currentProject.liveUrl}
                   icon={<ArrowUpRight size={14} className="sm:w-4 sm:h-4" />}
@@ -140,7 +140,7 @@ const ProjectDetail = () => {
               </ScrollReveal>
             )}
 
-            <ScrollReveal direction="right" delay={0.4} animateOnLoad={true}>
+            <ScrollReveal direction="right" delay={0.4}>
               <div className="space-y-1">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
                   <span className="font-clash text-base sm:text-lg font-semibold text-black dark:text-white">Roles:</span>
@@ -151,7 +151,7 @@ const ProjectDetail = () => {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal direction="right" delay={0.5} animateOnLoad={true}>
+            <ScrollReveal direction="right" delay={0.5}>
               <div className="space-y-1">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
                   <span className="font-clash text-base sm:text-lg font-semibold text-black dark:text-white">Client:</span>
