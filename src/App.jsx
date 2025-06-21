@@ -26,37 +26,35 @@ function App() {
     <ThemeProvider>
       <Router>
         <ScrollToTop />
-        <div className="flex flex-col min-h-screen bg-[#f7f8fa] dark:bg-black transition-colors duration-300">
+        <div className="min-h-screen bg-[#f7f8fa] dark:bg-black transition-colors duration-300">
           <Navbar />
-          <div className="flex-grow">
-            <Routes>
-              <Route path="/" element={
-                <PageTransition>
-                  <Home />
-                </PageTransition>
-              } />
-              <Route path="/about" element={
-                <PageTransition>
-                  <About />
-                </PageTransition>
-              } />
-              <Route path="/projects" element={
-                <PageTransition>
-                  <Projects />
-                </PageTransition>
-              } />
-              <Route path="/projects/:id" element={
-                <PageTransition>
-                  <ProjectDetail />
-                </PageTransition>
-              } />
-              <Route path="/contact" element={
-                <PageTransition>
-                  <Contact />
-                </PageTransition>
-              } />
-            </Routes>
-          </div>
+          <Routes>
+            <Route path="/" element={
+              <PageTransition>
+                <Home />
+              </PageTransition>
+            } />
+            <Route path="/about" element={
+              <PageTransition>
+                <About />
+              </PageTransition>
+            } />
+            <Route path="/projects" element={
+              <PageTransition>
+                <Projects />
+              </PageTransition>
+            } />
+            <Route path="/projects/:id" element={
+              <PageTransition>
+                <ProjectDetail />
+              </PageTransition>
+            } />
+            <Route path="/contact" element={
+              <PageTransition>
+                <Contact />
+              </PageTransition>
+            } />
+          </Routes>
           <Footer />
         </div>
       </Router>
