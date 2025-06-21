@@ -46,7 +46,7 @@ const ScrollTextReveal = () => {
         return;
       }
       
-      // Animation timing - starts earlier and completes faster
+      // Animation timing - starts when section enters viewport
       const startReveal = windowHeight * 0.8; // Start when 80% down the viewport
       const endReveal = -containerHeight * 0.2; // End when 20% of container is above viewport
       
@@ -70,7 +70,7 @@ const ScrollTextReveal = () => {
     handleScroll(); // Initial call
     
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [words.length, location.pathname]); // Add location.pathname as dependency
+  }, [words.length, location.pathname]);
 
   return (
     <section 
@@ -89,14 +89,14 @@ const ScrollTextReveal = () => {
           <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-relaxed font-medium font-satoshi tracking-wide">
             {words.map((word, index) => (
               <span
-                key={`${index}-${location.pathname}`} // Unique key per page
+                key={`${index}-${location.pathname}`}
                 className={`inline-block transition-all duration-300 ease-out mr-2 sm:mr-3 ${
                   revealedWords.has(index)
                     ? 'text-black dark:text-white opacity-100 transform translate-y-0'
                     : 'text-gray-300 dark:text-gray-700 opacity-30 transform translate-y-2'
                 }`}
                 style={{
-                  transitionDelay: `${index * 15}ms` // Faster animation
+                  transitionDelay: `${index * 15}ms`
                 }}
               >
                 {word}

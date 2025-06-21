@@ -14,29 +14,17 @@ const ScrollReveal = ({
 }) => {
   const ref = useRef(null);
   const location = useLocation();
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const [key, setKey] = useState(0);
+  const [animationKey, setAnimationKey] = useState(0);
 
-  // Reset animation state when location changes
+  // Reset animation when location changes
   useEffect(() => {
-    setHasAnimated(false);
-    setKey(prev => prev + 1); // Force re-render with new key
+    setAnimationKey(prev => prev + 1);
   }, [location.pathname]);
 
   const isInView = useInView(ref, { 
-    once: false, // Always allow re-triggering
-    margin: "-50px 0px -50px 0px"
+    once, 
+    margin: "-100px 0px -100px 0px" // Trigger when element is 100px from viewport
   });
-
-  // Track if animation should play
-  const shouldAnimate = isInView && (!hasAnimated || !once);
-
-  // Mark as animated when it comes into view
-  useEffect(() => {
-    if (isInView && !hasAnimated) {
-      setHasAnimated(true);
-    }
-  }, [isInView, hasAnimated]);
 
   const directionVariants = {
     up: { y: distance, opacity: 0 },
@@ -49,10 +37,10 @@ const ScrollReveal = ({
 
   return (
     <motion.div
-      key={`${key}-${location.pathname}`} // Unique key per page
+      key={`scroll-reveal-${animationKey}`}
       ref={ref}
       initial={directionVariants[direction]}
-      animate={shouldAnimate ? { 
+      animate={isInView ? { 
         x: 0, 
         y: 0, 
         scale: 1, 
