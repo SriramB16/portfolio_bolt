@@ -77,10 +77,10 @@ serve(async (req) => {
       )
     }
 
-    // Email to you (notification)
+    // Email to you (notification) - FROM: sridhanu2004@gmail.com TO: akonsmith1989@gil.com
     const notificationEmail = {
-      from: 'Portfolio Contact <noreply@yourdomain.com>',
-      to: [YOUR_EMAIL],
+      from: 'Sriram Portfolio <sridhanu2004@gmail.com>',
+      to: [YOUR_EMAIL], // This will be akonsmith1989@gil.com
       subject: `New Contact Form Submission: ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
@@ -113,10 +113,10 @@ serve(async (req) => {
       `
     }
 
-    // Auto-reply email to the user
+    // Auto-reply email to the user - FROM: sridhanu2004@gmail.com TO: user's email
     const autoReplyEmail = {
-      from: 'Sriram Baskaran <noreply@yourdomain.com>',
-      to: [email],
+      from: 'Sriram Baskaran <sridhanu2004@gmail.com>',
+      to: [email], // User's email address
       subject: 'Thank you for reaching out!',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
@@ -141,8 +141,8 @@ serve(async (req) => {
             
             <ul style="color: #555; line-height: 1.6; margin-bottom: 20px;">
               <li>Check out my latest projects on my portfolio</li>
-              <li>Connect with me on <a href="#" style="color: #10b981;">LinkedIn</a></li>
-              <li>Follow my work on <a href="#" style="color: #10b981;">GitHub</a></li>
+              <li>Connect with me on LinkedIn</li>
+              <li>Follow my work on GitHub</li>
             </ul>
             
             <p style="color: #555; line-height: 1.6; margin-bottom: 30px;">
