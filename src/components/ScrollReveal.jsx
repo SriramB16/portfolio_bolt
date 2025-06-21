@@ -10,7 +10,8 @@ const ScrollReveal = ({
   duration = 0.6,
   distance = 30,
   className = '',
-  once = true 
+  once = true,
+  animateOnLoad = false // New prop for top sections
 }) => {
   const ref = useRef(null);
   const location = useLocation();
@@ -69,14 +70,24 @@ const ScrollReveal = ({
     };
   }, [location.pathname]);
 
-  // Only allow animation if user has scrolled and element is in view
+  // Animation logic based on animateOnLoad prop
   useEffect(() => {
-    if (hasUserScrolled && isInView && !isNavigatingRef.current) {
-      setShouldAnimate(true);
-    } else if (!hasUserScrolled || isNavigatingRef.current) {
-      setShouldAnimate(false);
+    if (animateOnLoad) {
+      // For top sections: animate when in view (but not during navigation)
+      if (isInView && !isNavigatingRef.current) {
+        setShouldAnimate(true);
+      } else if (isNavigatingRef.current) {
+        setShouldAnimate(false);
+      }
+    } else {
+      // For other sections: require user scroll + in view
+      if (hasUserScrolled && isInView && !isNavigatingRef.current) {
+        setShouldAnimate(true);
+      } else if (!hasUserScrolled || isNavigatingRef.current) {
+        setShouldAnimate(false);
+      }
     }
-  }, [hasUserScrolled, isInView]);
+  }, [hasUserScrolled, isInView, animateOnLoad]);
 
   const directionVariants = {
     up: { y: distance, opacity: 0 },
